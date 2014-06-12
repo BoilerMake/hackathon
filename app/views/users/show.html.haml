@@ -1,0 +1,48 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @user.first_name
+%p
+  %b Last name:
+  = @user.last_name
+%p
+  %b School:
+  = @user.school_id
+%p
+  %b Team:
+  = @user.team_id
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Gender:
+  = @user.gender
+%p
+  %b Expected graduation:
+  = @user.expected_graduation
+%p
+  %b Github:
+  = @user.github
+%p
+  %b Tshirt size:
+  = @user.tshirt_size
+%p
+  %b Cell phone:
+  = @user.cell_phone
+%p
+  %b Linkedin:
+  = @user.linkedin
+%p
+  %b Dietary restrictions:
+  = @user.dietary_restrictions
+%p
+  %b Previous experience:
+  = @user.previous_experience
+%p
+  %b Essay:
+  = @user.essay
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path

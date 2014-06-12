@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'user#sign_up'
+  resources :users
+
+  root 'users#new'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
