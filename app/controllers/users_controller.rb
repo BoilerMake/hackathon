@@ -17,6 +17,11 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def apply
+    @user = User.new
+    render action: :new
+  end
+
   # GET /users/1/edit
   def edit
   end
