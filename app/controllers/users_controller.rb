@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def apply
     @user = User.new
+    @schools = School.all
   end
 
   # GET /users/1/edit
@@ -28,7 +29,14 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    if params[:school_other][:true] == '1'
+      school = School.create(name: user_params[:school_id])
+      new_params = user_params
+      new_params[:school_id] = school.id
+      @user = User.new(new_params)
+    else
+      @user = User.new(user_params)
+    end
 
     respond_to do |format|
       if @user.save
@@ -73,6 +81,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :school_id, :team_id, :email, :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay)
+      params.require(:user).permit(:first_name, :last_name, :school_id, :team_id, :email, :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other)
     end
 end

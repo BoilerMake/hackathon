@@ -16,7 +16,12 @@
     = f.text_field :last_name
   .field
     = f.label :school_id
-    = f.number_field :school_id
+    = f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"}
+    %br
+    = f.label :school_other, 'My school isn\'t on this list'
+    = check_box :school_other, 'true'
+    %br
+    = f.text_field :school_id
   .field
     = f.label :team_id
     = f.number_field :team_id
@@ -26,13 +31,13 @@
   .field
     = f.label :gender
     = f.radio_button :gender, 'Male'
-    = label :male, 'Male'
+    = f.label :male, 'Male'
     = f.radio_button :gender, 'Female'
-    = label :male, 'Female'
+    = f.label :female, 'Female'
     = f.radio_button :gender, 'Other'
-    = label :male, 'Other'
-    = f.radio_button :gender, 'I Choose Not to Specify'
-    = label :male, 'I Choose Not to Specify'
+    = f.label :other, 'Other'
+    = f.radio_button :gender, 'NA'
+    = f.label :na, 'I Choose Not to Specify'
   .field
     = f.label :github
     = f.text_field :github
