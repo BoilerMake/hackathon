@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :schools
+
   get 'pages/welcome'
 
   resources :users
