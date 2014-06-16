@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  get 'pages/welcome'
+
   resources :users
-  get 'apply' => 'user#apply'
+  get 'apply' => 'users#apply'
 
   root 'pages#welcome'
   # You can have the root of your site routed with "root"
