@@ -19,7 +19,6 @@ class UsersController < ApplicationController
 
   def apply
     @user = User.new
-    render action: :new
   end
 
   # GET /users/1/edit
