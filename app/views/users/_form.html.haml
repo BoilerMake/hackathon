@@ -5,48 +5,10 @@
       %ul
         - @user.errors.full_messages.each do |msg|
           %li= msg
+  = render 'common_fields', f: f
 
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :school_id
-    = f.number_field :school_id
-  .field
-    = f.label :team_id
-    = f.number_field :team_id
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :gender
-    = f.text_field :gender
-  .field
-    = f.label :expected_graduation
-    = f.datetime_select :expected_graduation
-  .field
-    = f.label :github
-    = f.text_field :github
-  .field
-    = f.label :tshirt_size
-    = f.text_field :tshirt_size
-  .field
-    = f.label :cell_phone
-    = f.text_field :cell_phone
-  .field
-    = f.label :linkedin
-    = f.text_field :linkedin
-  .field
-    = f.label :dietary_restrictions
-    = f.text_field :dietary_restrictions
-  .field
-    = f.label :previous_experience
-    = f.text_area :previous_experience
-  .field
-    = f.label :essay
-    = f.text_area :essay
+  - if !@applying
+    = render 'full_fields', f: f
+
   .actions
     = f.submit 'Save'
