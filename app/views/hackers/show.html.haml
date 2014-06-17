@@ -1,0 +1,48 @@
+%p#notice= notice
+
+%p
+  %b First name:
+  = @hacker.first_name
+%p
+  %b Last name:
+  = @hacker.last_name
+%p
+  %b School:
+  = @hacker.school.name
+%p
+  %b Team:
+  = @hacker.team_id
+%p
+  %b Email:
+  = @hacker.email
+%p
+  %b Gender:
+  = @hacker.gender
+%p
+  %b Expected graduation:
+  = @hacker.expected_graduation
+%p
+  %b Github:
+  = @hacker.github
+%p
+  %b Tshirt size:
+  = @hacker.tshirt_size
+%p
+  %b Cell phone:
+  = @hacker.cell_phone
+%p
+  %b Linkedin:
+  = @hacker.linkedin
+%p
+  %b Dietary restrictions:
+  = @hacker.dietary_restrictions
+%p
+  %b Previous experience:
+  = @hacker.previous_experience
+%p
+  %b Essay:
+  = @hacker.essay
+
+= link_to 'Edit', edit_hacker_path(@hacker)
+\|
+= link_to 'Back', hackers_path
