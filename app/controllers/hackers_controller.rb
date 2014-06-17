@@ -1,4 +1,5 @@
 class HackersController < ApplicationController
+  before_action :set_hacker, only: [:show, :edit, :update, :destroy]
   # GET /users
   # GET /users.json
   def index
@@ -8,6 +9,7 @@ class HackersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @hacker
   end
 
   # GET /users/new
@@ -24,21 +26,24 @@ class HackersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    params[:password] = SecureRandom.base64
+    params[:password_confirmation] = params[:password]
     if params[:school_other] == '1'
-      school = School.create(name: user_params[:school_id])
-      new_params = user_params
+      school = School.create(name: hacker_params[:school_id])
+      new_params = hacker_params
       new_params[:school_id] = school.id
       @hacker = Hacker.new(new_params)
     else
-      @hacker = Hacker.new(user_params)
+      @hacker = Hacker.new(hacker_params)
     end
 
     respond_to do |format|
       if @hacker.save
+        raise 'did save hacker'
         format.html { redirect_to @hacker, notice: 'Hacker was successfully created.' }
         format.json { render :show, status: :created, location: @hacker }
       else
-        @schools = School.all
+        raise 'failed to save hacker'
         format.html { render :new }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
@@ -49,7 +54,7 @@ class HackersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
-      if @hacker.update(user_params)
+      if @hacker.update(hacker_params)
         format.html { redirect_to @hacker, notice: 'Hacker was successfully updated.' }
         format.json { render :show, status: :ok, location: @hacker }
       else
@@ -76,8 +81,8 @@ class HackersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:hacker).permit(:first_name, :last_name, :school_id, :team_id, :email, :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other)
+    def hacker_params
+      params.require(:hacker).permit(:first_name, :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other)
     end
 
 end

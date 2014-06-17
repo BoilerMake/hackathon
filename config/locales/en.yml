@@ -20,6 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-  new_user_signup: "Sign Up"
-  new_hacker_signup: "Welcome Hackers!"
+  hello: 'Hello world'
+  hackathon: 'BoilerMake'
+  domain: 'boilermake.org'

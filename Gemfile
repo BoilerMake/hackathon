@@ -6,7 +6,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'bcrypt'
+gem 'bcrypt-ruby'
 
 gem 'haml-rails'
 gem 'binding_of_caller'
@@ -25,6 +25,8 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'jazz_hands'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'guard'
 end
 
 group :production do
