@@ -8,6 +8,7 @@ class PasswordResetsController < ApplicationController
 
   def update
     @user = User.find_by_password_reset_token!(params[:id])
+    binding.pry
     if @user.password_reset_sent_at < 2.hours.ago
       redirect_to new_password_reset_path, alert: "Password &crarr;
                                                       reset has expired."
@@ -28,6 +29,6 @@ class PasswordResetsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :school_id, :team_id, :email, :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other)
+    params.require(@user.class.to_s.downcase).permit(:first_name, :last_name, :password_confirmation, :password, :password_digest, :school_id, :team_id, :email, :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other)
   end
 end

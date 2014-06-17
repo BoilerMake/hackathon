@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617075127) do
+ActiveRecord::Schema.define(version: 20140617155927) do
 
   create_table "schools", force: true do |t|
     t.string   "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140617075127) do
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "type"
   end
 
 end

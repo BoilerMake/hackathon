@@ -26,8 +26,8 @@ class HackersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    params[:password] = SecureRandom.base64
-    params[:password_confirmation] = params[:password]
+    params[:hacker][:password] = SecureRandom.base64
+    params[:hacker][:password_confirmation] = params[:hacker][:password]
     if params[:school_other] == '1'
       school = School.create(name: hacker_params[:school_id])
       new_params = hacker_params
@@ -39,11 +39,9 @@ class HackersController < ApplicationController
 
     respond_to do |format|
       if @hacker.save
-        raise 'did save hacker'
         format.html { redirect_to @hacker, notice: 'Hacker was successfully created.' }
         format.json { render :show, status: :created, location: @hacker }
       else
-        raise 'failed to save hacker'
         format.html { render :new }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
