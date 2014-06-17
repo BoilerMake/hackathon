@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   def apply
     @user = User.new
     @schools = School.all
+    @applying = true
   end
 
   # GET /users/1/edit
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    if params[:school_other][:true] == '1'
+    if params[:school_other] == '1'
       school = School.create(name: user_params[:school_id])
       new_params = user_params
       new_params[:school_id] = school.id
