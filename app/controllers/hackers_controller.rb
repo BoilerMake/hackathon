@@ -45,7 +45,12 @@ class HackersController < ApplicationController
 
     respond_to do |format|
       if @hacker.save
-        format.html { redirect_to @hacker, notice: 'Account Created! Please confirm your email.' }
+
+        # mimics sessions/create
+        user = User.find(@hacker.id)
+        cookies[:auth_token] = user.auth_token
+
+        format.html { redirect_to :dashboard, notice: 'Account Created! Please confirm your email.' }
         format.json { render :show, status: :created, location: @hacker }
       else
         format.html { render :new }
@@ -85,6 +90,7 @@ class HackersController < ApplicationController
   end
 
   def authenticate
+    redirect_to root_url, notice: 'Not Logged in' unless current_user
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

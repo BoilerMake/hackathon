@@ -3,6 +3,8 @@
 -if current_user
   this shows up when a user is logged in
   = link_to 'dashboard', controller: 'hackers', action: 'dashboard'
+  %br
+  = link_to 'Logout', logout_path
 - else
   .user-action
     .login
