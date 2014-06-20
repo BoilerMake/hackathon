@@ -6,6 +6,6 @@ class Application < ActiveRecord::Base
   validates_presence_of :previous_experience
   validates_presence_of :essay
 
-  belongs_to :hacker
+  belongs_to :hacker, foreign_key: 'hacker_id'
 
 end
