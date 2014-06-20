@@ -26,8 +26,6 @@ class HackersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    params[:hacker][:password] = SecureRandom.base64
-    params[:hacker][:password_confirmation] = params[:hacker][:password]
     if params[:school_other] == '1'
       school = School.create(name: hacker_params[:school_id])
       new_params = hacker_params

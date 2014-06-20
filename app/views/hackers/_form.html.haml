@@ -5,10 +5,16 @@
       %ul
         - @hacker.errors.full_messages.each do |msg|
           %li= msg
-  = render 'common_fields', f: f
 
-  - if @hacker.accepted?
-    = render 'full_fields', f: f
+  .field
+    = f.label :email, 'University Email'
+    = f.text_field :email
+  .field
+    = f.label :password, 'Password'
+    = f.password_field :password
+  .field
+    = f.label :password_confirmation, 'Password Confirmation'
+    = f.password_field :password_confirmation
 
   .actions
-    = f.submit 'Save'
+    = f.submit 'Create Account'

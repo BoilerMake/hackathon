@@ -1,9 +1,7 @@
 class Hacker < User
-  validates_presence_of :school_id
-  validates_presence_of :team_id
-  validates_presence_of :github
-
   belongs_to :school
+  belongs_to :team
+  has_one :application
 
   def accepted?
     false

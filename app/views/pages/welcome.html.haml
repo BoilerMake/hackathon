@@ -1,3 +1,9 @@
-%h1 Pages#welcome
-%p Find me in app/views/pages/welcome.html.haml
-=link_to 'Apply to BoilerMake Now!!', apply_path
+%h1 Welcome To BoilerMake
+%p Some copy goes here
+-if current_user
+  FUCK YEA LOGGED IN
+.user-action
+  .login
+    = render 'sessions/form'
+  .sign-up
+    = render 'hackers/form'

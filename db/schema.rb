@@ -11,20 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140617155927) do
+ActiveRecord::Schema.define(version: 20140620032535) do
 
-  create_table "schools", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "users", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.integer  "school_id"
-    t.integer  "team_id"
-    t.string   "email"
+  create_table "applications", force: true do |t|
     t.string   "gender"
     t.datetime "expected_graduation"
     t.string   "github"
@@ -36,11 +25,30 @@ ActiveRecord::Schema.define(version: 20140617155927) do
     t.text     "essay"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "applications", ["user_id"], name: "index_applications_on_user_id"
+
+  create_table "schools", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "type"
+    t.string   "last_name"
+    t.string   "first_name"
+    t.integer  "team_id"
+    t.integer  "school_id"
   end
 
 end
