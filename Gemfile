@@ -12,6 +12,7 @@ gem 'haml-rails'
 gem 'binding_of_caller'
 gem 'better_errors'
 gem 'pry-rails'
+gem 'bootstrap-sass'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'

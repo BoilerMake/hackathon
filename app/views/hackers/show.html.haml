@@ -8,7 +8,7 @@
   = @hacker.last_name
 %p
   %b School:
-  = @hacker.school.name
+  = @hacker.school.name if @hacker.school
 %p
   %b Team:
   = @hacker.team_id

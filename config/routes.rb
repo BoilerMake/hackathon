@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :teams
+
   get 'apply' => 'hackers#new'
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
