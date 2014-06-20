@@ -16,7 +16,6 @@ class HackersController < ApplicationController
     @schools = School.all
     @hacker ||= current_user
     @application = @hacker.build_application
-    # raise 'oesu'
   end
 
   # GET /users/new

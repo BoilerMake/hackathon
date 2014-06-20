@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :applications
   resources :schools
   resources :hackers
+  resources :teams
   resources :sessions
   resources :password_resets
 
