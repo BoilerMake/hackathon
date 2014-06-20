@@ -1,49 +1,50 @@
-.field
-  = f.label :first_name, 'First Name'
-  = f.text_field :first_name
-.field
-  = f.label :last_name, 'Last Name'
-  = f.text_field :last_name
-.field
-  = f.label :school_id
-  = f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"}
-  %br
-  = f.label 'My school isn\'t on this list'
-  = check_box_tag :school_other
-  %br
-  = f.text_field :school_id
-.field
-  = f.label :gender
-  = f.radio_button :gender, 'Male'
-  = f.label :male, 'Male'
-  = f.radio_button :gender, 'Female'
-  = f.label :female, 'Female'
-  = f.radio_button :gender, 'Other'
-  = f.label :other, 'Other'
-  = f.radio_button :gender, 'NA'
-  = f.label :na, 'I Choose Not to Specify'
-.field
-  = f.label :github
-  = f.text_field :github
-.field
-  = f.label :previous_experience, 'Previous Experience'
-  = f.text_area :previous_experience
-.field
-  = f.label :essay, 'Past Projects'
-  = f.text_area :essay
-- if @hacker.accepted?
+= form_for @application do |f|
   .field
-    = f.label :expected_graduation
-    = f.datetime_select :expected_graduation
+    = f.label :first_name, 'First Name'
+    = f.text_field :first_name
   .field
-    = f.label :tshirt_size
-    = f.text_field :tshirt_size
+    = f.label :last_name, 'Last Name'
+    = f.text_field :last_name
   .field
-    = f.label :cell_phone
-    = f.text_field :cell_phone
+    = f.label :school_id
+    = f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"}
+    %br
+    = f.label 'My school isn\'t on this list'
+    = check_box_tag :school_other
+    %br
+    = f.text_field :school_id
   .field
-    = f.label :linkedin
-    = f.text_field :linkedin
+    = f.label :gender
+    = f.radio_button :gender, 'Male'
+    = f.label :male, 'Male'
+    = f.radio_button :gender, 'Female'
+    = f.label :female, 'Female'
+    = f.radio_button :gender, 'Other'
+    = f.label :other, 'Other'
+    = f.radio_button :gender, 'NA'
+    = f.label :na, 'I Choose Not to Specify'
   .field
-    = f.label :dietary_restrictions
-    = f.text_field :dietary_restrictions
+    = f.label :github
+    = f.text_field :github
+  .field
+    = f.label :previous_experience, 'Previous Experience'
+    = f.text_area :previous_experience
+  .field
+    = f.label :essay, 'Past Projects'
+    = f.text_area :essay
+  - if @hacker.accepted?
+    .field
+      = f.label :expected_graduation
+      = f.datetime_select :expected_graduation
+    .field
+      = f.label :tshirt_size
+      = f.text_field :tshirt_size
+    .field
+      = f.label :cell_phone
+      = f.text_field :cell_phone
+    .field
+      = f.label :linkedin
+      = f.text_field :linkedin
+    .field
+      = f.label :dietary_restrictions
+      = f.text_field :dietary_restrictions

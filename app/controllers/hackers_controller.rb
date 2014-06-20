@@ -12,6 +12,11 @@ class HackersController < ApplicationController
     @hacker
   end
 
+  def dashboard
+    @schools = School.all
+    @hacker ||= current_user
+  end
+
   # GET /users/new
   def new
     @hacker = Hacker.new
@@ -78,7 +83,7 @@ class HackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hacker_params
-      params.require(:hacker).permit(:first_name, :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other)
+      params.require(:hacker).permit(:first_name, :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, application_attributes: [ :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other ])
     end
 
 end

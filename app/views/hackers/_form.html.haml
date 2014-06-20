@@ -10,11 +10,55 @@
     = f.label :email, 'University Email'
     = f.text_field :email
   .field
-    = f.label :password, 'Password'
-    = f.password_field :password
+    = f.label :first_name
+    = f.text_field :first_name
   .field
-    = f.label :password_confirmation, 'Password Confirmation'
-    = f.password_field :password_confirmation
+    = f.label :last_name
+    = f.text_field :last_name
+  .field
+    = f.label :school_id
+    = f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"}
+    %br
+    = f.label 'My school isn\'t on this list'
+    = check_box_tag :school_other
+    %br
+    = f.text_field :school_id
+  = f.fields_for :application, @hacker.application do |application_fields|
+    .field
+      = application_fields.label :gender
+      = application_fields.radio_button :gender, 'Male'
+      = application_fields.label :male, 'Male'
+      = application_fields.radio_button :gender, 'Female'
+      = application_fields.label :female, 'Female'
+      = application_fields.radio_button :gender, 'Other'
+      = application_fields.label :other, 'Other'
+      = application_fields.radio_button :gender, 'NA'
+      = application_fields.label :na, 'I Choose Not to Specify'
+    .field
+      = application_fields.label :github
+      = application_fields.text_field :github
+    .field
+      = application_fields.label :previous_experience, 'Previous Experience'
+      = application_fields.text_area :previous_experience
+    .field
+      = application_fields.label :essay, 'Past Projects'
+      = application_fields.text_area :essay
+    - if @hacker.accepted?
+      .field
+        = application_fields.label :expected_graduation
+        = application_fields.datetime_select :expected_graduation
+      .field
+        = application_fields.label :tshirt_size
+        = application_fields.text_field :tshirt_size
+      .field
+        = application_fields.label :cell_phone
+        = application_fields.text_field :cell_phone
+      .field
+        = application_fields.label :linkedin
+        = application_fields.text_field :linkedin
+      .field
+        = application_fields.label :dietary_restrictions
+        = application_fields.text_field :dietary_restrictions
 
   .actions
     = f.submit 'Create Account'

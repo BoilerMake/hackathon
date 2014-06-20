@@ -11,4 +11,6 @@ class Application < ActiveRecord::Base
   validates_presence_of :previous_experience
   validates_presence_of :essay
 
+  belongs_to :hacker
+
 end

@@ -1,9 +1,11 @@
 %h1 Welcome To BoilerMake
 %p Some copy goes here
 -if current_user
-  FUCK YEA LOGGED IN
-.user-action
-  .login
-    = render 'sessions/form'
-  .sign-up
-    = render 'hackers/form'
+  this shows up when a user is logged in
+  = link_to 'dashboard', controller: 'hackers', action: 'dashboard'
+- else
+  .user-action
+    .login
+      = render 'sessions/form'
+    .sign-up
+      = render 'hackers/form'
