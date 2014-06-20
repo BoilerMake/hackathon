@@ -15,7 +15,8 @@ class HackersController < ApplicationController
   def dashboard
     @schools = School.all
     @hacker ||= current_user
-    @application = @hacker.build_application
+    @application = @hacker.application
+    @application ||= @hacker.build_application
   end
 
   # GET /users/new
@@ -43,7 +44,7 @@ class HackersController < ApplicationController
 
     respond_to do |format|
       if @hacker.save
-        format.html { redirect_to @hacker, notice: 'Hacker was successfully created.' }
+        format.html { redirect_to @hacker, notice: 'Account Created! Please confirm your email.' }
         format.json { render :show, status: :created, location: @hacker }
       else
         format.html { render :new }
