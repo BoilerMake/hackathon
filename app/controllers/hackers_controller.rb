@@ -15,6 +15,8 @@ class HackersController < ApplicationController
   def dashboard
     @schools = School.all
     @hacker ||= current_user
+    @application = @hacker.build_application
+    # raise 'oesu'
   end
 
   # GET /users/new

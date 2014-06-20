@@ -8,7 +8,7 @@
   = @hacker.last_name
 %p
   %b School:
-  = @hacker.school.name
+  = @hacker.school.name if @hacker.school
 %p
   %b Team:
   = @hacker.team_id
@@ -17,31 +17,31 @@
   = @hacker.email
 %p
   %b Gender:
-  = @hacker.gender
+  = @hacker.application.gender
 %p
   %b Expected graduation:
-  = @hacker.expected_graduation
+  = @hacker.application.expected_graduation
 %p
   %b Github:
-  = @hacker.github
+  = @hacker.application.github
 %p
   %b Tshirt size:
-  = @hacker.tshirt_size
+  = @hacker.application.tshirt_size
 %p
   %b Cell phone:
-  = @hacker.cell_phone
+  = @hacker.application.cell_phone
 %p
   %b Linkedin:
-  = @hacker.linkedin
+  = @hacker.application.linkedin
 %p
   %b Dietary restrictions:
-  = @hacker.dietary_restrictions
+  = @hacker.application.dietary_restrictions
 %p
   %b Previous experience:
-  = @hacker.previous_experience
+  = @hacker.application.previous_experience
 %p
   %b Essay:
-  = @hacker.essay
+  = @hacker.application.essay
 
 = link_to 'Edit', edit_hacker_path(@hacker)
 \|
