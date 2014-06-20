@@ -15,6 +15,7 @@ class HackersController < ApplicationController
   def dashboard
     @schools = School.all
     @hacker ||= current_user
+    raise 'oateu'
     @application = @hacker.application
     @application ||= @hacker.build_application
   end
@@ -44,10 +45,10 @@ class HackersController < ApplicationController
 
     respond_to do |format|
       if @hacker.save
-        format.html { redirect_to @hacker, notice: 'Account Created! Please confirm your email.' }
+        format.html { redirect_to action: :dashboard, notice: 'Account Created! Please confirm your email.' }
         format.json { render :show, status: :created, location: @hacker }
       else
-        format.html { render :new }
+        format.html { render 'pages/welcome' }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
     end
