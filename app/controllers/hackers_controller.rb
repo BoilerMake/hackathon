@@ -1,5 +1,6 @@
 class HackersController < ApplicationController
   before_action :set_hacker, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate, only: [:edit, :update, :destroy, :dashboard]
   # GET /users
   # GET /users.json
   def index
@@ -15,7 +16,6 @@ class HackersController < ApplicationController
   def dashboard
     @schools = School.all
     @hacker ||= current_user
-    raise 'oateu'
     @application = @hacker.application
     @application ||= @hacker.build_application
   end
@@ -45,10 +45,10 @@ class HackersController < ApplicationController
 
     respond_to do |format|
       if @hacker.save
-        format.html { redirect_to action: :dashboard, notice: 'Account Created! Please confirm your email.' }
+        format.html { redirect_to @hacker, notice: 'Account Created! Please confirm your email.' }
         format.json { render :show, status: :created, location: @hacker }
       else
-        format.html { render 'pages/welcome' }
+        format.html { render :new }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
     end
@@ -79,14 +79,17 @@ class HackersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_hacker
-      @hacker = Hacker.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_hacker
+    @hacker = Hacker.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def hacker_params
-      params.require(:hacker).permit(:first_name, :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, application_attributes: [ :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other ])
-    end
+  def authenticate
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def hacker_params
+    params.require(:hacker).permit(:first_name, :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, application_attributes: [ :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other ])
+  end
 
 end
