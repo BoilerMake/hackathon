@@ -1,7 +1,7 @@
 - if current_user
   / TODO this isn't a preferred idiom for restricting access, but it works for now
   = render 'hackers/form'
-  - if !current_user.team #TODO: Same goes here.
+  - if !current_user.team
     = link_to 'New Team', new_team_path, class: 'btn btn-primary'
   - else
     = link_to 'View Team', team_path(current_user.team_id)
