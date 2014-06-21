@@ -7,4 +7,8 @@ class Team < ActiveRecord::Base
       self.secret_key = SecureRandom.urlsafe_base64
     end while Team.exists?(secret_key: self.secret_key)
   end
+
+  def send_hacker_invitation(email)
+    TeamMailer.invite_hacker(email).deliver
+  end
 end

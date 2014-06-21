@@ -19,7 +19,18 @@
   .col-md-6
     .panel.panel-default
       .panel-body
-        Add teammates now!
+        = form_tag hacker_invitations_path, method: :post do
+          .field
+            = label_tag :email_one, 'Friend One'
+            = text_field_tag :email_one
+          .field
+            = label_tag :email_two, 'Friend Two'
+            = text_field_tag :email_two
+          .field
+            = label_tag :email_three, 'Friend Three'
+            = text_field_tag :email_three
+          .actions
+            = submit_tag 'Send invitations'
 
 = link_to 'Leave team', controller: 'teams', action: :remove_hacker
 = link_to 'Return to dashboard', dashboard_path
