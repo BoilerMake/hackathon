@@ -14,6 +14,13 @@ class TeamsController < ApplicationController
     redirect_to dashboard_url if current_user.team_id != @team.id
   end
 
+  def join
+    @team = Team.find_by_secret_key(params[:secret_key])
+    current_user.team_id = @team.id
+    current_user.save!
+    redirect_to dashboard_url
+  end
+
   # GET /teams/new
   def new
     @team = Team.new
@@ -96,7 +103,6 @@ class TeamsController < ApplicationController
     @team.hackers.delete(@user)
     redirect_to dashboard_url
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
