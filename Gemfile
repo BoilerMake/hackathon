@@ -13,6 +13,7 @@ gem 'binding_of_caller'
 gem 'better_errors'
 gem 'pry-rails'
 gem 'bootstrap-sass'
+gem 'byebug'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'

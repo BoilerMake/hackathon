@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'pages/welcome'
   root 'pages#welcome'
 
+  get 'teams/join'
 
   resources :applications
   resources :schools
@@ -15,5 +16,5 @@ Rails.application.routes.draw do
   end
   resources :sessions
   resources :password_resets
-
+  resources :hacker_invitations
 end
