@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :applications
   resources :schools
   resources :hackers
-  resources :teams
+  resources :teams do
+    get 'remove_hacker', on: :member
+  end
   resources :sessions
   resources :password_resets
 
