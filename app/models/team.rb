@@ -8,7 +8,11 @@ class Team < ActiveRecord::Base
     end while Team.exists?(secret_key: self.secret_key)
   end
 
-  def send_hacker_invitation(email)
-    TeamMailer.invite_hacker(email).deliver
+  def send_hacker_invitation(email, current_user)
+    TeamMailer.invite_hacker(email, self, current_user).deliver
+  end
+
+  def invite_url
+    'http://localhost:3000/teams/join?secret_key=' + self.secret_key
   end
 end

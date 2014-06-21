@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-  helper_method :hacker_full_name, :hacker_email, :hacker_school, :remove_hacker
+  helper_method :hacker_full_name, :hacker_email, :hacker_school, :remove_hacker, :invite_url
 
   # GET /teams
   # GET /teams.json
