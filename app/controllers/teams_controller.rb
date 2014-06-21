@@ -11,6 +11,7 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    redirect_to dashboard_url if current_user.team_id != @team.id
   end
 
   # GET /teams/new
