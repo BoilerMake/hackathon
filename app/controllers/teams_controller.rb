@@ -16,6 +16,19 @@ class TeamsController < ApplicationController
   # GET /teams/new
   def new
     @team = Team.new
+
+    # add current user to created team automatically
+    @team.hackers << current_user
+
+    respond_to do |format|
+      if @team.save
+        format.html { redirect_to @team, notice: 'Team was successfully created.' }
+        format.json { render :show, status: :created, location: @team }
+      else
+        format.html { render :new }
+        format.json { render json: @team.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /teams/1/edit
@@ -26,9 +39,6 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(team_params)
-
-    # add current user to created team automatically
-    @team.hackers << current_user
 
     respond_to do |format|
       if @team.save
