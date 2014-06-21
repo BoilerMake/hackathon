@@ -1,45 +1,24 @@
 %p#notice= notice
 
-%table
-  %tr
-    %th First name
-    %th Last name
-    %th School
-    %th Team
-    %th Email
-    -# %th Gender
-    -# %th Expected graduation
-    -# %th Github
-    -# %th Tshirt size
-    -# %th Cell phone
-    -# %th Linkedin
-    -# %th Dietary restrictions
-    -# %th Previous experience
-    -# %th Essay
-    %th
-    %th
-    %th
+.container
+  .col-md-6
+    .panel.panel-default
+      .panel-heading
+        This is your team
+      %table.table
+        %tr
+          %th Hacker
+          %th Email
+          %th School
 
-  - @team.hackers.each do |hacker|
-    %tr
-      %td= hacker.first_name
-      %td= hacker.last_name
-      %td= hacker.school.name if hacker.school
-      %td= hacker.team_id
-      %td= hacker.email
-      -# %td= hacker.gender
-      -# %td= hacker.expected_graduation
-      -# %td= hacker.github
-      -# %td= hacker.tshirt_size
-      -# %td= hacker.cell_phone
-      -# %td= hacker.linkedin
-      -# %td= hacker.dietary_restrictions
-      -# %td= hacker.previous_experience
-      -# %td= hacker.essay
-      %td= link_to 'Show', hacker
-      %td= link_to 'Edit', edit_hacker_path(hacker)
-      %td= link_to 'Destroy', hacker, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - @team.hackers.each do |hacker|
+          %tr
+            %td= hacker_full_name(hacker)
+            %td= hacker_email(hacker)
+            %td= hacker_school(hacker)
+  .col-md-6
+    .panel.panel-default
+      .panel-body
+        Add teammates now!
 
-= link_to 'Edit', edit_team_path(@team)
-\|
-= link_to 'Back', teams_path
+= link_to 'Leave team', controller: 'teams', action: :remove_hacker

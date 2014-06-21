@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  helper_method :hacker_full_name, :hacker_email, :hacker_school, :remove_hacker
 
   # GET /teams
   # GET /teams.json
@@ -63,6 +64,28 @@ class TeamsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  #TODO: This is definitely not the best way to do this
+  # HELPER METHODS
+  def hacker_full_name(hacker)
+    hacker.first_name + ' ' + hacker.last_name
+  end
+
+  def hacker_email(hacker)
+    hacker.email if hacker.email
+  end
+
+  def hacker_school(hacker)
+    hacker.school.name if hacker.school
+  end
+
+  def remove_hacker
+    @team = Team.find(params[:id])
+    @user = current_user
+    @team.hackers.delete(@user)
+    redirect_to dashboard_url
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
