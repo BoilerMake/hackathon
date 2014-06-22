@@ -15,6 +15,7 @@ class TeamsController < ApplicationController
   end
 
   def join
+    store_session
     @team = Team.find_by_secret_key(params[:secret_key])
     current_user.team_id = @team.id
     current_user.save!

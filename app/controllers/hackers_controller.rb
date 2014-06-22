@@ -1,7 +1,7 @@
 class HackersController < ApplicationController
   before_action :set_hacker, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate, only: [:edit, :update, :destroy, :dashboard]
-  skip_before_action :require_login
+  skip_before_action :require_login, :store_session
 
   # GET /users
   # GET /users.json
@@ -52,7 +52,7 @@ class HackersController < ApplicationController
         user = User.find(@hacker.id)
         cookies[:auth_token] = user.auth_token
 
-        format.html { redirect_to :dashboard, notice: 'Account Created! Please confirm your email.' }
+        format.html { redirect_to session[:return_to], notice: 'Account Created! Please confirm your email.' }
         format.json { render :show, status: :created, location: @hacker }
       else
         format.html { render :new }
@@ -86,6 +86,7 @@ class HackersController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_hacker
     @hacker = Hacker.find(params[:id])
@@ -99,5 +100,4 @@ class HackersController < ApplicationController
   def hacker_params
     params.require(:hacker).permit(:first_name, :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, application_attributes: [ :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other ])
   end
-
 end
