@@ -87,7 +87,9 @@ class TeamsController < ApplicationController
   #TODO: This is definitely not the best way to do this
   # HELPER METHODS
   def hacker_full_name(hacker)
-    hacker.first_name + ' ' + hacker.last_name
+    first = (hacker.first_name.present? ? hacker.first_name : '')
+    last = (hacker.last_name.present? ? hacker.last_name : '')
+    first + ' ' + last
   end
 
   def hacker_email(hacker)
