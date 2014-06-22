@@ -1,7 +1,7 @@
 class HackersController < ApplicationController
   before_action :set_hacker, only: [:update, :destroy]
   before_filter :authenticate, only: [:update, :destroy, :dashboard]
-  skip_before_action :require_login, :store_session
+  skip_before_action :require_login
 
   # GET /users
   # GET /users.json
