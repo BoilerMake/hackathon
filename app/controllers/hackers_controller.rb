@@ -60,7 +60,13 @@ class HackersController < ApplicationController
 
         format.json { render :show, status: :created, location: @hacker }
       else
-        flash[:notice] = "Invalid email or passwords do not match"
+        if @hacker.errors[:email].present?
+          flash[:alert] = "#{@hacker.email} #{@hacker.errors[:email][0]}"
+        elsif @hacker.errors[:password_confirmation].present?
+          flash[:alert] = "Your passwords don't match."
+        else
+          flash[:alert] = "Some error occured. Email support@boilermake.org."
+        end
         format.html { redirect_to root_path }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end

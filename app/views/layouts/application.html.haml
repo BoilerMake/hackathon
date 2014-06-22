@@ -7,5 +7,10 @@
     = csrf_meta_tags
   %body
     - flash.each do |name, msg|
-      = content_tag :div, msg, class: 'alert alert-info'
+      - if name == 'alert'
+        = content_tag :div, msg, class: 'alert alert-danger' # red flash
+      - elsif name =='success'
+        = content_tag :div, msg, class: 'alert alert-success' # green flash
+      - else # normally a :notice
+        = content_tag :div, msg, class: 'alert alert-info' # blue flash
     = yield
