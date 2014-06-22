@@ -79,9 +79,13 @@ class TeamsController < ApplicationController
   def join
     store_session
     @team = Team.find_by_secret_key(params[:secret_key])
-    current_user.team_id = @team.id
-    current_user.save!
-    redirect_to dashboard_url
+    if @team
+      current_user.team_id = @team.id
+      current_user.save!
+      redirect_to dashboard_url
+    else
+      redirect_to dashboard_url, alert: 'Invalid team key'
+    end
   end
 
   def remove_hacker
