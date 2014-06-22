@@ -23,3 +23,4 @@ en:
   hello: 'Hello world'
   hackathon: 'BoilerMake'
   domain: 'boilermake.org'
+  default_from_email: 'hackers@boilermake.org'
