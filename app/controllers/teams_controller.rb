@@ -81,6 +81,11 @@ class TeamsController < ApplicationController
     @team = Team.find_by_secret_key(params[:secret_key])
     if @team
       current_user.team_id = @team.id
+      if current_user.save
+        flash[:info] = 'Joined team successfully!'
+      else
+        flash[:warning] = 'Team is currently full'
+      end
       current_user.save!
       redirect_to dashboard_url
     else
