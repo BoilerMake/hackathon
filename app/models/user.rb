@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_secure_password validations: false
-  validates_presence_of :email
+  has_secure_password
+  validates :email, {presence: true, uniqueness: true}
   before_create { generate_token(:auth_token) }
 
   def send_password_reset
