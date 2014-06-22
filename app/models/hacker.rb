@@ -1,5 +1,4 @@
 class Hacker < User
-  attr_accessor :email, :school
   belongs_to :school
   belongs_to :team
   has_one :application
