@@ -52,10 +52,16 @@ class HackersController < ApplicationController
         user = User.find(@hacker.id)
         cookies[:auth_token] = user.auth_token
 
-        format.html { redirect_to session[:return_to], notice: 'Account Created! Please confirm your email.' }
+        if session[:return_to].present?
+          format.html { redirect_to session[:return_to], notice: 'Account Created! Please confirm your email.' }
+        else
+          format.html { redirect_to :dashboard, notice: 'Account Created! Please confirm your email.' }
+        end
+
         format.json { render :show, status: :created, location: @hacker }
       else
-        format.html { render :new }
+        flash[:notice] = "Invalid email or passwords do not match"
+        format.html { redirect_to root_path }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
     end
@@ -66,10 +72,10 @@ class HackersController < ApplicationController
   def update
     respond_to do |format|
       if @hacker.update(hacker_params)
-        format.html { redirect_to @hacker, notice: 'Hacker was successfully updated.' }
+        format.html { redirect_to :dashboard, notice: 'Hacker was successfully updated.' }
         format.json { render :show, status: :ok, location: @hacker }
       else
-        format.html { render :edit }
+        format.html { render :dashboard }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
     end
