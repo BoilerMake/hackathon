@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :require_login
 
   def store_session
-    session[:return_to] = request.url
   end
 
   private
@@ -16,6 +15,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def require_login
-    redirect_to root_path if !current_user
+    if !current_user
+      session[:return_to] = request.url
+      redirect_to root_path
+    end
   end
 end
