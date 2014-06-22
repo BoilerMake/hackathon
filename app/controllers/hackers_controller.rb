@@ -53,9 +53,9 @@ class HackersController < ApplicationController
         cookies[:auth_token] = user.auth_token
 
         if session[:return_to].present?
-          format.html { redirect_to session[:return_to], notice: 'Account Created! Please confirm your email.' }
+          format.html { redirect_to session[:return_to], notice: 'Account created successfully.' }
         else
-          format.html { redirect_to :dashboard, notice: 'Account Created! Please confirm your email.' }
+          format.html { redirect_to :dashboard, notice: 'Account created successfully.' }
         end
 
         format.json { render :show, status: :created, location: @hacker }
@@ -72,7 +72,7 @@ class HackersController < ApplicationController
   def update
     respond_to do |format|
       if @hacker.update(hacker_params)
-        format.html { redirect_to :dashboard, notice: 'Hacker was successfully updated.' }
+        format.html { redirect_to :dashboard, notice: 'Your application has been updated.' }
         format.json { render :show, status: :ok, location: @hacker }
       else
         format.html { render :dashboard }
