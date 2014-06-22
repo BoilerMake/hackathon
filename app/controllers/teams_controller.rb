@@ -14,14 +14,6 @@ class TeamsController < ApplicationController
     redirect_to dashboard_url if current_user.team_id != @team.id
   end
 
-  def join
-    store_session
-    @team = Team.find_by_secret_key(params[:secret_key])
-    current_user.team_id = @team.id
-    current_user.save!
-    redirect_to dashboard_url
-  end
-
   # GET /teams/new
   def new
     @team = Team.new
@@ -82,6 +74,14 @@ class TeamsController < ApplicationController
       format.html { redirect_to teams_url, notice: 'Team was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def join
+    store_session
+    @team = Team.find_by_secret_key(params[:secret_key])
+    current_user.team_id = @team.id
+    current_user.save!
+    redirect_to dashboard_url
   end
 
   #TODO: This is definitely not the best way to do this
