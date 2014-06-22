@@ -35,6 +35,22 @@
       = application_fields.radio_button :gender, 'NA'
       = application_fields.label :na, 'I Choose Not to Specify'
     .field
+      = application_fields.label :address_line_one
+      = application_fields.text_field :address_line_one
+    .field
+      = application_fields.label :address_line_two
+      = application_fields.text_field :address_line_two
+    -#TODO: City, state, and zip should all be on the same line
+    .field
+      = application_fields.label :city
+      = application_fields.text_field :city
+    .field
+      = application_fields.label :state
+      = application_fields.text_field :state
+    .field
+      = application_fields.label :zip_code
+      = application_fields.text_field :zip_code
+    .field
       = application_fields.label :github
       = application_fields.text_field :github
     .field
