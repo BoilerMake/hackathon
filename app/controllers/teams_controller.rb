@@ -18,9 +18,6 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
 
-    # add current user to created team automatically
-    @team.hackers << current_user
-
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
@@ -30,6 +27,8 @@ class TeamsController < ApplicationController
         format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end
+
+    add_hacker(@team, current_user)
   end
 
   # GET /teams/1/edit
@@ -79,9 +78,18 @@ class TeamsController < ApplicationController
   def join
     store_session
     @team = Team.find_by_secret_key(params[:secret_key])
-    current_user.team_id = @team.id
-    current_user.save!
-    redirect_to dashboard_url
+    if @team
+      current_user.team_id = @team.id
+      if current_user.save
+        flash[:info] = 'Joined team successfully!'
+      else
+        flash[:warning] = 'Team is currently full'
+      end
+      current_user.save!
+      redirect_to dashboard_url
+    else
+      redirect_to dashboard_url, alert: 'Invalid team key'
+    end
   end
 
   def remove_hacker
@@ -89,6 +97,10 @@ class TeamsController < ApplicationController
     @user = current_user
     @team.hackers.delete(@user)
     redirect_to dashboard_url
+  end
+
+  def add_hacker(team, hacker)
+    hacker.update(team_id: team.id)
   end
 
   private
