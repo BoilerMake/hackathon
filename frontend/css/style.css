@@ -124,7 +124,7 @@ a {
     background: none;
 }
 .signup {
-    height: 36px;
+    min-height: 36px;
 }
 .signup input {
     position: relative;
@@ -133,7 +133,7 @@ a {
     padding: 4px 35px;
     border: 2px solid #f5a623;
     background: none;
-    margin: 0 10px;
+    margin: 10px 10px;
 }
 .flat-input {
     font-size: 1em;

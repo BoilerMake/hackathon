@@ -22,7 +22,9 @@ $(document).ready(function() {
             $("#email").fadeIn("fast", function() {
                 $("#email input").focus();
             });
-            inputBox += 1;
+            $("#password").fadeIn("fast");
+            $("#confirm-password").fadeIn("fast");
+            inputBox += 3;
         });
     });
 
