@@ -11,9 +11,9 @@
 
         - @team.hackers.each do |hacker|
           %tr
-            %td= hacker_full_name(hacker)
-            %td= hacker_email(hacker)
-            %td= hacker_school(hacker)
+            %td= hacker.full_name
+            %td= hacker.email
+            %td= hacker.school
   .col-md-6
     .panel.panel-default
       .panel-body

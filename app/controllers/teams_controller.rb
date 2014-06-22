@@ -84,22 +84,6 @@ class TeamsController < ApplicationController
     redirect_to dashboard_url
   end
 
-  #TODO: This is definitely not the best way to do this
-  # HELPER METHODS
-  def hacker_full_name(hacker)
-    first = (hacker.first_name.present? ? hacker.first_name : '')
-    last = (hacker.last_name.present? ? hacker.last_name : '')
-    first + ' ' + last
-  end
-
-  def hacker_email(hacker)
-    hacker.email if hacker.email
-  end
-
-  def hacker_school(hacker)
-    hacker.school.name if hacker.school
-  end
-
   def remove_hacker
     @team = Team.find(params[:id])
     @user = current_user
