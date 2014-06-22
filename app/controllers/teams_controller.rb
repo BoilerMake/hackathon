@@ -83,9 +83,8 @@ class TeamsController < ApplicationController
       if current_user.save
         flash[:info] = 'Joined team successfully!'
       else
-        flash[:warning] = 'Team is currently full'
+        flash[:error] = 'Team is currently full'
       end
-      current_user.save!
       redirect_to dashboard_url
     else
       redirect_to dashboard_url, alert: 'Invalid team key'

@@ -4,6 +4,7 @@ class Hacker < User
   has_one :application
 
   validates_format_of :email, with: /\A.*?\.edu\z/i
+  validate :team_size_is_okay
 
   accepts_nested_attributes_for :application
 
@@ -15,6 +16,16 @@ class Hacker < User
     fname = first_name.present? ? first_name : ''
     lname = last_name.present? ? last_name : ''
     "#{fname} #{lname}"
+  end
+
+  def team_size_is_okay
+    if team.present?
+      if team.hackers.count >= 4
+        errors.add(:team, 'Team is already full')
+        return false
+      end
+    end
+    true
   end
 
 end
