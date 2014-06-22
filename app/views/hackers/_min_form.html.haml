@@ -8,13 +8,13 @@
 
   .field
     = f.label :email, 'University Email'
-    = f.text_field :email
+    = f.text_field :email, required: true
   .field
     = f.label :password
-    = f.password_field :password
+    = f.password_field :password, required: true
   .field
     = f.label :password_confirmation
-    = f.password_field :password_confirmation
+    = f.password_field :password_confirmation, required: true
 
   .actions
     = submit_tag 'Sign Up', class: 'btn btn-primary'
