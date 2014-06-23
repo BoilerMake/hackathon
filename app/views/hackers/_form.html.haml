@@ -1,75 +1,53 @@
-= form_for @hacker do |f|
-  - if @hacker.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@hacker.errors.count, "error")} prohibited this user from being saved:"
-      %ul
-        - @hacker.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :email, 'University Email'
-    = f.text_field :email
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .field
-    = f.label :school_id
-    = f.text_field :school_id, id: 'schools', value: @school
-  = f.fields_for :application do |application_fields|
-    .field
-      = application_fields.label :gender
-      = application_fields.radio_button :gender, 'Male'
-      = application_fields.label :male, 'Male'
-      = application_fields.radio_button :gender, 'Female'
-      = application_fields.label :female, 'Female'
-      = application_fields.radio_button :gender, 'Other'
-      = application_fields.label :other, 'Other'
-      = application_fields.radio_button :gender, 'NA'
-      = application_fields.label :na, 'I Choose Not to Specify'
-    .field
-      = application_fields.label :address_line_one
-      = application_fields.text_field :address_line_one
-    .field
-      = application_fields.label :address_line_two
-      = application_fields.text_field :address_line_two
-    -#TODO: City, state, and zip should all be on the same line
-    .field
-      = application_fields.label :city
-      = application_fields.text_field :city
-    .field
-      = application_fields.label :state
-      = application_fields.text_field :state, maxlength: 2
-    .field
-      = application_fields.label :zip_code
-      = application_fields.text_field :zip_code
-    .field
-      = application_fields.label :github
-      = application_fields.text_field :github
-    .field
-      = application_fields.label :previous_experience, 'Previous Experience'
-      = application_fields.text_area :previous_experience
-    .field
-      = application_fields.label :essay, 'Past Projects'
-      = application_fields.text_area :essay
-    - if @hacker.accepted?
-      .field
-        = application_fields.label :expected_graduation
-        = application_fields.datetime_select :expected_graduation
-      .field
-        = application_fields.label :tshirt_size
-        = application_fields.text_field :tshirt_size
-      .field
-        = application_fields.label :cell_phone
-        = application_fields.text_field :cell_phone
-      .field
-        = application_fields.label :linkedin
-        = application_fields.text_field :linkedin
-      .field
-        = application_fields.label :dietary_restrictions
-        = application_fields.text_field :dietary_restrictions
-
-  .actions
-    = f.submit 'Create Account', class: 'btn btn-primary'
+.header
+  .container
+    = image_tag 'logodark.png', class: 'logo'
+    %a#logout.button.outline{:style => "cursor:pointer;"} Log Out
+.head
+  %h1 WELCOME
+.nav
+  .nav-active
+    Application
+  %a{:href => "./teams.html"}
+  .nav-notactive
+    Team
+.container
+  .application
+    .form
+      #firstname.input
+        .label
+          First Name
+        %input{:type => "text"}/
+      #lastname.input
+        .label
+          Last Name
+        %input{:type => "text"}/
+      #school.input.search
+        .label
+          School
+        %input{:type => "text"}/
+      #address-line-1.input
+        .label
+          Address Line 1
+        %input{:type => "text"}/
+      #address-line-2.input
+        .label
+          Address Line 2
+        %input{:type => "text"}/
+      #address-city-state-zip.input
+        .label
+          City, State, Zip
+        %input.span-6{:type => "text"}/
+        %input.span-2{:maxlength => "2", :type => "text"}/
+        %input.span-4{:type => "text"}/
+      #github.input.link
+        .label
+          GitHub
+        %input{:type => "text"}/
+      #description.input.field
+        .label
+          Experience
+          .sub-label
+            Tell us a little bit more about who you are and what you’ve done.
+        %textarea{:rows => "8"}
+      .submit
+        %input#save.button.outline{:style => "cursor:pointer;", :type => "submit", :value => "Save"}/
