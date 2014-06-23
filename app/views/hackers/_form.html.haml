@@ -15,14 +15,15 @@
   .field
     = f.label :last_name
     = f.text_field :last_name
-  -# .field
-  -#   = f.label :school_id
-  -#   = f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"}
-  -#   %br
-  -#   = f.label 'My school isn\'t on this list'
-  -#   = check_box_tag :school_other
-  -#   %br
-  -#   = f.text_field :school_id
+  .field
+    = f.label :school_id
+    -# = f.collection_select :school_id, @schools, :id, :name, {:include_blank => "Please select"}
+    = f.text_field :school_id, id: 'tags'
+    %br
+    = f.label 'My school isn\'t on this list'
+    = check_box_tag :school_other
+    %br
+    = f.text_field :school_id
   = f.fields_for :application do |application_fields|
     .field
       = application_fields.label :gender
