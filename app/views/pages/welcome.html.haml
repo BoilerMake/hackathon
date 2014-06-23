@@ -1,13 +1,22 @@
 .header
   .container
     = image_tag 'logo.png', class: 'logo'
-    %a#login.button.outline{:style => "cursor:pointer;"} Log In
-    %input#emaillogin.flat-input.sign-up{:placeholder => "Email (.edu)", :style => "display:none;margin-top:35px;", :type => "email"}/
-    %br/
-    %br/
-    %br/
-    %br/
-    %input#passwordlogin.flat-input.sign-up{:placeholder => "Password", :style => "display:none;", :type => "password"}/
+    - if current_user.nil?
+      %a#login.button.outline{:style => "cursor:pointer;"} Log In
+      = form_tag sessions_path do
+        = text_field_tag :email, nil ,
+          { style: 'display:none;margin-top:35px', id: 'emaillogin',
+            class: 'flat-input sign-up' }
+        %br/
+        %br/
+        %br/
+        %br/
+        = password_field_tag :password, nil,
+          { style: 'display:none;', id: 'passwordlogin',
+            class: 'flat-input sign-up' }
+        = submit_tag :submit, { style: 'display:none;' }
+    - else
+      = link_to 'logout', logout_path, class: 'button outline'
 .container
   %h1.hero-headline.normal
     MAKE.CREATE.
@@ -31,16 +40,25 @@
     %br
     $10,000 in prizes
   .signup
-    %a#register.button.outline{:style => "cursor:pointer;"} Earlybird Application
-    #email.input{:style => "display:none;"}
-      %input.flat-input.sign-up{:placeholder => "Email (.edu)", :type => "email"}/
-      %p.error.hidden Invalid email address. Be sure to use your .edu address.
-    #password.input{:style => "display:none;"}
-      %input.flat-input.sign-up{:placeholder => "Password", :type => "password"}/
-      %p.error.hidden Invalid password.
-    #confirm-password.input{:style => "display:none;"}
-      %input.flat-input.sign-up{:placeholder => "Confirm Password", :type => "password"}/
-      %p.error.hidden Passwords do not match.
+    - if current_user.nil?
+      %a#register.button.outline{:style => "cursor:pointer;"} Earlybird Application
+      = form_for @hacker do |f|
+        #email.input{:style => "display:none;"}
+          = f.text_field :email,
+            { class: 'flat-input sign-up', placeholder: 'Email (.edu)' }
+          %p.error.hidden Invalid email address. Be sure to use your .edu address.
+        #password.input{:style => "display:none;"}
+          = f.password_field :password,
+            { class: 'flat-input sign-up', placeholder: 'Password' }
+          %p.error.hidden Invalid password.
+        #confirm-password.input{:style => "display:none;"}
+          = f.password_field :password_confirmation,
+            { class: 'flat-input sign-up', placeholder: 'Confirm Password' }
+          %p.error.hidden Passwords do not match.
+          = f.submit 'submit', { style: 'display:none;' }
+    - else
+      = link_to 'My Application', dashboard_path, class: 'button outline'
+
   %p.bottom-md
     Apply before July 15th to get an exclusive BoilerMake
     %br
