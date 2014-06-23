@@ -281,7 +281,8 @@ body {
 
 @media (max-width: 768px) {
     body {
-        font-size: 200%;
+        width: 200%;
+        font-size: 100%;
     }
     .application .form .input .label {
         font-weight: 300;
