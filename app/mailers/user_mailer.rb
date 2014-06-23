@@ -10,4 +10,9 @@ class UserMailer < ActionMailer::Base
     @user = user
     mail to: user.email, subject: 'Password Reset'
   end
+
+  def welcome_email user
+    @user = user
+    mail to: @user.email, subject: "#{HACKATHON} - Important information"
+  end
 end
