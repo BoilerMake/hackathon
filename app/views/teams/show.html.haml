@@ -11,7 +11,7 @@
 
         - @team.hackers.each do |hacker|
           %tr
-            %td= @current_name
+            %td= hacker.best_name
             %td= hacker.email
             %td= hacker.school
   .col-md-6
@@ -20,7 +20,8 @@
         = form_tag hacker_invitations_path, method: :post do
           .field
             = label_tag :current_user, 'Hacker One'
-            = text_field_tag 'current_user', @current_name, disabled: true
+            = text_field_tag 'current_user', current_user.best_name,
+                                             disabled: true
           .field
             = label_tag :email_one, 'Hacker Two'
             = text_field_tag :email_one, @others[0][:name],
@@ -36,5 +37,7 @@
           .actions
             = submit_tag 'Send invitations'
 
+%p
+  = invite_url @team
 = link_to 'Leave team', controller: 'teams', action: :remove_hacker
 = link_to 'Return to dashboard', dashboard_path
