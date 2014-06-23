@@ -1,6 +1,2 @@
+= render 'shared/loggedin_header.html.haml'
 = render 'hackers/form'
-- if current_user.team.present?
-  = link_to 'View Team', team_path(current_user.team_id)
-- else
-  = link_to 'New Team', new_team_path, class: 'btn btn-primary'
-= link_to 'Logout', logout_path

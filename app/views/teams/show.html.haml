@@ -1,9 +1,4 @@
-.header
-  .container
-    = image_tag 'logodark.png', class: 'logo'
-    %a#logout.button.outline{:style => "cursor:pointer;"} Log Out
-.head
-  %h1 WELCOME
+= render 'shared/loggedin_header.html.haml'
 .nav
   = link_to dashboard_path do
     .nav-notactive
@@ -16,29 +11,33 @@
     %h1 Teammates
     .form
       #hacker1.input
-        .label
-          Jony Ive
-        %input{:type => "text", :value => "jive@apple.edu"}/
+        %label.label
+          = current_user.best_name
+        = text_field_tag 'current_user', current_user.email,
+                                         disabled: true
       #hacker2.input.empty
-        .label
+        %label.label
           Invite Friend
-        %input{:type => "text", :value => ""}/
+        = text_field_tag :email_one, @others[0][:email],
+                                     disabled: @others[0][:dis]
         %a.send
           Send Invite
       #hacker3.input.empty
-        .label
+        %label.label
           Invite Friend
-        %input{:type => "text", :value => ""}/
+        = text_field_tag :email_two, @others[1][:email],
+                                     disabled: @others[1][:dis]
         %a.send
           Send Invite
       #hacker4.input.empty
-        .label
+        %label.label
           Invite Friend
-        %input{:placeholder => "Email", :type => "text", :value => ""}/
+        = text_field_tag :email_three, @others[2][:email],
+                                     disabled: @others[2][:dis]
         %a.send
           Send Invite
       .divider
       #invitelink.input
-        .label
+        %label.label
           Invite Link
-        %input{:readonly => "", :type => "text", :value => ""}/
+        %input{:readonly => "", :type => "text", :value => "#{invite_url @team}"}/
