@@ -35,6 +35,10 @@ body {
     font-size: 0.75em;
     top: 35px;
 }
+.header a.logo-back {
+    float: none;
+    top: 0;
+}
 .header input {
     position: relative;
     display: inline-block;

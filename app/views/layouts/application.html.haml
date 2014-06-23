@@ -3,7 +3,6 @@
   %head
     %title Hackathon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = stylesheet_link_tag    'bootstrap'
     = stylesheet_link_tag    'welcome'
     = stylesheet_link_tag    'hackers' if params[:controller] == 'hackers' || params[:controller] == 'teams'
     = stylesheet_link_tag    'teams' if params[:controller] == 'teams'
