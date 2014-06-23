@@ -12,6 +12,7 @@ class HackerInvitationsController < ApplicationController
       team.send_hacker_invitation(invitee, current_user) unless invitee.empty?
     end
 
+    flash[:success] = 'Your invitations have been sent!'
     redirect_to team_path(team)
   end
 end
