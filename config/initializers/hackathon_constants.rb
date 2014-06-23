@@ -1,2 +1,2 @@
 HACKATHON = 'BoilerMake'
-DEFAULT_EMAIL = '\"BoilerMake Team\" <no-reply@boilermake.org>'
+DEFAULT_EMAIL = 'BoilerMake Team <no-reply@boilermake.org>'
