@@ -5,11 +5,11 @@
   - if current_user.team.present?
     = link_to team_path(current_user.team_id) do
       .nav-notactive
-        Team
+        My Team
   - else
     = link_to new_team_path do
       .nav-notactive
-        Team
+        Create Team
 .container
   .application
     .form
