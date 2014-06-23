@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "noresponse@boilermake.org"
+  default from: "BoilerMake Team <noresponse@boilermake.org>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
