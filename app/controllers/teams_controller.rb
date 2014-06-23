@@ -81,9 +81,9 @@ class TeamsController < ApplicationController
     if @team
       current_user.team_id = @team.id
       if current_user.save
-        flash[:info] = 'Joined team successfully!'
+        flash[:success] = 'Joined team successfully!'
       else
-        flash[:error] = 'Team is currently full'
+        flash[:alert] = 'Team is currently full'
       end
       redirect_to dashboard_url
     else
