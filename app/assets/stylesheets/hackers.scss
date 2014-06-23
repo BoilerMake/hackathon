@@ -281,7 +281,7 @@ body {
 
 @media (max-width: 768px) {
     body {
-        width: 200%;
+        width: 100%;
         font-size: 100%;
     }
     .application .form .input .label {
@@ -301,5 +301,10 @@ body {
     }
     .application .form .input input, .application .form .input textarea {
         border-radius: 8px;
+    }
+}
+@media (max-width: 768px), (-webkit-min-device-pixel-ratio: 2) {
+    body {
+        width: 200%;
     }
 }
