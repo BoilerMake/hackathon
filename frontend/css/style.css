@@ -29,6 +29,18 @@ body {
     left: -15px;
     width: 220px;
 }
+.header a {
+    position: relative;
+    float: right;
+    font-size: 0.75em;
+    top: 35px;
+}
+.header input {
+    position: relative;
+    display: inline-block;
+    float: right;
+    background: none;
+}
 .container {
     position: relative;
     height: 100%;
