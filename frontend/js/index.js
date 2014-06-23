@@ -46,6 +46,15 @@ $(document).ready(function() {
 
     if ($(window).width() > 768) {
 
+        $("#login").click(function(event) {
+            $(this).fadeOut("fast", function() {
+                $("#emaillogin").fadeIn("fast", function() {
+                    $("#emaillogin").focus();
+                });
+                $("#passwordlogin").fadeIn("fast");
+            });
+        });
+
         // EARLYBIRD APPLICATION BUTTON
         $("#register").click(function(event) {
             $('body,html').animate({

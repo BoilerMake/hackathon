@@ -1,5 +1,6 @@
 class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login
 
   # GET /schools
   # GET /schools.json

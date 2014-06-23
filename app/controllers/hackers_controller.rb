@@ -1,7 +1,7 @@
 class HackersController < ApplicationController
   before_action :set_hacker, only: [:update, :destroy]
   before_filter :authenticate, only: [:update, :destroy, :dashboard]
-  skip_before_action :require_login, :store_session
+  skip_before_action :require_login
 
   # GET /users
   # GET /users.json
@@ -20,6 +20,7 @@ class HackersController < ApplicationController
     @hacker ||= current_user
     @application = @hacker.application
     @application ||= @hacker.build_application
+    @school = @hacker.school.name if @hacker.school
   end
 
   # GET /users/new
@@ -36,14 +37,7 @@ class HackersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    if params[:school_other] == '1'
-      school = School.create(name: hacker_params[:school_id])
-      new_params = hacker_params
-      new_params[:school_id] = school.id
-      @hacker = Hacker.new(new_params)
-    else
-      @hacker = Hacker.new(hacker_params)
-    end
+    @hacker = Hacker.new(hacker_params)
 
     respond_to do |format|
       if @hacker.save
@@ -76,8 +70,11 @@ class HackersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    school_id = School.find_by(name: hacker_params[:school_id]).id
+    new_params = hacker_params
+    new_params[:school_id] = school_id
     respond_to do |format|
-      if @hacker.update(hacker_params)
+      if @hacker.update(new_params)
         format.html { redirect_to :dashboard, notice: 'Your application has been updated.' }
         format.json { render :show, status: :ok, location: @hacker }
       else
