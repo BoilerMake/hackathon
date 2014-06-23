@@ -1,6 +1,5 @@
 function sendInvite(email) {
-    // TODO Send the invite to the email
-
+    $('.application.team form').submit();
 }
 
 $(document).ready(function() {

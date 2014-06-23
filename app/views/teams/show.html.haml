@@ -10,32 +10,30 @@
   .application.team
     %h1 Teammates
     .form
-      #hacker1.input
-        %label.label
-          = current_user.best_name
-        = text_field_tag 'current_user', current_user.email,
-                                         disabled: true
-      #hacker2.input.empty
-        %label.label
-          Invite Friend
-        = text_field_tag :email_one, @others[0][:email],
-                                     disabled: @others[0][:dis]
-        %a.send
-          Send Invite
-      #hacker3.input.empty
-        %label.label
-          Invite Friend
-        = text_field_tag :email_two, @others[1][:email],
-                                     disabled: @others[1][:dis]
-        %a.send
-          Send Invite
-      #hacker4.input.empty
-        %label.label
-          Invite Friend
-        = text_field_tag :email_three, @others[2][:email],
-                                     disabled: @others[2][:dis]
-        %a.send
-          Send Invite
+      = form_tag hacker_invitations_path, method: :post do
+        #hacker1.input
+          %label.label
+            = @current_name
+          = text_field_tag 'current_user', current_user.email,
+                                           disabled: true
+          = submit_tag 'Send Invite', class: 'send', style: 'display:none;'
+        #hacker2.input.empty
+          %label.label
+            = @others[0][:name]
+          = text_field_tag :email_one, @others[0][:email],
+                                       disabled: @others[0][:present]
+        #hacker3.input.empty
+          %label.label
+            = @others[1][:name]
+          = text_field_tag :email_two, @others[1][:email],
+                                       disabled: @others[1][:present]
+        #hacker4.input.empty
+          %label.label
+            = @others[2][:name]
+          = text_field_tag :email_three, @others[2][:email],
+                                       disabled: @others[2][:present]
+          %a.send
+            Send Invite
       .divider
       #invitelink.input
         %label.label
