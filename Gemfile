@@ -13,6 +13,7 @@ gem 'bootstrap-sass'
 gem 'byebug'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
+gem 'better_errors'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
@@ -21,7 +22,6 @@ end
 group :development do
   gem 'spring'
   gem 'binding_of_caller'
-  gem 'better_errors'
   gem 'pry-rails'
   gem 'byebug'
 end
