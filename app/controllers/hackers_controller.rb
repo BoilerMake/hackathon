@@ -74,16 +74,22 @@ class HackersController < ApplicationController
   def update
     new_params = hacker_params
     if hacker_params[:school_id].present?
-      school_id = School.find_by(name: hacker_params[:school_id]).id
-      new_params[:school_id] = school_id
+      school = School.find_by(name: hacker_params[:school_id])
+      if school
+        school_id = School.find_by(name: hacker_params[:school_id]).id
+        new_params[:school_id] = school_id
+      else
+        new_params[:school_id] = -1 # this won't update
+      end
     else
       new_params[:school_id] = nil
     end
     respond_to do |format|
-      if @hacker.update(new_params)
+      if @hacker.update(new_params) && new_params[:school_id] != -1
         format.html { redirect_to :dashboard, notice: 'Your application has been updated.' }
         format.json { render :show, status: :ok, location: @hacker }
       else
+        flash[:error] = "That school doesn't exist. Email team@boilermake.org." if new_params[:school_id] == -1
         format.html { render :dashboard }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
