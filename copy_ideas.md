@@ -1,12 +1,12 @@
 Confirmation email on account creation:
   Subject: BoilerMake - Important information
 
-  On October 17-19, 500 students will join together to <TAGLINE FROM HOMEPAGE> at BoilerMake. If dreaming keeps you awake at night, if challenges motivate you to work harder, and if 'good' isn't good enough, you're exactly who we're looking for. Together, we're going to make hackathon history.
+  On October 17-19, 500 students will join together to <TAGLINE FROM HOMEPAGE> at BoilerMake. If challenges motivate you to perservere, if dreaming keeps you up at night, and if 'good' isn't good enough, you're exactly who we're looking for. Together, we're going to make hackathon history.
 
   Thank you for intializing your Earlybird application. Here's what you need to know:
 
   * What's different about BoilerMake?
-    * We're intentionally mid-sized. You'll love the benefits of our silky-smooth organization, luscious accommodations, and the opportunities we offer to meet every sponsor.
+    * We're intentionally mid-sized. Unlike larger hackathons, you won't get lost in the crowd. You'll love the benefits of our silky-smooth organization, luscious accommodations, and the opportunities we offer to meet every sponsor.
     * We're blowing up the standards for hackathon spaces. Say goodbye to rows of lined tables or multiple rooms of hackers and hello to massive innovation. Stay tuned for more detail.
   * What does it mean to be an Earlybird applicant?
     * You're going to get an exclusive laptop decal mailed straight to your doorstep. And it's going to be sweet.
@@ -21,12 +21,12 @@ Confirmation email on account creation:
 Invitation email:
   Subject: #{name} has invited you to join a BoilerMake team! // You've been invited to join a BoilerMake team!
 
-  On October 17-19, 500 students will join together to <TAGLINE FROM HOMEPAGE> at BoilerMake. If dreaming keeps you awake at night, if challenges motivate you to work harder, and if 'good' isn't good enough, you're exactly who we're looking for. Together, we're going to make hackathon history.
+  On October 17-19, 500 students will join together to <TAGLINE FROM HOMEPAGE> at BoilerMake. If challenges motivate you to perservere, if dreaming keeps you up at night, and if 'good' isn't good enough, you're exactly who we're looking for. Together, we're going to make hackathon history.
 
   <FIRSTNAME OR EMAIL> wants you to be there, and wants to be on your team. Join <FIRSTNAME OR EMAIL> now by going to <LINK>. If you're logged in, you'll join <FIRSTNAME OR EMAIL> instantly. Otherwise, you'll need to log in or create an account. Afterward, you'll join the team automatically.
 
 Tagline ideas
-* Join us in shattering the standard model for hackathons.
+*! Join us in shattering the standard model for hackathons.
 * Help pioneer the next phase for hackathons.
 * Join the next phase of hackathons.
 * Help us define the next generation of hackathons.
