@@ -1,301 +1,258 @@
+html {
+    width: 100%;
+    min-height: 100%;
+}
 body {
-  background: white;
+    width: 100%;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.4;
+    color: #FFFFFF;
+    background-image: image-url("hero2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
-.application {
-  display: block;
-  width: 600px;
-  margin: 0 auto;
+.header {
+    position: absolute;
+    width: 100%;
+    height: 100px;
+    z-index: 1000;
 }
-.head {
-  display: inline-block;
-  margin-top: 100px;
-  width: 100%;
-  height: 160px;
-  margin-bottom: 0;
-  background-image: url(image-path('hacker.jpg'));
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+.header .container .logo {
+    position: absolute;
+    top: 10px;
+    left: -15px;
+    width: 220px;
 }
-.head h1 {
-  font-size: 4em;
-  font-weight: 100;
-  text-align: center;
-  margin: 40px 0;
+.container {
+    position: relative;
+    height: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0px 20px;
 }
-.nav {
-  display: inline-block;
-  width: 100%;
-  height: 60px;
-  margin: 0 0 30px 0;
-  font-weight: 100;
-  font-size: 1.5em;
-  text-align: center;
+.hero-headline span {
+    color: #f5a623;
 }
-.nav-active {
-  display: inline-block;
-  position: relative;
-  float: left;
-  width: 50%;
-  height: 50px;
-  margin: 0;
-  padding-top: 10px;
-  background-color: #9B9B9B;
-  cursor: pointer;
+.container .hero-headline {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 180px;
+    font-size: 5em;
+    text-align: center;
+    color: white;
 }
-.nav-active::after {
-  content: "";
-  display: inline-block;
-  position: relative;
-  margin-top: 17px;
-  width: 100%;
-  height: 14px;
-  background-image: url("../img/pointer.png");
-  background-repeat: no-repeat;
-  background-position: center;
-
+.container .hero-headline.condensed {
+    line-height: 1;
+    margin-bottom: 16px;
 }
-.nav-notactive {
-  display: inline-block;
-  position: relative;
-  float: left;
-  width: 50%;
-  height: 40px;
-  margin: 0;
-  padding-top: 10px;
-  background-color: #f5a623;
-  cursor: pointer;
-  -webkit-transition: background-color 100ms linear, height 100ms cubic-bezier(1.0, -1.0, 1.0, 3.0);
-  -moz-transition: background-color 100ms linear, height 100ms cubic-bezier(1.0, -1.0, 1.0, 3.0);
-  -o-transition: background-color 100ms linear, height 100ms cubic-bezier(1.0, -1.0, 1.0, 3.0);
-  -ms-transition: background-color 100ms linear, height 100ms cubic-bezier(1.0, -1.0, 1.0, 3.0);
-  transition: background-color 100ms linear, height  100ms cubic-bezier(1.0, -1.0, 1.0, 3.0);
+.container .hammers {
+    width: 100%;
+    text-align: center;
 }
-.nav-notactive:hover {
-  background-color: #e6940a;
-  height: 50px;
-  -webkit-transition: background-color 100ms linear, height 100ms cubic-bezier(1.0, -1.0, 1.0, 3.0);
-  -moz-transition: background-color 100ms linear, height 100ms cubic-bezier(1.0, -1.0, 1.0, 3.0);
-  -o-transition: background-color 100ms linear, height 100ms cubic-bezier(1.0, -1.0, 1.0, 3.0);
-  -ms-transition: background-color 100ms linear, height 100ms cubic-bezier(1.0, -1.0, 1.0, 3.0);
-  transition: background-color 100ms linear, height  100ms cubic-bezier(1.0, -1.0, 1.0, 3.0);
+.container .hammers:before {
+    content: "";
+    display: inline-block;
+    width: 20%;
+    border-bottom: 2px solid white;
 }
-.nav-notactive:active {
-  background-color: #f5a623;
+.container .hammers img {
+    width: 70px;
+    margin: 0 20px;
+    text-align: center;
 }
-.application .form .input {
-  display: inline-block;
-  width: 100%;
-  margin: 5px 0 5px -60px;
+.container .hammers:after {
+    content: "";
+    display: inline-block;
+    width: 20%;
+    border-bottom: 2px solid white;
 }
-.application .form .input .label {
-  display: inline-block;
-  position: relative;
-  float: left;
-  width: 150px;
-  text-align: right;
-  font-size: 1em;
-  font-weight: 300;
-  line-height: 1.4;
-  padding: 8px 4px 6px 8px;
-  color: black;
+img {
+    vertical-align: middle;
 }
-.application .form .input .label .sub-label{
-  display: inline-block;
-  position: relative;
-  float: right;
-  width: 150px;
-  text-align: right;
-  font-family: "Helvetica-Neue", "Roboto";
-  font-size: 0.75em;
-  font-weight: 300;
-  line-height: 1.4;
-  padding: 8px 4px 6px 8px;
-  color: black;
+.container h3 {
+    margin: 0;
+    margin-top: 10px;
+    font-size: 2.5em;
+    font-weight: 300;
+    text-align: center;
+    color: white;
 }
-.application .form .input input, .application .form .input textarea {
-  display: inline-block;
-  position: relative;
-  float: left;
-  width: 360px;
-  margin: 0 0 0 20px;
-  text-align: left;
-  font-size: 1em;
-  color: black;
-  line-height: 1.4;
-  padding: 4px 6px 6px 8px;
-  border: 2px solid #989898;
-  border-radius: 4px;
-  resize: none;
+.container h4 {
+    margin: 0 0;
+    font-size: 1.6em;
+    font-weight: 300;
+    text-align: center;
+    color: white;
 }
-.application .form .input input.span-6 {
-  width: 222px;
-  margin: 0 0 0 20px;
+.container p {
+    margin: 0 0 20px 0;
+    font-size: 1em;
+    font-weight: 300;
+    text-align: center;
+    color: white;
 }
-.application .form .input input.span-2 {
-  width: 18px;
-  margin: 0 0 0 10px;
+a {
+    text-decoration: none;
 }
-.application .form .input input.span-4 {
-  width: 64px;
-  margin: 0 0 0 10px;
+.container .signup {
+    width: 100%;
+    text-align: center;
+    margin: 30px 0 20px 0;
 }
-.application .form .input input:focus, .application .form .input textarea:focus {   
-  border-color: #989898;
-  background-color: #989898;
-  -webkit-transition: background-color 250ms linear;
-  -moz-transition: background-color 250ms linear;
-  -o-transition: background-color 250ms linear;
-  -ms-transition: background-color 250ms linear;
-  transition: background-color 250ms linear;
-  color: black;
-  text-align: left;
-  font-size: 1em;
-  line-height: 1.4;
-  box-shadow: 0 1px 1px #989898 inset, 0 0 8px #989898;
-  outline: 0 none;
+.button {
+    background: #f5a623;
+    border-radius: 50px;
+    padding: 4px 35px;
+    border: 2px solid #f5a623;
+    color: #555555;
 }
-.application .form .button {
-  display: inline-block;
-  margin: 5px 0 5px 182px;
+.button.outline {
+    color: #f5a623;
+    padding-bottom: 6px;
+    border: 2px solid #f5a623;
+    background: none;
 }
-.application .form .submit {
-  display: inline-block;
+.signup {
+    min-height: 36px;
 }
-.application .form .submit .button {
-  display: inline-block;
-  border-radius: 50px;
-  padding: 4px 35px 6px 35px;
-  border: 2px solid #f5a623;
-  color: #f5a623;
-  -webkit-transition: color 100ms linear;
-  -moz-transition: color 100ms linear;
-  -o-transition: color 100ms linear;
-  -ms-transition: color 100ms linear;
-  transition: color 100ms linear;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  line-height: 1.4;
-  font-size: 1em;
-  margin: 20px 0 30px 182px;
-  background: none;
-  -webkit-transition: background-color 100ms linear;
-  -moz-transition: background-color 100ms linear;
-  -o-transition: background-color 100ms linear;
-  -ms-transition: background-color 100ms linear;
-  transition: background-color 100ms linear;
+.signup input {
+    position: relative;
+    top: -6px;
+    color: #f5a623;
+    padding: 4px 35px;
+    border: 2px solid #f5a623;
+    background: none;
+    margin: 10px 10px;
 }
-.application .form .submit .button:hover {
-  display: inline-block;
-  border-radius: 50px;
-  padding: 4px 35px 6px 35px;
-  border: 2px solid #f5a623;
-  color: white;
-  -webkit-transition: color 100ms linear;
-  -moz-transition: color 100ms linear;
-  -o-transition: color 100ms linear;
-  -ms-transition: color 100ms linear;
-  transition: color 100ms linear;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  line-height: 1.4;
-  font-size: 1em;
-  margin: 20px 0 30px 182px;
-  background: #f5a623;
-  -webkit-transition: background-color 100ms linear;
-  -moz-transition: background-color 100ms linear;
-  -o-transition: background-color 100ms linear;
-  -ms-transition: background-color 100ms linear;
-  transition: background-color 100ms linear;
+.flat-input {
+    font-size: 1em;
+    color: #f5a623;
+    text-align: center;
+    background-color: rgba(246,167,33,0.2);
+    border-radius: 50px;
+    border: 2px solid #f5a623;
+    padding-bottom: 6px;
+    font-size: none;
+    line-height: 1.4;
 }
-.application .form .submit .button:active {
-  color: white;
-  -webkit-transition: color 100ms linear;
-  -moz-transition: color 100ms linear;
-  -o-transition: color 100ms linear;
-  -ms-transition: color 100ms linear;
-  transition: color 100ms linear;
-  background: #e6940a;
-  -webkit-transition: background-color 100ms linear;
-  -moz-transition: background-color 100ms linear;
-  -o-transition: background-color 100ms linear;
-  -ms-transition: background-color 100ms linear;
-  transition: background-color 100ms linear;
+.hidden {
+    display: none;
 }
-.application .form .submit .button:focus {   
-  border-color: rgba(246,167,33,1.0);
-  text-align: center;
-  box-shadow: none;
-  outline: 0 none;
+.container .signup .input .error {
+    font-size: 0.8em;
+    color: #f5a623;
 }
-.application .form .submit .button:active {   
-  background: #e6940a;
-  -webkit-transition: background-color 100ms linear;
-  -moz-transition: background-color 100ms linear;
-  -o-transition: background-color 100ms linear;
-  -ms-transition: background-color 100ms linear;
-  transition: background-color 100ms linear;
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #f5a623;
+    text-align: center;
 }
-.application .form .discard {
-  display: inline-block;
-  padding: 4px 35px 6px 35px;
-  color: black;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  line-height: 1.4;
-  font-size: 1em;
-  background: none;
+input:focus::-webkit-input-placeholder {
+    color: black;
+    opacity: 0.5;
+    text-align: center;
+    font-size: none;
+    line-height: 1.4;
 }
-.application .form .discard:hover {
-  display: inline-block;
-  padding: 4px 35px 6px 35px;
-  -webkit-transition: color 100ms linear;
-  -moz-transition: color 100ms linear;
-  -o-transition: color 100ms linear;
-  -ms-transition: color 100ms linear;
-  transition: color 100ms linear;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  line-height: 1.4;
-  font-size: 1em;
-  background: none;
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #f5a623;
+    opacity:  1;
+    text-align: center;
+    font-size: none;
+    line-height: 1.4;
 }
-.application .form .discard a {
-  color: black;
-  -webkit-transition: color 100ms linear;
-  -moz-transition: color 100ms linear;
-  -o-transition: color 100ms linear;
-  -ms-transition: color 100ms linear;
-  transition: color 100ms linear;
+input:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: black;
+    opacity:  0.5;
+    text-align: center;
+    font-size: none;
+    line-height: 1.4;
 }
-.application .form .discard a:hover {
-  color: #f5a623;
-  -webkit-transition: color 100ms linear;
-  -moz-transition: color 100ms linear;
-  -o-transition: color 100ms linear;
-  -ms-transition: color 100ms linear;
-  transition: color 100ms linear;
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #f5a623;
+    opacity:  1;
+    text-align: center;
+    font-size: none;
+    line-height: 1.4;
+}
+input:focus::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: black;
+    opacity:  0.5;
+    text-align: center;
+    font-size: none;
+    line-height: 1.4;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #f5a623;
+    opacity: 0.5;
+    text-align: center;
+    font-size: none;
+    line-height: 1.4;
+}
+input:focus:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: black;
+    text-align: center;
+    font-size: none;
+    line-height: 1.4;
+}
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {   
+    border-color: rgba(246,167,33,1.0);
+    background-color: rgba(246,167,33,1.0);
+    -webkit-transition: background-color 250ms linear;
+    -moz-transition: background-color 250ms linear;
+    -o-transition: background-color 250ms linear;
+    -ms-transition: background-color 250ms linear;
+    transition: background-color 250ms linear;
+    color: black;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(246,167,33,0.2) inset, 0 0 8px rgba(246,167,33,0.8);
+    outline: 0 none;
 }
 
 
-
+@media (min-width: 769px) { 
+    .container .hero-headline.condensed {
+        display: none;
+    }
+    .condensed {
+        display: none;
+    }
+}
 @media (max-width: 768px) {
-  body {
-    font-size: 200%;
-  }
-  .application .form .input .label {
-    font-weight: 300;
-  }
-  .application .form .input .label .sub-label{
-    font-weight: 300;
-  }
-  .application .form .input input.span-6 {
-    width: 168px;
-  }
-  .application .form .input input.span-2 {
-    width: 36px;
-  }
-  .application .form .input input.span-4 {
-    width: 100px;
-  }
-  .application .form .input input, .application .form .input textarea {
-    border-radius: 8px;
-  }
+    body {
+        font-size: 75%;
+    }
+    .container .hero-headline.normal {
+        display: none;
+    }
+    .normal {
+        display: none;
+    }
+    .header .container .logo {
+        left: 5px;
+        /*width: 440px;*/
+    }
+    /*.container .hammers img {
+        width: 210px;
+        margin: 20px 20px;
+        text-align: center;
+    }
+    .container h3 {
+        margin-bottom: 20px;
+    }
+    .container .signup {
+        margin: 60px 0;
+    }*/
+    .container p {
+        height: 80px;
+    }
 }
