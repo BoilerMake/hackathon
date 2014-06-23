@@ -46,6 +46,10 @@ ActiveRecord::Schema.define(version: 20140622203529) do
   end
 
   create_table "users", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "school_id"
+    t.integer  "team_id"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -54,10 +58,6 @@ ActiveRecord::Schema.define(version: 20140622203529) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "type"
-    t.string   "last_name"
-    t.string   "first_name"
-    t.integer  "team_id"
-    t.integer  "school_id"
   end
 
 end

@@ -1,6 +1,13 @@
 .header
   .container
-    = image_tag 'logo.png'
+    = image_tag 'logo.png', class: 'logo'
+    %a#login.button.outline{:style => "cursor:pointer;"} Log In
+    %input#emaillogin.flat-input.sign-up{:placeholder => "Email (.edu)", :style => "display:none;margin-top:35px;", :type => "email"}/
+    %br/
+    %br/
+    %br/
+    %br/
+    %input#passwordlogin.flat-input.sign-up{:placeholder => "Password", :style => "display:none;", :type => "password"}/
 .container
   %h1.hero-headline.normal
     MAKE.CREATE.
