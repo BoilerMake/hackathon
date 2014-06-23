@@ -10,7 +10,8 @@ body {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     line-height: 1.4;
     color: #FFFFFF;
-    background-image: image-url("hero2.jpg");
+    // background-image: image-url("hero2.jpg");
+    background-image: asset-url("hero2.jpg", image);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
