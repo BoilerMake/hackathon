@@ -5,11 +5,12 @@
 .head
   %h1 WELCOME
 .nav
-  .nav-active
-    Application
-  %a{:href => "./teams.html"}
-  .nav-notactive
-    Team
+  = link_to dashboard_path do
+    .nav-active
+      Application
+  = link_to team_path(current_user.team_id) do
+    .nav-notactive
+      Team
 .container
   .application
     .form

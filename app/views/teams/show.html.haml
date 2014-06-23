@@ -1,43 +1,44 @@
+.header
+  .container
+    = image_tag 'logodark.png', class: 'logo'
+    %a#logout.button.outline{:style => "cursor:pointer;"} Log Out
+.head
+  %h1 WELCOME
+.nav
+  = link_to dashboard_path do
+    .nav-notactive
+      Application
+  = link_to team_path(current_user.team_id) do
+    .nav-active
+      Team
 .container
-  .col-md-6
-    .panel.panel-default
-      .panel-heading
-        This is your team
-      %table.table
-        %tr
-          %th Hacker
-          %th Email
-          %th School
-
-        - @team.hackers.each do |hacker|
-          %tr
-            %td= hacker.best_name
-            %td= hacker.email
-            %td= hacker.school
-  .col-md-6
-    .panel.panel-default
-      .panel-body
-        = form_tag hacker_invitations_path, method: :post do
-          .field
-            = label_tag :current_user, 'Hacker One'
-            = text_field_tag 'current_user', current_user.best_name,
-                                             disabled: true
-          .field
-            = label_tag :email_one, 'Hacker Two'
-            = text_field_tag :email_one, @others[0][:name],
-                                         disabled: @others[0][:dis]
-          .field
-            = label_tag :email_two, 'Hacker Three'
-            = text_field_tag :email_two, @others[1][:name],
-                                         disabled: @others[1][:dis]
-          .field
-            = label_tag :email_three, 'Hacker Four'
-            = text_field_tag :email_three, @others[2][:name],
-                                           disabled: @others[2][:dis]
-          .actions
-            = submit_tag 'Send invitations'
-
-%p
-  = invite_url @team
-= link_to 'Leave team', controller: 'teams', action: :remove_hacker
-= link_to 'Return to dashboard', dashboard_path
+  .application.team
+    %h1 Teammates
+    .form
+      #hacker1.input
+        .label
+          Jony Ive
+        %input{:type => "text", :value => "jive@apple.edu"}/
+      #hacker2.input.empty
+        .label
+          Invite Friend
+        %input{:type => "text", :value => ""}/
+        %a.send
+          Send Invite
+      #hacker3.input.empty
+        .label
+          Invite Friend
+        %input{:type => "text", :value => ""}/
+        %a.send
+          Send Invite
+      #hacker4.input.empty
+        .label
+          Invite Friend
+        %input{:placeholder => "Email", :type => "text", :value => ""}/
+        %a.send
+          Send Invite
+      .divider
+      #invitelink.input
+        .label
+          Invite Link
+        %input{:readonly => "", :type => "text", :value => ""}/
