@@ -1,0 +1,152 @@
+.team {
+    color: black;
+}
+.team h1 {
+    font-weight: 300;
+}
+.team table {
+    font-family: "Roboto", "Lucida Grande", Sans-Serif;
+    font-size: 1em;
+    background: #fff;
+    margin: 0 0 60px 0;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+.team th
+{
+    font-size: 1.5em;
+    font-weight: normal;
+    color: black;
+    font-weight: 300;
+    padding: 10px 8px;
+    border-bottom: 5px solid #f5a623;
+}
+.team td
+{
+    border-bottom: 1px solid #989898;
+    color: #989898;
+    padding: 6px 8px;
+}
+.team tbody tr:hover td
+{
+    color: black;
+}
+.application .form .input .label {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 180px;
+    text-align: right;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.4;
+    padding: 8px 4px 6px 8px;
+    color: black;
+}
+.application .form .input .send {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 100px;
+    text-align: left;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.4;
+    padding: 8px 4px 6px 8px;
+    color: #f5a623;
+    cursor: pointer;
+}
+.application .form .input .send:hover {
+    color: #e6940a;
+}
+.application .form .input .send:active {
+    color: #989898;
+}
+.application .form .input input, .application .form .input textarea {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 240px;
+    margin: 0 0 0 20px;
+    text-align: left;
+    font-size: 1em;
+    color: black;
+    line-height: 1.4;
+    padding: 4px 6px 6px 8px;
+    border: 2px solid #989898;
+    border-radius: 4px;
+    resize: none;
+}
+.application .form .input input:focus, .application .form .input textarea:focus {   
+    border-color: #989898;
+    background-color: #FFFFFF;
+    -webkit-transition: background-color 250ms linear;
+    -moz-transition: background-color 250ms linear;
+    -o-transition: background-color 250ms linear;
+    -ms-transition: background-color 250ms linear;
+    transition: background-color 250ms linear;
+    color: black;
+    text-align: left;
+    font-size: 1em;
+    line-height: 1.4;
+    box-shadow: 0 1px 1px #989898 inset, 0 0 8px #989898;
+    outline: 0 none;
+}
+.divider {
+    width: 100;
+    background-color: #989898;
+    margin: 20px 0;
+    height: 2px;
+}
+.form {
+    margin-bottom: 60px;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: inherit;
+    text-align: left;
+    font-size: inherit;
+    line-height: inherit;
+}
+input:focus::-webkit-input-placeholder {
+    color: inherit;
+    text-align: left;
+    font-size: inherit;
+    line-height: inherit;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: inherit;
+    text-align: left;
+    font-size: inherit;
+    line-height: inherit;
+}
+input:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: inherit;
+    text-align: left;
+    font-size: inherit;
+    line-height: inherit;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: inherit;
+    text-align: left;
+    font-size: inherit;
+    line-height: inherit;
+}
+input:focus::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: inherit;
+    text-align: left;
+    font-size: inherit;
+    line-height: inherit;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: inherit;
+    text-align: left;
+    font-size: inherit;
+    line-height: inherit;
+}
+input:focus:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: inherit;
+    text-align: left;
+    font-size: inherit;
+    line-height: inherit;
+}

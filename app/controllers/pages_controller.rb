@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :require_login, :store_session
+  skip_before_action :require_login
 
   def welcome
     @hacker = Hacker.new

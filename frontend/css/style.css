@@ -1,10 +1,10 @@
 html {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 }
 body {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     padding: 0;
     margin: 0;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -29,7 +29,18 @@ body {
     left: -15px;
     width: 220px;
 }
-
+.header a {
+    position: relative;
+    float: right;
+    font-size: 0.75em;
+    top: 35px;
+}
+.header input {
+    position: relative;
+    display: inline-block;
+    float: right;
+    background: none;
+}
 .container {
     position: relative;
     height: 100%;
@@ -96,7 +107,7 @@ img {
     color: white;
 }
 .container p {
-    margin: 0 0;
+    margin: 0 0 20px 0;
     font-size: 1em;
     font-weight: 300;
     text-align: center;
@@ -146,39 +157,12 @@ a {
     font-size: none;
     line-height: 1.4;
 }
-.input .back {
-    position: absolute;
-    width: 33px;
-    height: 33px;
-    left: 314px;
-    margin-top: -6px;
-    background-image: url("../img/prev.svg");
-    transition: background-image 250ms;
-    -webkit-transition: background-image 250ms;
-    -moz-transition: background-image 250ms;
-    -o-transition: background-image 250ms;
-    background-size: 33px 33px;
-    background-repeat: no-repeat;
-}
-.input .back:hover {
-    background-image: url("../img/prevclick.svg");
-    transition: background-image 250ms;
-    -webkit-transition: background-image 250ms;
-    -moz-transition: background-image 250ms;
-    -o-transition: background-image 250ms;
-}
-.signup .next {
-    position: relative;
-    float: left;
-    left: -2px;
-}
-p.tiny {
+.hidden {
     display: none;
-    position: absolute;
-    left: 612px;
-    margin-top: -30px;
+}
+.container .signup .input .error {
+    font-size: 0.8em;
     color: #f5a623;
-    font-size: 12px;
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    #f5a623;
@@ -258,7 +242,6 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 @media (max-width: 768px) {
     body {
         font-size: 75%;
-        margin-bottom: 60px;
     }
     .container .hero-headline.normal {
         display: none;

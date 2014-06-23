@@ -1,9 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_action :store_session
   skip_before_action :require_login
 
-  #FIXME: Shouldn't need this, but as it stands, logging in redirects to
-  # sessions index. This redirects the user to the proper location.
   def index
     redirect_after_login
   end

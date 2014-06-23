@@ -1,11 +1,39 @@
-var inputBox = 0;
+var inputBox = false;
 
 function validateEmail() {
-
+    var email = $("#email input").val();
+    var atpos = email.indexOf("@");
+    var dotpos = email.lastIndexOf(".");
+    var ext = email.slice((email.length - 4));
+    if (atpos < 1 || dotpos < atpos + 2 || ext !== ".edu") {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function validatePassword() {
+    var re = /^[\w ]+$/;
+    if ($("#password input").val().length < 6) {
+        $("#password .error").html("Password must be at least 6 characters long.");
+        return false;
+    } else if (!re.test($("#password input").val())) {
+        $("#password .error").html("Password must only contain letters and numbers.");
+        return false;
+    } else {
+        return true;
+    }
+}
 
+function validatePasswordsMatch() {
+    var pass1 = $("#password input").val();
+    var pass2 = $("#confirm-password input").val();
+    console.log(pass1);
+    if (pass1 !== pass2 || pass1 === "" || pass2 === "") {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function submitForm() {
@@ -16,61 +44,126 @@ function submitForm() {
 
 $(document).ready(function() {
 
-    // EARLYBIRD APPLICATION BUTTON
-    $("#register").click(function(event) {
-        $(this).fadeOut("fast", function() {
-            $("#email").fadeIn("fast", function() {
-                $("#email input").focus();
+    if ($(window).width() > 768) {
+
+        $("#login").click(function(event) {
+            $(this).fadeOut("fast", function() {
+                $("#emaillogin").fadeIn("fast", function() {
+                    $("#emaillogin").focus();
+                });
+                $("#passwordlogin").fadeIn("fast");
             });
-            $("#password").fadeIn("fast");
-            $("#confirm-password").fadeIn("fast");
-            inputBox += 3;
         });
-    });
 
-    // BACK BUTTONS
-    $("#email .back").click(function(event) {
-        $("#email").fadeOut("fast", function() {
-            $("#register").fadeIn("fast");
-            inputBox -= 1;
+        // EARLYBIRD APPLICATION BUTTON
+        $("#register").click(function(event) {
+            $('body,html').animate({
+                scrollTop: 2000
+            }, 800);
+            $(this).fadeOut("fast", function() {
+                $("#email").fadeIn("fast", function() {
+                    $("#email input").focus();
+                });
+                $("#password").fadeIn("fast");
+                $("#confirm-password").fadeIn("fast");
+                inputBox = true;
+            });
         });
-    });
-    $("#password .back").click(function(event) {
-        $("#password").fadeOut("fast", function() {
-            $("#email").fadeIn("fast");
-            inputBox -= 1;
-        });
-    });
-    $("#confirm-password .back").click(function(event) {
-        $("#confirm-password").fadeOut("fast", function() {
-            $("#password").fadeIn("fast");
-            inputBox -= 1;
-        });
-    });
 
-    // ENTER KEY FUNCTIONALITY
-    $(".input").keypress(function(e) {
-        if (e.which == 13) {
-            if (inputBox === 1) {
-                var isValidEmail = validateEmail();
-                $("#email").fadeOut("fast", function() {
-                    $("#password").fadeIn("fast", function() {
-                        $("#password input").focus();
+        // ENTER KEY FUNCTIONALITY
+        $(window).keypress(function(e) {
+            if (e.which == 13) {
+                if (inputBox) {
+                    var isEmailValid = validateEmail();
+                    var isPasswordValid = validatePassword();
+                    var passwordsMatch = validatePasswordsMatch();
+                    if (isEmailValid) {
+                        $("#email .error").addClass('hidden');
+                        if (isPasswordValid) {
+                            $("#password .error").addClass('hidden');
+                            if (passwordsMatch) {
+                                $("#confirm-password .error").addClass('hidden');
+                                console.log("success");
+                                submitForm();
+                            } else {
+                                // TODO display "Passwords do not match"
+                                $("#confirm-password .error").removeClass('hidden');
+                                $("#confirm-password input").focus();
+                            }
+                        } else {
+                            // TODO display "password must include at least 6..."
+                            $("#password .error").removeClass('hidden');
+                            $("#password input").focus();
+                        }
+                    } else {
+                        // TODO display "Invalid email, must be a .edu address"
+                        $("#email .error").removeClass('hidden');
+                        $("#email input").focus();
+                    }
+                } else {
+                    $('body,html').animate({
+                        scrollTop: 460
+                    }, 800);
+                    $("#register").fadeOut("fast", function() {
+                        $("#email").fadeIn("fast", function() {
+                            $("#email input").focus();
+                        });
+                        $("#password").fadeIn("fast");
+                        $("#confirm-password").fadeIn("fast");
+                        inputBox = true;
                     });
-                    inputBox += 1;
-                });
-            } else if (inputBox === 2) {
-                $("#password").fadeOut("fast", function() {
-                    $("#confirm-password").fadeIn("fast", function() {
-                        $("#confirm-password input").focus();
-                    });
-                    inputBox += 1;
-                });
-            } else if (inputBox === 3) {
-                var isValidPassword = validatePassword();
-                submitForm();
-                inputBox += 1;
+                }
             }
-        }
-    });
+        });
+    } else {
+        $("#register").click(function(event) {
+            $('body,html').animate({
+                scrollTop: 550
+            }, 0);
+            $(this).fadeOut("fast", function() {
+                $("#email").fadeIn("fast", function() {
+                    $("#email input").focus();
+                });
+                $("#password").fadeIn("fast");
+                $("#confirm-password").fadeIn("fast");
+                inputBox = true;
+            });
+        });
+        $("#email input").focus(function(event) {
+            /* Act on the event */
+            $('body,html').animate({
+                scrollTop: 550
+            }, 0);
+        });
+        $("#password input").focus(function(event) {
+            /* Act on the event */
+            $('body,html').animate({
+                scrollTop: 550
+            }, 0);
+        });
+        $("#confirm-password input").focus(function(event) {
+            /* Act on the event */
+            $('body,html').animate({
+                scrollTop: 550
+            }, 0);
+        });
+        $("#email input").keyup(function(event) {
+            /* Act on the event */
+            $('body,html').animate({
+                scrollTop: 550
+            }, 0);
+        });
+        $("#password input").keyup(function(event) {
+            /* Act on the event */
+            $('body,html').animate({
+                scrollTop: 550
+            }, 0);
+        });
+        $("#confirm-password input").keyup(function(event) {
+            /* Act on the event */
+            $('body,html').animate({
+                scrollTop: 550
+            }, 0);
+        });
+    }
 });
