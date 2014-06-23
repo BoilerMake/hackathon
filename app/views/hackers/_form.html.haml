@@ -1,54 +1,61 @@
 .header
   .container
     = image_tag 'logodark.png', class: 'logo'
-    %a#logout.button.outline{:style => "cursor:pointer;"} Log Out
+    = link_to 'Log Out', logout_path, class: 'button outline', id: 'logout'
 .head
   %h1 WELCOME
 .nav
   = link_to dashboard_path do
     .nav-active
       Application
-  = link_to team_path(current_user.team_id) do
-    .nav-notactive
-      Team
+  - if current_user.team.present?
+    = link_to team_path(current_user.team_id) do
+      .nav-notactive
+        Team
+  - else
+    = link_to new_team_path do
+      .nav-notactive
+        Team
 .container
   .application
     .form
-      #firstname.input
-        .label
-          First Name
-        %input{:type => "text"}/
-      #lastname.input
-        .label
-          Last Name
-        %input{:type => "text"}/
-      #school.input.search
-        .label
-          School
-        %input{:type => "text"}/
-      #address-line-1.input
-        .label
-          Address Line 1
-        %input{:type => "text"}/
-      #address-line-2.input
-        .label
-          Address Line 2
-        %input{:type => "text"}/
-      #address-city-state-zip.input
-        .label
-          City, State, Zip
-        %input.span-6{:type => "text"}/
-        %input.span-2{:maxlength => "2", :type => "text"}/
-        %input.span-4{:type => "text"}/
-      #github.input.link
-        .label
-          GitHub
-        %input{:type => "text"}/
-      #description.input.field
-        .label
-          Experience
-          .sub-label
-            Tell us a little bit more about who you are and what you’ve done.
-        %textarea{:rows => "8"}
-      .submit
-        %input#save.button.outline{:style => "cursor:pointer;", :type => "submit", :value => "Save"}/
+      = form_for @hacker do |f|
+        #firstname.input
+          .label
+            = f.label :first_name
+          = f.text_field :first_name
+        #lastname.input
+          .label
+            = f.label :last_name
+          = f.text_field :last_name
+        #school.input.search
+          .label
+            = f.label :school_id
+          = f.text_field :school_id, id: 'schools', value: @school
+        = f.fields_for :application do |application_fields|
+          #address-line-1.input
+            .label
+              = f.label :address_line_one
+            = application_fields.text_field :address_line_one
+          #address-line-2.input
+            .label
+              = f.label :address_line_two
+            = application_fields.text_field :address_line_two
+          #address-city-state-zip.input
+            .label
+              City, State, Zip
+            = application_fields.text_field :city, class: 'span-6'
+            = application_fields.text_field :state, class: 'span-2', maxlength: '2'
+            = application_fields.text_field :zip_code, class: 'span-4'
+          #github.input.link
+            .label
+              GitHub
+            = application_fields.text_field :github
+          #description.input.field
+            .label
+              Experience
+              .sub-label
+                Tell us a little bit more about who you are and what you’ve done.
+            = application_fields.text_area :previous_experience, rows: '8'
+        .submit
+          = f.submit id: 'save', class: 'button outline', style: 'cursor:pointer;'
