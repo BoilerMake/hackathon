@@ -20,7 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: 'Hello world'
   hackathon: 'BoilerMake'
   domain: 'boilermake.org'
-  default_from_email: 'hackers@boilermake.org'
+  default_from_email: 'contact@boilermake.org'

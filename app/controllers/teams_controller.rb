@@ -12,6 +12,22 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     redirect_to dashboard_url if current_user.team_id != @team.id
+    teammates = @team.hackers.reject{ |h| h == current_user }
+    if current_user.full_name.present?
+      @current_name = current_user.full_name
+    else
+      @current_name = current_user.email
+    end
+    @others = []
+    3.times do |i|
+      teammate = teammates[i]
+      if teammate.present?
+        value = teammate.full_name.present? ? teammate.full_name : teammate.email
+        @others << {name: value, dis: true}
+      else
+        @others << {name: '', dis: false}
+      end
+    end
   end
 
   # GET /teams/new
