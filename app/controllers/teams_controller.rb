@@ -13,13 +13,15 @@ class TeamsController < ApplicationController
   def show
     redirect_to dashboard_url if current_user.team_id != @team.id
     teammates = @team.hackers.reject{ |h| h == current_user }
+    @current_name = current_user.full_name.present? ? current_user.full_name : 'Me'
     @others = []
     3.times do |i|
       teammate = teammates[i]
       if teammate.present?
-        @others << {name: teammate.best_name, dis: true}
+        name = teammate.full_name.present? ? teammate.full_name : 'Friend'
+        @others << {name: name, present: true, email: teammate.email}
       else
-        @others << {name: '', dis: false}
+        @others << {name: 'Invite Friend', present: false}
       end
     end
   end

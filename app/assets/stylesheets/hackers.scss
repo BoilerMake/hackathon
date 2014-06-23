@@ -13,7 +13,7 @@ body {
     width: 100%;
     height: 160px;
     margin-bottom: 0;
-    background-image: url("../img/hacker.jpg");
+    background-image: image-url('hacker.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -43,6 +43,7 @@ body {
     padding-top: 10px;
     background-color: #9B9B9B;
     cursor: pointer;
+    color: #FFF;
 }
 .nav-active::after {
     content: "";
@@ -51,7 +52,7 @@ body {
     margin-top: 17px;
     width: 100%;
     height: 14px;
-    background-image: url("../img/pointer.png");
+    background-image: image-url('pointer.png');
     background-repeat: no-repeat;
     background-position: center;
 
@@ -114,6 +115,7 @@ body {
     line-height: 1.4;
     padding: 8px 4px 6px 8px;
     color: black;
+    white-space: normal;
 }
 .application .form .input input, .application .form .input textarea {
     display: inline-block;

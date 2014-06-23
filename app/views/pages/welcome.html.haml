@@ -1,13 +1,58 @@
-%h1 Welcome To BoilerMake
-%p Some copy goes here
--if current_user
-  this shows up when a user is logged in
-  = link_to 'dashboard', controller: 'hackers', action: 'dashboard'
-  %br
-  = link_to 'Logout', logout_path
-- else
-  .user-action
-    .login
-      = render 'sessions/form'
-    .sign-up
-      = render 'hackers/min_form'
+.header
+  .container
+    = image_tag 'logo.png', class: 'logo'
+    - if current_user.nil?
+      %a#login.button.outline{:style => "cursor:pointer;"} Log In
+      = form_tag sessions_path do
+        = text_field_tag :email, nil,
+          { style: 'display:none;margin-top:35px', id: 'emaillogin',
+            class: 'flat-input sign-up', placeholder: 'Email (edu)'}
+        %br/
+        %br/
+        %br/
+        %br/
+        = password_field_tag :password, nil,
+          { style: 'display:none;', id: 'passwordlogin',
+            class: 'flat-input sign-up', placeholder: 'Password' }
+        = submit_tag :submit, { style: 'display:none;' }
+    - else
+      = link_to 'logout', logout_path, class: 'button outline'
+.container
+  = '<h1 class="hero-headline normal">MAKE.CREATE.<span>HACK.</span></h1>'.html_safe
+  = '<h1 class="hero-headline condensed">MAKE.<br>CREATE.<br><span>HACK.</span></h1>'.html_safe
+  .hammers
+    = image_tag 'hammers.svg'
+  %h3.normal October 17th-19th - Purdue University
+  %h3.condensed
+    October 17th-19th,
+    %br
+    Purdue University
+  %h4.normal 36 hours, 500 students, $10,000 in prizes
+  %h4.condensed
+    36 hours, 500 students,
+    %br
+    $10,000 in prizes
+  .signup
+    - if current_user.nil?
+      %a#register.button.outline{:style => "cursor:pointer;"} Earlybird Application
+      = form_for @hacker do |f|
+        #email.input{:style => "display:none;"}
+          = f.text_field :email,
+            { class: 'flat-input sign-up', placeholder: 'Email (.edu)' }
+          %p.error.hidden Invalid email address. Be sure to use your .edu address.
+        #password.input{:style => "display:none;"}
+          = f.password_field :password,
+            { class: 'flat-input sign-up', placeholder: 'Password' }
+          %p.error.hidden Invalid password.
+        #confirm-password.input{:style => "display:none;"}
+          = f.password_field :password_confirmation,
+            { class: 'flat-input sign-up', placeholder: 'Confirm Password' }
+          %p.error.hidden Passwords do not match.
+          = f.submit 'submit', { style: 'display:none;' }
+    - else
+      = link_to 'My Application', dashboard_path, class: 'button outline'
+
+  %p.bottom-md
+    Apply before July 15th to get an exclusive BoilerMake
+    %br
+    laptop decal mailed straight to your doorstep.

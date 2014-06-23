@@ -70,9 +70,13 @@ class HackersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    school_id = School.find_by(name: hacker_params[:school_id]).id
     new_params = hacker_params
-    new_params[:school_id] = school_id
+    if hacker_params[:school_id].present?
+      school_id = School.find_by(name: hacker_params[:school_id]).id
+      new_params[:school_id] = school_id
+    else
+      new_params[:school_id] = nil
+    end
     respond_to do |format|
       if @hacker.update(new_params)
         format.html { redirect_to :dashboard, notice: 'Your application has been updated.' }
@@ -107,6 +111,6 @@ class HackersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def hacker_params
-    params.require(:hacker).permit(:first_name, :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, application_attributes: [ :gender, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other ])
+    params.require(:hacker).permit(:first_name, :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, application_attributes: [ :gender, :address_line_one, :address_line_two, :city, :state, :zip_code, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other ])
   end
 end

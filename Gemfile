@@ -9,9 +9,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'bcrypt-ruby'
 
 gem 'haml-rails'
-gem 'binding_of_caller'
-gem 'better_errors'
-gem 'pry-rails'
 gem 'bootstrap-sass'
 gem 'byebug'
 gem 'jquery-ui-rails'
@@ -23,6 +20,10 @@ end
 
 group :development do
   gem 'spring'
+  gem 'binding_of_caller'
+  gem 'better_errors'
+  gem 'pry-rails'
+  gem 'byebug'
 end
 
 group :development, :test do
