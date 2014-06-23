@@ -5,7 +5,6 @@ class HackerInvitationsController < ApplicationController
   def create
     team = Team.find(current_user.team_id)
 
-    #TODO: Potential security issue
     invitees = [params[:email_one], params[:email_two], params[:email_three]]
 
     invitees.each do |invitee|
