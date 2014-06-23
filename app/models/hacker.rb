@@ -18,6 +18,10 @@ class Hacker < User
     "#{fname} #{lname}"
   end
 
+  def best_name
+    full_name.present? ? full_name : email
+  end
+
   def team_size_is_okay
     if team.present?
       if team.hackers.count >= 4

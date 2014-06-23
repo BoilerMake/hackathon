@@ -5,13 +5,13 @@ class HackerInvitationsController < ApplicationController
   def create
     team = Team.find(current_user.team_id)
 
-    #TODO: Potential security issue
     invitees = [params[:email_one], params[:email_two], params[:email_three]]
 
     invitees.each do |invitee|
-      team.send_hacker_invitation(invitee, current_user) if invitee
+      team.send_hacker_invitation(invitee, current_user) unless invitee.empty?
     end
 
+    flash[:success] = 'Your invitations have been sent!'
     redirect_to team_path(team)
   end
 end

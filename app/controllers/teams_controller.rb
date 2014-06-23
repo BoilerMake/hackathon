@@ -12,6 +12,16 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     redirect_to dashboard_url if current_user.team_id != @team.id
+    teammates = @team.hackers.reject{ |h| h == current_user }
+    @others = []
+    3.times do |i|
+      teammate = teammates[i]
+      if teammate.present?
+        @others << {name: teammate.best_name, dis: true}
+      else
+        @others << {name: '', dis: false}
+      end
+    end
   end
 
   # GET /teams/new
@@ -80,9 +90,9 @@ class TeamsController < ApplicationController
     if @team
       current_user.team_id = @team.id
       if current_user.save
-        flash[:info] = 'Joined team successfully!'
+        flash[:success] = 'Joined team successfully!'
       else
-        flash[:error] = 'Team is currently full'
+        flash[:alert] = 'Team is currently full'
       end
       redirect_to dashboard_url
     else
