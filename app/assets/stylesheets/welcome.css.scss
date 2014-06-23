@@ -11,7 +11,7 @@ body {
     line-height: 1.4;
     color: #FFFFFF;
     // background-image: image-url("hero2.jpg");
-    background-image: asset-url("hero2.jpg", image);
+    background-image: url(image-path('hero2.jpg'));
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
