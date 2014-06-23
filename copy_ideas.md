@@ -1,7 +1,7 @@
 Confirmation email on account creation:
   Subject: BoilerMake - Important information
 
-  On October 17-19, 500 students will join together to <TAGLINE FROM HOMEPAGE>. If dreaming keeps you awake at night, if challenges motivate you to work harder, and if 'good' isn't good enough, you're exactly who we're looking for. Together, we're going to make hackathon history.
+  On October 17-19, 500 students will join together to <TAGLINE FROM HOMEPAGE> at BoilerMake. If dreaming keeps you awake at night, if challenges motivate you to work harder, and if 'good' isn't good enough, you're exactly who we're looking for. Together, we're going to make hackathon history.
 
   Thank you for intializing your Earlybird application. Here's what you need to know:
 
@@ -21,7 +21,7 @@ Confirmation email on account creation:
 Invitation email:
   Subject: #{name} has invited you to join a BoilerMake team! // You've been invited to join a BoilerMake team!
 
-  On October 17-19, 500 students will join together to <TAGLINE FROM HOMEPAGE>. If dreaming keeps you awake at night, if challenges motivate you to work harder, and if 'good' isn't good enough, you're exactly who we're looking for. Together, we're going to make hackathon history.
+  On October 17-19, 500 students will join together to <TAGLINE FROM HOMEPAGE> at BoilerMake. If dreaming keeps you awake at night, if challenges motivate you to work harder, and if 'good' isn't good enough, you're exactly who we're looking for. Together, we're going to make hackathon history.
 
   <FIRSTNAME OR EMAIL> wants you to be there, and wants to be on your team. Join <FIRSTNAME OR EMAIL> now by going to <LINK>. If you're logged in, you'll join <FIRSTNAME OR EMAIL> instantly. Otherwise, you'll need to log in or create an account. Afterward, you'll join the team automatically.
 
