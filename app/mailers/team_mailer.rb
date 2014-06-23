@@ -9,7 +9,7 @@ class TeamMailer < ActionMailer::Base
   #
   def invite_hacker(email, team, current_user)
     @team = team
-    name = current_user.first_name ? current_user.first_name : 'A friend'
-    mail(to: email, subject: "#{name} wants you to join a #{HACKATHON} team!")
+    @name = current_user.first_name ? current_user.first_name : current_user.email
+    mail(to: email, subject: "#{@name} wants you to join a #{HACKATHON} team!")
   end
 end
