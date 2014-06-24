@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:edit, :update, :destroy]
   helper_method :hacker_full_name, :hacker_email, :hacker_school, :remove_hacker
+  skip_before_action :require_login, only: [:join]
 
   # GET /teams
   # GET /teams.json
@@ -11,18 +12,21 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
-    redirect_to dashboard_url if !current_user.team_id
-    @team = Team.find(current_user.team_id)
-    teammates = @team.hackers.reject{ |h| h == current_user }
-    @current_name = current_user.full_name.present? ? current_user.full_name : 'Me'
-    @others = []
-    3.times do |i|
-      teammate = teammates[i]
-      if teammate.present?
-        name = teammate.full_name.present? ? teammate.full_name : 'Friend'
-        @others << {name: name, present: true, email: teammate.email}
-      else
-        @others << {name: 'Enter email:', present: false}
+    if current_user.team_id.nil?
+      redirect_to dashboard_url
+    else
+      @team = Team.find(current_user.team_id)
+      teammates = @team.hackers.reject{ |h| h == current_user }
+      @current_name = current_user.full_name.present? ? current_user.full_name : 'Me'
+      @others = []
+      3.times do |i|
+        teammate = teammates[i]
+        if teammate.present?
+          name = teammate.full_name.present? ? teammate.full_name : 'Friend'
+          @others << {name: name, present: true, email: teammate.email}
+        else
+          @others << {name: 'Enter email:', present: false}
+        end
       end
     end
   end
@@ -88,18 +92,42 @@ class TeamsController < ApplicationController
     end
   end
 
-  def join
-    @team = Team.find_by_secret_key(params[:secret_key])
-    if @team
-      current_user.team_id = @team.id
-      if current_user.save
-        flash[:success] = "You've joined a team!"
-      else
-        flash[:alert] = 'Team is currently full'
-      end
-      redirect_to dashboard_url
+  def leave
+    current_user.team_id = nil
+    if current_user.save
+      flash[:success] = "You are no longer on any team"
     else
-      redirect_to dashboard_url, alert: 'Invalid team key'
+      flash[:alert] = 'Something went wrong, you have not left your team'
+    end
+    redirect_to dashboard_url
+  end
+
+  def join
+    # if user is not logged in
+    # the flashes get lost in the redirect through the dashboard
+    if current_user.nil?
+      redirect_to root_url, alert: 'Please login or create an account first'
+    else
+      if current_user.team_id.present?
+        redirect_to dashboard_url, alert: 'You need to leave your current team before joining a new one'
+      else
+        @team = Team.find_by_secret_key(params[:secret_key])
+        if @team
+          if @team.hackers.count >= 4
+            flash[:alert] = 'Team is currently full'
+          else
+            current_user.team_id = @team.id
+            if current_user.save
+              flash[:success] = "You've joined a team!"
+            else
+              flash[:alert] = 'Could not join this team'
+            end
+          end
+          redirect_to dashboard_url
+        else
+          redirect_to dashboard_url, alert: 'Invalid team key'
+        end
+      end
     end
   end
 

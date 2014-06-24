@@ -16,9 +16,10 @@ class SessionsController < ApplicationController
       else
         cookies[:auth_token] = user.auth_token
       end
-    redirect_after_login
+      flash[:success] = 'Logged in!'
+      redirect_after_login
     else
-      flash[:notice] = "Invalid email or password"
+      flash[:alert] = "Invalid email or password"
       redirect_to root_path
     end
   end

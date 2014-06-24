@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   get 'pages/welcome'
   get 'teams/join'
+  get 'teams/leave'
 
   get 'my_team', to: 'teams#show'
 
