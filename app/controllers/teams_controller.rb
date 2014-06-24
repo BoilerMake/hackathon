@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:edit, :update, :destroy]
   helper_method :hacker_full_name, :hacker_email, :hacker_school, :remove_hacker
+  skip_before_action :require_login, only: [:join]
 
   # GET /teams
   # GET /teams.json
@@ -102,24 +103,30 @@ class TeamsController < ApplicationController
   end
 
   def join
-    if current_user.team_id.present?
-      redirect_to dashboard_url, alert: 'You need to leave your current team before joining a new one'
+    # if user is not logged in
+    # the flashes get lost in the redirect through the dashboard
+    if current_user.nil?
+      redirect_to root_url, alert: 'Please login or create an account first'
     else
-      @team = Team.find_by_secret_key(params[:secret_key])
-      if @team
-        if @team.hackers.count >= 4
-          flash[:alert] = 'Team is currently full'
-        else
-          current_user.team_id = @team.id
-          if current_user.save
-            flash[:success] = "You've joined a team!"
-          else
-            flash[:alert] = 'Could not join this team'
-          end
-        end
-        redirect_to dashboard_url
+      if current_user.team_id.present?
+        redirect_to dashboard_url, alert: 'You need to leave your current team before joining a new one'
       else
-        redirect_to dashboard_url, alert: 'Invalid team key'
+        @team = Team.find_by_secret_key(params[:secret_key])
+        if @team
+          if @team.hackers.count >= 4
+            flash[:alert] = 'Team is currently full'
+          else
+            current_user.team_id = @team.id
+            if current_user.save
+              flash[:success] = "You've joined a team!"
+            else
+              flash[:alert] = 'Could not join this team'
+            end
+          end
+          redirect_to dashboard_url
+        else
+          redirect_to dashboard_url, alert: 'Invalid team key'
+        end
       end
     end
   end
