@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login
+  before_filter :downcase_email
 
   def index
     redirect_after_login
@@ -39,5 +40,9 @@ class SessionsController < ApplicationController
     else
       redirect_to dashboard_url
     end
+  end
+
+  def downcase_email
+    params[:email].downcase!
   end
 end
