@@ -43,6 +43,6 @@ class SessionsController < ApplicationController
   end
 
   def downcase_email
-    params[:email].downcase!
+    params[:email].downcase! if params[:email]
   end
 end

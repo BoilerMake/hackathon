@@ -1,12 +1,20 @@
 /*global $:false */
 var inputBox = false;
 
+function validTLD(str) {
+  if(str === ".edu" || str === ".ca") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function validateEmail() {
   var email = $("#email input").val();
   var atpos = email.indexOf("@");
   var dotpos = email.lastIndexOf(".");
-  var ext = email.slice((email.length - 4));
-  if (atpos < 1 || dotpos < atpos + 2 || ext !== ".edu") {
+  var ext = email.slice(dotpos);
+  if (atpos < 1 || dotpos < atpos + 2 || !validTLD(ext)) {
     return false;
   } else {
     return true;

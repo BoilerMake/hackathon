@@ -1,7 +1,7 @@
 class HackersController < ApplicationController
+  before_filter :set_genders, :downcase_email
   before_action :set_hacker, only: [:update, :destroy]
   before_filter :authenticate, only: [:update, :destroy, :dashboard]
-  before_filter :set_genders
   skip_before_action :require_login
 
   # GET /users
@@ -121,6 +121,12 @@ class HackersController < ApplicationController
 
   def set_genders
     @genders = ['Male', 'Female', 'Other', 'Perfer Not to Specify']
+  end
+
+  def downcase_email
+    if params[:hacker]
+      params[:hacker][:email].downcase! if params[:hacker][:email]
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
