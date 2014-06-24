@@ -33,7 +33,7 @@ function validatePasswordsMatch() {
 }
 
 function submitForm() {
-
+    $('#new_hacker').click();
 }
 
 
@@ -67,6 +67,7 @@ $(document).ready(function() {
     // ENTER KEY FUNCTIONALITY
     $(window).keypress(function(e) {
         if (e.which === 13) {
+            e.preventDefault();
             if (inputBox) {
                 var isEmailValid = validateEmail();
                 var isPasswordValid = validatePassword();
