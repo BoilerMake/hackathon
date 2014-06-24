@@ -40,7 +40,10 @@
         #email.input{:style => "display:none;"}
           = f.text_field :email,
             { class: 'flat-input sign-up', placeholder: 'Email (.edu)' }
-          %p.error.hidden Invalid email address. Be sure to use your .edu address.
+          %p.error.hidden
+            Invalid email address. Be sure to use your .edu address.
+            %br
+            Email team@boilermake.org if you don't have a .edu address.
         #password.input{:style => "display:none;"}
           = f.password_field :password,
             { class: 'flat-input sign-up', placeholder: 'Password' }
