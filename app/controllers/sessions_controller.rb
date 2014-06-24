@@ -36,7 +36,7 @@ class SessionsController < ApplicationController
       redirect_to session[:return_to]
       session[:return_to] = nil
     else
-      redirect_to root_url
+      redirect_to dashboard_url
     end
   end
 end

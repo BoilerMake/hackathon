@@ -8,9 +8,9 @@ class HackerInvitationsController < ApplicationController
     invitees = [params[:email_one], params[:email_two], params[:email_three]]
 
     invitees.each do |invitee|
-      team.send_hacker_invitation(invitee, current_user) unless invitee.empty?
+      team.send_hacker_invitation(invitee, current_user) unless invitee.nil?
     end
 
-    redirect_to team_path(team)
+    redirect_to my_team_path
   end
 end

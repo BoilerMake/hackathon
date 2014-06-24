@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_team, only: [:edit, :update, :destroy]
   helper_method :hacker_full_name, :hacker_email, :hacker_school, :remove_hacker
 
   # GET /teams
@@ -11,7 +11,8 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
-    redirect_to dashboard_url if current_user.team_id != @team.id
+    redirect_to dashboard_url if !current_user.team_id
+    @team = Team.find(current_user.team_id)
     teammates = @team.hackers.reject{ |h| h == current_user }
     @current_name = current_user.full_name.present? ? current_user.full_name : 'Me'
     @others = []
@@ -21,7 +22,7 @@ class TeamsController < ApplicationController
         name = teammate.full_name.present? ? teammate.full_name : 'Friend'
         @others << {name: name, present: true, email: teammate.email}
       else
-        @others << {name: 'Invite Friend', present: false}
+        @others << {name: 'Enter email:', present: false}
       end
     end
   end
