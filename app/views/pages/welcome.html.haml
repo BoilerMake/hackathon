@@ -4,7 +4,7 @@
     - if current_user.nil?
       %a#login.button.outline{:style => "cursor:pointer;"} Log In
       = form_tag sessions_path do
-        = text_field_tag :email, nil,
+        = email_field_tag :email, nil,
           { style: 'display:none;margin-top:35px', id: 'emaillogin',
             class: 'flat-input sign-up', placeholder: 'Email (edu)'}
         %br/
@@ -38,7 +38,7 @@
       %a#register.button.outline{:style => "cursor:pointer;"} Earlybird Application
       = form_for @hacker do |f|
         #email.input{:style => "display:none;"}
-          = f.text_field :email,
+          = f.email_field :email,
             { class: 'flat-input sign-up', placeholder: 'Email (.edu)' }
           %p.error.hidden Invalid email address. Be sure to use your .edu address.
         #password.input{:style => "display:none;"}
