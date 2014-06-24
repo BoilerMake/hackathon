@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  root 'pages#temporary_splash'
+  root 'pages#welcome'
 
   get 'dashboard' => 'hackers#dashboard'
   get 'apply' => 'hackers#new'
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
   get 'pages/welcome'
-  get 'pages/temporary_splash'
   get 'teams/join'
   get 'teams/leave'
 

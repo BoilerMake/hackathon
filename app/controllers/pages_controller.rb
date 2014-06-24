@@ -4,7 +4,4 @@ class PagesController < ApplicationController
   def welcome
     @hacker = Hacker.new
   end
-
-  def temporary_splash
-  end
 end
