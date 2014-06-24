@@ -24,7 +24,7 @@ class Hacker < User
 
   def team_size_is_okay
     if team.present?
-      if team.hackers.count >= 4
+      if team.hackers.count > 4
         errors.add(:team, 'Team is already full')
         return false
       end
