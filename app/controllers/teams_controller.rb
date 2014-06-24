@@ -56,7 +56,7 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, notice: 'Team created successfully.' }
-        format.json { render :show, status: :created, location: @team }
+        format.json { render :my_team, status: :created, location: @team }
       else
         format.html { render :new }
         format.json { render json: @team.errors, status: :unprocessable_entity }
