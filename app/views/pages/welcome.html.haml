@@ -1,6 +1,6 @@
 .header
   .container
-    = image_tag 'logo.png', class: 'logo'
+    .logo
     - if current_user.nil?
       %a#login.button.outline{:style => "cursor:pointer;"} Log In
       = form_tag sessions_path do
