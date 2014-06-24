@@ -4,7 +4,6 @@ body {
 
 .application {
     display: block;
-    width: 600px;
     margin: 0 auto;
 }
 .head {
@@ -34,6 +33,7 @@ body {
     text-align: center;
 }
 .nav-active {
+    color: #FFF;
     display: inline-block;
     position: relative;
     float: left;
@@ -43,19 +43,16 @@ body {
     padding-top: 10px;
     background-color: #9B9B9B;
     cursor: pointer;
-    color: #FFF;
 }
 .nav-active::after {
     content: "";
     display: inline-block;
     position: relative;
-    margin-top: 17px;
     width: 100%;
     height: 14px;
     background-image: image-url('pointer.png');
     background-repeat: no-repeat;
     background-position: center;
-
 }
 .nav-notactive {
     display: inline-block;
@@ -86,6 +83,46 @@ body {
 .nav-notactive:active {
     background-color: #f5a623;
 }
+.application .form .input select {
+    width: 398px;
+    height: 34px;
+    background-color: white;
+}
+.application .form .input input:focus, .application .form .input textarea:focus, .application .form .input select:focus {
+    border-color: #989898;
+    background-color: #989898;
+    -webkit-transition: background-color 250ms linear;
+    -moz-transition: background-color 250ms linear;
+    -o-transition: background-color 250ms linear;
+    -ms-transition: background-color 250ms linear;
+    transition: background-color 250ms linear;
+    color: black;
+    text-align: left;
+    font-size: 1em;
+    line-height: 1.4;
+    box-shadow: 0 1px 1px #989898 inset, 0 0 8px #989898;
+    outline: 0 none;
+}
+
+
+
+
+
+@media (min-width: 768px) {
+    /* Desktop */
+.header .container .logo {
+    width: 222px;
+    height: 74px;
+    background-image: image-url('logodark.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.application {
+    width: 600px;
+}
+.nav-active::after {
+    margin-top: 17px;
+}
 .application .form .input {
     display: inline-block;
     width: 100%;
@@ -115,9 +152,8 @@ body {
     line-height: 1.4;
     padding: 8px 4px 6px 8px;
     color: black;
-    white-space: normal;
 }
-.application .form .input input, .application .form .input textarea {
+.application .form .input input, .application .form .input textarea, .application .form .input select {
     display: inline-block;
     position: relative;
     float: left;
@@ -131,6 +167,12 @@ body {
     border: 2px solid #989898;
     border-radius: 4px;
     resize: none;
+    background-color: white;
+}
+.application .form .input select {
+    width: 378px;
+    height: 34px;
+    background-color: white;
 }
 .application .form .input input.span-6 {
     width: 222px;
@@ -143,28 +185,6 @@ body {
 .application .form .input input.span-4 {
     width: 64px;
     margin: 0 0 0 10px;
-}
-.application .form .input input:focus, .application .form .input textarea:focus {   
-    border-color: #989898;
-    background-color: #989898;
-    -webkit-transition: background-color 250ms linear;
-    -moz-transition: background-color 250ms linear;
-    -o-transition: background-color 250ms linear;
-    -ms-transition: background-color 250ms linear;
-    transition: background-color 250ms linear;
-    color: black;
-    text-align: left;
-    font-size: 1em;
-    line-height: 1.4;
-    box-shadow: 0 1px 1px #989898 inset, 0 0 8px #989898;
-    outline: 0 none;
-}
-.application .form .button {
-    display: inline-block;
-    margin: 5px 0 5px 122px;
-}
-.application .form .submit {
-    display: inline-block;
 }
 .application .form .submit .button {
     display: inline-block;
@@ -188,123 +208,110 @@ body {
     -ms-transition: background-color 100ms linear;
     transition: background-color 100ms linear;
 }
-.application .form .submit .button:hover {
+
+}
+
+
+
+@media (max-width: 768px) {
+    /* Mobile */
+body {
+    font-size: 100%;
+}
+.header .container .logo {
+    width: 74px;
+    height: 74px;
+    background-image: image-url('logoonlydark.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.application {
+    width: 100%;
+}
+.nav-active::after {
+    margin-top: 17px;
+}.application .form .input {
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0 5px 10px;
+}
+.application .form .input .label {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: left;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 2.0;
+    padding: 0;
+    color: black;
+}
+.application .form .input .label .sub-label{
+    display: none;
+}
+.application .form .input select {
+    width: 378px;
+    height: 34px;
+    background-color: white;
+}
+.application .form .input input, .application .form .input textarea, .application .form .input select {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 85%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    text-align: left;
+    font-size: 1em;
+    color: black;
+    line-height: 1.4;
+    padding: 4px 6px 6px 8px;
+    border: 2px solid #989898;
+    border-radius: 4px;
+    resize: none;
+}
+.application .form .input select {
+    width: 88%;
+    height: 38px;
+    background-color: white;
+}
+.application .form .input input.span-6 {
+    width: 40%;
+    margin: 0;
+}
+.application .form .input input.span-2 {
+    width: 7.5%;
+    margin: 0 0 0 2.5%;
+}
+.application .form .input input.span-4 {
+    width: 20%;
+    margin: 0 0 0 2.5%;
+}
+.application .form .submit .button {
     display: inline-block;
     border-radius: 50px;
     padding: 4px 35px 6px 35px;
     border: 2px solid #f5a623;
-    color: white;
-    -webkit-transition: color 100ms linear;
-    -moz-transition: color 100ms linear;
-    -o-transition: color 100ms linear;
-    -ms-transition: color 100ms linear;
-    transition: color 100ms linear;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    line-height: 1.4;
-    font-size: 1em;
-    margin: 20px 0 30px 122px;
-    background: #f5a623;
-    -webkit-transition: background-color 100ms linear;
-    -moz-transition: background-color 100ms linear;
-    -o-transition: background-color 100ms linear;
-    -ms-transition: background-color 100ms linear;
-    transition: background-color 100ms linear;
-}
-.application .form .submit .button:active {
-    color: white;
-    -webkit-transition: color 100ms linear;
-    -moz-transition: color 100ms linear;
-    -o-transition: color 100ms linear;
-    -ms-transition: color 100ms linear;
-    transition: color 100ms linear;
-    background: #e6940a;
-    -webkit-transition: background-color 100ms linear;
-    -moz-transition: background-color 100ms linear;
-    -o-transition: background-color 100ms linear;
-    -ms-transition: background-color 100ms linear;
-    transition: background-color 100ms linear;
-}
-.application .form .submit .button:focus {   
-    border-color: rgba(246,167,33,1.0);
-    text-align: center;
-    box-shadow: none;
-    outline: 0 none;
-}
-.application .form .submit .button:active {   
-    background: #e6940a;
-    -webkit-transition: background-color 100ms linear;
-    -moz-transition: background-color 100ms linear;
-    -o-transition: background-color 100ms linear;
-    -ms-transition: background-color 100ms linear;
-    transition: background-color 100ms linear;
-}
-.application .form .discard {
-    display: inline-block;
-    padding: 4px 35px 6px 35px;
-    color: black;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    line-height: 1.4;
-    font-size: 1em;
-    background: none;
-}
-.application .form .discard:hover {
-    display: inline-block;
-    padding: 4px 35px 6px 35px;
-    -webkit-transition: color 100ms linear;
-    -moz-transition: color 100ms linear;
-    -o-transition: color 100ms linear;
-    -ms-transition: color 100ms linear;
-    transition: color 100ms linear;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    line-height: 1.4;
-    font-size: 1em;
-    background: none;
-}
-.application .form .discard a {
-    color: black;
-    -webkit-transition: color 100ms linear;
-    -moz-transition: color 100ms linear;
-    -o-transition: color 100ms linear;
-    -ms-transition: color 100ms linear;
-    transition: color 100ms linear;
-}
-.application .form .discard a:hover {
     color: #f5a623;
     -webkit-transition: color 100ms linear;
     -moz-transition: color 100ms linear;
     -o-transition: color 100ms linear;
     -ms-transition: color 100ms linear;
     transition: color 100ms linear;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.4;
+    font-size: 1em;
+    margin: 30px 10px;
+    background: none;
+    -webkit-transition: background-color 100ms linear;
+    -moz-transition: background-color 100ms linear;
+    -o-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
 }
 
-
-
-@media (max-width: 768px) {
-    body {
-        width: 100%;
-        font-size: 100%;
-    }
-    .application .form .input .label {
-        font-weight: 300;
-    }
-    .application .form .input .label .sub-label{
-        font-weight: 300;
-    }
-    .application .form .input input.span-6 {
-        width: 168px;
-    }
-    .application .form .input input.span-2 {
-        width: 36px;
-    }
-    .application .form .input input.span-4 {
-        width: 100px;
-    }
-    .application .form .input input, .application .form .input textarea {
-        border-radius: 8px;
-    }
-}
-@media (max-width: 768px), (-webkit-min-device-pixel-ratio: 2) {
-    body {
-        width: 200%;
-    }
 }

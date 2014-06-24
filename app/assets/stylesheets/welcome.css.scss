@@ -10,7 +10,6 @@ body {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     line-height: 1.4;
     color: #FFFFFF;
-    // background-image: image-url("hero2.jpg");
     background-image: url(image-path('hero2.jpg'));
     background-repeat: no-repeat;
     background-size: cover;
@@ -35,10 +34,6 @@ body {
     float: right;
     font-size: 0.75em;
     top: 35px;
-}
-.header a.logo-back {
-    float: none;
-    top: 0;
 }
 .header input {
     position: relative;
@@ -237,6 +232,13 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 
 
 @media (min-width: 769px) { 
+    .header .container .logo {
+        width: 222px;
+        height: 74px;
+        background-image: url("../img/logo.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
     .container .hero-headline.condensed {
         display: none;
     }
@@ -247,6 +249,13 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 @media (max-width: 768px) {
     body {
         font-size: 75%;
+    }
+    .header .container .logo {
+        width: 74px;
+        height: 74px;
+        background-image: url("../img/logoonly.png");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
     .container .hero-headline.normal {
         display: none;
