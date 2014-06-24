@@ -86,7 +86,8 @@ class HackersController < ApplicationController
     end
     respond_to do |format|
       if @hacker.update(new_params) && new_params[:school_id] != -1
-        format.html { redirect_to :dashboard, notice: 'Your application has been updated.' }
+        flash[:success] = "Your application has been updated."
+        format.html { redirect_to :dashboard }
         format.json { render :show, status: :ok, location: @hacker }
       else
         flash[:error] = "That school doesn't exist. Email team@boilermake.org." if new_params[:school_id] == -1
