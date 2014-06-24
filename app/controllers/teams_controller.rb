@@ -93,7 +93,7 @@ class TeamsController < ApplicationController
     if @team
       current_user.team_id = @team.id
       if current_user.save
-        flash[:success] = 'Joined team successfully!'
+        flash[:success] = "You've joined a team!"
       else
         flash[:alert] = 'Team is currently full'
       end

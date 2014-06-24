@@ -11,11 +11,4 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    - flash.each do |name, msg|
-      - if name == 'alert'
-        = content_tag :div, msg, class: 'alert alert-danger' # red flash
-      - elsif name =='success'
-        = content_tag :div, msg, class: 'alert alert-success' # green flash
-      - else # normally a :notice
-        = content_tag :div, msg, class: 'alert alert-info' # blue flash
     = yield
