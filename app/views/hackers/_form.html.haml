@@ -27,15 +27,13 @@
           .label
             = f.label :school_id
           = f.text_field :school_id, id: 'schools', value: @school
-        .input
-          .label
-            Gender
-          = select_tag "gender", options_for_select( { 'Male'=> 'male',
-                                 'Female'=> 'female',
-                                 'Other'=> 'other',
-                                 'Prefer not to specify'=> 'not_specified' } ),
-                                 class: 'gender'
         = f.fields_for :application do |application_fields|
+          .input
+            .label
+              Gender
+            = application_fields.collection_select :gender, @genders, :to_s,
+              :to_s, {include_blank: "Please select"},
+              class: 'gender'
           #address-line-1.input
             .label
               = f.label :address_line_one
