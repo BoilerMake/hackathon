@@ -1,0 +1,381 @@
+/* line 1, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+body {
+  background: white;
+}
+
+/* line 5, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+.application {
+  display: block;
+  margin: 0 auto;
+}
+
+/* line 9, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+.head {
+  display: inline-block;
+  margin-top: 100px;
+  width: 100%;
+  height: 160px;
+  margin-bottom: 0;
+  background-image: url(/assets/hacker.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* line 20, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+.head h1 {
+  font-size: 4em;
+  font-weight: 100;
+  text-align: center;
+  margin: 40px 0;
+}
+
+/* line 26, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+.nav {
+  display: inline-block;
+  width: 100%;
+  height: 60px;
+  margin: 0 0 30px 0;
+  font-weight: 100;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+/* line 35, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+.nav-active {
+  color: #FFF;
+  display: inline-block;
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 50px;
+  margin: 0;
+  padding-top: 10px;
+  background-color: #9B9B9B;
+  cursor: pointer;
+}
+
+/* line 47, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+.nav-active::after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 14px;
+  background-image: url(/assets/pointer.png);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* line 57, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+.nav-notactive {
+  display: inline-block;
+  position: relative;
+  float: left;
+  width: 50%;
+  height: 40px;
+  margin: 0;
+  padding-top: 10px;
+  background-color: #f5a623;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: background-color 100ms linear, height 100ms linear;
+  -moz-transition: background-color 100ms linear, height 100ms linear;
+  -o-transition: background-color 100ms linear, height 100ms linear;
+  -ms-transition: background-color 100ms linear, height 100ms linear;
+  transition: background-color 100ms linear, height  100ms linear;
+}
+
+/* line 74, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+.nav-notactive:hover {
+  background-color: #e6940a;
+  height: 50px;
+  -webkit-transition: background-color 100ms linear, height 100ms linear;
+  -moz-transition: background-color 100ms linear, height 100ms linear;
+  -o-transition: background-color 100ms linear, height 100ms linear;
+  -ms-transition: background-color 100ms linear, height 100ms linear;
+  transition: background-color 100ms linear, height  100ms linear;
+}
+
+/* line 83, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+.nav-notactive:active {
+  background-color: #f5a623;
+}
+
+/* line 86, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+.application .form .input select {
+  width: 398px;
+  height: 34px;
+  background-color: white;
+}
+
+/* line 91, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+.application .form .input input:focus, .application .form .input textarea:focus, .application .form .input select:focus {
+  border-color: #989898;
+  background-color: #989898;
+  -webkit-transition: background-color 250ms linear;
+  -moz-transition: background-color 250ms linear;
+  -o-transition: background-color 250ms linear;
+  -ms-transition: background-color 250ms linear;
+  transition: background-color 250ms linear;
+  color: black;
+  text-align: left;
+  font-size: 1em;
+  line-height: 1.4;
+  box-shadow: 0 1px 1px #989898 inset, 0 0 8px #989898;
+  outline: 0 none;
+}
+
+@media (min-width: 768px) {
+  /* Desktop */
+  /* line 113, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .header .container .logo {
+    width: 222px;
+    height: 74px;
+    background-image: url(/assets/logodark.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /* line 120, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application {
+    width: 600px;
+  }
+
+  /* line 123, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .nav-active::after {
+    margin-top: 17px;
+  }
+
+  /* line 126, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input {
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0 5px -60px;
+  }
+
+  /* line 131, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input .label {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 150px;
+    text-align: right;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 1.4;
+    padding: 8px 4px 6px 8px;
+    color: black;
+  }
+
+  /* line 143, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input .label .sub-label {
+    display: inline-block;
+    position: relative;
+    float: right;
+    width: 150px;
+    text-align: right;
+    font-family: "Helvetica-Neue", "Roboto";
+    font-size: 0.75em;
+    font-weight: 300;
+    line-height: 1.4;
+    padding: 8px 4px 6px 8px;
+    color: black;
+  }
+
+  /* line 156, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input input, .application .form .input textarea, .application .form .input select {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 360px;
+    margin: 0 0 0 20px;
+    text-align: left;
+    font-size: 1em;
+    color: black;
+    line-height: 1.4;
+    padding: 4px 6px 6px 8px;
+    border: 2px solid #989898;
+    border-radius: 4px;
+    resize: none;
+    background-color: white;
+  }
+
+  /* line 172, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input select {
+    width: 378px;
+    height: 34px;
+    background-color: white;
+  }
+
+  /* line 177, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input input.span-6 {
+    width: 222px;
+    margin: 0 0 0 20px;
+  }
+
+  /* line 181, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input input.span-2 {
+    width: 23px;
+    margin: 0 0 0 10px;
+  }
+
+  /* line 185, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input input.span-4 {
+    width: 59px;
+    margin: 0 0 0 10px;
+  }
+
+  /* line 189, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .submit .button {
+    display: inline-block;
+    border-radius: 50px;
+    padding: 4px 35px 6px 35px;
+    border: 2px solid #f5a623;
+    color: #f5a623;
+    -webkit-transition: color 100ms linear;
+    -moz-transition: color 100ms linear;
+    -o-transition: color 100ms linear;
+    -ms-transition: color 100ms linear;
+    transition: color 100ms linear;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.4;
+    font-size: 1em;
+    margin: 20px 0 30px 122px;
+    background: none;
+    -webkit-transition: background-color 100ms linear;
+    -moz-transition: background-color 100ms linear;
+    -o-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
+  }
+}
+@media (max-width: 768px) {
+  /* Mobile */
+  /* line 218, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  body {
+    font-size: 100%;
+  }
+
+  /* line 221, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .header .container .logo {
+    width: 74px;
+    height: 74px;
+    background-image: url(/assets/logoonlydark.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /* line 228, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application {
+    width: 100%;
+  }
+
+  /* line 231, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .nav-active::after {
+    margin-top: 17px;
+  }
+
+  /* line 233, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input {
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0 5px 10px;
+  }
+
+  /* line 238, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input .label {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 100%;
+    text-align: left;
+    font-size: 1em;
+    font-weight: 300;
+    line-height: 2.0;
+    padding: 0;
+    color: black;
+  }
+
+  /* line 250, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input .label .sub-label {
+    display: none;
+  }
+
+  /* line 253, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input select {
+    width: 378px;
+    height: 34px;
+    background-color: white;
+  }
+
+  /* line 258, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input input, .application .form .input textarea, .application .form .input select {
+    display: inline-block;
+    position: relative;
+    float: left;
+    width: 85%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    text-align: left;
+    font-size: 1em;
+    color: black;
+    line-height: 1.4;
+    padding: 4px 6px 6px 8px;
+    border: 2px solid #989898;
+    border-radius: 4px;
+    resize: none;
+  }
+
+  /* line 277, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input select {
+    width: 88%;
+    height: 38px;
+    background-color: white;
+  }
+
+  /* line 282, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input input.span-6 {
+    width: 40%;
+    margin: 0;
+  }
+
+  /* line 286, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input input.span-2 {
+    width: 7.5%;
+    margin: 0 0 0 2.5%;
+  }
+
+  /* line 290, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .input input.span-4 {
+    width: 20%;
+    margin: 0 0 0 2.5%;
+  }
+
+  /* line 294, /Users/kirby/boilermake/app/assets/stylesheets/hackers.scss */
+  .application .form .submit .button {
+    display: inline-block;
+    border-radius: 50px;
+    padding: 4px 35px 6px 35px;
+    border: 2px solid #f5a623;
+    color: #f5a623;
+    -webkit-transition: color 100ms linear;
+    -moz-transition: color 100ms linear;
+    -o-transition: color 100ms linear;
+    -ms-transition: color 100ms linear;
+    transition: color 100ms linear;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.4;
+    font-size: 1em;
+    margin: 30px 10px;
+    background: none;
+    -webkit-transition: background-color 100ms linear;
+    -moz-transition: background-color 100ms linear;
+    -o-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+    transition: background-color 100ms linear;
+  }
+}
