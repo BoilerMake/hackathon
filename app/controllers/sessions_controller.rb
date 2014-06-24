@@ -25,7 +25,6 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete(:auth_token)
-    # flash[:notice] = 'Logged out!'
     redirect_to root_url
   end
 
@@ -33,8 +32,7 @@ class SessionsController < ApplicationController
 
   def redirect_after_login
     if session[:return_to].present?
-      redirect_to session[:return_to]
-      session[:return_to] = nil
+      redirect_to return_to
     else
       redirect_to dashboard_url
     end

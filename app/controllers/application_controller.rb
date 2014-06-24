@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def return_to
+    ret = session[:return_to]
+    session[:return_to] = nil
+    ret
+  end
+  helper_method :return_to
+
   def require_login
     if !current_user
       session[:return_to] = request.url

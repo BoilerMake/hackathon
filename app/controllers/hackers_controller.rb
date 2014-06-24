@@ -49,7 +49,7 @@ class HackersController < ApplicationController
         UserMailer.welcome_email(@hacker).deliver
 
         if session[:return_to].present?
-          format.html { redirect_to session[:return_to], notice: 'Account created successfully.' }
+          format.html { redirect_to return_to, notice: 'Account created successfully.' }
         else
           format.html { redirect_to :dashboard, notice: 'Account created successfully.' }
         end
