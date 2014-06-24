@@ -33,7 +33,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
+        format.html { redirect_to my_team_path, notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @team }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, notice: 'Team created successfully.' }
-        format.json { render :show, status: :created, location: @team }
+        format.json { render :my_team, status: :created, location: @team }
       else
         format.html { render :new }
         format.json { render json: @team.errors, status: :unprocessable_entity }
@@ -93,7 +93,7 @@ class TeamsController < ApplicationController
     if @team
       current_user.team_id = @team.id
       if current_user.save
-        flash[:success] = 'Joined team successfully!'
+        flash[:success] = "You've joined a team!"
       else
         flash[:alert] = 'Team is currently full'
       end

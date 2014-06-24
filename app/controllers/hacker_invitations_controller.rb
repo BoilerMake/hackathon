@@ -11,6 +11,7 @@ class HackerInvitationsController < ApplicationController
       team.send_hacker_invitation(invitee, current_user) unless invitee.nil?
     end
 
+    flash[:notice] = 'Invitations sent.'
     redirect_to my_team_path
   end
 end
