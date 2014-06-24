@@ -32,10 +32,13 @@
             = @others[2][:name]
           = text_field_tag :email_three, @others[2][:email],
                                        disabled: @others[2][:present]
-          %a#invite-send.send
-            Send Invite
+        %a#invite-send.send.button.outline
+          Send Invite
       .divider
       #invitelink.input
         %label.label
           Invite Link
         %input{:readonly => "", :type => "text", :value => "#{invite_url @team}"}/
+        .label
+          .sub-label
+            Or send your friends this link to join your team!
