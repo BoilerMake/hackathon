@@ -32,12 +32,13 @@ function validatePasswordsMatch() {
   }
 }
 
-function submitForm() {
-  // $('#new_hacker').click();
+function submitRegister() {
   $('#new_hacker').submit();
 }
 
-
+function submitLogin() {
+  $('form:first').submit();
+}
 
 $(document).ready(function() {
 
@@ -48,6 +49,7 @@ $(document).ready(function() {
         $("#emaillogin").focus();
       });
       $("#passwordlogin").fadeIn("fast");
+      inputBox = true;
     });
   });
   // EARLYBIRD APPLICATION BUTTON
@@ -66,7 +68,19 @@ $(document).ready(function() {
   });
 
   // ENTER KEY FUNCTIONALITY
-  $(window).keypress(function(e) {
+  $('form:first').keypress(function(e) {
+    if (e.which === 13) {
+      e.preventDefault();
+      if (inputBox) {
+        submitLogin();
+      } else {
+        inputBox = true;
+      }
+    }
+  });
+
+  // ENTER KEY FUNCTIONALITY
+  $('#new_hacker').keypress(function(e) {
     if (e.which === 13) {
       e.preventDefault();
       if (inputBox) {
@@ -80,7 +94,7 @@ $(document).ready(function() {
             if (passwordsMatch) {
               $("#confirm-password .error").addClass('hidden');
               console.log("success");
-              submitForm();
+              submitRegister();
             } else {
               // TODO display "Passwords do not match"
               $("#confirm-password .error").removeClass('hidden');
