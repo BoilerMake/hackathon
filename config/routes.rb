@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'pages/welcome'
   get 'teams/join'
   get 'teams/leave'
+  get 'execs/applied' => 'execs#applied'
 
   get 'my_team', to: 'teams#show'
 
