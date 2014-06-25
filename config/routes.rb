@@ -8,13 +8,14 @@ Rails.application.routes.draw do
   get 'pages/welcome'
   get 'teams/join'
   get 'teams/leave'
+  get 'execs/applied' => 'execs#applied'
 
   get 'my_team', to: 'teams#show'
 
-  resources :applications
-  resources :schools
-  resources :hackers
-  resources :teams, except: :show do
+  get 'schools/index'
+
+  resources :hackers, except: [:index]
+  resources :teams, except: [:show, :index, :destroy]  do
     get 'remove_hacker', on: :member
   end
   resources :sessions
