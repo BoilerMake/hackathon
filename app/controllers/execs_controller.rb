@@ -1,5 +1,5 @@
 class ExecsController < ApplicationController
   def applied
-    @count = Application.all.count
+    @count = Hacker.all.count
   end
 end
