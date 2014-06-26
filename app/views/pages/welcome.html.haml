@@ -3,7 +3,7 @@
     .logo
     - if current_user.nil?
       %a#login.button.outline{:style => "cursor:pointer;"} Log In
-      = form_tag sessions_path do
+      = form_tag sessions_path, id: 'login-form' do
         = email_field_tag :email, nil,
           { style: 'display:none;margin-top:35px', id: 'emaillogin',
             class: 'flat-input sign-up', placeholder: 'Email (edu)'}
