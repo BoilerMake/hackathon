@@ -45,7 +45,7 @@ function submitRegister() {
 }
 
 function submitLogin() {
-  $('form:first').submit();
+  $('#login-form').submit();
 }
 
 $(document).ready(function() {
@@ -76,7 +76,7 @@ $(document).ready(function() {
   });
 
   // ENTER KEY FUNCTIONALITY
-  $('form:first').keypress(function(e) {
+  $('#login-form').keypress(function(e) {
     if (e.which === 13) {
       e.preventDefault();
       if (inputBox) {
