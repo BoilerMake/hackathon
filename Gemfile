@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
 gem 'rails', '4.1.1'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -23,7 +24,6 @@ group :development do
   gem 'spring'
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'byebug'
 end
 
 group :development, :test do
