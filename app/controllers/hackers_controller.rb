@@ -120,7 +120,7 @@ class HackersController < ApplicationController
   end
 
   def set_genders
-    @genders = ['Male', 'Female', 'Other', 'Perfer Not to Specify']
+    @genders = ['Male', 'Female', 'Other', 'Prefer Not to Specify']
   end
 
   def downcase_email
