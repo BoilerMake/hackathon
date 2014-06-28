@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   get 'my_team', to: 'teams#show'
 
-  get 'schools/index'
 
+  resources :schools, only: [:index, :show]
   resources :hackers, except: [:index]
   resources :teams, except: [:show, :index, :destroy]  do
     get 'remove_hacker', on: :member
