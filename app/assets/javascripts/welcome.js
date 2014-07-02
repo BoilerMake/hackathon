@@ -57,6 +57,7 @@ $(document).ready(function() {
         $("#emaillogin").focus();
       });
       $("#passwordlogin").fadeIn("fast");
+      $("#submitlogin").fadeIn("fast");
       inputBox = true;
     });
   });
@@ -71,6 +72,7 @@ $(document).ready(function() {
       });
       $("#password").fadeIn("fast");
       $("#confirm-password").fadeIn("fast");
+      $("#apply-submit").fadeIn("fast");
       inputBox = true;
     });
   });

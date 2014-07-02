@@ -7,14 +7,14 @@
         = email_field_tag :email, nil,
           { style: 'display:none;margin-top:35px', id: 'emaillogin',
             class: 'flat-input sign-up', placeholder: 'Email (edu)'}
-        %br/
-        %br/
-        %br/
-        %br/
+        .clearfix
         = password_field_tag :password, nil,
           { style: 'display:none;', id: 'passwordlogin',
             class: 'flat-input sign-up', placeholder: 'Password' }
-        = submit_tag :submit, { style: 'display:none;' }
+        .clearfix
+        = submit_tag :Submit,
+          { style: 'display:none;', id: 'submitlogin',
+            class: 'flat-input sign-up' }
     - else
       = link_to 'Log Out', logout_path, class: 'button outline'
   = render 'shared/flash.html.haml'
@@ -52,7 +52,8 @@
           = f.password_field :password_confirmation,
             { class: 'flat-input sign-up', placeholder: 'Confirm Password' }
           %p.error.hidden Passwords do not match.
-        = f.submit 'submit', { style: 'display:none;' }
+        #apply-submit.input{style: 'display: none;'}
+          = f.submit 'Submit', { class: 'flat-input sign-up' }
     - else
       = link_to 'My Application', dashboard_path, class: 'button outline'
 
