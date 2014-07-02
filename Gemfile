@@ -11,7 +11,6 @@ gem 'bcrypt-ruby'
 
 gem 'haml-rails'
 gem 'bootstrap-sass'
-gem 'byebug'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
 gem 'better_errors'
@@ -36,6 +35,6 @@ end
 
 group :production do
   gem 'pg'
-  gem 'rails_12factor'
   gem 'newrelic_rpm'
+  gem 'rails_12factor'
 end
