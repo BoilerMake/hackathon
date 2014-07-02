@@ -27,7 +27,7 @@
           .label
             = f.label :school_id
           = f.text_field :school_id, id: 'schools', value: @school
-        = f.fields_for :application do |application_fields|
+        = f.fields_for :application, @hacker.application do |application_fields|
           .input
             .label
               Gender
