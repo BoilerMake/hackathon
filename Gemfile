@@ -14,6 +14,7 @@ gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
 gem 'better_errors'
+gem 'ap'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
