@@ -12,7 +12,16 @@ class TeamMailer < ActionMailer::Base
     # I'm pretty sure that you can chang the .text.haml file to .html.haml file
     # in some way to actually implement the styling.
     @team = team
+    pronoun = 'his or her';
+    gender = current_user.application.gender
+    if gender.present?
+      if gender == 'Female'
+        pronoun = 'her'
+      elsif gender == 'Male'
+        pronoun = 'his'
+      end
+    end
     @name = current_user.first_name ? current_user.first_name : current_user.email
-    mail(to: email, subject: "#{@name} wants you to join a #{HACKATHON} team!")
+    mail(to: email, subject: "#{@name} wants you to join #{pronoun} #{HACKATHON} team!")
   end
 end
