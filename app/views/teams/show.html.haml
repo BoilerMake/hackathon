@@ -33,10 +33,13 @@
             = @others[2][:name]
           = text_field_tag :email_three, @others[2][:email],
                                        disabled: @others[2][:present]
-        %a#invite-send.send.button.outline
+        - leave_style = 'margin-left: 200px;'
+        - if @team.hackers.count < 4
+          %a#invite-send.send.button.outline
           Send Invite
+          - leave_style = 'margin-left: 0px;'
         = link_to 'Leave Team', teams_leave_url,
-                  style: 'margin-left:0px;',
+                  style: leave_style,
                   class: 'send button outline',
                   data: { confirm: 'Are you sure you want to leave this team?' }
       .divider
