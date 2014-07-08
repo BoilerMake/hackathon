@@ -1,0 +1,9 @@
+.container
+  %h1
+    = "Welcome, #{current_user.email}"
+  %h2
+    = "Hackers wanting to kick ass at #{HACKATHON}:"
+    %span{style: 'color: #f5a623;'}=  @applied_count
+  %h2
+    = "Schools Represented:"
+    %span{style: 'color: #f5a623;'}=  @school_count
