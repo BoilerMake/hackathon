@@ -141,11 +141,15 @@ a {
   min-height: 36px;
 }
 #submitlogin {
-  padding: 3px 55px;
+  width: 170px;
+  height: 33px;
+  padding-top: 3px;
   cursor: pointer;
 }
 #apply-submit input{
-  padding: 4px 89px;
+  width: 238px;
+  height: 34px;
+  padding-top: 4px;
   cursor: pointer;
 }
 .signup input {
@@ -291,9 +295,13 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
     height: 80px;
   }
   #submitlogin {
-    padding: 3px 54px;
+    width: 125px;
+    height: 27px;
+    padding-top: 3px;
   }
   #apply-submit input{
-    padding: 4px 83px;
+    width: 193px;
+    height: 28px;
+    padding-top: 4px;
   }
 }
