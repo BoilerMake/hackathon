@@ -23,6 +23,7 @@ group :development do
   gem 'spring'
   gem 'binding_of_caller'
   gem 'pry-rails'
+  gem 'quiet_assets', '~> 1.0.3'
 end
 
 group :development, :test do
