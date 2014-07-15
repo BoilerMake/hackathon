@@ -7,3 +7,12 @@
   %h2
     = "Schools Represented:"
     %span{style: 'color: #f5a623;'}=  @school_count
+  %table
+    %thead
+      %th{style: 'color: #f5a623;'} School
+      %th{style: 'color: #f5a623;'} Hacker Count
+    %tbody
+      - @schools.each do |school|
+        %tr
+          %td= school.name
+          %td= school.users.count

@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
       session[:return_to] = nil
     else
       if current_user.exec?
-        redirect_to execs_applied_url
+        redirect_to execs_dashboard_url
       else
         redirect_to dashboard_url
       end
