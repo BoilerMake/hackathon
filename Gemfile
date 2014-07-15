@@ -13,6 +13,10 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
+
+gem 'cancancan', '~> 1.8'
+
+# these should move in the future
 gem 'better_errors'
 gem 'awesome_print'
 
