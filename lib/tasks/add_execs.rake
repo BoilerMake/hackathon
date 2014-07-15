@@ -3,7 +3,14 @@ task :addExecs => :environment do
   fn = File.join(Rails.root, 'lib', 'assets','execs.txt')
   execs = File.open(fn, 'r').read
   execs.split("\n").each do |email|
-    if !Exec.find_by(email: email)
+
+    exec = Exec.find_by email: email
+    puts "account for #{email} is #{exec ? 'found': 'not found'}"
+    if exec.present? && exec.hacker?
+      exec.destroy!
+      exec = nil
+    end
+    if !exec
       pass = SecureRandom.urlsafe_base64
       exec = Exec.create(email: email, password: pass, password_confirmation: pass)
       exec.send_password_reset
