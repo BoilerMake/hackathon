@@ -35,7 +35,7 @@
     settling isn't an option.
   .signup
     - if current_user.nil?
-      %a#register.button.outline{:style => "cursor:pointer;"} Earlybird Application
+      %a#register.button.outline{:style => "cursor:pointer;"} Application
       = form_for @hacker do |f|
         #email.input{:style => "display:none;"}
           = f.email_field :email,
@@ -56,8 +56,3 @@
           = f.submit 'Submit', { class: 'flat-input sign-up' }
     - else
       = link_to 'My Application', dashboard_path, class: 'button outline'
-
-  %p.bottom-md
-    Apply before July 15th to get an exclusive BoilerMake
-    %br
-    laptop decal mailed straight to your doorstep.
