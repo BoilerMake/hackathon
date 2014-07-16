@@ -5,7 +5,8 @@ class ExecsController < ApplicationController
   end
 
   def sticker_recipients
-    @hackers = Hacker.all.select do |h|
+    deadline = Time.parse('July 15th 2014 11:59pm PST')
+    @hackers = Hacker.where('updated_at < ?', deadline ).select do |h|
       h.eligible_for_sticker?
     end
     respond_to do |format|
