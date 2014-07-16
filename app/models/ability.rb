@@ -7,7 +7,8 @@ class Ability
       if user.exec?
         can :manage, :all
       elsif user.hacker?
-        can :manage, [Hacker, Application, Team]
+        can :manage, [Application, Team]
+        can [ :dashboard, :new, :create, :update ], Hacker
       end
     end
   end

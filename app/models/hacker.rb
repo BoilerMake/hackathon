@@ -12,6 +12,22 @@ class Hacker < User
     false
   end
 
+  def eligible_for_sticker?
+    false if application.nil?
+    attributes = [ first_name, last_name ].map do |el|
+      el.present?
+    end
+    if application.present?
+      application_attrs = [ application.address_line_one,
+                            application.city,
+                            application.zip_code ]
+      application_attrs.map! do |el|
+        attributes << el.present?
+      end
+    end
+    attributes.reduce(:&)
+  end
+
   def full_name
     fname = first_name.present? ? first_name : ''
     lname = last_name.present? ? last_name : ''

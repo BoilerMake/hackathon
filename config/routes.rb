@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'teams/leave'
   get 'execs/applied' => 'execs#applied'
   get 'execs/dashboard'
+  get 'execs/sticker_recipients'
 
   get 'my_team', to: 'teams#show'
 

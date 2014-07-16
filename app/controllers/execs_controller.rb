@@ -4,6 +4,17 @@ class ExecsController < ApplicationController
     @count = Hacker.all.count
   end
 
+  def sticker_recipients
+    @hackers = Hacker.all.select do |h|
+      h.eligible_for_sticker?
+    end
+    respond_to do |format|
+      format.json { render @hackers }
+      format.html { render 'sticker_recipients' }
+    end
+  end
+
+
   def dashboard
     @applied_count = Hacker.all.count
     @schools = Hacker.all.map{ |h| h.school }.keep_if{ |h| h.present? }.uniq
