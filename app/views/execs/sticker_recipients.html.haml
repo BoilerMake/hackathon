@@ -1,5 +1,6 @@
 .container
-  .export-buttons
+  %h1= "Hackers getting stickers: #{@hackers.count}"
+  .export-buttons{style: 'margin-bottom: 10px'}
     %a{ download: 'hackers.xls', href: '#',
         onclick: 'return ExcellentExport.excel(this, "hacker_info", "hackers");',
         class: 'button outline'}
