@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'pages/welcome'
   get 'teams/join'
   get 'teams/leave'
-  get 'execs/applied' => 'execs#applied'
   get 'execs/dashboard'
   get 'execs/sticker_recipients'
 
