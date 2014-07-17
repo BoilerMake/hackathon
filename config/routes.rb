@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
 
   resources :schools, only: [:index, :show]
-  resources :hackers, except: [:index]
+  resources :hackers, except: [:index, :destroy]
   resources :teams, except: [:show, :index, :destroy]  do
     get 'remove_hacker', on: :member
   end
