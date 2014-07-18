@@ -3,7 +3,6 @@ class Hacker < User
   belongs_to :team
   has_one :application
 
-  validates_format_of :email, with: /\A.*?\.(edu|ca)\z/i
   validate :team_size_is_okay
 
   accepts_nested_attributes_for :application
