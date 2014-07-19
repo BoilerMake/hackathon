@@ -16,6 +16,9 @@ gem 'underscore-rails'
 
 gem 'cancancan', '~> 1.8'
 
+gem 'unicorn'
+gem 'foreman'
+
 # these should move in the future
 gem 'better_errors'
 gem 'awesome_print'
