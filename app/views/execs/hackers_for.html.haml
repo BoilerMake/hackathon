@@ -1,0 +1,18 @@
+.container
+  %h1
+    = "Hackers from #{@school.name}"
+  .exec-toolbar
+    = link_to 'Exec Dashboard', execs_dashboard_url, class: 'button outline'
+    = link_to 'Sticker Recipients', execs_sticker_recipients_url, class: 'button outline'
+  %h2
+    = "Hackers wanting to kick ass:"
+    %span{style: 'color: #f5a623;'}=  @hackers.count
+  %table
+    %thead
+      %th{style: 'color: #f5a623;'} Name
+      %th{style: 'color: #f5a623;'} Email
+    %tbody
+      - @hackers.each do |hacker|
+        %tr
+          %td= hacker.full_name
+          %td= hacker.email
