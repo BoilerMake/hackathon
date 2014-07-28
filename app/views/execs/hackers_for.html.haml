@@ -4,10 +4,19 @@
   .exec-toolbar
     = link_to 'Exec Dashboard', execs_dashboard_url, class: 'button outline'
     = link_to 'Sticker Recipients', execs_sticker_recipients_url, class: 'button outline'
+    .export-buttons{style: 'margin-top: 30px'}
+      %a{ download: 'hackers.xls', href: '#',
+          onclick: 'return ExcellentExport.excel(this, "hacker_info", "hackers");',
+          class: 'button outline'}
+        Export to Excel
+      %a{ download: 'hackers.csv', href: '#',
+          onclick: 'return ExcellentExport.csv(this, "hacker_info", "hackers");',
+          class: 'button outline'}
+        Export to CSV
   %h2
     = "Hackers wanting to kick ass:"
     %span{style: 'color: #f5a623;'}=  @hackers.count
-  %table
+  %table#hacker_info
     %thead
       %th{style: 'color: #f5a623;'} Name
       %th{style: 'color: #f5a623;'} Email
