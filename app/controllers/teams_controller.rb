@@ -2,6 +2,7 @@ class TeamsController < ApplicationController
   before_action :set_team, only: [:edit, :update, :destroy]
   helper_method :hacker_full_name, :hacker_email, :hacker_school, :remove_hacker
   skip_before_action :require_login, only: [:join]
+  load_and_authorize_resource
 
   # GET /teams
   # GET /teams.json

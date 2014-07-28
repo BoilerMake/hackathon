@@ -6,7 +6,7 @@
       = form_tag sessions_path, id: 'login-form' do
         = email_field_tag :email, nil,
           { style: 'display:none;margin-top:35px', id: 'emaillogin',
-            class: 'flat-input sign-up', placeholder: 'Email (edu)'}
+            class: 'flat-input sign-up', placeholder: 'Email'}
         .clearfix
         = password_field_tag :password, nil,
           { style: 'display:none;', id: 'passwordlogin',
@@ -35,15 +35,15 @@
     settling isn't an option.
   .signup
     - if current_user.nil?
-      %a#register.button.outline{:style => "cursor:pointer;"} Earlybird Application
+      %a#register.button.outline{:style => "cursor:pointer;"} Apply Here
       = form_for @hacker do |f|
         #email.input{:style => "display:none;"}
           = f.email_field :email,
-            { class: 'flat-input sign-up', placeholder: 'Email (.edu)' }
+            { class: 'flat-input sign-up', placeholder: 'Email' }
           %p.error.hidden
-            Invalid email address. Be sure to use your .edu address.
+            Invalid email address. Check the format of your email
             %br
-            Email team@boilermake.org if you don't have a .edu address.
+            Email team@boilermake.org if you have issues
         #password.input{:style => "display:none;"}
           = f.password_field :password,
             { class: 'flat-input sign-up', placeholder: 'Password' }
@@ -56,8 +56,3 @@
           = f.submit 'Submit', { class: 'flat-input sign-up' }
     - else
       = link_to 'My Application', dashboard_path, class: 'button outline'
-
-  %p.bottom-md
-    Apply before July 15th to get an exclusive BoilerMake
-    %br
-    laptop decal mailed straight to your doorstep.

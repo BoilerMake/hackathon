@@ -1,0 +1,21 @@
+.container
+  %h1
+    = "Welcome, #{current_user.email}"
+  .exec-toolbar
+    = link_to 'Sticker Recipients', execs_sticker_recipients_url, class: 'button outline'
+  %h2
+    = "Hackers wanting to kick ass at #{HACKATHON}:"
+    %span{style: 'color: #f5a623;'}=  @applied_count
+  %h2
+    = "Schools Represented:"
+    %span{style: 'color: #f5a623;'}=  @school_count
+  %table
+    %thead
+      %th{style: 'color: #f5a623;'} School
+      %th{style: 'color: #f5a623;'} Hacker Count
+    %tbody
+      - @schools.each do |school|
+        %tr
+          %td
+            = link_to school.name, { "controller"=>"execs", "action"=>"hackers_for", "school_id"=>school.id }
+          %td= school.users.count

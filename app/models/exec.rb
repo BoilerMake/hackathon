@@ -1,0 +1,2 @@
+class Exec < User
+end

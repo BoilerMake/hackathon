@@ -1,0 +1,30 @@
+.container
+  %h1= "Hackers getting stickers: #{@hackers.count}"
+  .export-buttons{style: 'margin-bottom: 10px'}
+    %a{ download: 'hackers.xls', href: '#',
+        onclick: 'return ExcellentExport.excel(this, "hacker_info", "hackers");',
+        class: 'button outline'}
+      Export to Excel
+    %a{ download: 'hackers.csv', href: '#',
+        onclick: 'return ExcellentExport.csv(this, "hacker_info", "hackers");',
+        class: 'button outline'}
+      Export to CSV
+  %table#hacker_info
+    %thead
+      %th Name
+      %th Address Line One
+      %th Address Line Two
+      %th City
+      %th State
+      %th Zip
+      %th Last Updated
+    %tbody
+      - @hackers.each do |hacker|
+        %tr
+          %td= hacker.full_name
+          %td= hacker.application.address_line_one
+          %td= hacker.application.address_line_two
+          %td= hacker.application.city
+          %td= hacker.application.state
+          %td= hacker.application.zip_code
+          %td= hacker.updated_at.to_i
