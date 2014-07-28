@@ -34,7 +34,6 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'jazz_hands'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'guard'
 end
