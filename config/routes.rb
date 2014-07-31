@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'execs/applied' => 'execs#applied'
   get 'execs/dashboard'
   get 'execs/sticker_recipients'
+  get 'execs/hackers_for'
 
   get 'my_team', to: 'teams#show'
 
