@@ -18,6 +18,9 @@ gem 'twitter-bootstrap-rails'
 
 gem 'cancancan', '~> 1.8'
 
+gem 'unicorn'
+gem 'foreman'
+
 # these should move in the future
 gem 'better_errors'
 gem 'awesome_print'
@@ -29,7 +32,6 @@ end
 group :development do
   gem 'spring'
   gem 'binding_of_caller'
-  gem 'pry-rails'
   gem 'quiet_assets', '~> 1.0.3'
 end
 
