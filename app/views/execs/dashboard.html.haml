@@ -16,5 +16,6 @@
     %tbody
       - @schools.each do |school|
         %tr
-          %td= school.name
+          %td
+            = link_to school.name, { "controller"=>"execs", "action"=>"hackers_for", "school_id"=>school.id }
           %td= school.users.count
