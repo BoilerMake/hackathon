@@ -1,0 +1,58 @@
+.header
+  .container
+    .logo
+    - if current_user.nil?
+      %a#login.button.outline{:style => "cursor:pointer;"} Log In
+      = form_tag sessions_path, id: 'login-form' do
+        = email_field_tag :email, nil,
+          { style: 'display:none;margin-top:35px', id: 'emaillogin',
+            class: 'flat-input sign-up', placeholder: 'Email'}
+        .clearfix
+        = password_field_tag :password, nil,
+          { style: 'display:none;', id: 'passwordlogin',
+            class: 'flat-input sign-up', placeholder: 'Password' }
+        .clearfix
+        = submit_tag :Submit,
+          { style: 'display:none;', id: 'submitlogin',
+            class: 'flat-input sign-up' }
+    - else
+      = link_to 'Log Out', logout_path, class: 'button outline'
+  = render 'shared/flash.html.haml'
+.container
+  = "<h1 class=\"hero-headline normal\">GOOD <span>ISN'T GOOD ENOUGH</span></h1>".html_safe
+  = "<h1 class=\"hero-headline condensed\">GOOD<br><span>ISN'T GOOD<BR>ENOUGH.</span></h1>".html_safe
+  .hammers
+    = image_tag 'hammers.svg'
+  %h3.normal October 17th-19th - Purdue University
+  %h3.condensed
+    October 17th-19th,
+    %br
+    Purdue University
+  %h4.normal Be a part of BoilerMake, where settling isn't an option.
+  %h4.condensed
+    Be a part of BoilerMake, where
+    %br
+    settling isn't an option.
+  .signup
+    - if current_user.nil?
+      %a#register.button.outline{:style => "cursor:pointer;"} Apply Here
+      = form_for @hacker do |f|
+        #email.input{:style => "display:none;"}
+          = f.email_field :email,
+            { class: 'flat-input sign-up', placeholder: 'Email' }
+          %p.error.hidden
+            Invalid email address. Check the format of your email
+            %br
+            Email team@boilermake.org if you have issues
+        #password.input{:style => "display:none;"}
+          = f.password_field :password,
+            { class: 'flat-input sign-up', placeholder: 'Password' }
+          %p.error.hidden Invalid password.
+        #confirm-password.input{:style => "display:none;"}
+          = f.password_field :password_confirmation,
+            { class: 'flat-input sign-up', placeholder: 'Confirm Password' }
+          %p.error.hidden Passwords do not match.
+        #apply-submit.input{style: 'display: none;'}
+          = f.submit 'Submit', { class: 'flat-input sign-up' }
+    - else
+      = link_to 'My Application', dashboard_path, class: 'button outline'

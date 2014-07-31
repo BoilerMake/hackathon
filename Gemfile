@@ -14,6 +14,7 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
+gem 'twitter-bootstrap-rails'
 
 gem 'cancancan', '~> 1.8'
 
