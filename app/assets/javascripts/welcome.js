@@ -101,17 +101,6 @@ $(document).ready(function() {
     });
   });
 
-  // ENTER KEY FUNCTIONALITY
-  $('#login-form').keypress(function(e) {
-    if (e.which === 13) {
-      e.preventDefault();
-      if (inputBox) {
-        submitLogin();
-      } else {
-        inputBox = true;
-      }
-    }
-  });
 
   // ENTER KEY FUNCTIONALITY
   $('#new_hacker').keypress(function(e) {

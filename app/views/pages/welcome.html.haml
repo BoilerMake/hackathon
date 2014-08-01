@@ -27,7 +27,10 @@
             %input#apply-cancel.apply-toggle.cancel.button{type: 'button', text: 'Cancel', value: 'Cancel'}
           %div
             = f.submit 'Submit', class: 'submit cta button'
-        #apply-here.apply-toggle.button.cta.form-button Apply Now!
+        - if current_user.nil?
+          #apply-here.apply-toggle.button.cta.form-button Apply Now!
+        -else
+          = link_to 'My Application', dashboard_path, class: 'submit cta button'
     %section.mission.clearfix
       .container
         .mission-headline
