@@ -41,17 +41,50 @@ function submitLogin() {
 
 $(document).ready(function() {
 
+  $('.text-box').masonry({
+    itemSelector: '.text-box-container'
+  });
 
-  $("#login").click(function(event) {
-    $(this).fadeOut("fast", function() {
-      $("#emaillogin").fadeIn("fast", function() {
-        $("#emaillogin").focus();
-      });
-      $("#passwordlogin").fadeIn("fast");
-      $("#submitlogin").fadeIn("fast");
-      inputBox = true;
+
+  window.addEventListener("scroll",function() {
+    if(window.scrollY > 700) {
+      $('.scrolling-header').slideDown();
+    }
+    else {
+      $('.scrolling-header').slideUp();
+    }
+  }, false);
+
+  $( ".mobile-button" ).click(function() {
+    $( ".slide-down" ).slideToggle('fast');
+  });
+
+
+
+  $('.login-toggle').on('click', function(){
+    // a bit gross, but its a compromise between DRY and UI
+    // defer till later if its visible because it gets pushed aside
+    // by the form during the slideToggle and it looks strange
+    var defer = false
+    if ( $("#login").is(':visible')){
+      $('#login').toggle();
+    } else {
+      defer = true;
+    }
+
+    $('#login-form').slideToggle('slow', function(){
+      if (defer){
+        $('#login').toggle();
+      }
     });
   });
+
+  $('.apply-toggle').on('click', function() {
+    $('#apply-here').toggle();
+    $('#signup-form').slideToggle('slow');
+  });
+
+
   // EARLYBIRD APPLICATION BUTTON
   $("#register").click(function() {
     $('body,html').animate({
@@ -127,32 +160,4 @@ $(document).ready(function() {
     }
   });
 
-});
-
-$('.text-box').masonry({
-  itemSelector: '.text-box-container'
-});
-
-
-window.addEventListener("scroll",function() {
-  if(window.scrollY > 700) {
-    $('.scrolling-header').slideDown();
-  }
-  else {
-    $('.scrolling-header').slideUp();
-  }
-}, false);
-
-$( ".mobile-button" ).click(function() {
-  $( ".slide-down" ).slideToggle('fast');
- });
-
-
-$('.form-button').click(function() {
-  $('.form-button').toggle();
-  $('.form').slideToggle('slow');
-});
-$('.cancel').click(function() {
-  $('.form').slideToggle();
-  $('.form-button').toggle();
 });

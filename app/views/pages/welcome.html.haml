@@ -11,22 +11,23 @@
         %h3 October 17th-19th - Purdue University
         %h4 36 hours, 500 students, $10,000 in prizes
         = render 'shared/flash.html.haml'
-        = form_for @hacker, html: {class: 'form clearfix'} do |f|
+        = form_for @hacker, html: {id: 'signup-form',
+                                   class: 'form clearfix',
+                                   style: 'display:none;'} do |f|
           %div
             = f.label 'Email'
-            = f.email_field :email, { id: 'emaillogin', placeholder: 'user@domain.tld'}
+            = f.email_field :email, { placeholder: 'user@domain.tld'}
           %div
             = f.label 'Password'
-            = f.email_field :password, { id: 'passwordlogin', placeholder: 'hunter2' }
+            = f.password_field :password, { placeholder: 'hunter2' }
           %div
             = f.label 'Confirm Password'
-            = f.email_field :password, { id: 'passwordlogin', placeholder: 'hunter2' }
+            = f.password_field :password, { placeholder: 'hunter2' }
           %div
-            %a.cancel.button
-              Cancel
+            %input#apply-cancel.apply-toggle.cancel.button{type: 'button', text: 'Cancel', value: 'Cancel'}
           %div
             = f.submit 'Submit', class: 'submit cta button'
-        .button.cta.form-button Apply Now!
+        #apply-here.apply-toggle.button.cta.form-button Apply Now!
     %section.mission.clearfix
       .container
         .mission-headline
@@ -123,7 +124,4 @@
             %a.ss-icon.ss-social{:href => "#"} mail
 / jQuery is called via the Wordpress-friendly way via functions.php
 %script{:src => "http://clients.kaplusa.com/boilermake/wp-content/themes/boilermake/./js/bootstrap-dropdown.js"}
-%script{:src => "http://clients.kaplusa.com/boilermake/wp-content/themes/boilermake/./js/vendor/masonry.min.js"}
-%script{:src => "http://clients.kaplusa.com/boilermake/wp-content/themes/boilermake/./js/scripts.js"}
-%script{:src => "http://clients.kaplusa.com/boilermake/wp-content/themes/boilermake/./js/plugins.js"}
 %script{:src => "http://clients.kaplusa.com/boilermake/wp-content/themes/boilermake/./js/vendor/bootstrap.js"}
