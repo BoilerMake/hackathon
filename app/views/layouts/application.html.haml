@@ -3,9 +3,9 @@
   %head
     %title BoilerMake
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <meta property="og:url" content="http://www.boilermake.org" /> 
-    <meta property="og:title" content="BoilerMake" /> 
-    <meta property="og:image" content="https://scontent-b.xx.fbcdn.net/hphotos-xpf1/t31.0-8/10490099_399421360196953_7767766326558879957_o.png" /> 
+    <meta property="og:url" content="http://www.boilermake.org" />
+    <meta property="og:title" content="BoilerMake" />
+    <meta property="og:image" content="https://scontent-b.xx.fbcdn.net/hphotos-xpf1/t31.0-8/10490099_399421360196953_7767766326558879957_o.png" />
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = stylesheet_link_tag    'welcome'
     = stylesheet_link_tag    'hackers' if params[:controller] == 'hackers' || params[:controller] == 'teams'
@@ -14,5 +14,5 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = render 'shared/google_analytics'
     = csrf_meta_tags
-  %body
+  %body.home.page.page-id-5.page-template.page-template-page-home-php
     = yield

@@ -128,3 +128,31 @@ $(document).ready(function() {
   });
 
 });
+
+$('.text-box').masonry({
+  itemSelector: '.text-box-container'
+});
+
+
+window.addEventListener("scroll",function() {
+  if(window.scrollY > 700) {
+    $('.scrolling-header').slideDown();
+  }
+  else {
+    $('.scrolling-header').slideUp();
+  }
+}, false);
+
+$( ".mobile-button" ).click(function() {
+  $( ".slide-down" ).slideToggle('fast');
+ });
+
+
+$('.form-button').click(function() {
+  $('.form-button').toggle();
+  $('.form').slideToggle('slow');
+});
+$('.cancel').click(function() {
+  $('.form').slideToggle();
+  $('.form-button').toggle();
+});

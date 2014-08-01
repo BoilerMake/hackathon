@@ -2,41 +2,44 @@
   .container
     =link_to root_url, class: 'logo-container' do
       =image_tag 'logo.png', class: 'logo'
-    - if current_user.nil?
-      %a#login.button.outline{:style => "cursor:pointer;"} Log In
-      = form_tag sessions_path, id: 'login-form' do
-        = email_field_tag :email, nil,
-          { style: 'display:none;margin-top:35px', id: 'emaillogin',
-            class: 'flat-input sign-up', placeholder: 'Email'}
-        .clearfix
-        = password_field_tag :password, nil,
-          { style: 'display:none;', id: 'passwordlogin',
-            class: 'flat-input sign-up', placeholder: 'Password' }
-        .clearfix
-        = submit_tag :Submit,
-          { style: 'display:none;', id: 'submitlogin',
-            class: 'flat-input sign-up' }
-    - else
-      = link_to 'Log Out', logout_path, class: 'button outline'
+    .login
+      - if current_user.nil?
+        %a#login.button.outline{:style => "cursor:pointer;"} Log In
+        = form_tag sessions_path,
+                   html: {id: 'login-form', class: 'form clearfix'} do
+          = email_field_tag :email, nil,
+            { style: 'display:none;margin-top:35px', id: 'emaillogin',
+              class: 'flat-input sign-up', placeholder: 'Email'}
+          .clearfix
+          = password_field_tag :password, nil,
+            { style: 'display:none;', id: 'passwordlogin',
+              class: 'flat-input sign-up', placeholder: 'Password' }
+          .clearfix
+          = submit_tag :Submit,
+            { style: 'display:none;', id: 'submitlogin',
+              class: 'submit-button' }
+      - else
+        = link_to 'Log Out', logout_path, class: 'button outline'
 / Scrolling header/
 %header.clearfix.scrolling-header{:role => "banner"}
   .container
     =link_to root_url, class: 'logo-container' do
       =image_tag 'logo.png', class: 'logo'
-    - if current_user.nil?
-      %a#login.button.outline{:style => "cursor:pointer;"} Log In
-      = form_tag sessions_path, id: 'login-form' do
-        = email_field_tag :email, nil,
-          { style: 'display:none;margin-top:35px', id: 'emaillogin',
-            class: 'flat-input sign-up', placeholder: 'Email'}
-        .clearfix
-        = password_field_tag :password, nil,
-          { style: 'display:none;', id: 'passwordlogin',
-            class: 'flat-input sign-up', placeholder: 'Password' }
-        .clearfix
-        = submit_tag :Submit,
-          { style: 'display:none;', id: 'submitlogin',
-            class: 'flat-input sign-up' }
-    - else
-      = link_to 'Log Out', logout_path, class: 'button outline'
-= render 'shared/flash.html.haml'
+    .login
+      - if current_user.nil?
+        %a#login.button.outline{:style => "cursor:pointer;"} Log In
+        = form_tag sessions_path,
+                   html: {id: 'login-form', class: 'form clearfix'} do
+          = email_field_tag :email, nil,
+            { style: 'display:none;margin-top:35px', id: 'emaillogin',
+              class: 'flat-input sign-up', placeholder: 'Email'}
+          .clearfix
+          = password_field_tag :password, nil,
+            { style: 'display:none;', id: 'passwordlogin',
+              class: 'flat-input sign-up', placeholder: 'Password' }
+          .clearfix
+          = submit_tag :Submit,
+            { style: 'display:none;', id: 'submitlogin',
+              class: 'submit-button' }
+      - else
+        = link_to 'Log Out', logout_path, class: 'button outline'

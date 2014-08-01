@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
 //= require underscore
 //= require excellentexport
+//= require masonry
 //= require jquery.ui.all
 //= require_tree .

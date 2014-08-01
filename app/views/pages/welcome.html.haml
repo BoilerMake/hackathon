@@ -10,7 +10,8 @@
           = image_tag 'hammers.png'
         %h3 October 17th-19th - Purdue University
         %h4 36 hours, 500 students, $10,000 in prizes
-        = form_for @hacker, class: 'form clearfix' do |f|
+        = render 'shared/flash.html.haml'
+        = form_for @hacker, html: {class: 'form clearfix'} do |f|
           %div
             = f.label 'Email'
             = f.email_field :email, { id: 'emaillogin', placeholder: 'user@domain.tld'}
@@ -21,7 +22,8 @@
             = f.label 'Confirm Password'
             = f.email_field :password, { id: 'passwordlogin', placeholder: 'hunter2' }
           %div
-            = button_tag 'Cancel', class: 'cancel button'
+            %a.cancel.button
+              Cancel
           %div
             = f.submit 'Submit', class: 'submit cta button'
         .button.cta.form-button Apply Now!

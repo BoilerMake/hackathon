@@ -11,10 +11,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'bcrypt-ruby'
 
 gem 'haml-rails'
-gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
-gem 'twitter-bootstrap-rails'
 
 gem 'cancancan', '~> 1.8'
 
@@ -41,6 +39,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'guard'
   gem 'dotenv-rails'
+  gem 'foreman'
 end
 
 group :production do
