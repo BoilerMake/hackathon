@@ -64,6 +64,9 @@
   %h1 Next time try writing it down.
   %p But this time we'll help you out, what's your email?
 
-  %input.flat-input{:placeholder => "Email"}
-  %input.flat-button.submit{:value => "Submit", :type => "submit"}
+  = form_tag password_resets_path, method: :post do
+    .field
+      = text_field_tag :email, params[:email], { class: 'flat-input', placeholder: 'Email'}
+    .actions
+      = submit_tag 'Reset Password', {class: 'flat-button submit'}
   %p.return Return
