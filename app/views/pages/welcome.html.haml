@@ -6,15 +6,19 @@
       = form_tag sessions_path, id: 'login-form' do
         = email_field_tag :email, nil,
           { style: 'display:none;margin-top:35px', id: 'emaillogin',
-            class: 'flat-input sign-up', placeholder: 'Email (edu)'}
+            class: 'flat-input sign-up', placeholder: 'Email'}
         .clearfix
         = password_field_tag :password, nil,
           { style: 'display:none;', id: 'passwordlogin',
             class: 'flat-input sign-up', placeholder: 'Password' }
         .clearfix
+        %p.login-text
+          %input.login-text{:type => "checkbox"}
+          Remember Me
+        %a.login-text#forgotpassword Forgot Password
         = submit_tag :Submit,
           { style: 'display:none;', id: 'submitlogin',
-            class: 'flat-input sign-up' }
+            class: 'flat-button submit' }
     - else
       = link_to 'Log Out', logout_path, class: 'button outline'
   = render 'shared/flash.html.haml'
@@ -39,11 +43,11 @@
       = form_for @hacker do |f|
         #email.input{:style => "display:none;"}
           = f.email_field :email,
-            { class: 'flat-input sign-up', placeholder: 'Email (.edu)' }
+            { class: 'flat-input sign-up', placeholder: 'Email' }
           %p.error.hidden
-            Invalid email address. Be sure to use your .edu address.
+            Invalid email address. Check the format of your email
             %br
-            Email team@boilermake.org if you don't have a .edu address.
+            Email team@boilermake.org if you have issues
         #password.input{:style => "display:none;"}
           = f.password_field :password,
             { class: 'flat-input sign-up', placeholder: 'Password' }
@@ -53,6 +57,13 @@
             { class: 'flat-input sign-up', placeholder: 'Confirm Password' }
           %p.error.hidden Passwords do not match.
         #apply-submit.input{style: 'display: none;'}
-          = f.submit 'Submit', { class: 'flat-input sign-up' }
+          = f.submit 'Submit', { class: 'flat-button submit' }
     - else
       = link_to 'My Application', dashboard_path, class: 'button outline'
+.forgotpassword-email
+  %h1 Next time try writing it down.
+  %p But this time we'll help you out, what's your email?
+
+  %input.flat-input{:placeholder => "Email"}
+  %input.flat-button.submit{:value => "Submit", :type => "submit"}
+  %p.return Return
