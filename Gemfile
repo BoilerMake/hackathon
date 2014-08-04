@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.2'
 
 gem 'rails', '4.1.1'
 gem 'sass-rails', '~> 4.0.3'
@@ -34,7 +35,6 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.0.0'
-  gem 'jazz_hands'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'guard'
 end
