@@ -13,7 +13,7 @@
             class: 'flat-input sign-up', placeholder: 'Password' }
         .clearfix
         %p.login-text
-          %input.login-text{:type => "checkbox"}
+          = check_box_tag :remember_me, {class: 'login-text'}
           Remember Me
         %a.login-text#forgotpassword Forgot Password
         = submit_tag :Submit,
