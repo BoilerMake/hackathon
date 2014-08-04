@@ -15,6 +15,11 @@ class ExecsController < ApplicationController
     end
   end
 
+  def hackers_for
+    @school = School.find params[:school_id]
+    @hackers = @school.users
+  end
+
 
   def dashboard
     @applied_count = Hacker.all.count
