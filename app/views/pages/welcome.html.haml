@@ -1,115 +1,113 @@
 = render 'shared/header'
 .main.clearfix{:role => "main"}
-  .content
-    %section.hero
-      .container
-        %h1.hero-headline
-          Make.Create.
-          %span HACK.
-        .hammers
-          = image_tag 'hammers.png'
-        %h3 October 17th-19th - Purdue University
-        %h4 36 hours, 500 students, $10,000 in prizes
-        = render 'shared/flash.html.haml'
-        = form_for @hacker, html: {id: 'signup-form',
-                                   class: 'form clearfix',
-                                   style: 'display:none;'} do |f|
-          %div
-            = f.label 'Email'
-            = f.email_field :email, { placeholder: 'user@domain.tld'}
-          %div
-            = f.label 'Password'
-            = f.password_field :password, { placeholder: 'hunter2' }
-          %div
-            = f.label 'Confirm Password'
-            = f.password_field :password, { placeholder: 'hunter2' }
-          %div
-            %input#apply-cancel.apply-toggle.cancel.button{type: 'button', text: 'Cancel', value: 'Cancel'}
-          %div
-            = f.submit 'Submit', class: 'submit cta button'
-        - if current_user.nil?
-          #apply-here.apply-toggle.button.cta.form-button Apply Now!
-        -else
-          = link_to 'My Application', dashboard_path, class: 'submit cta button'
-    %section.mission.clearfix
-      .container
-        .mission-headline
-          %h3
-            BoilerMake drives a culture of innovation, creativity, and achievement across the nation.
-          %p
-            That’s why we’re organizing BoilerMake, a 36-hour hackathon at Purdue where teams of students create software and hardware projects that solve important, real-world problems. BoilerMake brings together highly talented university students with top-tier companies to support the development of remarkable student projects and personal relationships.
-        .video-headline
-          .video
-            .btn.btn-lg.btn-success{"data-target" => "#basicModal", "data-toggle" => "modal"}
-              = image_tag 'video.png'
-            / MODAL
-            #basicModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "basicModal", :role => "dialog", :tabindex => "-1"}
-              .modal-dialog
-                .modal-content
-                  .modal-body
-                    %iframe{:allowfullscreen => "", :frameborder => "0", :src => "//www.youtube.com/embed/P5a__iXkKHE"}
-                  .modal-footer
-                    %button.button{"data-dismiss" => "modal", :type => "button"} Close
-            %h3 Watch the video from BoilerMake 2013.
-    %section.wide-image-container
-      .wide-image-1
-    %section.speakers.clearfix
-      .container
-        %h2.section-head Who's Coming?
-        .avitars
-          Information Coming Soon.
-    %section.wide-image-container
-      .wide-image-2
-    %section.faq.clearfix
-      .container
-        %h2.section-head Questions
-        .text-box
-          .text-box-container
-            %h4 Who can apply?
-            %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
-          .text-box-container
-            %h4 Who can apply?
-            %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
-          .text-box-container
-            %h4 Who can apply?
-            %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
-          .text-box-container
-            %h4 Who can apply?
-            %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
-          .text-box-container
-            %h4 Who can apply?
-            %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
-          .text-box-container
-            %h4 Who can apply?
-            %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
-    %section.wide-image-container
-      .wide-image-3
-    %section.sponsors.clearfix
-      .container
-        .sponsors-header.clearfix
-          %h2.section-head Sponsors
-          /%a.button{:href => "#"} Download Prospectus
-        .sponsors-container
-          .premium
-            %p.sponsor-cat Premium
-            .img
-              = image_tag 'inin2.png'
-        .sponsors-container
-          .gold
-            %p.sponsor-cat Gold
-            .img
-              = image_tag 'kaplusa.png'
-            .img
-              = image_tag 'apple.png'
-        .sponsors-container
-          .silver
-            %p.sponsor-cat Silver
-            .img
-              = image_tag 'et.png'
-            .img
-              = image_tag 'Booz.png'
-            .img
-              = image_tag 'Bloomberg.png'
+.content
+  %section.hero
+    .container
+      = "<h1 class=\"hero-headline\">Make.Create.<span>HACK.</span></h1>".html_safe
+      .hammers
+        = image_tag 'hammers.png'
+      %h3 October 17th-19th - Purdue University
+      %h4 36 hours, 500 students, $10,000 in prizes
+      = render 'shared/flash.html.haml'
+      = form_for @hacker, html: {id: 'signup-form',
+                                 class: 'form clearfix',
+                                 style: 'display:none;'} do |f|
+        %div
+          = f.label 'Email'
+          = f.email_field :email, { placeholder: 'user@domain.tld'}
+        %div
+          = f.label 'Password'
+          = f.password_field :password, { placeholder: 'hunter2' }
+        %div
+          = f.label 'Confirm Password'
+          = f.password_field :password, { placeholder: 'hunter2' }
+        %div
+          %input#apply-cancel.apply-toggle.cancel.button{type: 'button', text: 'Cancel', value: 'Cancel'}
+        %div
+          = f.submit 'Submit', class: 'submit cta button'
+      - if current_user.nil?
+        #apply-here.apply-toggle.button.cta.form-button Apply Now!
+      -else
+        = link_to 'My Application', dashboard_path, class: 'submit cta button'
+  %section.mission.clearfix
+    .container
+      .mission-headline
+        %h3
+          BoilerMake drives a culture of innovation, creativity, and achievement across the nation.
+        %p
+          That’s why we’re organizing BoilerMake, a 36-hour hackathon at Purdue where teams of students create software and hardware projects that solve important, real-world problems. BoilerMake brings together highly talented university students with top-tier companies to support the development of remarkable student projects and personal relationships.
+      .video-headline
+        .video
+          .btn.btn-lg.btn-success{"data-target" => "#basicModal", "data-toggle" => "modal"}
+            = image_tag 'video.png'
+          / MODAL
+          #basicModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "basicModal", :role => "dialog", :tabindex => "-1"}
+            .modal-dialog
+              .modal-content
+                .modal-body
+                  %iframe{:allowfullscreen => "", :frameborder => "0", :src => "//www.youtube.com/embed/P5a__iXkKHE"}
+                .modal-footer
+                  %button.button{"data-dismiss" => "modal", :type => "button"} Close
+          %h3 Watch the video from BoilerMake 2013.
+  %section.wide-image-container
+    .wide-image-1
+  %section.speakers.clearfix
+    .container
+      %h2.section-head Who's Coming?
+      .avitars
+        Information Coming Soon.
+  %section.wide-image-container
+    .wide-image-2
+  %section.faq.clearfix
+    .container
+      %h2.section-head Questions
+      .text-box
+        .text-box-container
+          %h4 Who can apply?
+          %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
+        .text-box-container
+          %h4 Who can apply?
+          %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
+        .text-box-container
+          %h4 Who can apply?
+          %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
+        .text-box-container
+          %h4 Who can apply?
+          %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
+        .text-box-container
+          %h4 Who can apply?
+          %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
+        .text-box-container
+          %h4 Who can apply?
+          %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
+  %section.wide-image-container
+    .wide-image-3
+  %section.sponsors.clearfix
+    .container
+      .sponsors-header.clearfix
+        %h2.section-head Sponsors
+        /%a.button{:href => "#"} Download Prospectus
+      .sponsors-container
+        .premium
+          %p.sponsor-cat Premium
+          .img
+            = image_tag 'inin2.png'
+      .sponsors-container
+        .gold
+          %p.sponsor-cat Gold
+          .img
+            = image_tag 'kaplusa.png'
+          .img
+            = image_tag 'apple.png'
+      .sponsors-container
+        .silver
+          %p.sponsor-cat Silver
+          .img
+            = image_tag 'et.png'
+          .img
+            = image_tag 'Booz.png'
+          .img
+            = image_tag 'Bloomberg.png'
 %footer{:role => "contentinfo"}
   .container
     .footer-top
@@ -128,3 +126,13 @@
 / jQuery is called via the Wordpress-friendly way via functions.php
 %script{:src => "http://clients.kaplusa.com/boilermake/wp-content/themes/boilermake/./js/bootstrap-dropdown.js"}
 %script{:src => "http://clients.kaplusa.com/boilermake/wp-content/themes/boilermake/./js/vendor/bootstrap.js"}
+.forgotpassword-email
+  %h1 Next time try writing it down.
+  %p But this time we'll help you out, what's your email?
+
+  = form_tag password_resets_path, method: :post do
+    .field
+      = text_field_tag :email, params[:email], { class: 'flat-input', placeholder: 'Email'}
+    .actions
+      = submit_tag 'Reset Password', {class: 'flat-button submit'}
+  %p.return Return
