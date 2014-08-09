@@ -8,6 +8,7 @@
     <meta property="og:image" content="https://scontent-b.xx.fbcdn.net/hphotos-xpf1/t31.0-8/10490099_399421360196953_7767766326558879957_o.png" />
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = stylesheet_link_tag    'welcome' if params[:controller] == 'pages'
+    = stylesheet_link_tag    'header'
     = stylesheet_link_tag    'hackers' if params[:controller] == 'hackers' || params[:controller] == 'teams'
     = stylesheet_link_tag    'teams' if params[:controller] == 'teams'
     = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700'
