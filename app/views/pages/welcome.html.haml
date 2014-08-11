@@ -12,18 +12,18 @@
       = form_for @hacker, html: {id: 'signup-form',
                                  class: 'form clearfix',
                                  style: 'display:none;'} do |f|
-        %div#email
+        #email
           = f.label 'Email'
           = f.email_field :email, { placeholder: 'user@domain.tld'}
           %p.error.hidden
             Invalid email address. Check the format of your email
             %br
             Email team@boilermake.org if you have issues
-        %div#password
+        #password
           = f.label 'Password'
           = f.password_field :password, { placeholder: 'hunter2' }
           %p.error.hidden Invalid password.
-        %div#confirm-password
+        #confirm-password
           = f.label 'Confirm Password'
           = f.password_field :password, { placeholder: 'hunter2' }
           %p.error.hidden Passwords do not match.
@@ -144,11 +144,11 @@
           %li
             %a.ss-icon.ss-social{:href => "https://twitter.com/BoilerMake1"} twitter
           %li
-            %a.ss-icon.ss-social{:href => "#"} mail
+            %a.ss-icon.ss-social{:href => "mailto:team@boilermake.org"} mail
 / jQuery is called via the Wordpress-friendly way via functions.php
 %script{:src => "http://clients.kaplusa.com/boilermake/wp-content/themes/boilermake/./js/bootstrap-dropdown.js"}
 %script{:src => "http://clients.kaplusa.com/boilermake/wp-content/themes/boilermake/./js/vendor/bootstrap.js"}
-.forgotpassword-email
+.forgot-password{style: 'display:none;'}
   %h1 Next time try writing it down.
   %p But this time we'll help you out, what's your email?
 

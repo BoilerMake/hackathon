@@ -58,6 +58,13 @@ $(document).ready(function() {
     $( ".slide-down" ).slideToggle('fast');
   });
 
+  $('.forgot-password-toggle').on('click', function(){
+    $('.forgot-password').fadeToggle('fast');
+  });
+
+  $('.return').on('click', function(){
+    $(".forgot-password").fadeOut("fast");
+  })
 
 
   $('.login-toggle').on('click', function(){
