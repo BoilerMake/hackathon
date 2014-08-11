@@ -5,6 +5,18 @@ Author: KA+A
 Author URI: http://kaplusa.com
 Version: 1.0
 */
+
+// added from ben's
+.container #signup-form .error {
+  text-align: center;
+  margin: 0 auto 10px auto;
+  font-size: 0.8em;
+  color: #f5a623;
+}
+
+
+// end added from ben's
+
 .modal-open {
   overflow: hidden; }
 
@@ -1939,7 +1951,7 @@ footer {
     border-radius: 3px;
     background-color: #e6e6e6;
     margin-bottom: 5px;
-    padding: 10px;
+    padding: 0px 10px;
     color: #444444;
     font-size: 1.2em; }
     @media (min-width: 672px) {

@@ -32,7 +32,7 @@ function validatePasswordsMatch() {
 }
 
 function submitRegister() {
-    $('#new_hacker').submit();
+    $('#signup-form').submit();
 }
 
 function submitLogin() {
@@ -81,6 +81,7 @@ $(document).ready(function() {
   $('.apply-toggle').on('click', function() {
     $('#apply-here').toggle();
     $('#signup-form').slideToggle('slow');
+    inputBox = !inputBox;
   });
 
 
@@ -102,19 +103,7 @@ $(document).ready(function() {
   });
 
     // ENTER KEY FUNCTIONALITY
-    $('#login-form').keypress(function(e) {
-        if (e.which === 13) {
-            e.preventDefault();
-            if (inputBox) {
-                submitLogin();
-            } else {
-                inputBox = true;
-            }
-        }
-    });
-
-    // ENTER KEY FUNCTIONALITY
-    $('#new_hacker').keypress(function(e) {
+    $('#signup-form').keypress(function(e) {
         if (e.which === 13) {
             e.preventDefault();
             if (inputBox) {
