@@ -3,7 +3,7 @@
 .content
   %section.hero
     .container
-      = "<h1 class=\"hero-headline\">Make.Create.<span>HACK.</span></h1>".html_safe
+      = "<h1 class=\"hero-headline\"><span>Forge</span> the future</h1>".html_safe
       .hammers
         = image_tag 'hammers.png'
       %h3 October 17th-19th - Purdue University
@@ -32,7 +32,7 @@
         %div
           = f.submit 'Submit', class: 'submit cta button'
       - if current_user.nil?
-        #apply-here.apply-toggle.button.cta.form-button Apply Now!
+        #apply-here.apply-toggle.button.cta.form-button Apply Now
       -else
         = link_to 'My Application', dashboard_path, class: 'submit cta button'
   %section.mission.clearfix
@@ -108,7 +108,16 @@
     .container
       .sponsors-header.clearfix
         %h2.section-head Sponsors
+
         /%a.button{:href => "#"} Download Prospectus
+        .sponsors-container
+          Sponsor list coming soon!
+        %p
+          Interested in sponsoring?
+          Contact
+          %strong
+            = mail_to 'sponsors@boilermake.org', nil, {style: 'color: black'}
+    /
       .sponsors-container
         .premium
           %p.sponsor-cat Premium
