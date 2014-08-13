@@ -1,69 +1,190 @@
-.header
-  .container
-    .logo
-    - if current_user.nil?
-      %a#login.button.outline{:style => "cursor:pointer;"} Log In
-      = form_tag sessions_path, id: 'login-form' do
-        = email_field_tag :email, nil,
-          { style: 'display:none;margin-top:35px', id: 'emaillogin',
-            class: 'flat-input sign-up', placeholder: 'Email'}
-        .clearfix
-        = password_field_tag :password, nil,
-          { style: 'display:none;', id: 'passwordlogin',
-            class: 'flat-input sign-up', placeholder: 'Password' }
-        .clearfix
-        %p.login-text
-          %input.login-text{:type => "checkbox"}
-          Remember Me
-        %a.login-text#forgotpassword Forgot Password
-        = submit_tag :Submit,
-          { style: 'display:none;', id: 'submitlogin',
-            class: 'flat-button submit' }
-    - else
-      = link_to 'Log Out', logout_path, class: 'button outline'
-  = render 'shared/flash.html.haml'
-.container
-  = "<h1 class=\"hero-headline normal\">GOOD <span>ISN'T GOOD ENOUGH</span></h1>".html_safe
-  = "<h1 class=\"hero-headline condensed\">GOOD<br><span>ISN'T GOOD<BR>ENOUGH.</span></h1>".html_safe
-  .hammers
-    = image_tag 'hammers.svg'
-  %h3.normal October 17th-19th - Purdue University
-  %h3.condensed
-    October 17th-19th,
-    %br
-    Purdue University
-  %h4.normal Be a part of BoilerMake, where settling isn't an option.
-  %h4.condensed
-    Be a part of BoilerMake, where
-    %br
-    settling isn't an option.
-  .signup
-    - if current_user.nil?
-      %a#register.button.outline{:style => "cursor:pointer;"} Apply Here
-      = form_for @hacker do |f|
-        #email.input{:style => "display:none;"}
-          = f.email_field :email,
-            { class: 'flat-input sign-up', placeholder: 'Email' }
+= render 'shared/header'
+= content_for :extra_js do
+  = javascript_include_tag 'http://www.youtube.com/player_api'
+.main.clearfix{:role => 'main'}
+.content
+  %section.hero
+    .container
+      = '<h1 class=\'hero-headline\'><span>Forge</span> the future</h1>'.html_safe
+      .hammers
+        = image_tag 'hammers.png'
+      %h3 October 17th-19th - Purdue University
+      %h4 36 hours, 500 students, $10,000 in prizes
+      = render 'shared/flash.html.haml'
+      = form_for @hacker, html: {id: 'signup-form',
+                                 class: 'form clearfix',
+                                 style: 'display:none;'} do |f|
+        #email
+          = f.label 'Email'
+          = f.email_field :email, { placeholder: 'user@domain.tld'}
           %p.error.hidden
             Invalid email address. Check the format of your email
             %br
             Email team@boilermake.org if you have issues
-        #password.input{:style => "display:none;"}
-          = f.password_field :password,
-            { class: 'flat-input sign-up', placeholder: 'Password' }
+        #password
+          = f.label 'Password'
+          = f.password_field :password, { placeholder: 'hunter2' }
           %p.error.hidden Invalid password.
-        #confirm-password.input{:style => "display:none;"}
-          = f.password_field :password_confirmation,
-            { class: 'flat-input sign-up', placeholder: 'Confirm Password' }
+        #confirm-password
+          = f.label 'Confirm Password'
+          = f.password_field :password, { placeholder: 'hunter2' }
           %p.error.hidden Passwords do not match.
-        #apply-submit.input{style: 'display: none;'}
-          = f.submit 'Submit', { class: 'flat-button submit' }
-    - else
-      = link_to 'My Application', dashboard_path, class: 'button outline'
-.forgotpassword-email
+        %div
+          %input#apply-cancel.apply-toggle.cancel.button{type: 'button', text: 'Cancel', value: 'Cancel'}
+        %div
+          = f.submit 'Submit', class: 'submit cta button'
+      - if current_user.nil?
+        #apply-here.apply-toggle.button.cta.form-button Apply Now
+      -else
+        = link_to 'My Application', dashboard_path, class: 'submit cta button'
+  %section.mission.clearfix
+    .container
+      .mission-headline
+        %h3
+          Our team's goal is to drive a culture of innovation, creativity, and achievement across the nation.
+        %p
+          That’s why we’re organizing BoilerMake, a 36-hour hackathon at Purdue where teams of students create software and hardware projects that solve important, real-world problems. BoilerMake brings together highly talented university students with top-tier companies to support the development of remarkable student projects and personal relationships.
+      .video-headline
+        .video
+          .btn.btn-lg.btn-success{'data-target' => '#basicModal', 'data-toggle' => 'modal'}
+            = image_tag 'video.png'
+          / MODAL
+          #basicModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'basicModal', :role => 'dialog', :tabindex => '-1'}
+            .modal-dialog
+              .modal-content
+                .modal-body
+                  %iframe{ id: 'player', allowfullscreen: '', frameborder: '0', src: '//www.youtube.com/embed/P5a__iXkKHE'}
+                .modal-footer
+                  %button.button#closeVideo{'data-dismiss' => 'modal', :type => 'button'} Close
+          %h3 Watch the video from BoilerMake 2013.
+  %section.wide-image-container
+    .wide-image-1
+  %section.container.speakers.clearfix
+    %h2.section-head
+      Who's Coming?
+    .avitars
+      .person-container
+        .img-container
+          = image_tag 'jonas.jpg'
+        %h5 Jonas Lamis
+        %h6 CEO and Co-founder, Sensai Corporation
+        %p  Jonas Lamis is a Boilermaker now living the startup dream in Silicon Valley.
+        .social
+          %ul
+            %li
+              %a.ss-icon.ss-standard{href: "http://www.sens.ai"} globe
+            %li
+              %a.ss-icon.ss-social{href: "http://twitter.com/jonaslamis"} twitter
+      .person-container
+        .img-container
+          = image_tag 'arthur.jpg'
+        %h5 Arthur Nisnevich
+        %h6 CTO, All4Staff
+        %p Arthur has over 12 years of full-stack development experience, and is currently the co-founder and CTO of All4Staff, a Techstars company based in Boulder, Colorado.
+        .social
+          %ul
+            %li
+              %a.ss-icon.ss-social{href: "http://twitter.com/ArthurN"} twitter
+  %section.wide-image-container
+    .wide-image-2
+  %section.faq.clearfix
+    .container
+      %h2.section-head Questions
+      .text-box
+        .text-box-container
+          %h4 Who can apply?
+          %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
+        .text-box-container
+          %h4
+            What kind of project can I make?
+          %p
+            Web, desktop, mobile, hardware- it’s up to you to make whatever kind of project you want as long as it is software-related.
+        .text-box-container
+          %h4
+            Where is BoilerMake?
+          %p
+            The CoRec: Purdue’s state-of-the-art recreational center that houses a climbing wall, a pool, gyms for dodgeball, and much more!
+        .text-box-container
+          %h4
+            How do I get there?
+          %p
+            We’re sending busses to the universities from which we receive the most interest. We’re also working on arranging travel reimbursements for other students.
+        .text-box-container
+          %h4
+            How does the application process work?
+          %p
+            You’ll apply within the application window (dates TBD) and receive notice of your application decision shortly after the window closes. If you’re accepted, you’ll receive additional information about the schedule, what you should take to BoilerMake, and more. At that point, you’ll be asked to commit to attending. As students decline to commit, we will send out more acceptances to waitlisted applicants.
+        .text-box-container
+          Did we miss any of your questions? Feel free to email us at
+          %strong=mail_to 'boilermake@purdue.edu', nil, {style: 'color:black'}
+          !
+  %section.wide-image-container
+    .wide-image-3
+  %section.sponsors.clearfix
+    .container
+      .sponsors-header.clearfix
+        %h2.section-head Sponsors
+      .sponsors-container
+        .platinum
+          %p.sponsor-cat Platinum
+          .img
+            = image_tag 'inin2.png'
+      .sponsors-container
+        .gold
+          %p.sponsor-cat Gold
+          .img
+            = image_tag 'kaplusa.png'
+          .img
+            = image_tag 'apple.png'
+      .sponsors-container
+        .silver
+          %p.sponsor-cat Silver
+          .img
+            = image_tag 'exacttarget.png'
+          .img
+            = image_tag 'Booz.png'
+          .img
+            = image_tag 'Bloomberg.png'
+          .img
+            = image_tag 'twilio.png'
+          .img
+            = image_tag 'lob.png'
+          .img
+            = image_tag 'paypal.png'
+          .img
+            = image_tag 'mongodb.png'
+          .img
+            = image_tag 'trunkclub.png'
+      .sponsors-container
+        .bronze
+          %p.sponsor-cat Bronze
+          .img
+            = image_tag 'google.png'
+          .img
+            = image_tag 'qumulo.png'
+%footer{:role => "contentinfo"}
+  .container
+    .footer-top
+      =link_to root_url, class: 'logo-container' do
+        =image_tag 'logo.png', class: 'logo'
+    .footer-bottom
+      %p.copyright &copy; 2014 BoilerMake. All rights reserved.
+      .social
+        %ul
+          %li
+            %a.ss-icon.ss-social{href: 'https://www.facebook.com/Boilermake?ref=br_tf'} facebook
+          %li
+            %a.ss-icon.ss-social{href: 'https://twitter.com/BoilerMake1'} twitter
+          %li
+            %a.ss-icon.ss-social{href: 'mailto:team@boilermake.org'} mail
+/ jQuery is called via the Wordpress-friendly way via functions.php
+.forgot-password{style: 'display:none;'}
   %h1 Next time try writing it down.
   %p But this time we'll help you out, what's your email?
 
-  %input.flat-input{:placeholder => "Email"}
-  %input.flat-button.submit{:value => "Submit", :type => "submit"}
+  = form_tag password_resets_path, method: :post do
+    .field
+      = text_field_tag :email, params[:email], { class: 'flat-input', placeholder: 'Email'}
+    .actions
+      = submit_tag 'Reset Password', {class: 'flat-button submit'}
   %p.return Return

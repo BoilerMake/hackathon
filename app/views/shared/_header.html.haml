@@ -1,0 +1,61 @@
+= content_for :partial_css do
+  = stylesheet_link_tag 'header'
+%header.clearfix.header{:role => "banner"}
+  .container
+    =link_to root_url, class: 'logo-container' do
+      =image_tag 'logo.png', class: 'logo'
+    .login
+      - if current_user.nil?
+        %a#login.login-toggle.button.outline{:style => "cursor:pointer;"} Log In
+        = form_tag sessions_path, id: 'login-form',
+                                  class: 'form clearfix',
+                                  style: 'display:none;' do
+          = email_field_tag :email, nil,
+            { style: 'margin-top:15px', id: 'emaillogin',
+              class: 'flat-input sign-up', placeholder: 'Email'}
+          .clearfix
+          = password_field_tag :password, nil,
+            { id: 'passwordlogin', class: 'flat-input sign-up',
+              placeholder: 'Password' }
+          .clearfix
+          .forgot-password-toggle
+            Forgot Password?
+          .remember-me-container
+            %input.login-text{:type => "checkbox"}
+            %span
+              Remember Me
+          .clearfix
+          %input#login-cancel.cancel.login-toggle.button{type: 'button', text: 'Cancel', value: 'cancel'}
+          = submit_tag :Submit, { id: 'submitlogin', class: 'button submit submit-button' }
+      - else
+        = link_to 'Log Out', logout_path, class: 'button outline'
+/ Scrolling header/
+%header.clearfix.scrolling-header{:role => "banner"}
+  .container
+    =link_to root_url, class: 'logo-container' do
+      =image_tag 'logo.png', class: 'logo'
+    .login
+      - if current_user.nil?
+        %a#login.login-toggle.button.outline{:style => "cursor:pointer;"} Log In
+        = form_tag sessions_path, id: 'login-form',
+                                  class: 'form clearfix',
+                                  style: 'display:none;' do
+          = email_field_tag :email, nil,
+            { style: 'margin-top:15px', id: 'emaillogin',
+              class: 'flat-input sign-up', placeholder: 'Email'}
+          .clearfix
+          = password_field_tag :password, nil,
+            { id: 'passwordlogin', class: 'flat-input sign-up',
+              placeholder: 'Password' }
+          .clearfix
+          .forgot-password-toggle
+            Forgot Password?
+          .remember-me-container
+            %input.login-text{:type => "checkbox"}
+            %span
+              Remember Me
+          .clearfix
+          %input#login-cancel.form.cancel.login-toggle.button{type: 'button', text: 'Cancel', value: 'cancel'}
+          = submit_tag :Submit, { id: 'submitlogin', class: 'button submit submit-button' }
+      - else
+        = link_to 'Log Out', logout_path, class: 'button outline'

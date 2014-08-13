@@ -11,11 +11,13 @@ gem 'jbuilder', '~> 2.0'
 gem 'bcrypt-ruby'
 
 gem 'haml-rails'
-gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
 
 gem 'cancancan', '~> 1.8'
+
+gem 'unicorn'
+gem 'foreman'
 
 # these should move in the future
 gem 'better_errors'
@@ -28,7 +30,6 @@ end
 group :development do
   gem 'spring'
   gem 'binding_of_caller'
-  gem 'pry-rails'
   gem 'quiet_assets', '~> 1.0.3'
 end
 
@@ -37,6 +38,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'guard'
+  gem 'dotenv-rails'
+  gem 'foreman'
 end
 
 group :production do
