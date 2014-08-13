@@ -1,9 +1,11 @@
 = render 'shared/header'
-.main.clearfix{:role => "main"}
+= content_for :extra_js do
+  = javascript_include_tag 'http://www.youtube.com/player_api'
+.main.clearfix{:role => 'main'}
 .content
   %section.hero
     .container
-      = "<h1 class=\"hero-headline\"><span>Forge</span> the future</h1>".html_safe
+      = '<h1 class=\'hero-headline\'><span>Forge</span> the future</h1>'.html_safe
       .hammers
         = image_tag 'hammers.png'
       %h3 October 17th-19th - Purdue University
@@ -44,16 +46,16 @@
           That’s why we’re organizing BoilerMake, a 36-hour hackathon at Purdue where teams of students create software and hardware projects that solve important, real-world problems. BoilerMake brings together highly talented university students with top-tier companies to support the development of remarkable student projects and personal relationships.
       .video-headline
         .video
-          .btn.btn-lg.btn-success{"data-target" => "#basicModal", "data-toggle" => "modal"}
+          .btn.btn-lg.btn-success{'data-target' => '#basicModal', 'data-toggle' => 'modal'}
             = image_tag 'video.png'
           / MODAL
-          #basicModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "basicModal", :role => "dialog", :tabindex => "-1"}
+          #basicModal.modal.fade{'aria-hidden' => 'true', 'aria-labelledby' => 'basicModal', :role => 'dialog', :tabindex => '-1'}
             .modal-dialog
               .modal-content
                 .modal-body
-                  %iframe{:allowfullscreen => "", :frameborder => "0", :src => "//www.youtube.com/embed/P5a__iXkKHE"}
+                  %iframe{ id: 'player', allowfullscreen: '', frameborder: '0', src: '//www.youtube.com/embed/P5a__iXkKHE'}
                 .modal-footer
-                  %button.button{"data-dismiss" => "modal", :type => "button"} Close
+                  %button.button#closeVideo{'data-dismiss' => 'modal', :type => 'button'} Close
           %h3 Watch the video from BoilerMake 2013.
   %section.wide-image-container
     .wide-image-1
@@ -109,7 +111,7 @@
       .sponsors-header.clearfix
         %h2.section-head Sponsors
 
-        /%a.button{:href => "#"} Download Prospectus
+        /%a.button{:href => '#'} Download Prospectus
         .sponsors-container
           Sponsor list coming soon!
         %p
@@ -139,7 +141,7 @@
             = image_tag 'Booz.png'
           .img
             = image_tag 'Bloomberg.png'
-%footer{:role => "contentinfo"}
+%footer{:role => 'contentinfo'}
   .container
     .footer-top
       =link_to root_url, class: 'logo-container' do
@@ -149,11 +151,11 @@
       .social
         %ul
           %li
-            %a.ss-icon.ss-social{:href => "https://www.facebook.com/Boilermake?ref=br_tf"} facebook
+            %a.ss-icon.ss-social{href: 'https://www.facebook.com/Boilermake?ref=br_tf'} facebook
           %li
-            %a.ss-icon.ss-social{:href => "https://twitter.com/BoilerMake1"} twitter
+            %a.ss-icon.ss-social{href: 'https://twitter.com/BoilerMake1'} twitter
           %li
-            %a.ss-icon.ss-social{:href => "mailto:team@boilermake.org"} mail
+            %a.ss-icon.ss-social{href: 'mailto:team@boilermake.org'} mail
 / jQuery is called via the Wordpress-friendly way via functions.php
 .forgot-password{style: 'display:none;'}
   %h1 Next time try writing it down.
