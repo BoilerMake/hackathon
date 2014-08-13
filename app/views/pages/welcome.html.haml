@@ -60,10 +60,31 @@
   %section.wide-image-container
     .wide-image-1
   %section.speakers.clearfix
-    .container
-      %h2.section-head Who's Coming?
-      .avitars
-        Information Coming Soon.
+    %h2.section-head
+      Who's Coming?
+    .avitars
+      .person-container
+        .img-container
+          = image_tag 'jonas.jpg'
+        %h5 Jonas Lamis
+        %h6 CEO and Co-founder, Sensai Corporation
+        %p  Jonas Lamis is a Boilermaker now living the startup dream in Silicon Valley.
+        .social
+          %ul
+            %li
+              %a.ss-icon.ss-standard{href: "http://www.sens.ai"} globe
+            %li
+              %a.ss-icon.ss-social{href: "http://twitter.com/jonaslamis"} twitter
+      .person-container
+        .img-container
+          = image_tag 'arthur.jpg'
+        %h5 Arthur Nisnevich
+        %h6 CTO, All4Staff
+        %p Arthur has over 12 years of full-stack development experience, and is currently the co-founder and CTO of All4Staff, a Techstars company based in Boulder, Colorado.
+        .social
+          %ul
+            %li
+              %a.ss-icon.ss-social{href: "http://twitter.com/ArthurN"} twitter
   %section.wide-image-container
     .wide-image-2
   %section.faq.clearfix
