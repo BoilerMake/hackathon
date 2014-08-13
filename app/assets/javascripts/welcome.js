@@ -1,5 +1,6 @@
 /*global $:false */
 var inputBox = false;
+var player;
 
 function validateEmail() {
     var email = $("#email input").val();
@@ -32,65 +33,93 @@ function validatePasswordsMatch() {
 }
 
 function submitRegister() {
-    $('#new_hacker').submit();
+    $('#signup-form').submit();
 }
 
 function submitLogin() {
     $('#login-form').submit();
 }
+window.onYouTubePlayerAPIReady = function() {
+  player = new YT.Player('player');
+}
 
 $(document).ready(function() {
+  $('.text-box').masonry({
+    itemSelector: '.text-box-container'
+  });
+
+  $('#basicModal').on('hidden.bs.modal', function (e) {
+    console.log("hello world");
+    player = new YT.Player('player');
+    player.stopVideo();
+  })
+
+  window.addEventListener("scroll",function() {
+    if(window.scrollY > 700) {
+      $('.scrolling-header').slideDown();
+    }
+    else {
+      $('.scrolling-header').slideUp();
+    }
+  }, false);
+
+  $( ".mobile-button" ).click(function() {
+    $( ".slide-down" ).slideToggle('fast');
+  });
+
+  $('.forgot-password-toggle').on('click', function(){
+    $('.forgot-password').fadeToggle('fast');
+  });
+
+  $('.return').on('click', function(){
+    $(".forgot-password").fadeOut("fast");
+  })
 
 
-    $("#forgotpassword").click(function(event) {
-        $(".forgotpassword-email").fadeIn("fast");
-    });
-    $(".return").click(function(event) {
-        $(".forgotpassword-email").fadeOut("fast");
-    });
+  $('.login-toggle').on('click', function(){
+    // a bit gross, but its a compromise between DRY and UI
+    // defer till later if its visible because it gets pushed aside
+    // by the form during the slideToggle and it looks strange
+    var defer = false;
+    if ( $("#login").is(':visible')){
+      $('#login').toggle();
+    } else {
+      defer = true;
+    }
 
-    $("#login").click(function(event) {
-        $(this).fadeOut("fast", function() {
-            $("#emaillogin").fadeIn("fast", function() {
-                $("#emaillogin").focus();
-            });
-            $("#passwordlogin").fadeIn("fast");
-            $(".login-text").fadeIn("fast");
-            $("#submitlogin").fadeIn("fast");
-            $(".container .hero-headline").css('margin-top', '240px');
-            inputBox = true;
-        });
+    $('#login-form').slideToggle('slow', function(){
+      if (defer){
+        $('#login').toggle();
+      }
     });
-    // EARLYBIRD APPLICATION BUTTON
-    $("#register").click(function() {
-        $('body,html').animate({
-            scrollTop: 2000
-        }, 800);
-        $(this).fadeOut("fast", function() {
-            $("#email").fadeIn("fast", function() {
-                $("#email input").focus();
-            });
-            $("#password").fadeIn("fast");
-            $("#confirm-password").fadeIn("fast");
-            $("#apply-submit").fadeIn("fast");
-            inputBox = true;
-        });
+  });
+
+  $('.apply-toggle').on('click', function() {
+    $('#apply-here').toggle();
+    $('#signup-form').slideToggle('slow');
+    inputBox = !inputBox;
+  });
+
+
+  // EARLYBIRD APPLICATION BUTTON
+  $("#register").click(function() {
+    $('body,html').animate({
+      scrollTop: 2000
+    }, 800);
+
+    $(this).fadeOut("fast", function() {
+      $("#email").fadeIn("fast", function() {
+        $("#email input").focus();
+      });
+      $("#password").fadeIn("fast");
+      $("#confirm-password").fadeIn("fast");
+      $("#apply-submit").fadeIn("fast");
+      inputBox = true;
     });
+  });
 
     // ENTER KEY FUNCTIONALITY
-    $('#login-form').keypress(function(e) {
-        if (e.which === 13) {
-            e.preventDefault();
-            if (inputBox) {
-                submitLogin();
-            } else {
-                inputBox = true;
-            }
-        }
-    });
-
-    // ENTER KEY FUNCTIONALITY
-    $('#new_hacker').keypress(function(e) {
+    $('#signup-form').keypress(function(e) {
         if (e.which === 13) {
             e.preventDefault();
             if (inputBox) {
