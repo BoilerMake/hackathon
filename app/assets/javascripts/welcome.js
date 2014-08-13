@@ -1,5 +1,6 @@
 /*global $:false */
 var inputBox = false;
+var player;
 
 function validateEmail() {
     var email = $("#email input").val();
@@ -38,12 +39,20 @@ function submitRegister() {
 function submitLogin() {
     $('#login-form').submit();
 }
+window.onYouTubePlayerAPIReady = function() {
+  player = new YT.Player('player');
+}
 
 $(document).ready(function() {
   $('.text-box').masonry({
     itemSelector: '.text-box-container'
   });
 
+  $('#basicModal').on('hidden.bs.modal', function (e) {
+    console.log("hello world");
+    player = new YT.Player('player');
+    player.stopVideo();
+  })
 
   window.addEventListener("scroll",function() {
     if(window.scrollY > 700) {
