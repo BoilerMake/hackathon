@@ -2392,16 +2392,16 @@ footer {
   @media (min-width: 672px) {
     .sponsors .sponsors-container {
       margin-top: 0px; } }
-  .sponsors .sponsors-container .premium {
+  .sponsors .sponsors-container .platinum {
     position: relative;
     width: 100%;
     margin: 20px auto; }
-    .sponsors .sponsors-container .premium .sponsor-cat {
+    .sponsors .sponsors-container .platinum .sponsor-cat {
       position: absolute;
       top: -30px;
       left: 0px;
       color: #aaaaaa; }
-    .sponsors .sponsors-container .premium .img {
+    .sponsors .sponsors-container .platinum .img {
       width: 100%;
       height: auto;
       margin: 0px auto;
@@ -2409,9 +2409,9 @@ footer {
       margin-bottom: 40px;
       overflow: hidden; }
       @media (min-width: 672px) {
-        .sponsors .sponsors-container .premium .img {
+        .sponsors .sponsors-container .platinum .img {
           width: 60%; } }
-      .sponsors .sponsors-container .premium .img img {
+      .sponsors .sponsors-container .platinum .img img {
         width: 100%; }
   .sponsors .sponsors-container .gold {
     position: relative;
@@ -2434,7 +2434,6 @@ footer {
           width: 49%;
           max-width: 1000px; } }
       .sponsors .sponsors-container .gold .img img {
-        height: 50%;
         max-height: 150px; }
   .sponsors .sponsors-container .silver {
     position: relative;
@@ -2454,16 +2453,17 @@ footer {
       overflow: hidden; }
       @media (min-width: 672px) {
         .sponsors .sponsors-container .silver .img {
-          width: 32.5%; } }
+          margin: 15px 25px;
+          width: 27.5%; } }
       .sponsors .sponsors-container .silver .img img {
-        height: 100%; }
+        max-width: 100%; }
   .sponsors .sponsors-container .bronze {
     position: relative;
     width: 100%;
     margin: 20px auto; }
     .sponsors .sponsors-container .bronze .sponsor-cat {
-      position: absolute;
-      top: -30px;
+      position: relative;
+      top: -15px;
       left: 0px;
       color: #aaaaaa; }
     .sponsors .sponsors-container .bronze .img {
@@ -2475,9 +2475,10 @@ footer {
       overflow: hidden; }
       @media (min-width: 672px) {
         .sponsors .sponsors-container .bronze .img {
-          width: 32.5%; } }
+          margin: 10px 15px;
+          width: 21%; } }
       .sponsors .sponsors-container .bronze .img img {
-        height: 100%; }
+        max-width: 100%; }
 
 .wide-image-container .wide-image-1 {
   margin-top: 20px; }

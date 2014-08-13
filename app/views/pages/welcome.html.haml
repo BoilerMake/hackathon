@@ -92,13 +92,6 @@
           %p
             You’ll apply within the application window (dates TBD) and receive notice of your application decision shortly after the window closes. If you’re accepted, you’ll receive additional information about the schedule, what you should take to BoilerMake, and more. At that point, you’ll be asked to commit to attending. As students decline to commit, we will send out more acceptances to waitlisted applicants.
         .text-box-container
-          %h4
-            Want to join the BoilerMake team?
-          %p
-            Shoot us an email at
-            %strong=mail_to 'boilermake@purdue.edu', nil, {style: 'color:black'}
-            !
-        .text-box-container
           Did we miss any of your questions? Feel free to email us at
           %strong=mail_to 'boilermake@purdue.edu', nil, {style: 'color:black'}
           !
@@ -109,18 +102,9 @@
       .sponsors-header.clearfix
         %h2.section-head Sponsors
 
-        /%a.button{:href => "#"} Download Prospectus
-        .sponsors-container
-          Sponsor list coming soon!
-        %p
-          Interested in sponsoring?
-          Contact
-          %strong
-            = mail_to 'sponsors@boilermake.org', nil, {style: 'color: black'}
-    /
       .sponsors-container
-        .premium
-          %p.sponsor-cat Premium
+        .platinum
+          %p.sponsor-cat Platinum
           .img
             = image_tag 'inin2.png'
       .sponsors-container
@@ -134,11 +118,28 @@
         .silver
           %p.sponsor-cat Silver
           .img
-            = image_tag 'et.png'
+            = image_tag 'exacttarget.png'
           .img
             = image_tag 'Booz.png'
           .img
             = image_tag 'Bloomberg.png'
+          .img
+            = image_tag 'twilio.png'
+          .img
+            = image_tag 'lob.png'
+          .img
+            = image_tag 'paypal.png'
+          .img
+            = image_tag 'mongodb.png'
+          .img
+            = image_tag 'trunkclub.png'
+      .sponsors-container
+        .bronze
+          %p.sponsor-cat Bronze
+          .img
+            = image_tag 'google.png'
+          .img
+            = image_tag 'qumulo.png'
 %footer{:role => "contentinfo"}
   .container
     .footer-top
