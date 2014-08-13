@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'pages/welcome'
   get 'teams/join'
   get 'teams/leave'
-  get 'execs/applied' => 'execs#applied'
   get 'execs/dashboard'
   get 'execs/sticker_recipients'
   get 'execs/hackers_for'
@@ -17,7 +16,7 @@ Rails.application.routes.draw do
 
 
   resources :schools, only: [:index, :show]
-  resources :hackers, except: [:index]
+  resources :hackers, except: [:index, :destroy]
   resources :teams, except: [:show, :index, :destroy]  do
     get 'remove_hacker', on: :member
   end
