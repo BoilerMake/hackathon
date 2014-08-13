@@ -15,5 +15,6 @@
 //= require underscore
 //= require excellentexport
 //= require masonry
+//= require bootstrap-dropdown
 //= require jquery.ui.all
 //= require_tree .
