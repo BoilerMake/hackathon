@@ -8,7 +8,7 @@
       - if current_user.nil?
         %a#login.login-toggle.button.outline{:style => "cursor:pointer;"} Log In
         = form_tag sessions_path, id: 'login-form',
-                                  class: 'form clearfix',
+                                  class: 'form login-form clearfix',
                                   style: 'display:none;' do
           = email_field_tag :email, nil,
             { style: 'margin-top:15px', id: 'emaillogin',
