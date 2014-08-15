@@ -2086,16 +2086,13 @@ footer {
         font-size: 1.6em; } }
 
 .form {
-  position: fixed;
-  right: 260px;
-  top: 79px;
   width: 90%;
   z-index: 99;
   max-width: 350px;
   padding: 0 15px;
   padding-bottom: 0px;
   margin: 0px auto 0px auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, .4);
   border-radius: 4px; }
   @media (min-width: 672px) {
     .form {
@@ -2152,6 +2149,14 @@ footer {
     font-size: 1em; }
     .form .cancel:hover {
       background: #2b2b2b; }
+
+.login-form {
+  position: fixed;
+  right: 260px;
+  top: 79px;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
 .mission {
   background: white; }
