@@ -16,18 +16,18 @@
                                  style: 'display:none;'} do |f|
         #email
           = f.label 'Email'
-          = f.email_field :email, { placeholder: 'user@domain.tld'}
+          = f.email_field :email
           %p.error.hidden
             Invalid email address. Check the format of your email
             %br
             Email team@boilermake.org if you have issues
         #password
           = f.label 'Password'
-          = f.password_field :password, { placeholder: 'hunter2' }
+          = f.password_field :password
           %p.error.hidden Invalid password.
         #confirm-password
           = f.label 'Confirm Password'
-          = f.password_field :password, { placeholder: 'hunter2' }
+          = f.password_field :password
           %p.error.hidden Passwords do not match.
         %div
           %input#apply-cancel.apply-toggle.cancel.button{type: 'button', text: 'Cancel', value: 'Cancel'}
@@ -92,13 +92,18 @@
       %h2.section-head Questions
       .text-box
         .text-box-container
-          %h4 Who can apply?
-          %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
-        .text-box-container
           %h4
             What can I make?
           %p
             Web, desktop, mobile, hardware- it’s up to you to make whatever kind of project you want as long as it is software-related.
+        .text-box-container
+          %h4
+            How do I get there?
+          %p
+            We’re sending busses to the universities from which we receive the most interest and offering travel reimbursements to everyone else.
+        .text-box-container
+          %h4 Who can apply?
+          %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
         .text-box-container
           %h4
             How do I apply?
@@ -111,11 +116,6 @@
             Feel free to email us at
             %strong=mail_to 'boilermake@purdue.edu', nil, {style: 'color:black'}
             !
-        .text-box-container{style: 'margin-top: -43px'}
-          %h4
-            How do I get there?
-          %p
-            We’re sending busses to the universities from which we receive the most interest and offering travel reimbursements to everyone else.
   %section.wide-image-container
     .wide-image-3
   %section.sponsors.clearfix
@@ -182,7 +182,7 @@
 
   = form_tag password_resets_path, method: :post do
     .field
-      = text_field_tag :email, params[:email], { class: 'flat-input', placeholder: 'Email'}
+      = text_field_tag :email, params[:email], { class: 'flat-input'}
     .actions
       = submit_tag 'Reset Password', {class: 'flat-button submit'}
   %p.return Return

@@ -2,6 +2,10 @@
   float: right;
   margin-top: 30px;
 }
+@media (max-width: 672px) {
+  .login .button {
+    padding: 4px 15px;
+  } }
 
 
 .scrolling-header{
