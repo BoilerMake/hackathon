@@ -59,32 +59,43 @@
           %h3 Watch the video from BoilerMake 2013.
   %section.wide-image-container
     .wide-image-1
-  %section.container.speakers.clearfix
-    %h2.section-head
-      Who's Coming?
-    .avitars
-      .person-container
-        .img-container
-          = image_tag 'jonas.jpg'
-        %h5 Jonas Lamis
-        %h6 CEO and Co-founder, Sensai Corporation
-        %p  Jonas Lamis is a Boilermaker now living the startup dream in Silicon Valley.
-        .social
-          %ul
-            %li
-              %a.ss-icon.ss-standard{href: "http://www.sens.ai"} globe
-            %li
-              %a.ss-icon.ss-social{href: "http://twitter.com/jonaslamis"} twitter
-      .person-container
-        .img-container
-          = image_tag 'arthur.jpg'
-        %h5 Arthur Nisnevich
-        %h6 CTO, All4Staff
-        %p Arthur has over 12 years of full-stack development experience, and is currently the co-founder and CTO of All4Staff, a Techstars company based in Boulder, Colorado.
-        .social
-          %ul
-            %li
-              %a.ss-icon.ss-social{href: "http://twitter.com/ArthurN"} twitter
+  %section.speakers.clearfix
+    .container
+      %h2.section-head
+        Who's Coming?
+      .avitars
+        .person-container
+          .img-container
+            = image_tag 'jonas.jpg'
+          %h5 Jonas Lamis
+          %h6 CEO and Co-founder, Sensai Corporation
+          %p  Jonas Lamis is a Boilermaker now living the startup dream in Silicon Valley.
+          .social
+            %ul
+              %li
+                %a.ss-icon.ss-standard{href: "http://www.sens.ai"} globe
+              %li
+                %a.ss-icon.ss-social{href: "http://twitter.com/jonaslamis"} twitter
+        .person-container
+          .img-container
+            = image_tag 'arthur.jpg'
+          %h5 Arthur Nisnevich
+          %h6 CTO, All4Staff
+          %p Arthur has over 12 years of full-stack development experience, and is currently the co-founder and CTO of All4Staff, a Techstars company based in Boulder, Colorado.
+          .social
+            %ul
+              %li
+                %a.ss-icon.ss-social{href: "http://twitter.com/ArthurN"} twitter
+        .person-container
+          .img-container
+            = image_tag 'mattan.jpg'
+          %h5 Mattan Griffel
+          %h6 CEO and Co-founder, One Month (YC S13)
+          %p Mattan started One Month, the "For Dummies" of online education.
+          .social
+            %ul
+              %li
+                %a.ss-icon.ss-social{href: "http://twitter.com/mattangriffel"} twitter
   %section.wide-image-container
     .wide-image-2
   %section.faq.clearfix
@@ -100,7 +111,7 @@
           %h4
             How do I get there?
           %p
-            We’re sending busses to the universities from which we receive the most interest and offering travel reimbursements to everyone else.
+            We’re sending buses to the universities from which we receive the most interest and offering travel reimbursements to everyone else.
         .text-box-container
           %h4 Who can apply?
           %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
@@ -132,8 +143,8 @@
           %p.sponsor-cat Gold
           .img
             = image_tag 'kaplusa.png'
-          .img
-            = image_tag 'apple.png'
+          -# .img
+          -#   = image_tag 'apple.png'
       .sponsors-container
         .silver
           %p.sponsor-cat Silver
@@ -158,6 +169,10 @@
           %p.sponsor-cat Bronze
           .img
             = image_tag 'google.png'
+          .img
+            = image_tag 'mlh.png'
+          .img
+            = image_tag 'challengepost.png'
           .img
             = image_tag 'qumulo.png'
 %footer{:role => "contentinfo"}
