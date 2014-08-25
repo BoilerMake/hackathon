@@ -2422,6 +2422,13 @@ footer {
       top: -30px;
       left: 0px;
       color: #aaaaaa; }
+    // warning about scott's shitty css here
+    .sponsors .sponsors-container .gold .img.apple{
+      padding-left: 0px;
+      @media (min-width: 672px){
+        padding-left: 170px;
+      }
+    }
     .sponsors .sponsors-container .gold .img {
       text-align: center;
       display: inline-block;
