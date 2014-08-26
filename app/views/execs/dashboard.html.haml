@@ -11,20 +11,20 @@
     %span{style: 'color: #f5a623;'}=  @school_count
   %table
     %thead
-      %th{style: 'color: #f5a623;'} School
-      %th{style: 'color: #f5a623;'} Hacker Count
+      %th{style: 'color: #f5a623;'} Focus School
+      %th{style: 'color: #f5a623;'} Hackers
     %tbody
-      - @schools.each do |school|
+      - @focus_schools.each do |school|
         %tr
           %td
             = link_to school.name, { "controller"=>"execs", "action"=>"hackers_for", "school_id"=>school.id }
           %td= school.users.count
   %table
     %thead
-      %th{style: 'color: #f5a623;'} Focus School
-      %th{style: 'color: #f5a623;'} Hackers
+      %th{style: 'color: #f5a623;'} School
+      %th{style: 'color: #f5a623;'} Hacker Count
     %tbody
-      - @focus_schools.each do |school|
+      - @schools.each do |school|
         %tr
           %td
             = link_to school.name, { "controller"=>"execs", "action"=>"hackers_for", "school_id"=>school.id }
