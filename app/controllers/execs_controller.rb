@@ -36,7 +36,11 @@ class ExecsController < ApplicationController
     @focus_schools << School.find_by(name: 'University of Cincinnati (OH)')
     @focus_schools << School.find_by(name: 'University of Maryland - College Park (MD)')
     @focus_schools << School.find_by(name: 'University of Michigan (MI)')
-    @focus_schools << School.find_by(name: 'Univeristy of Waterloo (INT)')
+    if Rails.env.production?
+      @focus_schools << School.find(1688)
+    else
+      @focus_schools << School.find_by(name: 'Univeristy of Waterloo (INT)')
+    end
     @focus_schools << School.find_by(name: 'Northwestern University (IL)')
     @focus_schools << School.find_by(name: 'Massachusetts Institute of Technology (MA)')
     @focus_schools << School.find_by(name: 'Carnegie Mellon University (PA)')
