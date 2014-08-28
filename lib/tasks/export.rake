@@ -27,6 +27,14 @@ namespace :export do
 
       puts nontarget_emails.join ','
     end
+
+    desc 'gets all hackers basic info from all schools'
+    task :all => :environment do
+      puts "id, first_name, last_name, school_id, team_id, email"
+      Hacker.all.each do |h|
+        puts "#{h[:id]}, #{h[:first_name]}, #{h[:last_name]}, #{h[:school_id]}, #{h[:team_id]}, #{h[:email]}"
+      end
+    end
   end
 end
 
