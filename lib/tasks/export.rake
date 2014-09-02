@@ -30,9 +30,13 @@ namespace :export do
 
     desc 'gets all hackers basic info from all schools'
     task :all => :environment do
-      puts "id, first_name, last_name, school_id, team_id, email"
+      puts "id, first_name, last_name, school, team_id, email"
       Hacker.all.each do |h|
-        puts "#{h[:id]}, #{h[:first_name]}, #{h[:last_name]}, #{h[:school_id]}, #{h[:team_id]}, #{h[:email]}"
+        school_name = ''
+        if h[:school_id].present?
+          school_name = School.find(h[:school_id]).name
+        end
+        puts "#{h[:id]}, #{h[:first_name]}, #{h[:last_name]}, #{school_name}, #{h[:team_id]}, #{h[:email]}"
       end
     end
   end
