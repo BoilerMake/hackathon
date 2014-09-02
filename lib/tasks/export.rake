@@ -36,7 +36,7 @@ namespace :export do
         if h[:school_id].present?
           school_name = School.find(h[:school_id]).name
         end
-        puts "#{h[:id]}, #{h[:first_name]}, #{h[:last_name]}, #{School.find(h[:school_id]).name}, #{h[:team_id]}, #{h[:email]}"
+        puts "#{h[:id]}, #{h[:first_name]}, #{h[:last_name]}, #{school_name}, #{h[:team_id]}, #{h[:email]}"
       end
     end
   end
