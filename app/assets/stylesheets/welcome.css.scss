@@ -2271,28 +2271,42 @@ table {
   float: left;
   text-align: center;
 }
+
 @media (min-width: 480px) {
   .speakers .avitars .person-container {
     width: 46%;
     margin: 0px 1.667%;
   }
+  .speakers .avitars .person-container {
+    min-height: 450px;
+  }
 }
+
 @media (min-width: 672px) {
   .speakers .avitars .person-container {
     width: 30%;
-    margin: 0px 1.667%; } }
+    margin: 0px 1.667%;
+  }
+  .speakers .avitars .person-container {
+    min-height: 450px;
+  }
+}
+
 @media (min-width: 767px) {
   .speakers .avitars .person-container {
-    width: 21%;
-    margin: 0px 1.667%; } }
-@media (min-width: 1000px) {
-  .speakers .avitars .person-container {
-    width: 21%;
-    margin: 0px 1.667%; } }
-@media (min-width: 1210px) {
-  .speakers .avitars .person-container {
-    width: 21%;
-    margin: 0px 1.667%; } }
+    width: 27%;
+    margin: 0px 1.667%;
+  }
+}
+
+.speakers .avitars .person-container .title-container {
+  min-height: 70px;
+}
+
+.person-container {
+  min-height: 400px;
+}
+
 .speakers .avitars .person-container .img-container {
   width: 200px;
   height: 200px;
@@ -2300,141 +2314,148 @@ table {
   margin-bottom: 15px;
   overflow: hidden;
   border-radius: 250px;
-  text-align: center; }
+  text-align: center;
+}
+
 @media (min-width: 480px) {
   .speakers .avitars .person-container .img-container {
     width: 150px;
-    height: 150px; } }
+    height: 150px;
+  }
+}
+
 .speakers .avitars .person-container .img-container:before {
   content: '';
   display: inline-block;
   height: 100%;
   vertical-align: middle;
   margin-right: -0.25em;
-  /* Adjusts for spacing */ }
-  .speakers .avitars .person-container .img-container img {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    display: inline-block;
-    vertical-align: middle; }
-  .speakers .avitars .person-container h5 {
-    margin: 0px;
-    font-size: 1.2em;
-    font-weight: 400;
-    color: #444444; }
-  .speakers .avitars .person-container h6 {
-    margin: 0px;
-    font-size: 1em;
-    font-weight: 300;
-    color: #444444; }
+  /* Adjusts for spacing */
+}
 
-  .social {
-    width: 100%; }
-  .social ul {
-    width: 175px;
-    list-style: none;
-    margin: 10px auto;
-    padding: 0px; }
-  .social ul li {
-    margin: 0 5px;
-    display: inline-block; }
-  .social ul li a {
-    font-size: 1.4em;
-    color: #f5a623; }
+.speakers .avitars .person-container .img-container img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle; }
+.speakers .avitars .person-container h5 {
+  margin: 0px;
+  font-size: 1.2em;
+  font-weight: 400;
+  color: #444444; }
+.speakers .avitars .person-container h6 {
+  margin: 0px;
+  font-size: 1em;
+  font-weight: 300;
+  color: #444444; }
 
-  .faq .questions {
-    width: 100%; }
+.social {
+  width: 100%; }
+.social ul {
+  width: 175px;
+  list-style: none;
+  margin: 10px auto;
+  padding: 0px; }
+.social ul li {
+  margin: 0 5px;
+  display: inline-block; }
+.social ul li a {
+  font-size: 1.4em;
+  color: #f5a623; }
+
+.faq .questions {
+  width: 100%; }
+.faq .questions .question-container {
+  width: 100%;
+  margin-right: 3.3%;
+  margin-bottom: 40px;
+  float: left;
+  border-top: 5px solid #f5a623; }
+@media (min-width: 480px) {
   .faq .questions .question-container {
-    width: 100%;
-    margin-right: 3.3%;
-    margin-bottom: 40px;
-    float: left;
-    border-top: 5px solid #f5a623; }
-  @media (min-width: 480px) {
-    .faq .questions .question-container {
-      width: 45%; } }
-  @media (min-width: 672px) {
-    .faq .questions .question-container {
-      width: 30%; } }
-  .faq .questions .question-container h4 {
-    margin-bottom: 15px;
-    margin-top: 10px;
-    font-size: 1.2em;
-    color: #444444;
-    font-weight: 400; }
-  .faq .questions .question-container p {
-    margin-top: 5px;
-    font-weight: 300; }
+    width: 45%; } }
+@media (min-width: 672px) {
+  .faq .questions .question-container {
+    width: 30%; } }
+.faq .questions .question-container h4 {
+  margin-bottom: 15px;
+  margin-top: 10px;
+  font-size: 1.2em;
+  color: #444444;
+  font-weight: 400; }
+.faq .questions .question-container p {
+  margin-top: 5px;
+  font-weight: 300; }
 
-  .sponsors .sponsors-header {
-    width: 100%;
-    height: 120px;
-    text-align: center; }
+.sponsors .sponsors-header {
+  width: 100%;
+  height: 120px;
+  text-align: center; }
+.sponsors .sponsors-header .section-head {
+  float: none; }
+@media (min-width: 672px) {
   .sponsors .sponsors-header .section-head {
-    float: none; }
-  @media (min-width: 672px) {
-    .sponsors .sponsors-header .section-head {
-      float: left; } }
+    float: left; } }
+.sponsors .sponsors-header .button {
+  margin: 20px auto;
+  margin-top: 20px;
+  text-align: center;
+  float: none;
+  color: white;
+  font-weight: 300;
+  border: 2px solid #444444;
+  background: #444444; }
+@media (min-width: 672px) {
   .sponsors .sponsors-header .button {
-    margin: 20px auto;
-    margin-top: 20px;
-    text-align: center;
-    float: none;
-    color: white;
-    font-weight: 300;
-    border: 2px solid #444444;
-    background: #444444; }
-  @media (min-width: 672px) {
-    .sponsors .sponsors-header .button {
-      float: right; } }
-  .sponsors .sponsors-header .button:hover {
-    background: #2b2b2b;
-    border: 2px solid #2b2b2b; }
+    float: right; } }
+.sponsors .sponsors-header .button:hover {
+  background: #2b2b2b;
+  border: 2px solid #2b2b2b; }
+.sponsors .sponsors-container {
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+  border-top: 1px solid #444444; }
+@media (min-width: 672px) {
   .sponsors .sponsors-container {
-    width: 100%;
-    height: auto;
-    margin-top: 50px;
-    border-top: 1px solid #444444; }
-  @media (min-width: 672px) {
-    .sponsors .sponsors-container {
-      margin-top: 0px; } }
-  .sponsors .sponsors-container .platinum {
-    position: relative;
-    width: 100%;
-    margin: 20px auto; }
-  .sponsors .sponsors-container .platinum .sponsor-cat {
-    position: absolute;
-    top: -30px;
-    left: 0px;
-    color: #aaaaaa; }
+    margin-top: 0px; } }
+.sponsors .sponsors-container .platinum {
+  position: relative;
+  width: 100%;
+  margin: 20px auto; }
+.sponsors .sponsors-container .platinum .sponsor-cat {
+  position: absolute;
+  top: -30px;
+  left: 0px;
+  color: #aaaaaa; }
+.sponsors .sponsors-container .platinum .img {
+  width: 100%;
+  height: auto;
+  margin: 0px auto;
+  padding: 20px 0px;
+  margin-bottom: 40px;
+  overflow: hidden; }
+@media (min-width: 672px) {
   .sponsors .sponsors-container .platinum .img {
-    width: 100%;
-    height: auto;
-    margin: 0px auto;
-    padding: 20px 0px;
-    margin-bottom: 40px;
-    overflow: hidden; }
-  @media (min-width: 672px) {
-    .sponsors .sponsors-container .platinum .img {
-      width: 60%; } }
-  .sponsors .sponsors-container .platinum .img img {
-    width: 100%; }
-  .sponsors .sponsors-container .gold {
-    position: relative;
-    width: 100%;
-    margin: 20px auto; }
-  .sponsors .sponsors-container .gold .sponsor-cat {
-    position: absolute;
-    top: -30px;
-    left: 0px;
-    color: #aaaaaa; }
-  // warning about scott's shitty css here
-  .sponsors .sponsors-container .gold .img.apple{
-    padding-left: 0px;
-    @media (min-width: 672px){
-      padding-left: 170px;
-  }
+    width: 60%; } }
+.sponsors .sponsors-container .platinum .img img {
+  width: 100%; }
+.sponsors .sponsors-container .gold {
+  position: relative;
+  width: 100%;
+  margin: 20px auto; }
+.sponsors .sponsors-container .gold .sponsor-cat {
+  position: absolute;
+  top: -30px;
+  left: 0px;
+  color: #aaaaaa; }
+// warning about scott's shitty css here
+.sponsors .sponsors-container .gold .img.apple{
+  padding-left: 0px;
+  @media (min-width: 672px){
+    padding-left: 170px;
+}
 }
 .sponsors .sponsors-container .gold .img {
   text-align: center;
