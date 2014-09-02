@@ -1,9 +1,20 @@
+= content_for :extra_css do
+  = stylesheet_link_tag 'dashboard'
+  = stylesheet_link_tag 'hackers'
+= content_for :manual_css do
+  :css
+    body {
+      background-image: url("/assets/hero2.jpg");
+    }
+    table a {
+      color: white;
+      text-decoration: underline;
+    }
 .container
   %h1
     = "Hackers from #{@school.name}"
   .exec-toolbar
     = link_to 'Exec Dashboard', execs_dashboard_url, class: 'button outline'
-    = link_to 'Sticker Recipients', execs_sticker_recipients_url, class: 'button outline'
     .export-buttons{style: 'margin-top: 30px'}
       %a{ download: 'hackers.xls', href: '#',
           onclick: 'return ExcellentExport.excel(this, "hacker_info", "hackers");',
