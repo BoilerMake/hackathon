@@ -32,10 +32,6 @@ function validatePasswordsMatch() {
     }
 }
 
-function submitRegister() {
-    $('#signup-form').submit();
-}
-
 function submitLogin() {
     $('#login-form').submit();
 }
@@ -93,76 +89,5 @@ $(document).ready(function() {
       }
     });
   });
-
-  $('.apply-toggle').on('click', function() {
-    $('#apply-here').toggle();
-    $('#signup-form').slideToggle('slow');
-    inputBox = !inputBox;
-  });
-
-
-  // EARLYBIRD APPLICATION BUTTON
-  $("#register").click(function() {
-    $('body,html').animate({
-      scrollTop: 2000
-    }, 800);
-
-    $(this).fadeOut("fast", function() {
-      $("#email").fadeIn("fast", function() {
-        $("#email input").focus();
-      });
-      $("#password").fadeIn("fast");
-      $("#confirm-password").fadeIn("fast");
-      $("#apply-submit").fadeIn("fast");
-      inputBox = true;
-    });
-  });
-
-    // ENTER KEY FUNCTIONALITY
-    $('#signup-form').keypress(function(e) {
-        if (e.which === 13) {
-            e.preventDefault();
-            if (inputBox) {
-                var isEmailValid = validateEmail();
-                var isPasswordValid = validatePassword();
-                var passwordsMatch = validatePasswordsMatch();
-                if (isEmailValid) {
-                    $("#email .error").addClass('hidden');
-                    if (isPasswordValid) {
-                        $("#password .error").addClass('hidden');
-                        if (passwordsMatch) {
-                            $("#confirm-password .error").addClass('hidden');
-                            console.log("success");
-                            submitRegister();
-                        } else {
-                            // TODO display "Passwords do not match"
-                            $("#confirm-password .error").removeClass('hidden');
-                            $("#confirm-password input").focus();
-                        }
-                    } else {
-                        // TODO display "password must include at least 6..."
-                        $("#password .error").removeClass('hidden');
-                        $("#password input").focus();
-                    }
-                } else {
-                    // TODO display "Invalid email, must be a .edu address"
-                    $("#email .error").removeClass('hidden');
-                    $("#email input").focus();
-                }
-            } else {
-                $('body,html').animate({
-                    scrollTop: 460
-                }, 800);
-                $("#register").fadeOut("fast", function() {
-                    $("#email").fadeIn("fast", function() {
-                        $("#email input").focus();
-                    });
-                    $("#password").fadeIn("fast");
-                    $("#confirm-password").fadeIn("fast");
-                    inputBox = true;
-                });
-            }
-        }
-    });
 
 });
