@@ -26,7 +26,7 @@ class TeamsController < ApplicationController
           name = teammate.full_name.present? ? teammate.full_name : 'Friend'
           @others << {name: name, present: true, email: teammate.email}
         else
-          @others << {name: 'Enter email:', present: false}
+          @others << {name: 'Teammate', present: false}
         end
       end
     end
