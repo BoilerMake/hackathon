@@ -45,7 +45,9 @@ namespace :export do
       puts "essay, word count"
       Hacker.all.each do |h|
         if h.application.present?
+          puts "==================================================================="
           puts "#{h.application.previous_experience} | #{h.application.previous_experience.split.size if h.application.previous_experience}"
+          puts "==================================================================="
         end
       end
     end
