@@ -44,8 +44,8 @@ namespace :export do
     task :essays => :environment do
       puts "essay, word count"
       Hacker.all.each do |h|
-        if h.application
-          puts "#{h.application.essay} | #{h.application.essay.split.size if h.application.essay}"
+        if h.application.present?
+          puts "#{h.application.previous_experience} | #{h.application.previous_experience.split.size if h.application.previous_experience}"
         end
       end
     end
