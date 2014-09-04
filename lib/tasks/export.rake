@@ -39,6 +39,19 @@ namespace :export do
         puts "#{h[:id]}, #{h[:first_name]}, #{h[:last_name]}, #{school_name}, #{h[:team_id]}, #{h[:email]}"
       end
     end
+
+    desc 'get all the essays'
+    task :essays => :environment do
+      puts "essay, word count"
+      Hacker.all.each do |h|
+        if h.application.present?
+          puts "==================================================================="
+          puts "#{h.application.previous_experience} | #{h.application.previous_experience.split.size if h.application.previous_experience}"
+          puts "==================================================================="
+        end
+      end
+    end
+
   end
 end
 
