@@ -23,7 +23,9 @@ class ExecsController < ApplicationController
 
   def dashboard
     @applied_count = Hacker.all.count
-    @schools = Hacker.all.map{ |h| h.school }.keep_if{ |h| h.present? }.uniq
+    @schools = Hacker.all.map{ |h| h.school }.keep_if{ |h| h.present? }.uniq.sort_by do |s|
+      s.users.count
+    end.reverse
 
     @school_count = @schools.count
 
