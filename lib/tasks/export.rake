@@ -47,7 +47,7 @@ namespace :export do
         csv << ['id', 'name', 'github', 'school', 'essay', 'team']
         Hacker.all.each do |h|
           school_name = ''
-          if h[:school_id].present?
+          if h[:school_id].present? && h[:school_id] != -1
             school_name = School.find(h[:school_id]).name
           end
           team_id = 0
