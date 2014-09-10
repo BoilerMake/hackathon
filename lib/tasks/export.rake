@@ -1,3 +1,4 @@
+require 'csv'
 namespace :export do
   namespace :hackers do
     desc 'gets hacker\'s emails from target schools'
@@ -42,14 +43,17 @@ namespace :export do
 
     desc 'get all the essays'
     task :essays => :environment do
-      puts "essay, word count"
-      Hacker.all.each do |h|
-        if h.application.present?
-          puts "==================================================================="
-          puts "#{h.application.previous_experience} | #{h.application.previous_experience.split.size if h.application.previous_experience}"
-          puts "==================================================================="
+      csv_string = CSV.generate do |csv|
+        csv << ['essay', 'word count']
+        Hacker.all.each do |h|
+          if h.application.present?
+            if h.application.previous_experience
+              csv << [h.application.previous_experience, h.application.previous_experience.split.size]
+            end
+          end
         end
       end
+      puts csv_string
     end
 
   end
