@@ -46,7 +46,6 @@ namespace :export do
       csv_string = CSV.generate do |csv|
         csv << ['id', 'name', 'github', 'school', 'essay', 'team']
         Hacker.all.each do |h|
-          all_count += 1
           school_name = ''
           team_id = 0
           if h[:school_id].present? && h[:school_id] != -1
@@ -56,9 +55,7 @@ namespace :export do
             team_id = h.team.id
           end
           if h.application.present?
-            app_count += 1
             if h.application.previous_experience
-              prev_count += 1
               csv << [h.id,
                       h.full_name,
                       h.application.github,
