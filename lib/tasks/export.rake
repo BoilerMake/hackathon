@@ -43,19 +43,25 @@ namespace :export do
 
     desc 'get all with essays'
     task :essays => :environment do
+      all_count = 0
+      app_count = 0
+      prev_count = 0
       csv_string = CSV.generate do |csv|
         csv << ['id', 'name', 'github', 'school', 'essay', 'team']
         Hacker.all.each do |h|
+          all_count += 1
           school_name = ''
+          team_id = 0
           if h[:school_id].present? && h[:school_id] != -1
             school_name = School.find(h[:school_id]).name
           end
-          team_id = 0
           if h.team.present?
             team_id = h.team.id
           end
           if h.application.present?
+            app_count += 1
             if h.application.previous_experience
+              prev_count += 1
               csv << [h.id,
                       h.full_name,
                       h.application.github,
@@ -66,7 +72,10 @@ namespace :export do
           end
         end
       end
-      puts csv_string
+      puts "all count: #{all_count}"
+      puts "with apps: #{app_count}"
+      puts "with experienc: #{prev_count}"
+      #puts csv_string
     end
 
   end
