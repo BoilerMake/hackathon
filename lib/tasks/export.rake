@@ -43,9 +43,6 @@ namespace :export do
 
     desc 'get all with essays'
     task :essays => :environment do
-      all_count = 0
-      app_count = 0
-      prev_count = 0
       csv_string = CSV.generate do |csv|
         csv << ['id', 'name', 'github', 'school', 'essay', 'team']
         Hacker.all.each do |h|
@@ -72,10 +69,7 @@ namespace :export do
           end
         end
       end
-      puts "all count: #{all_count}"
-      puts "with apps: #{app_count}"
-      puts "with experienc: #{prev_count}"
-      #puts csv_string
+      puts csv_string
     end
 
   end
