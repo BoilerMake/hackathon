@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622203529) do
+ActiveRecord::Schema.define(version: 20140920163511) do
 
   create_table "applications", force: true do |t|
     t.string   "gender"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20140622203529) do
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string   "type"
+    t.string   "status"
   end
 
 end
