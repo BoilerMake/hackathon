@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   get 'my_team', to: 'teams#show'
 
-  get 'updates' => 'updates#index'
+  resources :updates, only: [:index, :new, :create]
 
 
   resources :schools, only: [:index, :show]

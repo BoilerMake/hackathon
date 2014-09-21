@@ -1,0 +1,9 @@
+= form_for @update do |f|
+  .field
+    = f.label 'Title:'
+    = f.text_field :title
+  .field
+    = f.label 'Message'
+    %br
+    = f.text_area :body
+  = f.submit 'Post'

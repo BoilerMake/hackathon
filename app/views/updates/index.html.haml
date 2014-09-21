@@ -1,4 +1,27 @@
-= @updates.each do |update|
-  .update
-    %h2= update.title
-    = update.body
+= content_for :javascript do
+  = javascript_tag 'http://yui.yahooapis.com/3.17.2/build/yui/yui-min.js'
+= content_for :extra_css do
+  = stylesheet_link_tag 'dashboard'
+  = stylesheet_link_tag 'hackers'
+= content_for :manual_css do
+  :css
+    body {
+      background-image: url("/assets/hero2.jpg");
+    }
+    a {
+      color: white;
+      text-decoration: underline;
+    }
+    h2 {
+      color: #f5a623;
+    }
+.container
+  %h1 Announcements
+  - if current_user.present? && current_user.exec?
+    = link_to  'Post New Announcement', new_update_path
+  - @updates.each do |update|
+    .update
+      %h2
+        = update.title
+      .update-body
+        = update.body

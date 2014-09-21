@@ -7,6 +7,7 @@ class UpdatesController < ApplicationController
   end
 
   def new
+    @update = Update.new
   end
 
   def create
@@ -14,7 +15,7 @@ class UpdatesController < ApplicationController
 
     respond_to do |format|
       if @update.save
-        format.html { redirect_to update_path, notice: 'Update posted.' }
+        format.html { redirect_to updates_path, notice: 'Update posted.' }
       else
         format.html { render :new }
       end
