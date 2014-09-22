@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140920175227) do
+ActiveRecord::Schema.define(version: 20140921035451) do
 
   create_table "applications", force: true do |t|
     t.string   "gender"
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 20140920175227) do
     t.string   "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "short_message"
+    t.string   "text_sent"
   end
 
   create_table "users", force: true do |t|

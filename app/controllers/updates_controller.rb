@@ -10,6 +10,10 @@ class UpdatesController < ApplicationController
     @update = Update.new
   end
 
+  def edit
+    @update = Update.find(params[:update_id])
+  end
+
   def create
     @update = Update.new(update_params)
 
