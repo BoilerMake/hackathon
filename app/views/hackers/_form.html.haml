@@ -17,16 +17,19 @@
       = form_for @hacker do |f|
         #firstname.input
           .label
-            = f.label :first_name
+            = f.label 'First Name'
           = f.text_field :first_name
         #lastname.input
           .label
-            = f.label :last_name
+            = f.label 'Last Name'
           = f.text_field :last_name
         #school.input.search
           .label
             = f.label :school_id
-          = f.text_field :school_id, id: 'schools', value: @school
+          = f.text_field :school_id, { id: 'schools',
+                                      value: @school,
+                                      disabled: 'true',
+                                      style: 'opacity:0.5;'}
         = f.fields_for :application, @hacker.application do |application_fields|
           .input
             .label
@@ -34,29 +37,34 @@
             = application_fields.collection_select :gender, @genders, :to_s,
               :to_s, {include_blank: "Please select"},
               class: 'gender'
-          #address-line-1.input
-            .label
-              = f.label :address_line_one
-            = application_fields.text_field :address_line_one
-          #address-line-2.input
-            .label
-              = f.label :address_line_two
-            = application_fields.text_field :address_line_two
-          #address-city-state-zip.input
-            .label
-              City, State, Zip
-            = application_fields.text_field :city, class: 'span-6'
-            = application_fields.text_field :state, class: 'span-2', maxlength: '2'
-            = application_fields.text_field :zip_code, class: 'span-4'
           #github.input.link
             .label
               GitHub
             = application_fields.text_field :github
+          #resume.input.link
+            .label
+              Link to Resume
+            = application_fields.text_field :resume
+          .input
+            .label
+              T-shirt Size
+            = application_fields.collection_select :tshirt_size, @shirts,
+                                                   :to_s, :to_s,
+                                                   {include_blank: "Please select"},
+                                                   class: 'gender'
+          .input.link
+            .label
+              Cell Phone
+            = application_fields.text_field :cell_phone
+          .input.link
+            .label
+              Year of Graduation
+            = application_fields.number_field :expected_graduation, value: 2016
           #description.input.field
             .label
-              Experience
+              Dietary Restrictions
               .sub-label
-                Tell us a little bit more about who you are and what you’ve done.
-            = application_fields.text_area :previous_experience, rows: '8'
+                Please enter any dietary restrictions, leave blank if none.
+            = application_fields.text_area :dietary_restrictions, rows: '4'
         .submit
-          = f.submit 'Update', id: 'save', class: 'button outline', style: 'cursor:pointer;'
+          = f.submit 'Save', id: 'save', class: 'button outline', style: 'cursor:pointer;'

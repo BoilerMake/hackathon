@@ -1,5 +1,5 @@
 class HackersController < ApplicationController
-  before_filter :set_genders, :downcase_email
+  before_filter :set_genders, :downcase_email, :set_shirts
   before_action :set_hacker, only: [:update, :destroy]
   before_filter :authenticate, only: [:update, :destroy, :dashboard]
   skip_before_action :require_login
@@ -122,6 +122,10 @@ class HackersController < ApplicationController
 
   def set_genders
     @genders = ['Male', 'Female', 'Other', 'Prefer Not to Specify']
+  end
+
+  def set_shirts
+    @shirts = ['Small', 'Medium', 'Large', 'XL', 'XXL']
   end
 
   def downcase_email
