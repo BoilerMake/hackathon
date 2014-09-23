@@ -51,6 +51,10 @@
             = application_fields.filepicker_field :resume, button_class: 'button outline confirm filepicker', onchange: 'filePicked(event)', button_text: @button_text
             %p.note{style: 'display:none;'}
               Resume Submitted!
+            - if @application.resume.present?
+              %p.note
+                Your current file is:
+                = filepicker_save_button "Resume", @application.resume, "application/pdf"}, button_class: 'button outline confirm filepicker'
           .input
             .label
               T-shirt Size
