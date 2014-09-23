@@ -150,6 +150,7 @@ a {
 }
 
 
+// Scott's additions for last sprint
 button.filepicker {
   margin-left: 20px;
   cursor: pointer;
@@ -159,6 +160,21 @@ p.note {
     width: 240px;
     margin: 0 auto;
 }
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #999;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #999;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+   color:    #999;
+ }
 
 
 .signup {
