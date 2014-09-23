@@ -13,17 +13,18 @@
       Decision:
       %span.status
         = current_user.status
-    - if current_user.status == 'Accepted' && !current_user.application_completed?
-      = link_to 'Confirm', '#', class: 'button outline confirm disabled'
-      %p.note
-        You must finish your application before confirming
-    - elsif current_user.status = 'Accepted' && !current_user.confirmed
-      - #TODO link to a real thing here
-      = link_to 'Confirm', '#', class: 'button outline confirm'
-    - elsif current_user.status = 'Accepted' && current_user.confirmed
+    - if current_user.accepted? && current_user.confirmed
       = link_to 'Confirmed', '#', class: 'button outline confirm disabled'
       %p.note
         You're confirmed! Watch your email for further updates.
+    - elsif current_user.accepted? && !current_user.application_completed?
+      = link_to 'Confirm', '#', class: 'button outline confirm disabled'
+      %p.note
+        You must finish your application before confirming
+    - elsif current_user.accepted? && !current_user.confirmed
+      = link_to 'Confirm', { "controller"=>"hackers", "action"=>"confirm"}, class: 'button outline confirm'
+      %p.note
+        Please confirm that you'll be coming to BoilerMake
   .application.team
     %h1 Teammates
     %div{style: 'margin-bottom: 15px;'}

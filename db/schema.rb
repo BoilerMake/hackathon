@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922034650) do
+ActiveRecord::Schema.define(version: 20140922235529) do
 
   create_table "applications", force: true do |t|
     t.string   "gender"
-    t.datetime "expected_graduation"
+    t.integer  "expected_graduation"
     t.string   "github"
     t.string   "tshirt_size"
     t.string   "cell_phone"

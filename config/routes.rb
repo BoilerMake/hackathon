@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get 'my_team', to: 'teams#show'
 
+  get 'confirm', to: 'hackers#confirm'
+
 
   resources :schools, only: [:index, :show]
   resources :hackers, except: [:index]

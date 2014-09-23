@@ -23,6 +23,8 @@ class HackersController < ApplicationController
     @application = @hacker.application
     @application ||= @hacker.build_application
     @school = @hacker.school.name if @hacker.school
+
+    @resume_button_text = @application.resume.present? ? 'Replace Resume': 'Pick File'
   end
 
   # GET /users/new
@@ -107,6 +109,11 @@ class HackersController < ApplicationController
       format.html { redirect_to hackers_url, notice: 'Hacker was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def confirm
+    current_user.update(confirmed: true)
+    redirect_to my_team_path
   end
 
   private

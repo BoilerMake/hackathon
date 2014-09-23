@@ -148,6 +148,19 @@ a {
   border: 2px solid #f5a623;
   background: none;
 }
+
+
+button.filepicker {
+  margin-left: 20px;
+  cursor: pointer;
+}
+p.note {
+    color: black;
+    width: 240px;
+    margin: 0 auto;
+}
+
+
 .signup {
   min-height: 36px;
 }

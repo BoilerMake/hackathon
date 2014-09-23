@@ -44,7 +44,9 @@
           #resume.input.link
             .label
               Link to Resume
-            = application_fields.text_field :resume
+            = application_fields.filepicker_field :resume, button_class: 'button outline confirm filepicker', onchange: 'filePicked(event)', button_text: @button_text
+            %p.note{style: 'display:none;'}
+              Resume Submitted!
           .input
             .label
               T-shirt Size
