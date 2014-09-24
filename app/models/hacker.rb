@@ -11,6 +11,14 @@ class Hacker < User
     status == 'Accepted'
   end
 
+  def standby?
+    status == 'Standby'
+  end
+
+  def rejected?
+    status == 'Rejected'
+  end
+
   def application_completed?
     false if application.nil?
     attributes = [ first_name, last_name ].map do |el|
