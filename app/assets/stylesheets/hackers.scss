@@ -271,7 +271,7 @@ a.login-text {
   color: #f5a623;
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
-  color:    #f5a623;
+  color:    #BDC3C7;
   text-align: center;
 }
 input:focus::-webkit-input-placeholder {
@@ -282,7 +282,7 @@ input:focus::-webkit-input-placeholder {
   line-height: 1.4;
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color:    #f5a623;
+  color:    #BDC3C7;
   opacity:  1;
   text-align: center;
   font-size: none;
@@ -296,7 +296,7 @@ input:focus:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
   line-height: 1.4;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color:    #f5a623;
+  color:    #BDC3C7;
   opacity:  1;
   text-align: center;
   font-size: none;
@@ -310,7 +310,7 @@ input:focus::-moz-placeholder { /* Mozilla Firefox 19+ */
   line-height: 1.4;
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-  color:    #f5a623;
+  color:    #BDC3C7;
   opacity: 0.5;
   text-align: center;
   font-size: none;
@@ -323,6 +323,10 @@ input:focus:-ms-input-placeholder { /* Internet Explorer 10+ */
   line-height: 1.4;
 }
 
+#resume .note {
+  display: inline-block;
+  text-align: left;
+}
 
 
 textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {

@@ -46,15 +46,6 @@ ActiveRecord::Schema.define(version: 20140922235529) do
     t.string   "secret_key"
   end
 
-  create_table "updates", force: true do |t|
-    t.string   "title"
-    t.string   "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "short_message"
-    t.string   "text_sent"
-  end
-
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
