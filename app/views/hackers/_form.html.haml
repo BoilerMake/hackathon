@@ -53,8 +53,7 @@
               Resume Submitted!
             - if @application.resume.present?
               %p.note
-                Your current file is:
-                = filepicker_save_button "Resume", @application.resume, "application/pdf", button_class: 'button outline confirm filepicker'
+                = link_to "Current resume", @application.resume, target: '_blank'
           .input
             .label
               T-shirt Size
