@@ -49,6 +49,9 @@
     text-align: center;
     font-weight: 300;
 }
+.bmstatus p.note {
+  width: 400px;
+}
 .alert-h1 {
     font-size: 1.5em;
     text-align: center;

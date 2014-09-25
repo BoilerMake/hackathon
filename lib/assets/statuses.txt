@@ -412,9 +412,9 @@
 248	Standby
 1435	Standby
 1166	Standby
-53	Standby
-279	Standby
-341	Standby
+53	Accepted
+279	Accepted
+341	Accepted
 1769	Standby
 1890	Standby
 1893	Standby

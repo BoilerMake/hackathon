@@ -31,74 +31,78 @@
         Please confirm that you'll be coming to BoilerMake
     - elsif current_user.standby?
       %p.note
-        Some info/copy about standby
+        After carefully reviewing all of this season's BoilerMake applications, we've put you on the Standby List. If (and when) space clears up, we'll send you another invitation email with acceptance information. Best of luck!
+      %br
+      %p.note
+        If you don't make it off the Standby List this season, you should absolutely apply to future BoilerMakes.
     - elsif current_user.rejected?
       %p.note
         Some info/copy about rejected
     - else
       %p.note
         Woah, something went wrong, please email us at <a href="mailto:team@boilermake.org">team@boilermake.org</a>.
-  .application
-    .form
-      = form_for @hacker do |f|
-        #firstname.input
-          .label
-            = f.label 'First Name'
-          = f.text_field :first_name
-        #lastname.input
-          .label
-            = f.label 'Last Name'
-          = f.text_field :last_name
-        #school.input.search
-          .label
-            = f.label :school_id
-          = f.text_field :school_id, { id: 'schools',
-                                      value: @school,
-                                      disabled: 'true',
-                                      style: 'opacity:0.5;'}
-        = f.fields_for :application, @hacker.application do |application_fields|
-          .input
+  - if current_user.accepted?
+    .application
+      .form
+        = form_for @hacker do |f|
+          #firstname.input
             .label
-              Gender
-            = application_fields.collection_select :gender, @genders, :to_s,
-              :to_s, {include_blank: "Please select"},
-              class: 'gender'
-          #github.input.link
+              = f.label 'First Name'
+            = f.text_field :first_name
+          #lastname.input
             .label
-              GitHub
-            = application_fields.text_field :github
-          #github.input.link
+              = f.label 'Last Name'
+            = f.text_field :last_name
+          #school.input.search
             .label
-              LinkedIn
-            = application_fields.text_field :linkedin, placeholder: 'https://www.linkedin.com/pub/my_name/99/999/999'
-          #resume.input.link
-            .label
-              Link to Resume
-            = application_fields.filepicker_field :resume, button_class: 'button outline confirm filepicker', onchange: 'filePicked(event)', button_text: @resume_button_text
-            %p.note{style: 'display:none;'}
-              Resume Submitted!
-            - if @application.resume.present?
-              = link_to "Current resume", @application.resume, target: '_blank', class:'button outline confirm'
-          .input
-            .label
-              T-shirt Size
-            = application_fields.collection_select :tshirt_size, @shirts,
-                                                   :to_s, :to_s,
-                                                   {include_blank: "Please select"},
-                                                   class: 'gender'
-          .input.link
-            .label
-              Cell Phone
-            = application_fields.text_field :cell_phone
-          .input.link
-            .label
-              Year of Graduation
-            = application_fields.number_field :expected_graduation, value: 2016
-          #description.input.field
-            .label
-              Dietary Restrictions
-              .sub-label
-                Please enter any dietary restrictions, leave blank if none.
-            = application_fields.text_area :dietary_restrictions, rows: '4'
-        .submit
-          = f.submit 'Save', id: 'save', class: 'button outline', style: 'cursor:pointer;'
+              = f.label :school_id
+            = f.text_field :school_id, { id: 'schools',
+                                        value: @school,
+                                        disabled: 'true',
+                                        style: 'opacity:0.5;'}
+          = f.fields_for :application, @hacker.application do |application_fields|
+            .input
+              .label
+                Gender
+              = application_fields.collection_select :gender, @genders, :to_s,
+                :to_s, {include_blank: "Please select"},
+                class: 'gender'
+            #github.input.link
+              .label
+                GitHub
+              = application_fields.text_field :github
+            #github.input.link
+              .label
+                LinkedIn
+              = application_fields.text_field :linkedin, placeholder: 'https://www.linkedin.com/pub/my_name/99/999/999'
+            #resume.input.link
+              .label
+                Link to Resume
+              = application_fields.filepicker_field :resume, button_class: 'button outline confirm filepicker', onchange: 'filePicked(event)', button_text: @resume_button_text
+              %p.note{style: 'display:none;'}
+                Resume Submitted!
+              - if @application.resume.present?
+                = link_to "Current resume", @application.resume, target: '_blank', class:'button outline confirm'
+            .input
+              .label
+                T-shirt Size
+              = application_fields.collection_select :tshirt_size, @shirts,
+                                                     :to_s, :to_s,
+                                                     {include_blank: "Please select"},
+                                                     class: 'gender'
+            .input.link
+              .label
+                Cell Phone
+              = application_fields.text_field :cell_phone
+            .input.link
+              .label
+                Year of Graduation
+              = application_fields.number_field :expected_graduation, value: 2016
+            #description.input.field
+              .label
+                Dietary Restrictions
+                .sub-label
+                  Please enter any dietary restrictions, leave blank if none.
+              = application_fields.text_area :dietary_restrictions, rows: '4'
+          .submit
+            = f.submit 'Save', id: 'save', class: 'button outline', style: 'cursor:pointer;'
