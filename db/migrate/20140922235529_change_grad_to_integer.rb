@@ -1,5 +1,6 @@
 class ChangeGradToInteger < ActiveRecord::Migration
   def change
-    change_column :applications, :expected_graduation, :integer
+    remove_column :applications, :expected_graduation
+    add_column :applications, :expected_graduation, :integer
   end
 end
