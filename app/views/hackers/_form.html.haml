@@ -17,7 +17,7 @@
       Decision:
       %span.status
         = current_user.status
-    - if current_user.accepted? && current_user.confirmed
+    - if current_user.accepted? && current_user.confirmed?
       = link_to 'Confirmed', '#', class: 'button outline confirm disabled'
       %p.note
         You're confirmed! Watch your email for further updates.
@@ -37,7 +37,19 @@
         If you don't make it off the Standby List this season, you should absolutely apply to future BoilerMakes.
     - elsif current_user.rejected?
       %p.note
-        Some info/copy about rejected
+        After carefully reviewing all of this season's BoilerMake applications, we're sorry to say that we cannot accept you for this fall's BoilerMake. There were simply too many applications for us to be able to invite everyone to attend.
+        %br
+        %br
+
+        If you're a die-hard hacker and would still like to come to BoilerMake, and would even be willing to organize independent transportation, we have a few slots for you! Email me
+        = mail_to 'viraj@purdue.edu', '(viraj@purdue.edu)'
+        as soon as possible and we'll let you know if there's space for you to come.
+        %br
+
+        %br
+        All in all, don't despair! There will be future BoilerMakes, and we'd love for you to apply in the future. We'd also encourage you to check out Major League Hacking's
+        = link_to "schedule",  "http://mlh.io/seasons/f2014/events", target: "_blank"
+        for other hackathons going on this fall. Thanks for your interest and we hope you continue to hack to your heart's content.
     - else
       %p.note
         Woah, something went wrong, please email us at <a href="mailto:team@boilermake.org">team@boilermake.org</a>.
@@ -78,11 +90,14 @@
             #resume.input.link
               .label
                 Link to Resume
-              = application_fields.filepicker_field :resume, button_class: 'button outline confirm filepicker', onchange: 'filePicked(event)', button_text: @resume_button_text
-              %p.note{style: 'display:none;'}
-                Resume Submitted!
-              - if @application.resume.present?
-                = link_to "Current resume", @application.resume, target: '_blank', class:'button outline confirm'
+              .filepicker
+                = application_fields.filepicker_field :resume, button_class: 'button outline confirm', onchange: 'filePicked(event)', button_text: @resume_button_text
+                %p.note{style: 'display:none;'}
+                  Resume Uploaded
+                  %br
+                  Don't forget to hit "Save" below!
+                - if @application.resume.present?
+                  = link_to "Current resume", @application.resume, target: '_blank'
             .input
               .label
                 T-shirt Size

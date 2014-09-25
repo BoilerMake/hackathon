@@ -151,9 +151,13 @@ a {
 
 
 // Scott's additions for last sprint
-button.filepicker {
-  margin-left: 20px;
-  cursor: pointer;
+.filepicker {
+  button{
+    cursor: pointer;
+    margin-left: 0px;
+  }
+  margin-left: 180px;
+
 }
 p.note {
     color: black;
