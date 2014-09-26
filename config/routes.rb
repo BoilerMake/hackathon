@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'execs/sticker_recipients'
   get 'execs/hackers_for'
   get 'execs/export'
+  get 'execs/exportall'
 
   get 'my_team', to: 'teams#show'
 

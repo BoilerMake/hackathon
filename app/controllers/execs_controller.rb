@@ -15,6 +15,32 @@ class ExecsController < ApplicationController
     end
   end
 
+  def exportall
+    require 'csv'
+    @csv_string = CSV.generate do |csv|
+      csv << ['id', 'fname', 'lname', 'email', 'school', 'team']
+      Hacker.all.each do |h|
+        school_name = ''
+        team_id     = 0
+        if h[:school_id].present? && h[:school_id] != -1
+          school_name = School.find(h[:school_id]).name
+        end
+        if h.team.present?
+          team_id = h.team.id
+        end
+        csv << [h.id,
+                h.first_name,
+                h.last_name,
+                h.email,
+                school_name,
+                team_id]
+      end
+    end
+    send_data @csv_string,
+              :filename => "all-hackers.csv",
+              :type => "text/csv"
+  end
+
   def export
     require 'csv'
     @csv_string = CSV.generate do |csv|
