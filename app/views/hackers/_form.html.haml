@@ -28,7 +28,7 @@
     - elsif current_user.accepted? && !current_user.confirmed
       = link_to 'Confirm', { "controller"=>"hackers", "action"=>"confirm"}, class: 'button outline confirm'
       %p.note
-        Please confirm that you'll be coming to BoilerMake
+        After carefully examining everyone's application, we've chosen you to attend this season's BoilerMake! If you'd like to take this awesome opportunity, be sure to login and confirm your acceptance at boilermake.org. Please be sure to confirm by October 2nd at 11:59pm ET!
     - elsif current_user.standby?
       %p.note
         After carefully reviewing all of this season's BoilerMake applications, we've put you on the Standby List. If (and when) space clears up, we'll send you another invitation email with acceptance information. Best of luck!
