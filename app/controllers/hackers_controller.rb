@@ -113,7 +113,7 @@ class HackersController < ApplicationController
 
   def confirm
     current_user.update(confirmed: true)
-    redirect_to my_team_path
+    redirect_to dashboard_path
   end
 
   private
