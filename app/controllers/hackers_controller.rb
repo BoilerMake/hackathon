@@ -1,5 +1,5 @@
 class HackersController < ApplicationController
-  before_filter :set_genders, :downcase_email
+  before_filter :set_genders, :downcase_email, :set_shirts
   before_action :set_hacker, only: [:update, :destroy]
   before_filter :authenticate, only: [:update, :destroy, :dashboard]
   skip_before_action :require_login
@@ -23,6 +23,8 @@ class HackersController < ApplicationController
     @application = @hacker.application
     @application ||= @hacker.build_application
     @school = @hacker.school.name if @hacker.school
+
+    @resume_button_text = @application.resume.present? ? 'Replace Resume': 'Pick File'
   end
 
   # GET /users/new
@@ -109,6 +111,11 @@ class HackersController < ApplicationController
     end
   end
 
+  def confirm
+    current_user.update(confirmed: true)
+    redirect_to my_team_path
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -124,6 +131,10 @@ class HackersController < ApplicationController
     @genders = ['Male', 'Female', 'Other', 'Prefer Not to Specify']
   end
 
+  def set_shirts
+    @shirts = ['Small', 'Medium', 'Large', 'XL', 'XXL']
+  end
+
   def downcase_email
     if params[:hacker]
       params[:hacker][:email].downcase! if params[:hacker][:email]
@@ -132,6 +143,6 @@ class HackersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def hacker_params
-    params.require(:hacker).permit(:first_name, :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, application_attributes: [ :id, :gender, :address_line_one, :address_line_two, :city, :state, :zip_code, :expected_graduation, :github, :tshirt_size, :cell_phone, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other ])
+    params.require(:hacker).permit(:first_name, :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, application_attributes: [ :id, :gender, :address_line_one, :address_line_two, :city, :state, :zip_code, :expected_graduation, :github, :tshirt_size, :cell_phone, :resume, :linkedin, :dietary_restrictions, :previous_experience, :essay, :school_other ])
   end
 end

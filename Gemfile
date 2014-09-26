@@ -19,6 +19,8 @@ gem 'cancancan', '~> 1.8'
 gem 'unicorn'
 gem 'foreman'
 
+gem 'filepicker-rails'
+
 # these should move in the future
 gem 'better_errors'
 gem 'awesome_print'
