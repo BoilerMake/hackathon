@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922235529) do
+ActiveRecord::Schema.define(version: 20140926002921) do
 
   create_table "applications", force: true do |t|
     t.string   "gender"
-    t.integer  "expected_graduation"
     t.string   "github"
     t.string   "tshirt_size"
     t.string   "cell_phone"
@@ -32,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140922235529) do
     t.string   "state"
     t.string   "zip_code"
     t.string   "resume"
+    t.integer  "expected_graduation"
   end
 
   create_table "schools", force: true do |t|
