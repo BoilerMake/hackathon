@@ -91,7 +91,7 @@
               .label
                 Link to Resume
               .filepicker
-                = application_fields.filepicker_field :resume, button_class: 'button outline confirm', onchange: 'filePicked(event)', button_text: @resume_button_text
+                = application_fields.filepicker_field :resume, button_class: 'button outline confirm', onchange: 'filePicked(event)', button_text: @resume_button_text, mimetypes: 'application/pdf'
                 %p.note{style: 'display:none;'}
                   Resume Uploaded
                   %br
