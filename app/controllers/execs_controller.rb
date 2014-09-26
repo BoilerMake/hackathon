@@ -80,6 +80,7 @@ class ExecsController < ApplicationController
 
 
   def dashboard
+    @confirmed_count = Hacker.where(confirmed: true).count
     @applied_count = Hacker.all.count
     @schools = Hacker.all.map{ |h| h.school }.keep_if{ |h| h.present? }.uniq.sort_by do |s|
       s.users.count
