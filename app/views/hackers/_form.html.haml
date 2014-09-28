@@ -72,7 +72,7 @@
               = f.label :school_id
             = f.text_field :school_id, { id: 'schools',
                                         value: @school,
-                                        disabled: 'true',
+                                        disable_with: @school,
                                         style: 'opacity:0.5;'}
           = f.fields_for :application, @hacker.application do |application_fields|
             .input
