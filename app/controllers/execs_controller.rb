@@ -15,6 +15,14 @@ class ExecsController < ApplicationController
     end
   end
 
+  def shirts
+    @shirt_sizes = ['Small', 'Medium', 'Large', 'XL', 'XXL']
+    @shirts = Hash.new
+    @shirt_sizes.each do |size|
+      @shirts[size] = Hacker.joins(:application).where(applications: {tshirt_size: size}).count
+    end
+  end
+
   def exportall
     require 'csv'
     @csv_string = CSV.generate do |csv|
@@ -82,6 +90,7 @@ class ExecsController < ApplicationController
 
 
   def dashboard
+    @confirmed_count = Hacker.where(confirmed: true).count
     @applied_count = Hacker.all.count
     @schools = Hacker.all.map{ |h| h.school }.keep_if{ |h| h.present? }.uniq.sort_by do |s|
       s.users.count

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'execs/hackers_for'
   get 'execs/export'
   get 'execs/exportall'
+  get 'execs/shirts' => 'execs#shirts'
 
   get 'my_team', to: 'teams#show'
 

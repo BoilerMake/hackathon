@@ -112,8 +112,12 @@ class HackersController < ApplicationController
   end
 
   def confirm
-    current_user.update(confirmed: true)
-    redirect_to dashboard_path
+    if current_user.accepted? && current_user.application_completed?
+      current_user.update(confirmed: true)
+      redirect_to dashboard_path
+    else
+      redirect_to root_path, flash: { error: "Nice try, but you can't get in that way" }
+    end
   end
 
   private
