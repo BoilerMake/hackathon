@@ -18,7 +18,7 @@ class ExecsController < ApplicationController
   def exportall
     require 'csv'
     @csv_string = CSV.generate do |csv|
-      csv << ['id', 'fname', 'lname', 'email', 'school', 'team']
+      csv << ['id', 'fname', 'lname', 'email', 'school', 'team', 'status', 'confirmed']
       Hacker.all.each do |h|
         school_name = ''
         team_id     = 0
@@ -33,7 +33,9 @@ class ExecsController < ApplicationController
                 h.last_name,
                 h.email,
                 school_name,
-                team_id]
+                team_id,
+                h.status,
+                h.confirmed]
       end
     end
     send_data @csv_string,
