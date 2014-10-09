@@ -11,30 +11,8 @@
       %h3 October 17th-19th - Purdue University
       %h4 36 hours, 500 students, $10,000 in prizes
       = render 'shared/flash.html.haml'
-      = form_for @hacker, html: {id: 'signup-form',
-                                 class: 'form clearfix',
-                                 style: 'display:none;'} do |f|
-        #email
-          = f.label 'Email'
-          = f.email_field :email, { placeholder: 'user@domain.tld'}
-          %p.error.hidden
-            Invalid email address. Check the format of your email
-            %br
-            Email team@boilermake.org if you have issues
-        #password
-          = f.label 'Password'
-          = f.password_field :password, { placeholder: 'hunter2' }
-          %p.error.hidden Invalid password.
-        #confirm-password
-          = f.label 'Confirm Password'
-          = f.password_field :password, { placeholder: 'hunter2' }
-          %p.error.hidden Passwords do not match.
-        %div
-          %input#apply-cancel.apply-toggle.cancel.button{type: 'button', text: 'Cancel', value: 'Cancel'}
-        %div
-          = f.submit 'Submit', class: 'submit cta button'
       - if current_user.nil?
-        #apply-here.apply-toggle.button.cta.form-button Apply Now
+        #apply-here.apply-toggle.button.cta.form-button Applications Closed
       -else
         = link_to 'My Application', dashboard_path, class: 'submit cta button'
   %section.mission.clearfix
@@ -59,32 +37,61 @@
           %h3 Watch the video from BoilerMake 2013.
   %section.wide-image-container
     .wide-image-1
-  %section.container.speakers.clearfix
-    %h2.section-head
-      Who's Coming?
-    .avitars
-      .person-container
-        .img-container
-          = image_tag 'jonas.jpg'
-        %h5 Jonas Lamis
-        %h6 CEO and Co-founder, Sensai Corporation
-        %p  Jonas Lamis is a Boilermaker now living the startup dream in Silicon Valley.
-        .social
-          %ul
-            %li
-              %a.ss-icon.ss-standard{href: "http://www.sens.ai"} globe
-            %li
-              %a.ss-icon.ss-social{href: "http://twitter.com/jonaslamis"} twitter
-      .person-container
-        .img-container
-          = image_tag 'arthur.jpg'
-        %h5 Arthur Nisnevich
-        %h6 CTO, All4Staff
-        %p Arthur has over 12 years of full-stack development experience, and is currently the co-founder and CTO of All4Staff, a Techstars company based in Boulder, Colorado.
-        .social
-          %ul
-            %li
-              %a.ss-icon.ss-social{href: "http://twitter.com/ArthurN"} twitter
+  %section.speakers.clearfix
+    .container
+      %h2.section-head
+        Who's Coming?
+      %h4{style: "font-size:1.4em; font-weight: 100; color: #444444; border-bottom: 1px solid #444444;"}
+        JUDGES
+      .avitars
+        .person-container
+          .img-container
+            = image_tag 'jonas.jpg'
+          .title-container
+            %h5 Jonas Lamis
+            %h6 CEO and Co-founder, Sensai Corporation
+          %p  Jonas Lamis is a Boilermaker now living the startup dream in Silicon Valley.
+          .social
+            %ul
+              %li
+                %a.ss-icon.ss-standard{href: "http://www.sens.ai"} globe
+              %li
+                %a.ss-icon.ss-social{href: "http://twitter.com/jonaslamis"} twitter
+        .person-container
+          .img-container
+            = image_tag 'arthur.jpg'
+          .title-container
+            %h5 Arthur Nisnevich
+            %h6 CTO, All4Staff
+          %p Arthur is currently the co-founder and CTO of All4Staff, a Techstars company based in Boulder, Colorado.
+          .social
+            %ul
+              %li
+                %a.ss-icon.ss-social{href: "http://twitter.com/ArthurN"} twitter
+        .person-container
+          .img-container
+            = image_tag 'daniel.jpg'
+          .title-container
+            %h5 Daniel Palacio
+            %h6 Founder, Authy Inc.
+          %p Daniel is the founder of Authy Inc and a passionate security expert and entrepreneur.
+          .social
+            %ul
+              %li
+                %a.ss-icon.ss-standard{href: 'http://authy.com'} globe
+              %li
+                %a.ss-icon.ss-social{href: "http://twitter.com/danielpalacio"} twitter
+        .person-container
+          .img-container
+            = image_tag 'holly.jpg'
+          .title-container
+            %h5 Holly Jade Chan
+            %h6 Designer, M.S. + B.S. Purdue University
+          %p Holly worked at Apple and is featured by places including Google for Entrepreneurs, Entrepreneur Magazine and TEDx 
+          .social
+            %ul
+              %li
+                %a.ss-icon.ss-standard{href: 'http://hollyjadecreates.com'} globe
   %section.wide-image-container
     .wide-image-2
   %section.faq.clearfix
@@ -92,13 +99,18 @@
       %h2.section-head Questions
       .text-box
         .text-box-container
-          %h4 Who can apply?
-          %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
-        .text-box-container
           %h4
             What can I make?
           %p
             Web, desktop, mobile, hardware- it’s up to you to make whatever kind of project you want as long as it is software-related.
+        .text-box-container
+          %h4
+            How do I get there?
+          %p
+            We’re sending buses to the universities from which we receive the most interest and offering travel reimbursements to everyone else.
+        .text-box-container
+          %h4 Who can apply?
+          %p Any student from around the world is welcome to apply. Join your friends and create a team of up to four people! Students who aren’t undergraduates are also encouraged to apply.
         .text-box-container
           %h4
             How do I apply?
@@ -109,13 +121,8 @@
             Have more questions?
           %p
             Feel free to email us at
-            %strong=mail_to 'boilermake@purdue.edu', nil, {style: 'color:black'}
+            %strong=mail_to 'team@boilermake.org', nil, {style: 'color:black'}
             !
-        .text-box-container{style: 'margin-top: -43px'}
-          %h4
-            How do I get there?
-          %p
-            We’re sending busses to the universities from which we receive the most interest and offering travel reimbursements to everyone else.
   %section.wide-image-container
     .wide-image-3
   %section.sponsors.clearfix
@@ -126,40 +133,60 @@
         .platinum
           %p.sponsor-cat Platinum
           .img
-            = image_tag 'inin2.png'
+            = link_to 'http://www.inin.com/careers/Pages/default.aspx' do
+              = image_tag 'inin2.png'
       .sponsors-container
         .gold
           %p.sponsor-cat Gold
           .img
-            = image_tag 'kaplusa.png'
-          .img
-            = image_tag 'apple.png'
+            = link_to 'http://www.kaplusa.com/' do
+              = image_tag 'kaplusa.png'
+          .img.apple
+            = link_to 'http://www.apple.com/jobs/students' do
+              = image_tag 'apple.jpg'
       .sponsors-container
         .silver
           %p.sponsor-cat Silver
           .img
-            = image_tag 'exacttarget.png'
+            = link_to 'http://www.exacttarget.com/company/careers' do
+              = image_tag 'exacttarget.png'
           .img
-            = image_tag 'Booz.png'
+            = link_to 'http://www.boozallen.com/careers' do
+              = image_tag 'Booz.png'
           .img
-            = image_tag 'Bloomberg.png'
+            = link_to 'http://jobs.bloomberg.com/' do
+              = image_tag 'Bloomberg.png'
           .img
-            = image_tag 'twilio.png'
+            = link_to 'http://www.twilio.com/' do
+              = image_tag 'twilio.png'
           .img
-            = image_tag 'lob.png'
+            = link_to 'https://www.paypal.com/' do
+              = image_tag 'paypal.png'
           .img
-            = image_tag 'paypal.png'
+            = link_to 'http://www.mongodb.org/' do
+              = image_tag 'mongodb.png'
           .img
-            = image_tag 'mongodb.png'
+            = link_to 'https://www.trunkclub.com/' do
+              = image_tag 'trunkclub.png'
           .img
-            = image_tag 'trunkclub.png'
+            = link_to 'http://qualcomm.com' do
+              = image_tag 'qualcomm.png'
+          .img
+            = link_to 'http://dunnhumby.com' do
+              = image_tag 'dunnhumby.png'
       .sponsors-container
         .bronze
           %p.sponsor-cat Bronze
           .img
             = image_tag 'google.png'
           .img
-            = image_tag 'qumulo.png'
+            = image_tag 'mlh.png'
+          .img
+            = image_tag 'challengepost.png'
+          .img
+            = image_tag 'codeship.png'
+          .img
+            = image_tag 'harris.png'
 %footer{:role => "contentinfo"}
   .container
     .footer-top
@@ -182,7 +209,7 @@
 
   = form_tag password_resets_path, method: :post do
     .field
-      = text_field_tag :email, params[:email], { class: 'flat-input', placeholder: 'Email'}
+      = text_field_tag :email, params[:email], { class: 'flat-input'}
     .actions
       = submit_tag 'Reset Password', {class: 'flat-button submit'}
   %p.return Return

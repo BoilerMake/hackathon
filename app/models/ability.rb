@@ -8,7 +8,7 @@ class Ability
         can :manage, :all
       elsif user.hacker?
         can :manage, [Application, Team]
-        can [ :dashboard, :new, :create, :update ], Hacker
+        can [ :dashboard, :new, :create, :update, :confirm ], Hacker
       end
     end
   end

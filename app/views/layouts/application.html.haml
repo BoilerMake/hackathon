@@ -9,10 +9,12 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = stylesheet_link_tag    'welcome' if params[:controller] == 'pages'
     = stylesheet_link_tag    'hackers' if params[:controller] == 'hackers' || params[:controller] == 'teams'
-    = stylesheet_link_tag    'teams' if params[:controller] == 'teams'
+    = stylesheet_link_tag    'teams'   if params[:controller] == 'teams'
     = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700'
     = yield :partial_css
+    = yield :extra_css
     = yield :extra_js
+    = yield :manual_css
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = render 'shared/google_analytics'
     = csrf_meta_tags

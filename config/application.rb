@@ -20,5 +20,6 @@ module Hackathon
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.serve_static_assets = true
+    config.filepicker_rails.api_key = "AS1jo8DllT0CPgbN4bCgqz"
   end
 end

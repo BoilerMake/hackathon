@@ -11,7 +11,7 @@
   .application.team
     %h1 Teammates
     .form
-      = form_tag hacker_invitations_path, method: :post do
+      = form_tag root_url, method: :get do
         #hacker1.input
           %label.label
             = @current_name
@@ -22,31 +22,14 @@
           %label.label
             = @others[0][:name]
           = text_field_tag :email_one, @others[0][:email],
-                                       disabled: @others[0][:present]
+                                       disabled: true
         #hacker3.input.empty
           %label.label
             = @others[1][:name]
           = text_field_tag :email_two, @others[1][:email],
-                                       disabled: @others[1][:present]
+                                       disabled: true
         #hacker4.input.empty
           %label.label
             = @others[2][:name]
           = text_field_tag :email_three, @others[2][:email],
-                                       disabled: @others[2][:present]
-        - leave_style = 'margin-left: 200px;'
-        - if @team.hackers.count < 4
-          %a#invite-send.send.button.outline
-            Send Invites
-          - leave_style = 'margin-left: 0px;'
-        = link_to 'Leave Team', teams_leave_url,
-                  style: leave_style,
-                  class: 'send button outline',
-                  data: { confirm: 'Are you sure you want to leave this team?' }
-      .divider
-      #invitelink.input
-        %label.label
-          Invite Link
-        %input{:type => "text", :value => "#{invite_url @team}"}/
-        .label
-          .sub-label
-            Or send your friends this link to join your team!
+                                       disabled: true
