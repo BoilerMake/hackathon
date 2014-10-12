@@ -37,6 +37,14 @@
       %br
       %p.note
         If you don't make it off the Standby List this season, you should absolutely apply to future BoilerMakes.
+    - elsif current_user.declined?
+      %p.note
+        Since you haven't confirmed your attendance to BoilerMake, we're offering your spot to someone on the standby list.
+        %br
+        %br
+      %p.note
+        If you meant to confirm your attendance or if you think that there's been a mistake, shoot an email to 
+        =mail_to 'team@boilermake.org', 'team@boilermake.org'
     - elsif current_user.rejected?
       %p.note
         After carefully reviewing all of this season's BoilerMake applications, we're sorry to say that we cannot accept you for this fall's BoilerMake. There were simply too many applications for us to be able to invite everyone to attend.
