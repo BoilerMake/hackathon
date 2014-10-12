@@ -13,6 +13,8 @@
       = render 'shared/flash.html.haml'
       - if current_user.nil?
         #apply-here.apply-toggle.button.cta.form-button Applications Closed
+      -elsif current_user.exec?
+        = link_to 'Exec Dashboard', execs_dashboard_path, class: 'submit cta button'
       -else
         = link_to 'My Application', dashboard_path, class: 'submit cta button'
   %section.mission.clearfix

@@ -1,21 +1,7 @@
 = content_for :extra_css do
   = stylesheet_link_tag 'dashboard'
   = stylesheet_link_tag 'hackers'
-= content_for :manual_css do
-  :css
-    body {
-      background-image: url("/assets/hero2.jpg");
-    }
-    a {
-      color: white;
-      text-decoration: underline;
-    }
-    h2 {
-      color: #f5a623;
-    }
-    input {
-      border-radius: '4px';
-    }
+  = stylesheet_link_tag 'updates'
 .container
   %h2 New Post
   = render 'form'

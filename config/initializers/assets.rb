@@ -1,1 +1,1 @@
-Rails.application.config.assets.precompile += %w(bootstrap.css welcome.css hackers.css teams.css header.css)
+Rails.application.config.assets.precompile += %w(bootstrap.css welcome.css hackers.css teams.css header.css updates.css)
