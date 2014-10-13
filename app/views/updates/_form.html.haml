@@ -10,7 +10,7 @@
   - text_options = 'disabled: disabled' if @update.text_sent?
   .field
     Send text message notification?
-    = check_box :send_text, text_options
+    = check_box :should_send_text, text_options
   .field
     Use alternate version for text notification
     = check_box :use_short, text_options

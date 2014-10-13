@@ -21,6 +21,9 @@ gem 'foreman'
 
 gem 'filepicker-rails'
 
+gem 'twilio-ruby'
+gem 'phone'
+
 # these should move in the future
 gem 'better_errors'
 gem 'awesome_print'

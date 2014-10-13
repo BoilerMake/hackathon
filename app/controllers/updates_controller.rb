@@ -19,6 +19,9 @@ class UpdatesController < ApplicationController
 
     respond_to do |format|
       if @update.save
+        if @updates.should_text?
+          @update.send_texts
+        end
         format.html { redirect_to updates_path, notice: 'Update posted.' }
       else
         format.html { render :new }
@@ -29,6 +32,6 @@ class UpdatesController < ApplicationController
   private
 
   def update_params
-    params.require(:update).permit(:title, :body)
+    params.require(:update).permit(:title, :body, :should_send_text)
   end
 end
