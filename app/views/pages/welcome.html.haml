@@ -174,19 +174,34 @@
           .img
             = link_to 'http://dunnhumby.com' do
               = image_tag 'dunnhumby.png'
+          .img
+            = link_to 'https://www.rockwellcollins.com/' do
+              = image_tag 'rockwell.jpg'
       .sponsors-container
         .bronze
           %p.sponsor-cat Bronze
           .img
-            = image_tag 'google.png'
+            = link_to 'https://developers.google.com/' do
+              = image_tag 'google.png'
           .img
-            = image_tag 'mlh.png'
+            = link_to 'http://mlh.io/' do
+              = image_tag 'mlh.png'
           .img
-            = image_tag 'challengepost.png'
+            = link_to 'http://challengepost.com/' do
+              = image_tag 'challengepost.png'
           .img
-            = image_tag 'codeship.png'
+            = link_to 'https://codeship.io/' do
+              = image_tag 'codeship.png'
           .img
-            = image_tag 'harris.png'
+            = link_to 'http://harris.com/' do
+              = image_tag 'harris.png'
+          .img
+            = link_to 'http://ibm.com/' do
+              = image_tag 'ibm.jpg'
+          .img
+            = link_to 'http://getpebble.com/' do
+              = image_tag 'pebble.png'
+
 %footer{:role => "contentinfo"}
   .container
     .footer-top
