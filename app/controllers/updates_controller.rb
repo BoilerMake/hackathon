@@ -19,10 +19,16 @@ class UpdatesController < ApplicationController
 
     respond_to do |format|
       if @update.save
-        if @updates.should_text?
-          @update.send_texts
+        flash_msg = {flash: {notice: 'Update Posted.'} }
+        if @update.should_text?
+          twilio_errors = @update.send_texts
+          if twilio_errors > 0
+            flash_msg = {flash: {error: "#{twilio_errors} texts failed to send, check logs"} }
+          end
+          @update.text_sent = true
+          @update.save
         end
-        format.html { redirect_to updates_path, notice: 'Update posted.' }
+        format.html { redirect_to updates_path, flash_msg }
       else
         format.html { render :new }
       end
@@ -32,6 +38,6 @@ class UpdatesController < ApplicationController
   private
 
   def update_params
-    params.require(:update).permit(:title, :body, :should_send_text)
+    params.require(:update).permit(:title, :body, :short_message, :should_text)
   end
 end

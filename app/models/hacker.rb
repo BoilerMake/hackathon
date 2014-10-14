@@ -7,8 +7,10 @@ class Hacker < User
 
   accepts_nested_attributes_for :application
 
-  def textees
-    Hacker.joins(:applications).where(applications: {can_text: true }).not(applications: {cell_phone: nil})
+  def self.textees
+    Hacker.joins(:application)
+          .where(applications: {can_text: true })
+          .where.not(applications: {cell_phone: nil})
   end
 
   def accepted?

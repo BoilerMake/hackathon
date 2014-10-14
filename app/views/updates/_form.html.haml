@@ -6,16 +6,15 @@
     = f.label 'Message'
     %br
     = f.text_area :body
-  - text_options = {}
-  - text_options = 'disabled: disabled' if @update.text_sent?
   .field
     Send text message notification?
-    = check_box :should_send_text, text_options
-  .field
-    Use alternate version for text notification
-    = check_box :use_short, text_options
-  .field#short_msg
-    = f.label 'Text Version'
-    %br
-    = f.text_area :short_message, text_options
+    = f.check_box :should_text
+  .text-options
+    .field
+      Use alternate version for text notification
+      = check_box_tag :use_short
+    #short_msg.field{style: 'display:none'}
+      = f.label 'Text Version'
+      %br
+      = f.text_area :short_message
   = f.submit 'Post'
