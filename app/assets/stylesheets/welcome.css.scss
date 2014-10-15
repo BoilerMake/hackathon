@@ -2259,6 +2259,19 @@ table {
     min-height: 250px;
   }
 }
+.wide-image-container .wide-image-4 {
+  background-image:  url(image-path('bg4-crop.jpg'));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 150px;
+}
+@media (min-width: 672px) {
+  .wide-image-container .wide-image-4 {
+    min-height: 250px;
+  }
+}
 
 .speakers .avitars {
   position: relative;
@@ -2864,3 +2877,58 @@ thead {
   transition: opacity 0.15s linear; }
 .fade.in {
   opacity: 1; }
+
+
+
+
+
+
+
+
+
+
+
+
+.schedule {
+  .container {
+    .section-body {
+      .section-day {
+        position: relative;
+        width: 30%;
+        float: left;
+        &:nth-child(3n + 1), &:nth-child(3n + 2) {
+          margin-right: 5%;
+        }
+        .section-day-time {
+          position: relative;
+          display: block;
+          width: 100%;
+          .section-day-time-left {
+            position: relative;
+            float: left;
+            width: 32.5%;
+            h2 {
+              float: right;
+              width: auto;
+              margin-right: 16px;
+              margin-top: 0;
+              font-size: 1em;
+            }
+          }
+          .section-day-time-right {
+            position: relative;
+            float: left;
+            width: 67.5%;
+            p {
+              margin: 0;
+              margin-bottom: 0.5em;
+              font-size: 1em;
+              font-weight: 100;
+              padding-bottom: 0.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
