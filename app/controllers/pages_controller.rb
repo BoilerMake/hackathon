@@ -6,6 +6,6 @@ class PagesController < ApplicationController
   end
 
   def schedule
-    redirect_to root_path, notice: 'Schedule coming soon!'
+    redirect_to "#{root_url}#schedule"
   end
 end
