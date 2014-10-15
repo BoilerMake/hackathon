@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
   get 'pages/welcome'
+
+  get 'schedule' => 'pages#schedule'
+
   get 'teams/join'
   get 'teams/leave'
   get 'execs/applied' => 'execs#applied'
