@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
   get 'pages/welcome'
+
+  get 'schedule' => 'pages#schedule'
+
   get 'teams/join'
   get 'teams/leave'
   get 'execs/applied' => 'execs#applied'
@@ -13,6 +16,8 @@ Rails.application.routes.draw do
   get 'execs/sticker_recipients'
   get 'execs/hackers_for'
   get 'execs/export'
+  get 'execs/exportall'
+  get 'execs/shirts' => 'execs#shirts'
 
   get 'my_team', to: 'teams#show'
 

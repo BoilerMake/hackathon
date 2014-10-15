@@ -19,6 +19,10 @@ class Hacker < User
     status == 'Rejected'
   end
 
+  def declined?
+    status == 'Declined'
+  end
+
   def application_completed?
     false if application.nil?
     attributes = [ first_name, last_name ].map do |el|
