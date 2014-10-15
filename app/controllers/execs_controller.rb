@@ -15,6 +15,42 @@ class ExecsController < ApplicationController
     end
   end
 
+  def shirts
+    @shirt_sizes = ['Small', 'Medium', 'Large', 'XL', 'XXL']
+    @shirts = Hash.new
+    @shirt_sizes.each do |size|
+      @shirts[size] = Hacker.joins(:application).where(applications: {tshirt_size: size}).count
+    end
+  end
+
+  def exportall
+    require 'csv'
+    @csv_string = CSV.generate do |csv|
+      csv << ['id', 'fname', 'lname', 'email', 'school', 'team', 'status', 'confirmed']
+      Hacker.all.each do |h|
+        school_name = ''
+        team_id     = 0
+        if h[:school_id].present? && h[:school_id] != -1
+          school_name = School.find(h[:school_id]).name
+        end
+        if h.team.present?
+          team_id = h.team.id
+        end
+        csv << [h.id,
+                h.first_name,
+                h.last_name,
+                h.email,
+                school_name,
+                team_id,
+                h.status,
+                h.confirmed]
+      end
+    end
+    send_data @csv_string,
+              :filename => "all-hackers.csv",
+              :type => "text/csv"
+  end
+
   def export
     require 'csv'
     @csv_string = CSV.generate do |csv|
@@ -54,6 +90,7 @@ class ExecsController < ApplicationController
 
 
   def dashboard
+    @confirmed_count = Hacker.where(confirmed: true).count
     @applied_count = Hacker.all.count
     @schools = Hacker.all.map{ |h| h.school }.keep_if{ |h| h.present? }.uniq.sort_by do |s|
       s.users.count

@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def welcome
     @hacker = Hacker.new
   end
+
+  def schedule
+    redirect_to "#{root_url}#schedule"
+  end
 end

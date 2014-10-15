@@ -16,6 +16,9 @@
   .exec-toolbar
     =# link_to 'Sticker Recipients', execs_sticker_recipients_url, class: 'button outline'
   %h2
+    = "Hackers who have confirmed they're going to kick ass at #{HACKATHON}:"
+    %span{style: 'color: #f5a623;'}=  @confirmed_count
+  %h2
     = "Hackers wanting to kick ass at #{HACKATHON}:"
     %span{style: 'color: #f5a623;'}=  @applied_count
   %h2
