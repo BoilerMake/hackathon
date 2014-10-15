@@ -30,8 +30,7 @@ class Update < ActiveRecord::Base
         twilio_errors += 1
         logger.debug e
       end
-      return twilio_errors
     end
-
+    twilio_errors
   end
 end
