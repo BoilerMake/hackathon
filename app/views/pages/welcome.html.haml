@@ -23,15 +23,28 @@
         = update.body
 :javascript
   $(document).ready( function() {
+    var retina = window.devicePixelRatio > 1;
     if  ($(window).width() >= 480) {
-      var newWidth = $(window).width() - 256;
-      $('.header, .scrolling-header').width(newWidth);
+      if (retina) {
+        var newWidth = $(window).width() - 512;
+        $('.header, .scrolling-header').width(newWidth);
+      }
+      else {
+        var newWidth = $(window).width() - 256;
+        $('.header, .scrolling-header').width(newWidth);
+      }
     }
 
     $(window).resize(function(event) {
       if  ($(window).width() >= 480) {
-        var newWidth = $(window).width() - 256;
-        $('.header, .scrolling-header').width(newWidth);
+        if (retina) {
+          var newWidth = $(window).width() - 512;
+          $('.header, .scrolling-header').width(newWidth);
+        }
+        else {
+          var newWidth = $(window).width() - 256;
+          $('.header, .scrolling-header').width(newWidth);
+        }
       }
     });
   } );
