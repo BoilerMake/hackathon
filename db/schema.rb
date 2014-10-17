@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926002921) do
+ActiveRecord::Schema.define(version: 20141017232321) do
 
   create_table "applications", force: true do |t|
     t.string   "gender"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20140926002921) do
     t.string   "zip_code"
     t.string   "resume"
     t.integer  "expected_graduation"
+    t.boolean  "can_text",             default: true
+    t.string   "badge_id"
   end
 
   create_table "schools", force: true do |t|
@@ -44,6 +46,16 @@ ActiveRecord::Schema.define(version: 20140926002921) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "secret_key"
+  end
+
+  create_table "updates", force: true do |t|
+    t.string   "title"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "short_message"
+    t.string   "text_sent"
+    t.boolean  "should_text",   default: true
   end
 
   create_table "users", force: true do |t|
