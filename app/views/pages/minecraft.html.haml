@@ -1,0 +1,14 @@
+= content_for :extra_css do
+  = stylesheet_link_tag 'hackers'
+  = stylesheet_link_tag 'updates'
+.container
+  = render 'shared/flash.html.haml'
+  %h1 Minecraft Servers
+  .update
+    .update-header-bottom{style: "border: none;"}
+    .update-body
+      Vanilla: 208.115.213.123
+      %br
+      Tekkit: 208.115.213.124
+      %br
+      FTB Direwolf 20: 208.115.213.125

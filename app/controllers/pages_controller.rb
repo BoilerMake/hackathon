@@ -6,6 +6,9 @@ class PagesController < ApplicationController
     @updates = Update.all.order('created_at DESC')
   end
 
+  def minecraft
+  end
+
   def schedule
     redirect_to "#{root_url}#schedule"
   end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'pages/welcome'
 
   get 'schedule' => 'pages#schedule'
+  get 'minecraft' => 'pages#minecraft'
 
   get 'teams/join'
   get 'teams/leave'
