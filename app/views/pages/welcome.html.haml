@@ -1,7 +1,47 @@
+.announcement-tag
+
 = render 'shared/header'
 = content_for :extra_js do
   = javascript_include_tag 'http://www.youtube.com/player_api'
 .main.clearfix{:role => 'main'}
+
+
+.announcements
+  = render 'shared/flash.html.haml'
+  %h1 Announcements
+  - if current_user.present? && current_user.exec?
+    = link_to  'Post New Announcement', new_update_path
+  - @updates.each do |update|
+    .update
+      .update-header
+        %h2.update-title
+          = update.title
+        %span.update-timestamp
+          = update.created_at
+      .update-header-bottom
+      .update-body
+        = update.body
+:javascript
+  $(document).ready( function() {
+    $('.update-timestamp').each(function(index, el) {
+      var date = new Date($(el).html());
+      $(el).html(date.toLocaleTimeString());
+    });
+
+    if  ($(window).width() >= 480) {
+      var newWidth = $(window).width() - 256;
+      $('.header, .scrolling-header').width(newWidth);
+    }
+
+    $(window).resize(function(event) {
+      if  ($(window).width() >= 480) {
+        var newWidth = $(window).width() - 256;
+        $('.header, .scrolling-header').width(newWidth);
+      }
+    });
+  } );
+
+
 .content
   %section.hero
     .container

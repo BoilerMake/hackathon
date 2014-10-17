@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def welcome
     @hacker = Hacker.new
+    @updates = Update.all.order('created_at DESC')
   end
 
   def schedule
