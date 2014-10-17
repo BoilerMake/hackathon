@@ -26,24 +26,24 @@
     var retina = window.devicePixelRatio > 1;
     if  ($(window).width() >= 480) {
       if (retina) {
-        var newWidth = $(window).width() - 512;
-        $('.header, .scrolling-header').width(newWidth);
+        var newWidth = $(window).width() - 384;
+        $('.header, .scrolling-header, footer').width(newWidth);
       }
       else {
         var newWidth = $(window).width() - 256;
-        $('.header, .scrolling-header').width(newWidth);
+        $('.header, .scrolling-header, footer').width(newWidth);
       }
     }
 
     $(window).resize(function(event) {
       if  ($(window).width() >= 480) {
         if (retina) {
-          var newWidth = $(window).width() - 512;
-          $('.header, .scrolling-header').width(newWidth);
+          var newWidth = $(window).width() - 384;
+          $('.header, .scrolling-header, footer').width(newWidth);
         }
         else {
           var newWidth = $(window).width() - 256;
-          $('.header, .scrolling-header').width(newWidth);
+          $('.header, .scrolling-header, footer').width(newWidth);
         }
       }
     });
