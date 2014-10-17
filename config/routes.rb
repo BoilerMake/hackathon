@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'schedule' => 'pages#schedule'
 
+  get 'badges' => redirect("https://github.com/BoilerMake/BoilerMakeBadge_I")
+
   get 'teams/join'
   get 'teams/leave'
   get 'execs/applied' => 'execs#applied'
