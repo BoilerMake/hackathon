@@ -2894,10 +2894,13 @@ thead {
     .section-body {
       .section-day {
         position: relative;
-        width: 30%;
         float: left;
-        &:nth-child(3n + 1), &:nth-child(3n + 2) {
-          margin-right: 5%;
+        width: 100%;
+        @media (min-width: 672px) {
+          width: 30%;
+          &:nth-child(3n + 1), &:nth-child(3n + 2) {
+            margin-right: 5%;
+          }
         }
         .section-day-time {
           position: relative;
