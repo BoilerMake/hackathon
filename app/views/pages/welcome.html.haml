@@ -17,17 +17,12 @@
         %h2.update-title
           = update.title
         %span.update-timestamp
-          = update.created_at
+          = update.created_at.strftime("%I:%M %p")
       .update-header-bottom
       .update-body
         = update.body
 :javascript
   $(document).ready( function() {
-    $('.update-timestamp').each(function(index, el) {
-      var date = new Date($(el).html());
-      $(el).html(date.toLocaleTimeString());
-    });
-
     if  ($(window).width() >= 480) {
       var newWidth = $(window).width() - 256;
       $('.header, .scrolling-header').width(newWidth);
