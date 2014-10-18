@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141013201743) do
+=======
+ActiveRecord::Schema.define(version: 20141017232321) do
+>>>>>>> master
 
   create_table "applications", force: true do |t|
     t.string   "gender"
@@ -33,6 +37,10 @@ ActiveRecord::Schema.define(version: 20141013201743) do
     t.string   "resume"
     t.integer  "expected_graduation"
     t.boolean  "can_text",             default: true
+<<<<<<< HEAD
+=======
+    t.string   "badge_id"
+>>>>>>> master
   end
 
   create_table "schools", force: true do |t|
