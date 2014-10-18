@@ -21,5 +21,6 @@ module Hackathon
     # config.i18n.default_locale = :de
     config.serve_static_assets = true
     config.filepicker_rails.api_key = "AS1jo8DllT0CPgbN4bCgqz"
+    config.time_zone = 'Eastern Time (US & Canada)'
   end
 end

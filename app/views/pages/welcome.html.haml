@@ -7,8 +7,8 @@
 
 
 .announcements
-  = render 'shared/flash.html.haml'
-  %h1 Announcements
+  = link_to updates_url do
+    %h1 Announcements
   - if current_user.present? && current_user.exec?
     = link_to  'Post New Announcement', new_update_path
   - @updates.each do |update|
