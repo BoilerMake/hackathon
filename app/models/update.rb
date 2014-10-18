@@ -33,4 +33,6 @@ class Update < ActiveRecord::Base
     end
     twilio_errors
   end
+
+  handle_asynchronously :send_texts
 end

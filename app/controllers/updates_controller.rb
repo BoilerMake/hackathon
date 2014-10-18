@@ -21,10 +21,7 @@ class UpdatesController < ApplicationController
       if @update.save
         flash_msg = {flash: {notice: 'Update Posted.'} }
         if @update.should_text?
-          twilio_errors = @update.send_texts
-          if twilio_errors > 0
-            flash_msg = {flash: {error: "#{twilio_errors} texts failed to send, check logs"} }
-          end
+          @update.send_texts
           @update.text_sent = true
           @update.save
         end

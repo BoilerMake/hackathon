@@ -24,6 +24,8 @@ gem 'filepicker-rails'
 gem 'twilio-ruby'
 gem 'phone'
 
+gem 'delayed_job_active_record'
+
 # these should move in the future
 gem 'better_errors'
 gem 'awesome_print'
