@@ -28,7 +28,7 @@ class Update < ActiveRecord::Base
         )
       rescue Twilio::REST::RequestError => e
         twilio_errors += 1
-        logger.debug e
+        logger.debug e.message
       end
     end
     twilio_errors
