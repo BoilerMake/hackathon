@@ -6,49 +6,6 @@
 .main.clearfix{:role => 'main'}
 
 
-.announcements
-  = link_to updates_url do
-    %h1 Announcements
-  - if current_user.present? && current_user.exec?
-    = link_to  'Post New Announcement', new_update_path
-  - @updates.each do |update|
-    .update
-      .update-header.cf
-        %h2.update-title
-          = update.title
-        %span.update-timestamp
-          = update.created_at.strftime("%I:%M %p")
-      .update-header-bottom
-      .update-body
-        = update.body
-:javascript
-  $(document).ready( function() {
-    var retina = window.devicePixelRatio > 1;
-    if  ($(window).width() >= 480) {
-      if (retina) {
-        var newWidth = $(window).width() - 384;
-        $('.header, .scrolling-header, footer').width(newWidth);
-      }
-      else {
-        var newWidth = $(window).width() - 256;
-        $('.header, .scrolling-header, footer').width(newWidth);
-      }
-    }
-
-    $(window).resize(function(event) {
-      if  ($(window).width() >= 480) {
-        if (retina) {
-          var newWidth = $(window).width() - 384;
-          $('.header, .scrolling-header, footer').width(newWidth);
-        }
-        else {
-          var newWidth = $(window).width() - 256;
-          $('.header, .scrolling-header, footer').width(newWidth);
-        }
-      }
-    });
-  } );
-
 
 .content
   %section.hero
