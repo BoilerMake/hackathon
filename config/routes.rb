@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   get 'my_team', to: 'teams#show'
 
+  resources :hacker_signup, only: [:create]
   resources :updates, only: [:index, :new, :create]
   get 'confirm', to: 'hackers#confirm'
 
