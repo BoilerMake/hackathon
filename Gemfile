@@ -25,6 +25,7 @@ gem 'twilio-ruby'
 gem 'phone'
 
 gem 'delayed_job_active_record'
+gem 'mailchimp-api', require: 'mailchimp'
 
 # these should move in the future
 gem 'better_errors'
