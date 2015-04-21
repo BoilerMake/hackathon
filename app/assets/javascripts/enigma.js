@@ -16,7 +16,6 @@ Enigma = {
     lineWidth: 1.2
   },
   init: function() {
-    console.log(window.innerWidth);
     s = this.settings;
     this.userActions();
     Enigma.canvas = document.querySelector('canvas');
@@ -30,7 +29,6 @@ Enigma = {
       }
     }
     Enigma.startLoop();
-
   },
   key: function(i, j) {
     this.character = Enigma.validChars.substr( Math.floor(Math.random() * 36), 1);
@@ -75,8 +73,24 @@ Enigma = {
     }, Math.random() * delay);
   },
   userActions: function() {
-    //any user interaction
-    //TODO: Resize window
+    window.addEventListener('resize', function() {
+      //Enigma.stopLoop();
+      console.log("Resized window");
+      s.amount = Math.round(window.innerWidth);
+      s.width = window.innerWidth;
+      s.height = window.innerHeight;
+      Enigma.canvas = document.querySelector('canvas');
+      Enigma.canvas.height = s.height;
+      Enigma.canvas.width = s.width;
+      Enigma.ctx = Enigma.canvas.getContext("2d");
+      for (var i = 0; i < s.height/s.size; i++) {
+        Enigma.keys[i] = [];
+        for (var j = 0; j < s.width/s.size; j++) {
+          Enigma.keys[i][j] = new Enigma.key(i, j);
+        }
+      }
+    });
+
     $('#email').keypress(function(e) {
       if (e.which === 13) {
         $('#logo').css('display', 'none');
