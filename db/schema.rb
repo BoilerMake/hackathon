@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420234949) do
+ActiveRecord::Schema.define(version: 20150421000356) do
 
   create_table "applications", force: true do |t|
     t.string   "gender"
@@ -53,6 +53,12 @@ ActiveRecord::Schema.define(version: 20150420234949) do
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "hacker_signups", force: true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "interest_signups", force: true do |t|
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
