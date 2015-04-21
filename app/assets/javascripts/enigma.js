@@ -5,7 +5,7 @@ Enigma = {
   colors: ['rgba(230, 73, 73,', 'rgba(199, 181, 88,', 'rgba(143, 112, 97,'],
   validChars: "0123456789ABCDEFGHIJKLMNOPQURSTUVWXYZ",
   interval: 0,
-  message: "Wat",
+  message: "BoilerMake",
   messageCounter: 0,
   charPressed: '',
   canvas: 0,
@@ -92,7 +92,8 @@ Enigma = {
   },
   userActions: function() {
     window.addEventListener('resize', function() {
-      //TODO: fix resize bugf
+      //TODO: fix resize bug
+      //TODO: fix random bug where circles stay behind with the message
       s.amount = Math.round(window.innerWidth);
       s.width = window.innerWidth;
       s.height = window.innerHeight;
