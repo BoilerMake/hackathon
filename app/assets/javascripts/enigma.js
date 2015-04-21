@@ -41,10 +41,11 @@ window.onload = function() {
     var chars = "0123456789ABCDEFGHIJKLMNOPQURSTUVWXYZ";
     this.letter = chars.substr( Math.floor(Math.random() * 36), 1);
     this.size = 22;
+    this.light = 0;
     var num = Math.floor(window.innerWidth / this.size);
     if (count2 == num) {
       count2 = 0;
-      count3++;
+      count3++
       //this.x = (this.size*2) + (4*count2*this.size);
       //this.y = (this.size*2) + (this.size * 3 * count3);
     } else {
@@ -76,6 +77,9 @@ Particle.prototype.draw = function() {
   //this.y += this.vy;
 
   ctx.clearRect(leftWall, groundLevel, canvas.width, canvas.height);    
+  
+  if (this.light === -1) return;
+
   ctx.beginPath();
   ctx.fillStyle = color;
   if (count4%Math.floor(window.innerWidth / this.size)==0) {
@@ -112,7 +116,8 @@ Particle.prototype.draw = function() {
     ctx.strokeStyle = this.color + opacity + ')';
     ctx.arc(this.x+.5, this.y+.5, this.size, 0, Math.PI*2, true);
     ctx.closePath();
-    ctx.stroke();
+    //ctx.stroke();
+    if (!this.light) ctx.stroke();
 
     ctx.font = '14pt code_boldregular';
     ctx.fillStyle = this.color + opacity + ')';
@@ -120,7 +125,17 @@ Particle.prototype.draw = function() {
       var chars = "0123456789ABCDEFGHIJKLMNOPQURSTUVWXYZ";
       this.letter = chars.substr( Math.floor(Math.random() * 36), 1);
     }
-    ctx.fillText(this.letter, this.x-(this.size/4.5), this.y+(this.size/2.5));
+    if (this.light > 0 && this.light != Math.floor(Math.random()*10)) {
+      ctx.fillStyle = this.color + opacity + ')';
+      ctx.fill();
+      ctx.fillStyle = color;
+      this.letter = charPressed;
+    }
+    if (this.light > 0) {
+      this.light--;
+    }
+    ctx.textAlign = 'center';
+    ctx.fillText(this.letter, this.x+1, this.y+(this.size/2.5)-1);
     if (count4 == (Math.floor(window.innerWidth / this.size * 4) / Math.floor(window.innerHeight / this.size )) ) {
       count4 = 0;
     } else {
@@ -134,16 +149,50 @@ Particle.prototype.draw = function() {
   /*for (var i in particles) {
     particles[i].draw();
   }*/
+  
+  var interval;
+  var startInterval = function() {
+    interval = window.setInterval(function() {
+      ctx.fillStyle = "#2A2A2A";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      for (var i in particles) {
+        particles[i].draw();
+      }
+    }, 105);
+  };
+  var stopInterval = function() {
+    window.clearInterval(interval);
+  };
 
-  setInterval(function() {
-    ctx.fillStyle = "#2A2A2A";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    for (var i in particles) {
-      particles[i].draw();
+  startInterval();
+  
+  var lightParticle = function(p, delay, duration) {
+    window.setTimeout(function() {
+      p.light = duration;
+    }, Math.random()*delay);
+  }
+
+  var charPressed = '';
+  $('#email').keypress(function(e) {
+    if (e.which === 13) {
+      $('#logo').css('display', 'none');
+      for (var i in particles) {
+        charPressed = ' ';
+        lightParticle(particles[i], 4000, -1);
+      }
     }
-  }, 105);
-
-
+    else {
+      charPressed = String.fromCharCode(e.which);
+      for (var i in particles) {
+        if (Math.random() < 0.1) {
+          lightParticle(particles[i], 250, 10);
+        }
+        else {
+          particles[i].light = 0;
+        }
+      }
+    }
+  });  
 
 };
 
