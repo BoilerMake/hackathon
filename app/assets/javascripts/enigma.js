@@ -5,7 +5,7 @@ Enigma = {
   colors: ['rgba(230, 73, 73,', 'rgba(199, 181, 88,', 'rgba(143, 112, 97,'],
   validChars: "0123456789ABCDEFGHIJKLMNOPQURSTUVWXYZ",
   interval: 0,
-  message: "BoilerMake",
+  message: "Watf",
   messageCounter: 0,
   charPressed: '',
   canvas: 0,
@@ -92,7 +92,7 @@ Enigma = {
   },
   userActions: function() {
     window.addEventListener('resize', function() {
-      //TODO: fix resize bug
+      //TODO: fix resize bugf
       s.amount = Math.round(window.innerWidth);
       s.width = window.innerWidth;
       s.height = window.innerHeight;
@@ -109,6 +109,7 @@ Enigma = {
     });
 
     $('#email').keypress(function(e) {
+      //TODO: fix bug for odd numbered words
       if (e.which === 13) {
         $('#logo').css('display', 'none');
          for (var i = 0; i < s.height/s.size * .35; i++) {
