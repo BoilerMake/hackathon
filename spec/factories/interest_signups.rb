@@ -1,7 +1,7 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :hacker_signup, :class => 'HackerSignups' do
+  factory :interest_signup, :class => 'InterestSignups' do
     email "MyString"
   end
 end

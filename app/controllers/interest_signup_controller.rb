@@ -1,5 +1,6 @@
-class HackerSignupController < ApplicationController
+class InterestSignupController < ApplicationController
    skip_before_filter  :verify_authenticity_token
+   #^^ temporary
 skip_before_action :require_login
 def new
   end
@@ -8,7 +9,7 @@ def new
     email_inp = params["email"]
     #validate this
 
-    HackerSignups.create(email: email_inp)
+    InterestSignups.create(email: email_inp)
     render :text => email_inp
     # mailchimp = Mailchimp::API.new(MAILCHIMP-API-KEY)
     # mailchimp.lists.subscribe(MAILCHIMP-LIST-ID, 
