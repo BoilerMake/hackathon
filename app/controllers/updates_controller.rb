@@ -1,4 +1,5 @@
 class UpdatesController < ApplicationController
+  include ActionController::Live
   skip_before_action :require_login
   load_and_authorize_resource
 
@@ -12,6 +13,16 @@ class UpdatesController < ApplicationController
 
   def edit
     @update = Update.find(params[:update_id])
+  end
+
+  def stream
+    response.headers['Content-Type'] = 'text/event-stream'
+    100.times {
+      response.stream.write "hello world\n"
+      sleep 1
+    }
+  ensure
+    response.stream.close
   end
 
   def create

@@ -25,7 +25,9 @@ Rails.application.routes.draw do
 
   get 'my_team', to: 'teams#show'
 
-  resources :updates, only: [:index, :new, :create]
+  get 'stream' => 'updates#stream'
+
+  resources :updates, only: [:index, :new, :create, :stream]
   get 'confirm', to: 'hackers#confirm'
 
 
