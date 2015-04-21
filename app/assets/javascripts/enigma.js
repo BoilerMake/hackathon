@@ -5,7 +5,7 @@ Enigma = {
   colors: ['rgba(230, 73, 73,', 'rgba(199, 181, 88,', 'rgba(143, 112, 97,'],
   validChars: "0123456789ABCDEFGHIJKLMNOPQURSTUVWXYZ",
   interval: 0,
-  message: "Watf",
+  message: "Wat",
   messageCounter: 0,
   charPressed: '',
   canvas: 0,
@@ -81,9 +81,9 @@ Enigma = {
   },
   messageKey: function(p, delay, duration, j) {
     window.setTimeout(function(){ 
-      for (var i = (Math.round(s.width/s.size * .25 * .5) - (Enigma.message.length * .5)); i <= (Math.round(s.width/s.size * .25 * .5) + (Enigma.message.length * .5)); i++) {
+      for (var i = (Math.round(s.width/s.size * .25 * .5) - Math.round((Enigma.message.length * .5))); i <= (Math.round(s.width/s.size * .25 * .5) + (Enigma.message.length * .5)); i++) {
         if (j==i) {
-          p.messageC = Enigma.message.substr((j-(Math.round(s.width/s.size * .25 * .5) - (Enigma.message.length * .5)))-1, 1);
+          p.messageC = Enigma.message.substr((j-(Math.round(s.width/s.size * .25 * .5) - Math.round((Enigma.message.length * .5))))-1, 1);
         }
       }
       p.color = Enigma.colors[1];
@@ -109,7 +109,6 @@ Enigma = {
     });
 
     $('#email').keypress(function(e) {
-      //TODO: fix bug for odd numbered words
       if (e.which === 13) {
         $('#logo').css('display', 'none');
          for (var i = 0; i < s.height/s.size * .35; i++) {
