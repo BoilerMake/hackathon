@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   get 'my_team', to: 'teams#show'
 
-  resources :interest_signup, only: [:create]
+  resources :interest_signups, only: [:create]
   resources :updates, only: [:index, :new, :create]
   get 'confirm', to: 'hackers#confirm'
 

@@ -39,6 +39,7 @@ group :development do
   gem 'spring'
   gem 'binding_of_caller'
   gem 'quiet_assets', '~> 1.0.3'
+  gem 'pry-byebug'
 end
 
 group :development, :test do

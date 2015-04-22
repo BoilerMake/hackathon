@@ -1,10 +1,11 @@
 %canvas#background This text is displayed if your browser does not support HTML5 Canvas.
 
-%div#logo 
-	=image_tag("white-bm_logo.png", size: "250x250")
-	%h1 BoilerMake
-	%h2 Oct. 16-18 | Purdue University
-	%input#email{:type=>"email", :placeholder=>"Enter your email"}
+%div#logo
+  =image_tag("white-bm_logo.png", size: "250x250")
+  %h1 BoilerMake
+  %h2 Purdue University
+  = form_for @interest_signup, remote: true, "data-type" => :json do |f|
+    = f.email_field :email, placeholder: "Enter your email"
 
 
 
