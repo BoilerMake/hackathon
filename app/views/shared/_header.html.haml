@@ -1,6 +1,7 @@
 = content_for :partial_css do
   = stylesheet_link_tag 'header'
 %header
+/
   .container
     =link_to root_url do
       =image_tag 'logo.jpg'
@@ -23,3 +24,4 @@
           = submit_tag :Submit
       - else
         = link_to 'Log Out', logout_path
+/
