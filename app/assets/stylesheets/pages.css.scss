@@ -7,6 +7,7 @@ body, html {
 }
 body {
 	background-color: #2A2A2A;
+	
 }
 #logo {
 	width: 250px;
@@ -41,7 +42,7 @@ canvas {
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: -1;
+	z-index: -2;
 }
 input[type="email"] {
 	background-color: transparent;
@@ -49,7 +50,7 @@ input[type="email"] {
 	border: 2px solid #FFFFFF;
 	padding: 10px;
 	margin-top: 15%;
-	color: #535353;
+	color: #FFFFFF;
 	text-align: center;
 	font-family: 'FuturaSTD-light';
 	text-transform: uppercase;
@@ -62,10 +63,6 @@ input[type="email"] {
 		color: #FFFFFF;
 	}
 }
-/*input[type="email"]:focus {
-	outline: none;
-	color: #FFFFFF;
-}*/
 @font-face {
     font-family: 'code_boldregular';
     src: url(code_bold-webfont.eot);
