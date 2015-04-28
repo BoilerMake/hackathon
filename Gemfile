@@ -27,6 +27,8 @@ gem 'phone'
 gem 'delayed_job_active_record'
 gem 'mailchimp-api', require: 'mailchimp'
 
+gem 'validates_email_format_of'
+
 # these should move in the future
 gem 'better_errors'
 gem 'awesome_print'

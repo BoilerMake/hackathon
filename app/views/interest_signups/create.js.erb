@@ -1,0 +1,14 @@
+var $container = $('#logo');
+<% unless @interest_signup.errors.any? %>
+  $("#new_interest_signup").hide();
+  $("#logo").append($("<h2>Thanks for signing up, <%=  @interest_signup.email %></h2>"));
+  $container.find('#error_explanation').remove();
+<% else %>
+  var $errorDiv = $('<div id="error_explanation">');
+  var $errorList = $('<ul>');
+  <% @interest_signup.errors.full_messages.each do |msg| %>
+    $errorList.append('<li><%= escape_javascript msg %></li>');
+  <% end %>
+  $container.find('#error_explanation').remove();
+  $container.append($errorDiv.append($errorList));
+<% end %>

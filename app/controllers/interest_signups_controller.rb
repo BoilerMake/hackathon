@@ -1,24 +1,16 @@
 class InterestSignupsController < ApplicationController
   skip_before_action :require_login
+  respond_to :js, :json
 
   def create
-    email_address = params['interest_signup']['email']
+    email_address = params['interest_signup']['email'].downcase
 
     @interest_signup = InterestSignup.create(email: email_address)
-    if !@interest_signup
-      render json: { error: 'invalid'}
+
+    if @interest_signup.valid?
+      @interest_signup.mailchimp_subscribe
     end
 
-    # MAILCHIMP-API-KEY
-    mailchimp_api = '1e94385b50dd6dd1a2606ff31f6e5982-us4'
-    # MAILCHIMP-LIST-ID
-    mailchimp_list = '64bd0c0cf2'
-
-    mailchimp = Mailchimp::API.new(mailchimp_api)
-    mailchimp.lists.subscribe(mailchimp_list, { email: @interest_signup.email})
-
-    respond_to do |format|
-      format.json { render json: @interest_signup }
-    end
+    respond_with @interest_signup
   end
 end
