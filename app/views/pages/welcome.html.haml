@@ -5,7 +5,7 @@
   %h1 BoilerMake
   %h2 Purdue University
   = form_for @interest_signup, remote: true, "data-type" => :json do |f|
-    = f.email_field :email, placeholder: "Enter your email"
+    = f.email_field :email, placeholder: "Enter your email", novalidate: "novalidate"
 
 
 

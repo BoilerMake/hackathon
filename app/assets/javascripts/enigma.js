@@ -5,7 +5,7 @@ Enigma = {
   colors: ['rgba(230, 73, 73,', 'rgba(199, 181, 88,', 'rgba(143, 112, 97,'],
   validChars: "0123456789ABCDEFGHIJKLMNOPQURSTUVWXYZ",
   interval: 0,
-  message: "BoilerMake",
+  message: "BOILERMAKE",
   messageCounter: 0,
   charPressed: '',
   canvas: 0,
@@ -55,7 +55,7 @@ Enigma = {
       Enigma.ctx.arc(this.x+.5, this.y+.5, s.size, 0, Math.PI*2, true);
       Enigma.ctx.closePath();
       if (!this.light) Enigma.ctx.stroke();
-      Enigma.ctx.font = '14pt code_boldregular';
+      Enigma.ctx.font = '14pt source-code-pro';
       Enigma.ctx.fillStyle = this.color + this.opacity + ')';
       if (Math.random() > .5) {
         this.character = Enigma.validChars.substr( Math.floor(Math.random() * 36), 1);
@@ -64,7 +64,7 @@ Enigma = {
         Enigma.ctx.fillStyle = this.color + this.opacity + ')';
         Enigma.ctx.fill();
         Enigma.ctx.fillStyle = this.color;
-        this.character = Enigma.charPressed;
+        this.character = Enigma.charPressed.toUpperCase();
       }
       if (this.light > 0) this.light--;
       if (this.messageC != 0) {
@@ -109,7 +109,7 @@ Enigma = {
       }
     });
 
-    $('#email').keypress(function(e) {
+    $('#interest_signup_email').keypress(function(e) {
       if (e.which === 13) {
         $('#logo').css('display', 'none');
          for (var i = 0; i < s.height/s.size * .35; i++) {

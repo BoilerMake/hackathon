@@ -1,6 +1,9 @@
 = content_for :partial_css do
   = stylesheet_link_tag 'header'
 %header
+  %script{:src => "//use.typekit.net/pcy4ypw.js"}
+  :javascript
+    try{Typekit.load();}catch(e){}
 /
   .container
     =link_to root_url do
