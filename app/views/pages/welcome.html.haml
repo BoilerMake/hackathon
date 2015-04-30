@@ -6,7 +6,12 @@
   %h2 Purdue University
   = form_for @interest_signup, remote: true, "data-type" => :json do |f|
     = f.email_field :email, placeholder: "Enter your email", novalidate: "novalidate"
-
+%div.arrow-up
+%div#error_explanation
+  %ul
+    %li 
+      %i.fa.fa-exclamation-circle
+      please enter a valid email address
 
 
 = render 'shared/header'

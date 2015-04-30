@@ -29,6 +29,8 @@ gem 'mailchimp-api', require: 'mailchimp'
 
 gem 'validates_email_format_of'
 
+gem 'font-awesome-sass'
+
 # these should move in the future
 gem 'better_errors'
 gem 'awesome_print'
