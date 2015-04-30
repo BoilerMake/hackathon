@@ -1,0 +1,10 @@
+{
+  "env": {
+    "browser" : true,
+    "jquery"  : true
+  },
+  "rules": {
+    "comma-dangle" : 0,
+    "quotes" : 0,
+  }
+}
