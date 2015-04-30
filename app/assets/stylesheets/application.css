@@ -13,5 +13,3 @@
  *= require jquery.ui.all
  *= require_self
  */
-   @import "font-awesome-sprockets";
-   @import "font-awesome";

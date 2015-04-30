@@ -1,14 +1,23 @@
 var $container = $('#logo');
 <% unless @interest_signup.errors.any? %>
-  $("#new_interest_signup").hide();
-  $("#logo").append($("<h2>Thanks for signing up, <%=  @interest_signup.email %></h2>"));
-  $container.find('#error_explanation').remove();
+
+$("#new_interest_signup").hide();
+window.validSignup();
+$("#logo").append($("<h2>Thanks for signing up, <%=  @interest_signup.email %></h2>"));
+$container.find('.arrow-up').remove();
+$container.find('#error_explanation').remove();
+
 <% else %>
-  var $errorDiv = $('<div id="error_explanation">');
-  var $errorList = $('<ul>');
-  <% @interest_signup.errors.full_messages.each do |msg| %>
-    $errorList.append('<li><i class="fa fa-exclamation-circle"></i> <%= escape_javascript msg %></li>');
-  <% end %>
-  $container.find('#error_explanation').remove();
-  $container.append($errorDiv.append($errorList));
+var $errorDiv = $('<div id="error_explanation">');
+var $errorList = $('<ul>');
+$container.find('.arrow-up').remove();
+var $arrow = $('<div class="arrow-up"></div>');
+<% @interest_signup.errors.full_messages.each do |msg| %>
+$errorList.append('<li><i class="fa fa-exclamation-circle"></i> <%= escape_javascript msg %></li>');
+<% end %>
+$container.find('#error_explanation').remove();
+if ($('.arrow').length) {} else {
+  $container.append($arrow);
+}
+$container.append($errorDiv.append($errorList));
 <% end %>

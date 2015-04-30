@@ -1,6 +1,8 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "font-awesome-sprockets";
+@import "font-awesome";
 body, html {
 	margin: 0;
 	padding: 0;
@@ -22,11 +24,11 @@ body {
 #logo img {
 	user-drag: none;
 	-moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none; 
-    user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none; 
+	user-select: none;
 	-webkit-user-drag: none;
-    user-drag: none;
+	user-drag: none;
 }
 h1 {
 	text-align: center;
@@ -91,6 +93,7 @@ input[type="email"] {
 			color: white;
 			font-size: .55em;
 			opacity: 0.8;
+			padding-bottom: 5px;
 		}
 	}
 }
