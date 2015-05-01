@@ -3,7 +3,7 @@
   var CIRCLE = Math.PI * 2;
   var ENTERKEY = 13;
   var interval;
-
+  var gone = 0;
   var s;
   var Enigma = {
     keys: [],
@@ -111,33 +111,46 @@ userActions: function() {
         Enigma.canvas.height = s.height;
         Enigma.canvas.width = s.width;
         Enigma.ctx = Enigma.canvas.getContext("2d");
-        for (var i = 0; i < s.height / s.size * .35; i++) {
-          Enigma.keys[i] = [];
-          for (var j = 0; j < s.width / s.size * .25; j++) {
-            Enigma.keys[i][j] = new Enigma.key(i, j);
+        if (gone === 0) {
+          for (var i = 0; i < s.height / s.size * .35; i++) {
+            Enigma.keys[i] = [];
+            for (var j = 0; j < s.width / s.size * .25; j++) {
+              Enigma.keys[i][j] = new Enigma.key(i, j);
+            }
           }
-        }
-      });
-
-
-
-  $('#interest_signup_email').keypress(function(e) {
-    var i, j;
-    if (e.which != ENTERKEY) {
-    
-          Enigma.charPressed = String.fromCharCode(e.which);
+        } else {
           for (i = 0; i < s.height / s.size * .35; i++) {
             for (j = 0; j < s.width / s.size * .25; j++) {
-              if (Math.random() < 0.1) {
-                Enigma.lightKey(Enigma.keys[i][j], 250, 10);
+              Enigma.charPressed = ' ';
+              if (i === Math.round((s.height / s.size * .35) * .5) ) {
+                if ((j > Math.round(s.width / s.size * .25 * .5) - (Enigma.message.length * .5)) && (j < Math.round(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5))) {
+                  Enigma.messageKey(Enigma.keys[i][j], 250, 10, j);
+                } else {
+                  Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
+                }
               } else {
-                Enigma.keys[i][j].light = 0;
+                Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
               }
             }
           }
         }
-        return true;
       });
+$('#interest_signup_email').keypress(function(e) {
+  var i, j;
+  if (e.which != ENTERKEY) {
+    Enigma.charPressed = String.fromCharCode(e.which);
+    for (i = 0; i < s.height / s.size * .35; i++) {
+      for (j = 0; j < s.width / s.size * .25; j++) {
+        if (Math.random() < 0.1) {
+          Enigma.lightKey(Enigma.keys[i][j], 250, 10);
+        } else {
+          Enigma.keys[i][j].light = 0;
+        }
+      }
+    }
+  }
+  return true;
+});
 },
 startLoop: function() {
   interval = window.setInterval(function() {
@@ -155,6 +168,7 @@ stopLoop: function() {
 
 };
 window.validSignup = function() {
+  gone = 1;
   var i, j;
   $('#logo').css('display', 'none');
   for (i = 0; i < s.height / s.size * .35; i++) {
