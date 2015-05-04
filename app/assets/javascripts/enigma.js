@@ -179,9 +179,8 @@ stopLoop: function() {
 window.validSignup = function() {
   gone = 1;
   var i, j;
-
-
   $('#logo').css('display', 'none');
+  $('h3').css('display', 'none');
   for (i = 0; i < s.height / s.size * .35; i++) {
     for (j = 0; j < s.width / s.size * .25; j++) {
       Enigma.charPressed = ' ';
