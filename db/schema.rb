@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421000356) do
+ActiveRecord::Schema.define(version: 20150501040050) do
 
   create_table "applications", force: true do |t|
     t.string   "gender"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150421000356) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "in_mailchimp", default: false
   end
 
   create_table "schools", force: true do |t|

@@ -1,14 +1,19 @@
 class InterestSignup < ActiveRecord::Base
   validates_email_format_of :email
   validates_uniqueness_of :email
-  validate :passes_mailchimp_email_check
+  #validate :passes_mailchimp_email_check
 
 
   def mailchimp_subscribe
     $mailchimp.lists.subscribe $mailchimp_interest_list, { email: email }
+    self.in_mailchimp = true
+    self.save!
+  rescue
+    puts "invalid email submitted: #{email}"
   end
 
   # validations
+  # extra network roundtrip makes things too slow
   def passes_mailchimp_email_check
     begin
       $mailchimp.lists.subscribe $mailchimp_test_list,
