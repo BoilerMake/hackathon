@@ -5,8 +5,8 @@
   %h1 BoilerMake
   %h2 Purdue University
   = form_for @interest_signup, :html => { :novalidate => 'novalidate: novalidate' }, remote: true, "data-type" => :json do |f|
-    = f.email_field :email, placeholder: "Enter your email", novalidate: "novalidate"
-%h3 Made possible by funds from SFAB
+    = f.email_field :email, placeholder: "Enter email for updates", novalidate: "novalidate"
+%h3 Funded by the Student Activity Fee
 
 
 
