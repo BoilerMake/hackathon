@@ -6,7 +6,9 @@
   %h2 Purdue University
   = form_for @interest_signup, :html => { :novalidate => 'novalidate: novalidate' }, remote: true, "data-type" => :json do |f|
     = f.email_field :email, placeholder: "Enter email for updates", novalidate: "novalidate"
-%h3 Funded by the Student Activity Fee
+%h3 
+  Funded by the 
+  %a{href: "http://www.purduesg.com/sfab/"} Student Activity Fee
 
 
 

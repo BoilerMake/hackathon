@@ -56,12 +56,19 @@ h3 {
 	font-family: "source-code-pro",sans-serif;
 	font-weight: 300;
 	color: #ffffff;
-	font-size: .7em;
+	font-size: .8em;
+	opacity: 0.4;
 	text-transform: uppercase;
-	opacity: 0.45;
 	position: absolute;
 	bottom: 0;
 	right: 15px;
+	a {
+		color: #ffffff;
+		text-decoration: none;
+		&:hover {
+			opacity: 0.6;
+		}
+	}
 }
 canvas {
 	position: absolute;
