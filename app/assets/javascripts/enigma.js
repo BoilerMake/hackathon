@@ -49,11 +49,14 @@
         this.opacity = '1.0';
         this.draw = function() {
           if (this.light === -1){ return; }
-          if (Math.random() < 0.03) {
-            this.opacity = '.5';
-          } else {
-            this.opacity = '.3';
+          if (this.opacity != '0') {
+            if (Math.random() < 0.03) {
+              this.opacity = '.5';
+            } else {
+              this.opacity = '.3';
+            }
           }
+
           Enigma.ctx.textAlign = 'center';
           Enigma.ctx.lineWidth = s.lineWidth;
           Enigma.ctx.beginPath();
@@ -102,39 +105,45 @@ messageKey: function(p, delay, duration, j) {
 },
 userActions: function() {
   window.addEventListener('resize', function() {
-        //TODO: fix resize bug
-        //TODO: fix random bug where circles stay behind with the message
-        s.amount = Math.round(window.innerWidth);
-        s.width = window.innerWidth;
-        s.height = window.innerHeight;
-        Enigma.canvas = document.querySelector('canvas');
-        Enigma.canvas.height = s.height;
-        Enigma.canvas.width = s.width;
-        Enigma.ctx = Enigma.canvas.getContext("2d");
-        if (gone === 0) {
-          for (var i = 0; i < s.height / s.size * .35; i++) {
-            Enigma.keys[i] = [];
-            for (var j = 0; j < s.width / s.size * .25; j++) {
-              Enigma.keys[i][j] = new Enigma.key(i, j);
+    s.amount = Math.round(window.innerWidth);
+    s.width = window.innerWidth;
+    s.height = window.innerHeight;
+    Enigma.canvas = document.querySelector('canvas');
+    Enigma.canvas.height = s.height;
+    Enigma.canvas.width = s.width;
+    Enigma.ctx = Enigma.canvas.getContext("2d");
+    if (gone === 0) {
+      for (var i = 0; i < s.height / s.size * .35; i++) {
+        Enigma.keys[i] = [];
+        for (var j = 0; j < s.width / s.size * .25; j++) {
+          Enigma.keys[i][j] = new Enigma.key(i, j);
+        }
+      }
+    } else {
+      for (var i = 0; i < s.height / s.size * .35; i++) {
+        Enigma.keys[i] = [];
+        for (var j = 0; j < s.width / s.size * .25; j++) {
+          Enigma.keys[i][j] = new Enigma.key(i, j);
+        }
+      }
+      for (i = 0; i < s.height / s.size * .35; i++) {
+        for (j = 0; j < s.width / s.size * .25; j++) {
+          Enigma.charPressed = ' ';
+          if (i === Math.round((s.height / s.size * .35) * .5) ) {
+            if ((j > Math.round(s.width / s.size * .25 * .5) - (Enigma.message.length * .5)) && (j < Math.round(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5))) {
+              Enigma.messageKey(Enigma.keys[i][j], 250, 10, j);
+            } else {
+              Enigma.keys[i][j].opacity = '0';
+
+              Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
             }
-          }
-        } else {
-          for (i = 0; i < s.height / s.size * .35; i++) {
-            for (j = 0; j < s.width / s.size * .25; j++) {
-              Enigma.charPressed = ' ';
-              if (i === Math.round((s.height / s.size * .35) * .5) ) {
-                if ((j > Math.round(s.width / s.size * .25 * .5) - (Enigma.message.length * .5)) && (j < Math.round(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5))) {
-                  Enigma.messageKey(Enigma.keys[i][j], 250, 10, j);
-                } else {
-                  Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
-                }
-              } else {
-                Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
-              }
-            }
+          } else {
+            Enigma.keys[i][j].opacity = '0';
           }
         }
-      });
+      }
+    }
+  });
 $('#interest_signup_email').keypress(function(e) {
   var i, j;
   if (e.which != ENTERKEY) {
