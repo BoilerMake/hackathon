@@ -3,7 +3,7 @@ var $container = $('#logo');
 
 $("#new_interest_signup").hide();
 window.validSignup();
-$("#logo").append($("<h2>Thanks for signing up, <%=  @interest_signup.email %></h2>"));
+$("#logo").append($("<h4>Thanks for signing up, <%=  @interest_signup.email %></h4>"));
 $container.find('.arrow-up').remove();
 $container.find('#error_explanation').remove();
 

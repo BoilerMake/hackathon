@@ -177,6 +177,7 @@ stopLoop: function() {
 
 };
 window.validSignup = function() {
+  if ((s.width / s.size * .25) >= (Enigma.message.length * s.size)) {
   gone = 1;
   var i, j;
   $('#logo').css('display', 'none');
@@ -194,6 +195,7 @@ window.validSignup = function() {
         Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
       }
     }
+  }
   }
 };
 window.onload = function() {
