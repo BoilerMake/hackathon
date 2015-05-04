@@ -112,6 +112,14 @@ userActions: function() {
     Enigma.canvas.height = s.height;
     Enigma.canvas.width = s.width;
     Enigma.ctx = Enigma.canvas.getContext("2d");
+    var lPosition = $("form:first").position();
+    var sPosition = $("h3:first").position();
+    if (lPosition.top >= sPosition.top * .9) {
+      $('h3').css('opacity', '0');
+    } else {
+      console.log("here");
+      $('h3').css('opacity', '0.75');
+    }
     if (gone === 0) {
       for (var i = 0; i < s.height / s.size * .35; i++) {
         Enigma.keys[i] = [];
