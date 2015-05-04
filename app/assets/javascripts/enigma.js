@@ -94,7 +94,7 @@ lightKey: function(p, delay, duration) {
 },
 messageKey: function(p, delay, duration, j) {
   window.setTimeout(function(){
-    for (var i = (Math.round(s.width / s.size * .25 * .5) - Math.round((Enigma.message.length * .5))); i <= (Math.round(s.width / s.size * .25 * .5) + (Enigma.message.length * .5)); i++) {
+    for (var i = (Math.floor(s.width / s.size * .25 * .5) - Math.round((Enigma.message.length * .5))); i <= (Math.floor(s.width / s.size * .25 * .5) + (Enigma.message.length * .5)); i++) {
       if (j === i) {
         p.messageC = Enigma.message.substr((j - (Math.round(s.width / s.size * .25 * .5) - Math.round((Enigma.message.length * .5)))) - 1, 1);
       }
@@ -130,7 +130,7 @@ userActions: function() {
         for (j = 0; j < s.width / s.size * .25; j++) {
           Enigma.charPressed = ' ';
           if (i === Math.round((s.height / s.size * .35) * .5) ) {
-            if ((j > Math.round(s.width / s.size * .25 * .5) - (Enigma.message.length * .5)) && (j < Math.round(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5))) {
+            if ((j > Math.floor(s.width / s.size * .25 * .5) - (Enigma.message.length * .5)) && (j < Math.ceil(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5))) {
               Enigma.messageKey(Enigma.keys[i][j], 250, 10, j);
             } else {
               Enigma.keys[i][j].opacity = '0';
@@ -179,12 +179,14 @@ stopLoop: function() {
 window.validSignup = function() {
   gone = 1;
   var i, j;
+
+
   $('#logo').css('display', 'none');
   for (i = 0; i < s.height / s.size * .35; i++) {
     for (j = 0; j < s.width / s.size * .25; j++) {
       Enigma.charPressed = ' ';
-      if (i === Math.round((s.height / s.size * .35) * .5) ) {
-        if ((j > Math.round(s.width / s.size * .25 * .5) - (Enigma.message.length * .5)) && (j < Math.round(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5))) {
+      if (i === Math.floor((s.height / s.size * .35) * .5) ) {
+        if ((j > Math.floor(s.width / s.size * .25 * .5) - (Enigma.message.length * .5)) && (j < Math.ceil(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5))) {
           Enigma.messageKey(Enigma.keys[i][j], 250, 10, j);
         } else {
           Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
