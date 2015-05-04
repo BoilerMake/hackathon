@@ -66,7 +66,7 @@ Enigma.ctx.closePath();
 if (!this.light){
   Enigma.ctx.stroke();
 }
-Enigma.ctx.font = '14pt source-code-pro';
+Enigma.ctx.font = '14pt source-code-pro, Source Code Pro, sans-serif';
 Enigma.ctx.fillStyle = this.color + this.opacity + ')';
 if (Math.random() > .5) {
   this.character = Enigma.validChars.substr( Math.floor(Math.random() * 36), 1);
