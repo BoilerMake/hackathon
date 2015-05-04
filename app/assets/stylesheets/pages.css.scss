@@ -55,18 +55,18 @@ h3 {
 	text-align: right;
 	font-family: "source-code-pro",sans-serif;
 	font-weight: 300;
-	color: #ffffff;
+	color: #888888;
+	opacity: 0.75;
 	font-size: .8em;
-	opacity: 0.4;
 	text-transform: uppercase;
 	position: absolute;
 	bottom: 0;
 	right: 15px;
 	a {
-		color: #ffffff;
+		color: #8b814e;
 		text-decoration: none;
 		&:hover {
-			opacity: 0.6;
+			opacity: 0.8;
 		}
 	}
 }
