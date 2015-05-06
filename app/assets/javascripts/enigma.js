@@ -134,7 +134,6 @@
     },
     userActions: function() {
       window.addEventListener('resize', function() {
-
         s.amount = Math.round(window.innerWidth);
         s.width = window.innerWidth;
         s.height = window.innerHeight;
@@ -142,6 +141,7 @@
         Enigma.canvas.height = s.height;
         Enigma.canvas.width = s.width;
         Enigma.ctx = Enigma.canvas.getContext("2d");
+        scaleCanvas(Enigma.ctx, Enigma.canvas);
         if ((s.width / s.size * .25) >= (Enigma.message.length)) {
           s.size = 22;
           while ((Math.round(s.width / s.size) - Enigma.message.length) % 2 == 0) {
@@ -151,7 +151,7 @@
               s.size--;
             }
           }
-        }
+        } 
         var lPosition = $("form:first").position();
         var sPosition = $("h3:first").position();
         if (lPosition.top >= sPosition.top * .9) {
