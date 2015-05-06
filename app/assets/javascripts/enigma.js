@@ -184,8 +184,10 @@
   };
 
   window.validSignup = function() {
-    if ((s.width / s.size * .25) >= (Enigma.message.length * s.size)) {
+    console.log(s.width / s.size * .25);
+    if ((s.width / s.size * .25) >= (Enigma.message.length)) {
     gone = 1;
+    console.log("here");
     var i, j;
     $('#logo').css('display', 'none');
     $('h3').css('display', 'none');
@@ -193,7 +195,7 @@
       for (j = 0; j < s.width / s.size * .25; j++) {
         Enigma.charPressed = ' ';
         if (i === Math.floor((s.height / s.size * .35) * .5) ) {
-          if ((j > Math.floor(s.width / s.size * .25 * .5) - (Enigma.message.length * .5)) && (j < Math.ceil(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5))) {
+          if ((j > Math.floor(s.width / s.size * .25)* .5 - (Enigma.message.length * .5)) && (j < (Math.ceil(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5)))) {
             Enigma.messageKey(Enigma.keys[i][j], 250, 10, j);
           } else {
             Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
