@@ -40,6 +40,7 @@ group :doc do
 end
 
 group :development do
+  gem 'thin'
   gem 'spring'
   gem 'binding_of_caller'
   gem 'quiet_assets', '~> 1.0.3'
