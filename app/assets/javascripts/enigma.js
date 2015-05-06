@@ -94,9 +94,9 @@
     },
     messageKey: function(p, delay, duration, j) {
       window.setTimeout(function(){
-        for (var i = (Math.floor(s.width / s.size * .25 * .5) - Math.round((Enigma.message.length * .5))); i <= (Math.floor(s.width / s.size * .25 * .5) + (Enigma.message.length * .5)); i++) {
+        for (var i = (Math.floor(s.width / s.size * .25 * .5) - Math.round((Enigma.message.length * .5))); i <= (Math.ceil(s.width / s.size * .25 * .5) + (Enigma.message.length * .5)); i++) {
           if (j === i) {
-            p.messageC = Enigma.message.substr((j - (Math.round(s.width / s.size * .25 * .5) - Math.round((Enigma.message.length * .5)))) - 1, 1);
+            p.messageC = Enigma.message.substr((j - (Math.floor(s.width / s.size * .25 * .5) - Math.round((Enigma.message.length * .5)))) - 1, 1);
           }
         }
         p.color = Enigma.colors[1];
