@@ -121,9 +121,8 @@
         if ((s.width / s.size * .25) >= (Enigma.message.length)) {
           s.size = 22;
           while ((Math.round(s.width / s.size) - Enigma.message.length) % 2 == 0) {
-            if (s.size < 19) {
+            if (s.size < 20) {
               s.size++;
-              console.log("hello");
             } else {
               s.size--;
             }
