@@ -25,6 +25,11 @@
     },
     init: function() {
       s = this.settings;
+      if ((s.width / s.size * .25) >= (Enigma.message.length)) {
+        while ((Math.round(s.width / s.size) - Enigma.message.length) % 2 == 0) {
+          s.size++;
+        }
+      }
       this.userActions();
       Enigma.canvas = document.querySelector('canvas');
       Enigma.canvas.height = s.height;
@@ -112,6 +117,11 @@
         Enigma.canvas.height = s.height;
         Enigma.canvas.width = s.width;
         Enigma.ctx = Enigma.canvas.getContext("2d");
+        if ((s.width / s.size * .25) >= (Enigma.message.length)) {
+          while ((Math.round(s.width / s.size) - Enigma.message.length) % 2 == 0) {
+            s.size--;
+          }
+        }
         var lPosition = $("form:first").position();
         var sPosition = $("h3:first").position();
         if (lPosition.top >= sPosition.top * .9) {
