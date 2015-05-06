@@ -1,5 +1,28 @@
 (function(){
   "use strict";
+  var backingScale = function() {
+    if ('devicePixelRatio' in window) {
+      if (window.devicePixelRatio > 1) {
+        return window.devicePixelRatio;
+      }
+    }
+    return 1;
+  };
+
+  var scaleCanvas = function(ctx, canvas){
+    var scaleFactor = backingScale(ctx);
+    if (scaleFactor > 1) {
+      var oldWidth = canvas.width;
+      var oldHeight = canvas.height;
+      canvas.width = canvas.width * scaleFactor;
+      canvas.height = canvas.height * scaleFactor;
+      // update the context for the new canvas scale
+      canvas.getContext("2d").scale(scaleFactor, scaleFactor);
+      canvas.style.width = oldWidth + "px";
+      canvas.style.height = oldHeight + "px";
+    }
+  };
+
   var CIRCLE = Math.PI * 2;
   var ENTERKEY = 13;
   var interval;
@@ -26,7 +49,7 @@
     init: function() {
       s = this.settings;
       if ((s.width / s.size * .25) >= (Enigma.message.length)) {
-        while ((Math.round(s.width / s.size) - Enigma.message.length) % 2 == 0) {
+        while ((Math.round(s.width / s.size) - Enigma.message.length) % 2 === 0) {
           s.size++;
         }
       }
@@ -35,6 +58,7 @@
       Enigma.canvas.height = s.height;
       Enigma.canvas.width = s.width;
       Enigma.ctx = Enigma.canvas.getContext("2d");
+      scaleCanvas(Enigma.ctx, Enigma.canvas);
       for (var i = 0; i < s.height / s.size * 0.35; i++) {
         Enigma.keys[i] = [];
         for (var j = 0; j < s.width / s.size * 0.25; j++) {
@@ -200,10 +224,8 @@
   };
 
   window.validSignup = function() {
-    console.log(s.width / s.size * .25);
     if ((s.width / s.size * .25) >= (Enigma.message.length)) {
     gone = 1;
-    console.log("here");
     var i, j;
     $('#logo').css('display', 'none');
     $('h3').css('display', 'none');
@@ -211,7 +233,7 @@
       for (j = 0; j < s.width / s.size * .25; j++) {
         Enigma.charPressed = ' ';
         if (i === Math.round((s.height / s.size * .35) * .5) ) {
-          if ((j > Math.floor(s.width / s.size * .25)* .5 - (Enigma.message.length * .5)) && (j < (Math.ceil(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5)))) {
+          if ((j > Math.floor(s.width / s.size * .25) * .5 - (Enigma.message.length * .5)) && (j < (Math.ceil(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5)))) {
             Enigma.messageKey(Enigma.keys[i][j], 250, 10, j);
           } else {
             Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
