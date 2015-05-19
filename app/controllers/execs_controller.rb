@@ -90,6 +90,8 @@ class ExecsController < ApplicationController
 
 
   def dashboard
+    @interested_count = InterestSignup.count
+    @interested_and_valid_count = InterestSignup.where(in_mailchimp: true).count
     @confirmed_count = Hacker.where(confirmed: true).count
     @applied_count = Hacker.all.count
     @schools = Hacker.all.map{ |h| h.school }.keep_if{ |h| h.present? }.uniq.sort_by do |s|
@@ -97,29 +99,6 @@ class ExecsController < ApplicationController
     end.reverse
 
     @school_count = @schools.count
-
-    @focus_schools = []
-    @focus_schools << School.find_by(name: 'University of Illinois-Urbana-Champaign (IL)')
-    @focus_schools << School.find_by(name: 'Purdue University (IN)')
-    @focus_schools << School.find_by(name: 'Rose-Hulman Institute of Technology (IN)')
-    @focus_schools << School.find_by(name: 'Ohio State University (OH)')
-    @focus_schools << School.find_by(name: 'University of Wisconsin-Madison (WI)')
-    @focus_schools << School.find_by(name: 'University of Cincinnati (OH)')
-    @focus_schools << School.find_by(name: 'University of Maryland - College Park (MD)')
-    @focus_schools << School.find_by(name: 'University of Michigan (MI)')
-    if Rails.env.production?
-      @focus_schools << School.find(1688)
-    else
-      @focus_schools << School.find_by(name: 'Univeristy of Waterloo (INT)')
-    end
-    @focus_schools << School.find_by(name: 'Northwestern University (IL)')
-    @focus_schools << School.find_by(name: 'Massachusetts Institute of Technology (MA)')
-    @focus_schools << School.find_by(name: 'Carnegie Mellon University (PA)')
-    @focus_schools << School.find_by(name: 'University of California-Los Angeles (CA)')
-    @focus_schools << School.find_by(name: 'McGill University (INT)')
-    @focus_schools << School.find_by(name: 'Pennsylvania State University (PA)')
-    @focus_schools << School.find_by(name: 'University of California-Berkeley (CA)')
-    @focus_schools << School.find_by(name: 'University of Iowa (IA)')
 
   end
 
