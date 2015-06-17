@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta property="og:url" content="http://www.boilermake.org" />
     <meta property="og:title" content="BoilerMake" />
-    <meta property="og:image" content="https://scontent-b.xx.fbcdn.net/hphotos-xpf1/t31.0-8/10490099_399421360196953_7767766326558879957_o.png" />
+    <meta property="og:image" content="#{asset_url 'fb-website-image.png' }" />
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = stylesheet_link_tag    'welcome' if params[:controller] == 'pages'
-    = stylesheet_link_tag    'hackers' if params[:controller] == 'hackers' || params[:controller] == 'teams'
+    = stylesheet_link_tag    'pages'   if params[:controller] == 'pages'
+    = stylesheet_link_tag    'hackers' if params[:controller] == 'hackers'
     = stylesheet_link_tag    'teams'   if params[:controller] == 'teams'
-    = stylesheet_link_tag    'http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700'
+    = stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700'
+    = stylesheet_link_tag    'https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'
     = yield :partial_css
     = yield :extra_css
     = yield :extra_js
@@ -18,5 +19,5 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = render 'shared/google_analytics'
     = csrf_meta_tags
-  %body.home.page.page-id-5.page-template.page-template-page-home-php
+  %body
     = yield

@@ -1,0 +1,6 @@
+= content_for :extra_css do
+  = stylesheet_link_tag 'hackers'
+  = stylesheet_link_tag 'updates'
+.container
+  %h2 New Post
+  = render 'form'

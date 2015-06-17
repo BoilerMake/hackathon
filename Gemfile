@@ -21,6 +21,16 @@ gem 'foreman'
 
 gem 'filepicker-rails'
 
+gem 'twilio-ruby'
+gem 'phone'
+
+gem 'delayed_job_active_record'
+gem 'mailchimp-api', require: 'mailchimp'
+
+gem 'validates_email_format_of'
+
+gem 'font-awesome-sass'
+
 # these should move in the future
 gem 'better_errors'
 gem 'awesome_print'
@@ -30,9 +40,11 @@ group :doc do
 end
 
 group :development do
+  gem 'thin'
   gem 'spring'
   gem 'binding_of_caller'
   gem 'quiet_assets', '~> 1.0.3'
+  gem 'pry-byebug'
 end
 
 group :development, :test do

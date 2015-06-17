@@ -7,6 +7,12 @@ class Hacker < User
 
   accepts_nested_attributes_for :application
 
+  def self.textees
+    Hacker.joins(:application)
+          .where(applications: {can_text: true })
+          .where.not(applications: {cell_phone: nil})
+  end
+
   def accepted?
     status == 'Accepted'
   end

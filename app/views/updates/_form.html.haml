@@ -1,0 +1,20 @@
+= form_for @update do |f|
+  .field
+    = f.label 'Title:'
+    = f.text_field :title
+  .field
+    = f.label 'Message'
+    %br
+    = f.text_area :body
+  .field
+    Send text message notification?
+    = f.check_box :should_text
+  .text-options
+    .field
+      Use alternate version for text notification
+      = check_box_tag :use_short
+    #short_msg.field{style: 'display:none'}
+      = f.label 'Text Version'
+      %br
+      = f.text_area :short_message
+  = f.submit 'Post'

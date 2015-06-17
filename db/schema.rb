@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926002921) do
+ActiveRecord::Schema.define(version: 20150501040050) do
 
   create_table "applications", force: true do |t|
     t.string   "gender"
@@ -32,18 +32,57 @@ ActiveRecord::Schema.define(version: 20140926002921) do
     t.string   "zip_code"
     t.string   "resume"
     t.integer  "expected_graduation"
+    t.boolean  "can_text",             default: true
+    t.string   "badge_id"
+  end
+
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "interest_signups", force: true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "in_mailchimp", default: false
   end
 
   create_table "schools", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
+    t.string   "country"
+    t.string   "category"
+    t.boolean  "is_target"
   end
 
   create_table "teams", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "secret_key"
+  end
+
+  create_table "updates", force: true do |t|
+    t.string   "title"
+    t.string   "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "short_message"
+    t.string   "text_sent"
+    t.boolean  "should_text",   default: true
   end
 
   create_table "users", force: true do |t|

@@ -4,130 +4,87 @@
       Application
   - if current_user.team.present?
     = link_to my_team_path do
-      .nav-notactive
-        My Team
+      My Team
   - else
     = link_to new_team_path do
-      .nav-notactive
-        Create Team
+      Create Team
 .container
   = render 'shared/flash.html.haml'
-  .application.bmstatus
+  .application
     %h1.alert-h1
       Decision:
       %span.status
         = current_user.status
     - if current_user.accepted? && current_user.confirmed?
-      = link_to 'Confirmed', '#', class: 'button outline confirm disabled'
-      %p.note
-        You're confirmed! Watch your email for further updates.
+      / fill in
     - elsif current_user.accepted? && !current_user.application_completed?
-      = link_to 'Confirm', '#', class: 'button outline confirm disabled'
-      %p.note
-        You must finish your application before confirming
-      %br
-        After carefully examining everyone's application, we've chosen you to attend this season's BoilerMake! If you'd like to take this awesome opportunity, be sure to login and confirm your acceptance at boilermake.org. Please be sure to confirm by October 2nd at 11:59pm ET!
+      / fill in
     - elsif current_user.accepted? && !current_user.confirmed
-      = link_to 'Confirm', { "controller"=>"hackers", "action"=>"confirm"}, class: 'button outline confirm'
-      %p.note
-        After carefully examining everyone's application, we've chosen you to attend this season's BoilerMake! If you'd like to take this awesome opportunity, be sure to login and confirm your acceptance at boilermake.org. Please be sure to confirm by October 2nd at 11:59pm ET!
+      / fill in
     - elsif current_user.standby?
-      %p.note
-        After carefully reviewing all of this season's BoilerMake applications, we've put you on the Standby List. If (and when) space clears up, we'll send you another invitation email with acceptance information. Best of luck!
-      %br
-      %p.note
-        If you don't make it off the Standby List this season, you should absolutely apply to future BoilerMakes.
+      / fill in
     - elsif current_user.declined?
-      %p.note
-        Since you haven't confirmed your attendance to BoilerMake, we're offering your spot to someone on the standby list.
-        %br
-        %br
-      %p.note
-        If you meant to confirm your attendance or if you think that there's been a mistake, shoot an email to 
-        =mail_to 'team@boilermake.org', 'team@boilermake.org'
+      / fill in
     - elsif current_user.rejected?
-      %p.note
-        After carefully reviewing all of this season's BoilerMake applications, we're sorry to say that we cannot accept you for this fall's BoilerMake. There were simply too many applications for us to be able to invite everyone to attend.
-        %br
-        %br
-
-        If you're a die-hard hacker and would still like to come to BoilerMake, and would even be willing to organize independent transportation, we have a few slots for you! Email me
-        = mail_to 'viraj@purdue.edu', '(viraj@purdue.edu)'
-        as soon as possible and we'll let you know if there's space for you to come.
-        %br
-
-        %br
-        All in all, don't despair! There will be future BoilerMakes, and we'd love for you to apply in the future. We'd also encourage you to check out Major League Hacking's
-        = link_to "schedule",  "http://mlh.io/seasons/f2014/events", target: "_blank"
-        for other hackathons going on this fall. Thanks for your interest and we hope you continue to hack to your heart's content.
+      / fill in
     - else
-      %p.note
-        Woah, something went wrong, please email us at <a href="mailto:team@boilermake.org">team@boilermake.org</a>.
-  - if current_user.accepted?
-    .application
-      .form
-        = form_for @hacker do |f|
-          #firstname.input
-            .label
-              = f.label 'First Name'
-            = f.text_field :first_name
-          #lastname.input
-            .label
-              = f.label 'Last Name'
-            = f.text_field :last_name
-          #school.input.search
-            .label
-              = f.label :school_id
-            = f.text_field :school_id, { id: 'schools',
-                                        value: @school,
-                                        readonly: true,
-                                        style: 'opacity:0.5;'}
-          = f.fields_for :application, @hacker.application do |application_fields|
-            .input
-              .label
-                Gender
-              = application_fields.collection_select :gender, @genders, :to_s,
-                :to_s, {include_blank: "Please select"},
-                class: 'gender'
-            #github.input.link
-              .label
-                GitHub
-              = application_fields.text_field :github
-            #github.input.link
-              .label
-                LinkedIn
-              = application_fields.text_field :linkedin, placeholder: 'https://www.linkedin.com/pub/my_name/99/999/999'
-            #resume.input.link
-              .label
-                Link to Resume
-              .filepicker
-                = application_fields.filepicker_field :resume, button_class: 'button outline confirm', onchange: 'filePicked(event)', button_text: @resume_button_text, mimetypes: 'application/pdf'
-                %p.note{style: 'display:none;'}
-                  Resume Uploaded
-                  %br
-                  Don't forget to hit "Save" below!
-                - if @application.resume.present?
-                  = link_to "Current resume", @application.resume, target: '_blank'
-            .input
-              .label
-                T-shirt Size
-              = application_fields.collection_select :tshirt_size, @shirts,
-                                                     :to_s, :to_s,
-                                                     {include_blank: "Please select"},
-                                                     class: 'gender'
-            .input.link
-              .label
-                Cell Phone
-              = application_fields.text_field :cell_phone
-            .input.link
-              .label
-                Year of Graduation
-              = application_fields.number_field :expected_graduation
-            #description.input.field
-              .label
-                Dietary Restrictions
-                .sub-label
-                  Please enter any dietary restrictions, leave blank if none.
-              = application_fields.text_area :dietary_restrictions, rows: '4'
-          .submit
-            = f.submit 'Save', id: 'save', class: 'button outline', style: 'cursor:pointer;'
+      / error
+  .application
+    .form
+      = form_for @hacker do |f|
+        .label
+          = f.label 'First Name'
+        = f.text_field :first_name
+        .label
+          = f.label 'Last Name'
+        = f.text_field :last_name
+        .label
+          = f.label :school_id
+        = f.text_field :school_id, { id: 'schools',
+                                    value: @school,
+                                    readonly: true,
+                                    style: 'opacity:0.5;'}
+        = f.fields_for :application, @hacker.application do |application_fields|
+          .label
+            Gender
+          = application_fields.collection_select :gender, @genders, :to_s,
+            :to_s, {include_blank: "Please select"},
+            class: 'gender'
+          .label
+            GitHub
+          = application_fields.text_field :github
+          .label
+            LinkedIn
+          = application_fields.text_field :linkedin, placeholder: 'https://www.linkedin.com/pub/my_name/99/999/999'
+          .label
+            Link to Resume
+          .filepicker
+            = application_fields.filepicker_field :resume, button_class: 'button outline confirm', onchange: 'filePicked(event)', button_text: @resume_button_text, mimetypes: 'application/pdf'
+            %p.note{style: 'display:none;'}
+              Resume Uploaded
+              %br
+              Don't forget to hit "Save" below!
+            - if @application.resume.present?
+              = link_to "Current resume", @application.resume, target: '_blank'
+          .label
+            T-shirt Size
+          = application_fields.collection_select :tshirt_size, @shirts,
+                                                 :to_s, :to_s,
+                                                 {include_blank: "Please select"},
+                                                 class: 'gender'
+          .label
+            Cell Phone
+          = application_fields.text_field :cell_phone
+          .label
+            Get Text Alerts?
+          = application_fields.check_box :can_text
+          .label
+            Year of Graduation
+          = application_fields.number_field :expected_graduation
+          .label
+            Dietary Restrictions
+            .sub-label
+              Please enter any dietary restrictions, leave blank if none.
+          = application_fields.text_area :dietary_restrictions, rows: '4'
+        .submit
+          = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'

@@ -6,6 +6,13 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
   get 'pages/welcome'
+
+  get 'schedule' => 'pages#schedule'
+  get 'minecraft' => 'pages#minecraft'
+
+  get 'badges' => redirect("https://github.com/BoilerMake/BoilerMakeBadge_I")
+  get 'badge' => redirect("https://github.com/BoilerMake/BoilerMakeBadge_I")
+
   get 'teams/join'
   get 'teams/leave'
   get 'execs/dashboard'
@@ -17,6 +24,8 @@ Rails.application.routes.draw do
 
   get 'my_team', to: 'teams#show'
 
+  resources :interest_signups, only: [:create]
+  resources :updates, only: [:index, :new, :create]
   get 'confirm', to: 'hackers#confirm'
 
 

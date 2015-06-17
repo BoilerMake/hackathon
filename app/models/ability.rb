@@ -11,5 +11,6 @@ class Ability
         can [ :dashboard, :new, :create, :update, :confirm ], Hacker
       end
     end
+    can :index, Update
   end
 end
