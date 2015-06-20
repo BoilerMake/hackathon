@@ -1,15 +1,107 @@
-%canvas#background This text is displayed if your browser does not support HTML5 Canvas.
-
-%div#logo
-  =image_tag("white-bm_logo.png", size: "250x250")
-  %h1 BoilerMake
-  %h2 Purdue University
-  = form_for @interest_signup, :html => { :novalidate => 'novalidate: novalidate' }, remote: true, "data-type" => :json do |f|
-    = f.email_field :email, placeholder: "Enter email for updates", novalidate: "novalidate"
-%h3 
-  Funded by the 
-  %a{href: "http://www.purduesg.com/sfab/"} Student Activity Fee Fund
-
-
+%div.container-fluid.bm
+  %div.row
+    %div.logo.text-center
+      =image_tag 'white-bm_logo.png'
+      %div.info
+        %h1 BoilerMake
+        %h2 Oct. 16-18 | Purdue University
+        %a{href: '#'}
+          %div.applybox
+            %h2 Apply Now
+%div.nav_placeholder
+%nav.main_nav
+  %div.container-fluid
+    %div.row-fluid
+      %div.brand.col-md-2.col-md-offset-1
+        %a{href: '#'}
+          %div.img-responsive
+            =image_tag 'bm_logo_basic.png'
+      %ul.nav_links.col-md-4.col-md-offset-4
+        %li
+          %a{href: '#'} FAQ
+        %li
+          %a{href: '#'} Sponsors
+        %li
+          %a{href: '#'} Event
+        %li
+          %a{href: '#'} Apply
+        %div.clear
+%div.event.section.container
+  %h3
+    %span Event Info
+  %div.row
+    %div.timeline.col-xs-10.col-sm-4.col-md-4.col-lg-4.col-xs-offset-1.col-sm-offset-1.col-md-offset-1.col-lg-offset-1
+      %div.event
+        %div.time
+          %p 3AM
+          %div.detail
+      %div.event
+        %div.time
+          %p 8AM
+          %div.detail
+      %div.event
+        %div.time
+          %p 12PM
+          %div.detail
+      %div.event
+        %div.time
+          %p 2PM
+          %div.detail
+%div.sponsors.section.container
+  %h3
+    %span Sponsors
+    %div.main_sponsor
+%div.container
+  %div.row
+  %h3 FAQ
+  %div.faq_column.col-xs-10.col-sm-5.col-md-5.col-lg-5.col-xs-offset-1.col-sm-offset-1.col-md-offset-1.col-lg-offset-1
+    %div.each
+      %h4 Who can attend?
+      %p All undergraduate, graduate, and high school students from any school are welcome. If you are under 18, we'll need a parental consent form.
+    %div.each
+      %h4 Will there be a standby line the day of the event?
+      %p I copied these from another hackathon's website. Try and guess the hackathon. Hint: the design is on point. Points as in geometry.
+    %div.each
+      %h4 Who can attend?
+      %p Applicants will be chosen based on a random lottery. Everyone is welcome to apply and attend! I have to add an extra line to these to even the columns, ensuring that the left column is >= the right column.
+    %div.each
+      %h4 Who can attend?
+      %p All undergraduate, graduate, and high school students from any school are welcome. If you are under 18, we'll need a parental consent form.
+  %div.faq_column.col-xs-10.col-sm-5.col-md-5.col-lg-5.col-xs-offset-1.col-md-offset-0.col-sm-offset-0.col-lg-offset-0
+    %div.each
+      %h4 Who can attend?
+      %p All undergraduate, graduate, and high school students from any school are welcome. If you are under 18, we'll need a parental consent form.
+    %div.each
+      %h4 Will there be a standby line the day of the event?
+      %p I copied these from another hackathon's website. Try and guess the hackathon. Hint: the design is on point. Points as in geometry.
+    %div.each
+      %h4 Who can attend?
+      %p Applicants will be chosen based on a random lottery. Everyone is welcome to apply and attend! I have to add an extra line to these to even the columns, ensuring that the left column is >= the right column.
+    %div.each
+      %h4 Who can attend?
+      %p All undergraduate, graduate, and high school students from any school are welcome. If you are under 18, we'll need a parental consent form.
+  %div.footer.section.container-fluid
+    %h5 Copyright 2015
+    %div.sm_ico
+      =image_tag 'bm_logo_sm.png'
+  %script{src: 'http://code.jquery.com/jquery.js'}
+  %script{src: 'bootstrap.min.js'}
+  %script{src: 'main.js'}
 
 = render 'shared/header'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
