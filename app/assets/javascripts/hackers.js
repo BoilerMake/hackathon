@@ -17,7 +17,24 @@ $(window).scroll(function(){
 
 	}
 });
-
+$(document).ready(function(){
+	var last = null;
+	var current = null;
+	var result = null;
+	$(".timeline").children('.event').each(function() {
+		current = $(this);
+		var className = current.attr('class');
+		className = className.replace('event ', '');
+		current = parseInt(className);
+		if (last !== null) {
+			result = Math.abs(last - current);
+			var margin = result * 10;
+			$(this).css("margin-top", margin);
+		}
+		console.log(className);
+		last = current;
+	});
+});
 $(function() {
     $("div[class^=event]").hover( function () {
         $(this).children('.display_info').fadeIn();
