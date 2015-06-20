@@ -8,14 +8,13 @@
         %a{href: '#'}
           %div.applybox
             %h2 Apply Now
-%div.nav_placeholder
+%div.nav_placeholder{ :style => "display: none;"}
 %nav.main_nav
   %div.container-fluid
     %div.row-fluid
       %div.brand.col-md-2.col-md-offset-1
         %a{href: '#'}
-          %div.img-responsive
-            =image_tag 'bm_logo_basic.png'
+          =image_tag 'bm_logo_basic.png', :class => "img-responsive"
       %ul.nav_links.col-md-4.col-md-offset-4
         %li
           %a{href: '#'} FAQ
@@ -53,7 +52,8 @@
     %div.main_sponsor
 %div.container
   %div.row
-  %h3 FAQ
+  %h3
+    %span FAQ
   %div.faq_column.col-xs-10.col-sm-5.col-md-5.col-lg-5.col-xs-offset-1.col-sm-offset-1.col-md-offset-1.col-lg-offset-1
     %div.each
       %h4 Who can attend?
@@ -80,13 +80,14 @@
     %div.each
       %h4 Who can attend?
       %p All undergraduate, graduate, and high school students from any school are welcome. If you are under 18, we'll need a parental consent form.
-  %div.footer.section.container-fluid
-    %h5 Copyright 2015
-    %div.sm_ico
-      =image_tag 'bm_logo_sm.png'
-  %script{src: 'http://code.jquery.com/jquery.js'}
-  %script{src: 'bootstrap.min.js'}
-  %script{src: 'main.js'}
+%div.footer.section.container-fluid
+  %h5 
+    Copyright 2015
+    =image_tag 'bm_logo_sm.png', :class => 'sm_ico'
+    BoilerMake
+%script{src: 'http://code.jquery.com/jquery.js'}
+%script{src: 'bootstrap.min.js'}
+%script{src: 'main.js'}
 
 = render 'shared/header'
 
