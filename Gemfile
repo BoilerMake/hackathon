@@ -14,6 +14,9 @@ gem 'haml-rails'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
 
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 gem 'cancancan', '~> 1.8'
 
 gem 'unicorn'
