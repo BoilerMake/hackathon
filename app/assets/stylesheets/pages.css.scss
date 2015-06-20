@@ -187,20 +187,63 @@ h5 {
 	.rectangle {
 		position: absolute;
 		left: 75px;
-		top: 0;
+		top: -10px;
 		width: 3px;
 		background-color: #333333;
 		height: 100%;
 		z-index: -1;
 	}
 	.event {
-		.event_circle{
-			margin-left: 55px;
-			height: 12px;
-			width: 12px;
-			background-color: #FCE556;
-			outline: white solid 6px;
-			border-radius: 50%;
+		margin-bottom: 20px;
+		.time {
+			float: left;
+			width: 56px;
+			p {
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 600;
+				font-size: 13px;
+				text-align: center;
+				line-height: 22px;
+			}
+			text-wrap: none;
 		}
+		.detail {
+			float: left;
+			margin-left: 10px;
+			text-wrap: none;
+			p {
+				text-wrap: none;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 400;
+				text-transform: uppercase;
+				font-size: 1.1em;
+			}
+
+		}
+		.display_info {
+			background-color: #EAD659;
+			padding: 20px;
+			border-radius: 15px;
+			display: inline-block;
+			width: 214px;
+			margin-left: 15px;
+			color: white;
+			font-family: 'Open Sans', sans-serif;
+			font-weight: 300;
+			font-size: 0.9em;
+			position: absolute;
+			top: -32px;
+			height: 85px;
+		}
+		.event_circle{
+			height: 10px;
+			width: 10px;
+			margin-top: 6px;
+			background-color: #FCE556;
+			outline: white solid 4px;
+			border-radius: 50%;
+			float: left;
+		}
+
 	}
 }

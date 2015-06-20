@@ -17,3 +17,14 @@ $(window).scroll(function(){
 
 	}
 });
+
+$(function() {
+    $("div[class^=event]").hover( function () {
+        $(this).children('.display_info').fadeIn();
+        $(this).children('.display_info').css("display", "inline-block")
+        $(this).children('.detail').hide();
+    }, function () {
+        $(this).children('.display_info').hide();
+        $(this).children('.detail').show();
+    });
+});

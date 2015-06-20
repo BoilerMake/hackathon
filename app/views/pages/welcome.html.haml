@@ -35,19 +35,31 @@
         %div.time
           %p 3AM
         %div.event_circle
+        %div.display_info{:style => "display: none;"}
+          %p Hello this is the display info we are trying to hide
         %div.detail
+          %p Event Title
+
+        %div.clear
       %div.event
         %div.time
           %p 8AM
-          %div.detail
+        %div.event_circle
+        %div.detail
+          %p Event Title 2
+        %div.clear
       %div.event
         %div.time
           %p 12PM
-          %div.detail
+        %div.event_circle
+        %div.detail
+          %p Longer Event Title
+        %div.clear
       %div.event
         %div.time
           %p 2PM
           %div.detail
+          %div.clear
 %div.sponsors.section.container
   %h3
     %span Sponsors
