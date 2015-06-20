@@ -73,7 +73,7 @@ a {
 	text-decoration: none !important;
 }
 .main_nav {
-	height: 60px;
+	height: 85px;
 	padding: 15px 0;
 	background-color: white !important;
 	z-index: 5;
@@ -102,12 +102,12 @@ a {
 			}
 		}
 		a.active {
-			background-color: #333333;
+			background-color: #EAD659;
 			color: white;
 			border-radius: 2px;
 			padding: 5px 15px;
 			&:hover {
-				background-color: #EAD659;
+				background-color: #333333;
 			}
 		}
 	}
@@ -129,9 +129,10 @@ a {
 	left: 0;
 	display: block;
 	width: 100%;
+	box-shadow: 0 3px 8px #EEEEEE;
 }
 .nav_placeholder {
-	height: 60px;
+	height: 85px;
 	display: block;
 	background-color: white;
 }
