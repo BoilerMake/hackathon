@@ -19,8 +19,7 @@ $(window).scroll(function(){
 });
 $(document).ready(function(){
 	var last = null;
-	var current = null;
-	var result = null;
+	var current, result;
 	$(".timeline").children('.event').each(function() {
 		current = $(this);
 		var className = current.attr('class');
@@ -31,7 +30,6 @@ $(document).ready(function(){
 			var margin = result * 10;
 			$(this).css("margin-top", margin);
 		}
-		console.log(className);
 		last = current;
 	});
 });
