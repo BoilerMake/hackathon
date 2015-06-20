@@ -101,6 +101,15 @@ a {
 				color: #EAD659;
 			}
 		}
+		a.active {
+			background-color: #333333;
+			color: white;
+			border-radius: 2px;
+			padding: 5px 15px;
+			&:hover {
+				background-color: #EAD659;
+			}
+		}
 	}
 }
 .brand {
