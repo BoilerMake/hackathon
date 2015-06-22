@@ -32,6 +32,12 @@ $(document).ready(function(){
 		}
 		last = current;
 	});
+	var controller = new ScrollMagic.Controller();
+	var scene = new ScrollMagic.Scene({
+        triggerElement: '.timeline',
+        duration: $(".timeline").height() - $(".event_right").height()
+    }).setPin(".event_right")
+	controller.addScene(scene); 
 });
 $(function() {
     $("div[class^=event]").hover( function () {
