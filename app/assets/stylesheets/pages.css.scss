@@ -307,7 +307,17 @@ h5 {
 
 	}
 }
-@media (max-width: $screen-sm-min) {
+@media (max-width: $screen-xs-max) {
+	.nav_links {
+		li {
+			margin-left: 15px !important;
+			a {
+				font-size: 0.9em !important;
+			}
+		}
+	}
+}
+@media (max-width: $screen-sm-max) {
 	h1 {
 		font-size: 2.6em !important;
 	}
@@ -315,13 +325,13 @@ h5 {
 		font-size: 0.9em !important;
 	}
 	.nav_links {
-	li {
-		margin-left: 15px !important;
-		a {
-			font-size: 0.85em !important;
+		li {
+			margin-left: 15px !important;
+			a {
+				font-size: 0.7em !important;
+			}
 		}
 	}
-}
 }
 
 /* Medium devices (desktops, 992px and up) */
