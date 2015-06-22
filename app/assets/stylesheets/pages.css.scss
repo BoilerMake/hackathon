@@ -126,6 +126,37 @@ a {
 		max-height: 60px !important;
 	}
 }
+.eventinfo {
+	margin-top: 20px;
+	.typographic {
+		width: 80%;
+		margin: 0 auto;
+		font-family: 'Open Sans', sans-serif;
+		text-align: center;
+		text-transform: uppercase;
+
+		.bm_header {
+			font-weight: 600;
+			font-size: 3em;
+			line-height: 1.1em;
+		}
+		.students_header {
+			font-weight: 300;
+			font-size: 2.7em;
+			line-height: 1.1em;
+		}
+		.weekend_header {
+			font-weight: 300;
+			font-size: 2.2em;
+			line-height: 1.1em;
+		}
+	}
+	p {
+		margin-top: 25px;
+		text-align: center;
+	}
+}
+
 .clear {
 	clear: both;
 }
