@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "font-awesome-sprockets";
 @import "font-awesome";
+$screen-sm-min: 768px;
+$screen-xs-max: ($screen-sm-min - 1);
+$screen-md-min: 992px;
+$screen-sm-max: ($screen-md-min - 1);
+$screen-lg-min: 1200px;
+$screen-md-max: ($screen-lg-min - 1);
+
 html, body {
 	margin: 0;
 	padding: 0;
@@ -26,7 +33,7 @@ html, body {
 		margin: 0 auto;
 		white-space: nowrap;
 		min-width: 200px !important;
-	}
+	} 
 	h1 {
 		font-family: "futura-pt", serif;
 		font-weight: 400;
@@ -35,7 +42,6 @@ html, body {
 		text-align: center;
 		color: white;
 		margin: -20px 0 0 0 !important;
-
 	}
 	h2 {
 		font-family: "futura-pt", serif;
@@ -269,3 +275,27 @@ h5 {
 
 	}
 }
+@media (max-width: $screen-sm-min) {
+	h1 {
+		font-size: 2.6em !important;
+	}
+	h2 {
+		font-size: 0.9em !important;
+	}
+	.nav_links {
+	li {
+		margin-left: 15px !important;
+		a {
+			font-size: 0.85em !important;
+		}
+	}
+}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) { 
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg-min) { }
