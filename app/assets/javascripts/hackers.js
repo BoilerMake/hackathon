@@ -34,7 +34,7 @@ $(document).ready(function(){
 	});
 	var controller = new ScrollMagic.Controller();
 	var scene = new ScrollMagic.Scene({
-        triggerElement: '.timeline',
+        offset: $('.event').offset().top,
         duration: $(".timeline").height() - $(".event_right").height()
     }).setPin(".event_right")
 	controller.addScene(scene); 
