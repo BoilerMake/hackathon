@@ -32,12 +32,14 @@ $(document).ready(function(){
 		}
 		last = current;
 	});
-	var controller = new ScrollMagic.Controller();
-	var scene = new ScrollMagic.Scene({
-        offset: $('.event').offset().top,
-        duration: $(".timeline").height() - $(".event_right").height()
-    }).setPin(".event_right")
-	controller.addScene(scene); 
+	if (screen.width >= 768) {
+		var controller = new ScrollMagic.Controller();
+		var scene = new ScrollMagic.Scene({
+	        offset: $('.event').offset().top,
+	        duration: $(".timeline").height() - $(".event_right").height()
+	    }).setPin(".event_right")
+		controller.addScene(scene); 
+	}
 });
 $(function() {
     $("div[class^=event]").hover( function () {
