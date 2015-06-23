@@ -27,7 +27,7 @@ $(document).ready(function(){
 		current = parseInt(className);
 		if (last !== null) {
 			result = Math.abs(last - current);
-			var margin = result * 10;
+			var margin = result * 6;
 			$(this).css("margin-top", margin);
 		}
 		last = current;
