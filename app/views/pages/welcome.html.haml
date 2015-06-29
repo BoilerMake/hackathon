@@ -1,8 +1,7 @@
 %canvas#background This text is displayed if your browser does not support HTML5 Canvas.
 
 %div#logo
-  =image_tag("bm_logo.png", size: "250x250")
-  =#image_tag("white-bm_logo.png", size: "250x250")
+  =image_tag("white-bm_logo.png", size: "250x250")
   %h1 BoilerMake
   %h2 Purdue University
   = form_for @interest_signup, :html => { :novalidate => 'novalidate: novalidate' }, remote: true, "data-type" => :json do |f|
