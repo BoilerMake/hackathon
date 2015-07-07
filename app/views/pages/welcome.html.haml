@@ -8,17 +8,34 @@
         %a{href: '#'}
           %div.applybox
             %h2 Apply Now
+        - if current_user.nil?
+          .new-user
+            = form_for @hacker do |f|
+              = f.label :email
+              = f.email_field :email
+              = f.label :password
+              = f.password_field :password, class: 'secret'
+              = f.label :password_confirmation
+              = f.password_field :password_confirmation, class: 'secret'
 
-        .new-user
-          = form_for @hacker do |f|
-            = f.label :email
-            = f.email_field :email
-            = f.label :password
-            = f.password_field :password, class: 'secret'
-            = f.label :password_confirmation
-            = f.password_field :password_confirmation, class: 'secret'
-
-            = f.submit "Create a user!"
+              = f.submit "Create a user!"
+          .login
+            = form_tag sessions_path do
+              = label_tag 'Email'
+              = email_field_tag :email, nil, class: 'email-stuff'
+              = label_tag 'Password'
+              = password_field_tag :password, nil, class: 'password-stuff'
+              .forgot-password-toggle
+                Forgot Password?
+              .remember-me-container
+                %input{type: "checkbox"}
+                %span
+                  Remember Me
+              = submit_tag 'log in', { class: 'submit-stuff' }
+        - else
+          .signed_in
+            = link_to "Dashboard", dashboard_path
+            = link_to 'Log Out', logout_path
 %div.nav_placeholder{ :style => "display: none;"}
 %nav.main_nav
   %div.container-fluid
