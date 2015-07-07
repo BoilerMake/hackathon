@@ -8,6 +8,17 @@
         %a{href: '#'}
           %div.applybox
             %h2 Apply Now
+
+        .new-user
+          = form_for @hacker do |f|
+            = f.label :email
+            = f.email_field :email
+            = f.label :password
+            = f.password_field :password, class: 'secret'
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, class: 'secret'
+
+            = f.submit "Create a user!"
 %div.nav_placeholder{ :style => "display: none;"}
 %nav.main_nav
   %div.container-fluid

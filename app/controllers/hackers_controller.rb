@@ -41,7 +41,7 @@ class HackersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @hacker = Hacker.new(hacker_params)
+    @hacker = Hacker.new hacker_params
 
     respond_to do |format|
       if @hacker.save
