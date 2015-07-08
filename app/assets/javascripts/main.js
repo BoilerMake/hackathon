@@ -13,8 +13,8 @@ var listeners = function() {
 			applyActive = true;
 			showSignupForm();
 		} else {
-			$('#carton-1-1').addClass('offscreen-left');
-			$('#carton-1-2').removeClass('offscreen-right');
+			$('#carton-1-1').animate({left: '-100vw'}, 250);
+			$('#carton-1-2').animate({left: '0'}, 250);
 			$('#crate-2').addClass('hidden');
 		}
 	});
@@ -29,6 +29,6 @@ var listeners = function() {
 	});
 };
 
-$(document).ready(function() {
-	listeners();	
+$('.orange-juice').ready(function() {
+	listeners();
 });
