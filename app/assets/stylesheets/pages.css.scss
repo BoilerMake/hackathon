@@ -326,6 +326,9 @@ html, body {
   }
 }
 #crate-2 {
+  .row {
+    height: auto !important;
+  }
   h2 {
     text-align: center;
     text-transform: uppercase;
@@ -333,6 +336,10 @@ html, body {
     font-weight: 600;
     color: #D96704;
     padding: 45px 0;
+  }
+  img {
+    width: 100%;
+    height: auto;
   }
 } 
 //   h1 {
