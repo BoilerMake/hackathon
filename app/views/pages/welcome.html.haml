@@ -1,15 +1,206 @@
-%canvas#background This text is displayed if your browser does not support HTML5 Canvas.
+%div.container-fluid.orange-juice
+  %div.crate
+    %div.carton-wrapper#carton-1-1
+      %div.carton.empty
+        %div.row.center-align-small
+          %div.col.col-sm-3.col-sm-offset-1
+            %div.logo
+              =image_tag 'bm-logo-full.svg'
+          %div.col.col-sm-6
+            %div.info
+              %h1 BoilerMake
+              %p Oct. 16-18 | Purdue University
+              %div.btn-row#signupForm
+                %div.input-field
+                  %label Email            
+                  %input.input#signupFormEmail
+                %div.input-field
+                  %label Password            
+                  %input.input#signupFormPassword{type: 'password'}
+                %div.input-field
+                  %label Confirm Password            
+                  %input.input#signupFormConfirmPassword{type: 'password'}
+              %div.btn-row
+                %button.apply-btn#applyMeow
+                  Apply Now
+                %button.sponsor-btn#sponsorPlz
+                  Sponsor
+                %button.sponsor-btn.hidden#cancelRightMeow
+                  Cancel
+    %div.carton-wrapper.offscreen-right#carton-1-2
+      %div.carton.full
+  %div.crate#crate-2
+    %div.carton-wrapper.full#carton-2-1
+      %div.carton.full
+        %h2 What is BoilerMake?
+        %div.row
+          %div.col.col-sm-6.col-sm-offset-1
+            This is the entire div omg div entire div lfdslakfjdsa fldsa lfdsal fsdla flsdal fsdal flsdafldsalf sdal fsdlafsdlflsdafljdsaifjdsoi ajfiodsaj fiodsja iofjda iofjdsio fjdsaiojfsdioajfiodsajaiofsdjio 
 
-%div#logo
-  =image_tag("white-bm_logo.png", size: "250x250")
-  %h1 BoilerMake
-  %h2 Purdue University
-  = form_for @interest_signup, :html => { :novalidate => 'novalidate: novalidate' }, remote: true, "data-type" => :json do |f|
-    = f.email_field :email, placeholder: "Enter email for updates", novalidate: "novalidate"
-%h3 
-  Funded by the 
-  %a{href: "http://www.purduesg.com/sfab/"} Student Activity Fee Fund
-
-
+%script{src: 'bootstrap.min.js'}
+%script{src: 'assets/main.js'}
 
 = render 'shared/header'
+/ %div.nav_placeholder{ :style => "display: none;"}
+/ %nav.main_nav
+/   %div.container-fluid
+/     %div.row-fluid
+/       %div.brand.col-md-2.col-md-offset-1
+/         %a{href: '#'}
+/           =image_tag 'bm_logo_basic.png', :class => "img-responsive"
+/       %ul.nav_links.col-md-6.col-md-offset-2
+/         %li
+/           %a.active{href: '#'} Apply
+/         %li
+/           %a{href: '#'} FAQ
+/         %li
+/           %a{href: '#'} Sponsors
+/         %li
+/           %a{href: '#'} Event
+        
+/         %div.clear
+/ %div.event.section.container
+/   %h3
+/     %span Event Info
+/   %div.row
+/     %div.timeline.col-xs-12.col-sm-4.col-md-4.col-lg-4.col-xs-offset-1.col-sm-offset-1.col-md-offset-1.col-lg-offset-1
+/       %div.rectangle
+/       %div.day Friday
+/       %div.event.10
+/         %div.time
+/           %p 9PM
+/         %div.event_circle
+/         %div.display_info{:style => "display: none;"}
+/           %p 500 Hackers gather for opening ceremonies for BoilerMake lala
+/         %div.detail
+/           %p Opening Ceremonies
+/         %div.clear
+/       %div.day Saturday
+/       %div.event.12
+/         %div.time
+/           %p 12AM
+/         %div.event_circle
+/         %div.display_info{:style => "display: none;"}
+/           %p The clock starts! Hackers have 36-hours to finish their projects
+/         %div.detail
+/           %p Hacking Begins
+/         %div.clear
+/       %div.event.3
+/         %div.time
+/           %p 3AM
+/         %div.event_circle
+/         %div.display_info{:style => "display: none;"}
+/           %p Late night stacks are served to help fuel hacker's brains and fingers 
+/         %div.detail
+/           %p Late-night Snackies
+/         %div.clear
+/       %div.event.7
+/         %div.time
+/           %p 7AM
+/         %div.event_circle
+/         %div.display_info{:style => "display: none;"}
+/           %p Breakfast is served!
+/         %div.detail
+/           %p Breakfast
+/         %div.clear
+/       %div.event.12
+/         %div.time
+/           %p 12PM
+/         %div.event_circle
+/         %div.display_info{:style => "display: none;"}
+/           %p Use more creative descriptions damn it
+/         %div.detail
+/           %p Lunch
+/         %div.clear
+/       %div.event.3
+/         %div.time
+/           %p 3PM
+/         %div.event_circle
+/         %div.display_info{:style => "display: none;"}
+/           %p Some fun midday activity
+/         %div.detail
+/           %p Activity
+/         %div.clear
+/       %div.event.6
+/         %div.time
+/           %p 6PM
+/         %div.event_circle
+/         %div.display_info{:style => "display: none;"}
+/           %p Eat some dinner why don't cha?
+/         %div.detail
+/           %p Dindin
+/         %div.clear
+/       %div.day Saturday
+/       %div.event.12
+/         %div.time
+/           %p 2PM
+/           %div.detail
+/           %div.clear
+/     %div.eventinfo.col-xs-10.col-sm-5.col-md-5.col-lg-5.col-xs-offset-1.col-sm-offset-1.col-md-offset-1.col-lg-offset-1
+/       %div.event_right
+/         %div.typographic
+/           %div.bm_header BoilerMake
+/           %div.students_header 500 Students
+/           %div.weekend_header 1 Huge Weekend
+/         %p
+/           Lorem ipsum dolor sit amet, sea ea oratio alienum, in vim aeterno dissentiet, pri diam assueverit ad. Et debet errem commune eos, et quas impetus concludaturque vis, ius an aliquid erroribus deterruisset. Qui officiis mandamus cu, id nec quis eripuit moderatius. Choro elaboraret referrentur nam at, saperet definitiones sea at, te possit omittam vix. Eum fastidii phaedrum repudiare ea, at maiorum efficiantur vix, pri ut laboramus consequat. Eu vel impedit sententiae.
+
+       
+
+
+/ %div.sponsors.section.container
+/   %h3
+/     %span Sponsors
+/     %div.main_sponsor
+/ %div.container
+/   %div.row
+/   %h3
+/     %span FAQ
+/   %div.faq_column.col-xs-10.col-sm-5.col-md-5.col-lg-5.col-xs-offset-1.col-sm-offset-1.col-md-offset-1.col-lg-offset-1
+/     %div.each
+/       %h4 Who can attend?
+/       %p All undergraduate, graduate, and high school students from any school are welcome. If you are under 18, we'll need a parental consent form.
+/     %div.each
+/       %h4 Will there be a standby line the day of the event?
+/       %p I copied these from another hackathon's website. Try and guess the hackathon. Hint: the design is on point. Points as in geometry.
+/     %div.each
+/       %h4 Who can attend?
+/       %p Applicants will be chosen based on a random lottery. Everyone is welcome to apply and attend! I have to add an extra line to these to even the columns, ensuring that the left column is >= the right column.
+/     %div.each
+/       %h4 Who can attend?
+/       %p All undergraduate, graduate, and high school students from any school are welcome. If you are under 18, we'll need a parental consent form.
+/   %div.faq_column.col-xs-10.col-sm-5.col-md-5.col-lg-5.col-xs-offset-1.col-md-offset-0.col-sm-offset-0.col-lg-offset-0
+/     %div.each
+/       %h4 Who can attend?
+/       %p All undergraduate, graduate, and high school students from any school are welcome. If you are under 18, we'll need a parental consent form.
+/     %div.each
+/       %h4 Will there be a standby line the day of the event?
+/       %p I copied these from another hackathon's website. Try and guess the hackathon. Hint: the design is on point. Points as in geometry.
+/     %div.each
+/       %h4 Who can attend?
+/       %p Applicants will be chosen based on a random lottery. Everyone is welcome to apply and attend! I have to add an extra line to these to even the columns, ensuring that the left column is >= the right column.
+/     %div.each
+/       %h4 Who can attend?
+/       %p All undergraduate, graduate, and high school students from any school are welcome. If you are under 18, we'll need a parental consent form.
+/ %div.footer.section.container-fluid
+/   %h5 
+/     Copyright 2015
+/     =image_tag 'bm_logo_sm.png', :class => 'sm_ico'
+/     BoilerMake
+/ / %script{src: 'http://code.jquery.com/jquery.js'}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
