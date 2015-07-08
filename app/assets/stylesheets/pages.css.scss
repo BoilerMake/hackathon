@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
 $screen-sm-min: 768px;
 $screen-xs-max: ($screen-sm-min - 1);
 $screen-md-min: 992px;
@@ -10,52 +11,13 @@ $screen-sm-max: ($screen-md-min - 1);
 $screen-lg-min: 1200px;
 $screen-md-max: ($screen-lg-min - 1);
 
-@mixin meyer-reset {
-  html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    box-sizing: border-box;
-  }
-
-  // HTML5 display-role reset for older browsers
-  article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-    display: block;
-  }
-  body {
-    line-height: 1;
-  }
-  ol, ul {
-    list-style: none;
-  }
-  blockquote, q {
-    quotes: none;
-  }
-  blockquote {
-    &:before, &:after {
-      content: "";
-      content: none;
-    }
-  }
-  q {
-    &:before, &:after {
-      content: "";
-      content: none;
-    }
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-}
 @mixin valign {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
 }
+
+
 
 
 html, body {
@@ -74,6 +36,9 @@ html, body {
   display: none !important;
 }
 
+
+
+
 .orange-juice {
   position: fixed;
   padding: 0;
@@ -91,10 +56,6 @@ html, body {
     width: 100vw;
     height: 100vh;
 
-    @media (max-width: $screen-xs-max) {
-      // height: auto;
-    }
-
     .carton-wrapper {
       position: absolute;
       width: 100%;
@@ -104,7 +65,6 @@ html, body {
       // transition: all 0.5s ease;
 
       @media (max-width: $screen-xs-max) {
-        position: absolute;
         padding: 0;
       }
 
@@ -125,7 +85,20 @@ html, body {
       position: relative;
       height: 100%;
       width: 100%;
-      border: 1em solid white;
+
+      &::after {
+        content: "";      
+        border: 1em solid white;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        z-index: -10;
+
+        @media (max-width: $screen-xs-max) {
+          border: 0 solid white;
+        }
+      }
 
       @media (max-width: $screen-xs-max) {
         border: none;
@@ -168,6 +141,7 @@ html, body {
   @include valign;
   color: white;
   font-family: 'Open Sans', sans-serif;
+
   @media (max-width: $screen-xs-max) {
     text-align: center;
     transform: none;
@@ -378,7 +352,60 @@ html, body {
     font-color: #333333;
     text-align: center;
   }
-} 
+}
+
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+@mixin fadeIn($duration, $delay) {
+  opacity: 0;
+  visibility: visible;
+  animation: fadeIn $duration $delay forwards;
+}
+
+.orange-juice {
+  opacity: 0;
+
+  &.animate {
+    @include fadeIn(1s, 0s);
+  }
+  &.animateOut {
+    #carton-1-1 {
+      padding: 0;
+      transition: all 0.5s;
+      overflow: hidden;
+    }
+    #carton-1-1 .carton::after {
+      border: 50em solid white;
+      background: white;
+      transition: all 0.5s;
+    }
+    .carton div {
+      animation: fadeOut 2s forwards;
+    }
+  }
+}
+
+.carton { visibility: hidden; }
+.animate .carton { @include fadeIn(2s, 0.5s); }
+.logo { visibility: hidden; }
+.animate .logo { @include fadeIn(2s, 1s); }
+.info { visibility: hidden; }
+.animate .info { @include fadeIn(2s, 1.25s); }
+
+
+
+
+
+
+
 
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: $screen-md-min) { 

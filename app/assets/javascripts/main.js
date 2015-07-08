@@ -47,12 +47,27 @@ var listeners = function() {
 	});
 	$('#loginForm button').click(function(event) {
 		if (applyActive) {
-			applyActive = false;
+			hideLoginForm();
+			showSignupForm();
+		} else {
 			hideLoginForm();
 		}
+	});
+	$('#submitRegistration').click(function(event) {
+		$('.orange-juice').addClass('animateOut');
+	});
+	$('#submitLogin').click(function(event) {
+		$('.orange-juice').addClass('animateOut');
 	});
 };
 
 $('.orange-juice').ready(function() {
+	window.setTimeout(function() {
+		$('.orange-juice').addClass('animate');
+	}, 1000);
 	listeners();
 });
+
+$(document).on('ready page:change', function() {
+	console.log('somthin changed');
+})

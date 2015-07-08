@@ -34,6 +34,7 @@ class SessionsController < ApplicationController
   private
 
   def redirect_after_login
+    sleep(2)
     if session[:return_to].present?
       redirect_to session[:return_to]
       session[:return_to] = nil

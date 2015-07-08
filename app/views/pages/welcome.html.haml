@@ -18,7 +18,7 @@
                   = f.password_field :password
                   = f.label :password_confirmation
                   = f.password_field :password_confirmation
-                  = f.submit "Register"
+                  = f.submit "Register", id: 'submitRegistration'
                   = button_tag "Cancel", :type => 'button'
               .login#loginForm
                 = form_tag sessions_path do
@@ -30,7 +30,7 @@
                     %input{type: "checkbox"}
                     %span
                       Remember Me
-                  = submit_tag 'log in', { class: 'submit-stuff' }
+                  = submit_tag 'log in', id: 'submitLogin'
                   = button_tag "Cancel", :type => 'button'
               %div.btn-row#applySponsor
                 %button.apply-btn#applyMeow
