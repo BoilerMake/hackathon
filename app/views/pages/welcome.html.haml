@@ -10,17 +10,17 @@
             %div.info
               %h1 BoilerMake
               %p Oct. 16-18 | Purdue University
-              %div.btn-row#signupForm
-                %div.input-field
-                  %label Email            
-                  %input.input#signupFormEmail
-                %div.input-field
-                  %label Password            
-                  %input.input#signupFormPassword{type: 'password'}
-                %div.input-field
-                  %label Confirm Password            
-                  %input.input#signupFormConfirmPassword{type: 'password'}
-              %div.btn-row
+              .new-user.btn-row#signupForm
+                = form_for @hacker do |f|
+                  = f.label :email
+                  = f.email_field :email
+                  = f.label :password
+                  = f.password_field :password, class: 'secret'
+                  = f.label :password_confirmation
+                  = f.password_field :password_confirmation, class: 'secret'
+                  = f.submit "Register"
+                  = button_tag "Cancel", :type => 'button'
+              %div.btn-row#applySponsor
                 %button.apply-btn#applyMeow
                   Apply Now
                 %button.sponsor-btn#sponsorPlz

@@ -1,9 +1,8 @@
 var showSignupForm = function() {
-	$('#applyMeow').html('Register');
-	$('#sponsorPlz').addClass('hidden');
-	$('#cancelRightMeow').removeClass('hidden');
 	$('#signupForm').addClass('opened')
-	$('#signupFormEmail').focus();
+	$('#applySponsor').addClass('freshly-squeezed');
+	// $('#sponsorPlz').addClass('hidden');
+	$('#hacker_email').focus();
 };
 
 var listeners = function() {
@@ -18,13 +17,11 @@ var listeners = function() {
 			$('#crate-2').addClass('hidden');
 		}
 	});
-	$('#cancelRightMeow').click(function(event) {
+	$('#signupForm button').click(function(event) {
 		if (applyActive) {
 			applyActive = false;
 			$('#signupForm').removeClass('opened')
-			$('#cancelRightMeow').addClass('hidden');
-			$('#sponsorPlz').removeClass('hidden');
-			$('#applyMeow').html('Apply Now');
+			$('#applySponsor').removeClass('freshly-squeezed');
 		}
 	});
 };
