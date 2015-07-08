@@ -1,8 +1,24 @@
 var showSignupForm = function() {
 	$('#signupForm').addClass('opened')
 	$('#applySponsor').addClass('freshly-squeezed');
-	// $('#sponsorPlz').addClass('hidden');
 	$('#hacker_email').focus();
+};
+
+var hideSignupForm = function() {
+	$('#signupForm').removeClass('opened')
+	$('#applySponsor').removeClass('freshly-squeezed');
+};
+
+var showLoginForm = function() {
+	$('#loginForm').addClass('opened')
+	$('#applySponsor').addClass('freshly-squeezed');
+	$('#alreadyRegistered').addClass('freshly-squeezed');
+};
+
+var hideLoginForm = function() {
+	$('#loginForm').removeClass('opened')
+	$('#applySponsor').removeClass('freshly-squeezed');
+	$('#alreadyRegistered').removeClass('freshly-squeezed');
 };
 
 var listeners = function() {
@@ -20,8 +36,19 @@ var listeners = function() {
 	$('#signupForm button').click(function(event) {
 		if (applyActive) {
 			applyActive = false;
-			$('#signupForm').removeClass('opened')
-			$('#applySponsor').removeClass('freshly-squeezed');
+			hideSignupForm();
+		}
+	});
+	$('#loginMeow').click(function(event) {
+		if (applyActive) {
+			hideSignupForm();
+		}
+		showLoginForm();
+	});
+	$('#loginForm button').click(function(event) {
+		if (applyActive) {
+			applyActive = false;
+			hideLoginForm();
 		}
 	});
 };
