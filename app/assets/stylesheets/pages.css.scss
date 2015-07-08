@@ -328,6 +328,7 @@ html, body {
 #crate-2 {
   .row {
     height: auto !important;
+    padding-left: 50px;
   }
   h2 {
     text-align: center;
@@ -337,9 +338,19 @@ html, body {
     color: #D96704;
     padding: 45px 0;
   }
+  .main-img {
+    margin-bottom: 15px;
+  }
   img {
     width: 100%;
     height: auto;
+  }
+  .main-text {
+    font-size: 1.1em;
+    font-family: 'Open Sans', sans-serif;
+    font-color: #333333;
+    text-align: center;
+    padding: 0 30px;
   }
 } 
 //   h1 {
