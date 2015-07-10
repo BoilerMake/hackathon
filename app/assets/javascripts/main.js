@@ -1,7 +1,5 @@
 var showSignupForm = function() {
-	$('#signupForm').addClass('opened')
-	$('#applySponsor').addClass('freshly-squeezed');
-	$('#hacker_email').focus();
+	$('#signupForm').css('display': 'block');
 };
 
 var hideSignupForm = function() {
@@ -23,7 +21,7 @@ var hideLoginForm = function() {
 
 var listeners = function() {
 	var applyActive = false;
-	$('#applyMeow').click(function(event) {
+	$('#applyButton').click(function(event) {
 		if (!applyActive) {
 			applyActive = true;
 			showSignupForm();
