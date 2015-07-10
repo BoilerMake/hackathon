@@ -1,6 +1,11 @@
-.header
-  .container
-    = link_to '', root_path, class: 'logo'
-    = link_to 'Log Out', logout_path, id: 'logout', class: 'button outline', style: 'cursor:pointer;'
-.head
-  %h1 WELCOME
+%nav.main_nav
+  %div.container-fluid
+    %div.row-fluid
+      %div.brand.col-md-2.col-md-offset-1
+        %a{href: root_path}
+          =image_tag 'bm_logo_basic.png', :class => "img-responsive"
+      %ul.nav_links.col-md-6.col-md-offset-2
+        %li
+          = link_to 'Log Out', logout_path, id: 'logout', class: 'nav-button'
+        
+        %div.clear

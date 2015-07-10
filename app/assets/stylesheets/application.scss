@@ -15,3 +15,61 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  @media (max-width: $screen-xs-max) {
+    font-size: 12px;
+  }
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+.main_nav {
+	height: 65px;
+	padding: 5px 0;
+	background-color: white !important;
+	z-index: 5;
+	box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+	.container-fluid {
+		height: 100%;
+	}
+}
+.nav_links {
+	list-style: none;
+	float: left;
+	li {
+		float: right;
+		line-height: 60px;
+		text-align: center;
+		display: block;
+		margin-left: 35px !important;
+		.nav-button {
+			font-family: 'Open Sans', sans-serif;
+			font-weight: 600;
+			background: none;
+			border: 2px solid #F29D35;
+			color: #F29D35;
+			border-radius: 2px;
+			padding: 5px 15px;
+			text-decoration: none;
+			transition: all 0.25s;
+			&:hover {
+				color: white;
+				background-color: #F29D35;
+				transition: all 0.25s;
+			}
+		}
+	}
+}
+.brand {
+	float: left;
+	img {
+		min-height: 60px !important;
+		min-width: 60px !important;
+		max-height: 60px !important;
+	}
+}
