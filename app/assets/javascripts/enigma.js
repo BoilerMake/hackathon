@@ -31,7 +31,8 @@
   var Enigma = {
     keys: [],
     keyCount: 0,
-    colors: ['rgba(230, 73, 73,', 'rgba(199, 181, 88,', 'rgba(143, 112, 97,'],
+    // colors: ['rgba(230, 73, 73,', 'rgba(199, 181, 88,', 'rgba(143, 112, 97,'],
+    colors: ['rgba(255,255,255,'],
     validChars: "0123456789ABCDEFGHIJKLMNOPQURSTUVWXYZ",
     interval: 0,
     message: "BOILERMAKE",
@@ -66,6 +67,10 @@
         }
       }
       Enigma.startLoop();
+
+      window.setTimeout(function() {
+        window.validSignup();
+      }, 1500);
     },
     key: function(i, j) {
       this.character = Enigma.validChars.substr( Math.floor(Math.random() * 36), 1);
@@ -80,7 +85,7 @@
         if (this.light === -1){ return; }
         if (this.opacity !== '0') {
           if (Math.random() < 0.03) {
-            this.opacity = '.5';
+            this.opacity = '1';
           } else {
             this.opacity = '.3';
           }
@@ -227,19 +232,36 @@
     if ((s.width / s.size * .25) >= (Enigma.message.length)) {
     gone = 1;
     var i, j;
-    $('#logo').css('display', 'none');
-    $('h3').css('display', 'none');
+
+    window.setTimeout(function() {
+      var flickerInterval = window.setInterval(function() {
+        $('.flickerIn').each(function(index, el) {
+          var n = Math.random();
+          if (n > 0.67)
+            $(el).css('opacity', '1');
+          else if (n > 0.33)
+            $(el).css('opacity', '0.5');
+          else
+            $(el).css('opacity', '0');
+        });
+      }, 105);
+      window.setTimeout(function() {
+        window.clearInterval(flickerInterval);
+        $('.flickerIn').css('opacity', '1');
+      }, 1050);
+    }, 2500);
+
     for (i = 0; i < s.height / s.size * .35; i++) {
       for (j = 0; j < s.width / s.size * .25; j++) {
         Enigma.charPressed = ' ';
         if (i === Math.round((s.height / s.size * .35) * .5) ) {
-          if ((j > Math.floor(s.width / s.size * .25) * .5 - (Enigma.message.length * .5)) && (j < (Math.ceil(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5)))) {
+          if (false && (j > Math.floor(s.width / s.size * .25) * .5 - (Enigma.message.length * .5)) && (j < (Math.ceil(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5)))) {
             Enigma.messageKey(Enigma.keys[i][j], 250, 10, j);
           } else {
-            Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
+            Enigma.lightKey(Enigma.keys[i][j], 3000, -1);
           }
         } else {
-          Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
+          Enigma.lightKey(Enigma.keys[i][j], 3000, -1);
         }
       }
     }
@@ -247,5 +269,6 @@
   };
   window.onload = function() {
     Enigma.init();
+    document.getElementById('bg').className += ' fadeOut';
   };
 })();
