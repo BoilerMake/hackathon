@@ -87,7 +87,7 @@
           if (Math.random() < 0.03) {
             this.opacity = '1';
           } else {
-            this.opacity = '.3';
+            this.opacity = '.6';
           }
         }
 
@@ -247,7 +247,7 @@
       }, 105);
       window.setTimeout(function() {
         window.clearInterval(flickerInterval);
-        $('.flickerIn').css('opacity', '1');
+        $('.flickerIn').css('opacity', '1').removeClass('flickerIn').addClass('flickerOver');
       }, 1050);
     }, 2500);
 
