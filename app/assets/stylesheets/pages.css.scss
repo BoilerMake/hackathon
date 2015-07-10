@@ -93,8 +93,8 @@ body, html {
 
     &.flickerOver {
       box-shadow: 0 0 40px white;
-      transition: box-shadow 15s;
-      animation: glow 15s 15s infinite;
+      transition: box-shadow 5s;
+      animation: glow 15s 5s infinite;
     }
   }
 
