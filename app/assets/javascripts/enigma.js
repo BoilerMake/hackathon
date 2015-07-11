@@ -129,54 +129,29 @@
         Enigma.canvas.height = s.height;
         Enigma.canvas.width = s.width;
         Enigma.ctx = Enigma.canvas.getContext("2d");
-        scaleCanvas(Enigma.ctx, Enigma.canvas);
-        if ((s.width / s.size * .25) >= (Enigma.message.length)) {
-          s.size = 22;
-          while ((Math.round(s.width / s.size) - Enigma.message.length) % 2 == 0) {
-            if (s.size < 20) {
-              s.size++;
-            } else {
-              s.size--;
-            }
-          }
-        } 
-        var lPosition = $("form:first").position();
-        var sPosition = $("h3:first").position();
-        if (lPosition.top >= sPosition.top * .9) {
-          $('h3').css('opacity', '0');
-        } else {
-          $('h3').css('opacity', '0.75');
-        }
-        if (gone === 0) {
-          for (var i = 0; i < s.height / s.size * .35; i++) {
-            Enigma.keys[i] = [];
-            for (var j = 0; j < s.width / s.size * .25; j++) {
-              Enigma.keys[i][j] = new Enigma.key(i, j);
-            }
-          }
-        } else {
-          for (var i = 0; i < s.height / s.size * .35; i++) {
-            Enigma.keys[i] = [];
-            for (var j = 0; j < s.width / s.size * .25; j++) {
-              Enigma.keys[i][j] = new Enigma.key(i, j);
-            }
-          }
-          for (i = 0; i < s.height / s.size * .35; i++) {
-            for (j = 0; j < s.width / s.size * .25; j++) {
-              Enigma.charPressed = ' ';
-              if (i === Math.round((s.height / s.size * .35) * .5) ) {
-                if ((j > Math.floor(s.width / s.size * .25 * .5) - (Enigma.message.length * .5)) && (j < Math.ceil(s.width / s.size * 0.25) * 0.5 + (Enigma.message.length * 0.5))) {
-                  Enigma.messageKey(Enigma.keys[i][j], 250, 10, j);
-                } else {
-                  Enigma.keys[i][j].opacity = '0';
+        //scaleCanvas(Enigma.ctx, Enigma.canvas);
 
-                  Enigma.lightKey(Enigma.keys[i][j], 4000, -1);
-                }
-              } else {
-                Enigma.keys[i][j].opacity = '0';
-              }
+        if (gone === 0) {
+          for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
+            Enigma.keys[countX] = [];
+            for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
+              Enigma.keys[countX][countY] = new Enigma.key(i, j);
             }
           }
+        } else {                
+          for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
+            Enigma.keys[countX] = [];
+            for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
+              Enigma.keys[countX][countY] = new Enigma.key(i, j);
+            }
+          }
+          for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
+            Enigma.keys[countX] = [];
+            for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
+              Enigma.keys[countX][countY].opacity = '0';
+            }
+          }
+
         }
       });
     },
