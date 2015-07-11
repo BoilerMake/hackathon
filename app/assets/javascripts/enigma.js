@@ -70,6 +70,7 @@
       this.color = 'rgba(255,255,255,';
       this.id = Enigma.keyCount++;
       this.opacity = '1.0';
+      //draw the individual circle
       this.draw = function() {
         if (this.light === -1){ return; }
         if (this.opacity !== '0') {
@@ -79,7 +80,6 @@
             this.opacity = '.6';
           }
         }
-
         Enigma.ctx.textAlign = 'center';
         Enigma.ctx.lineWidth = s.lineWidth;
         Enigma.ctx.beginPath();
@@ -127,13 +127,15 @@
               Enigma.keys[countX][countY] = new Enigma.key(i, j);
             }
           }
-        } else {                
+        } else {
+          //recreate circles                
           for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
             Enigma.keys[countX] = [];
             for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
               Enigma.keys[countX][countY] = new Enigma.key(i, j);
             }
           }
+          //then hide them
           for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
             Enigma.keys[countX] = [];
             for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
@@ -146,6 +148,7 @@
     },
     startLoop: function() {
       interval = window.setInterval(function() {
+        //continue drawing them
         Enigma.ctx.clearRect(0, 0, Enigma.canvas.width, Enigma.canvas.height);
         for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
           for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
@@ -174,10 +177,12 @@
         });
       }, 105);
       window.setTimeout(function() {
-        window.clearInterval(flickerInterval);
+        Enigma.stopLoop();
         $('.flickerIn').css('opacity', '1').removeClass('flickerIn').addClass('flickerOver');
       }, 1050);
     }, 2500);
+    
+
 
     //Clear circles
     for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
@@ -185,6 +190,7 @@
         Enigma.lightKey(Enigma.keys[countX][countY], 3000, -1);
       }
     }
+
   };
   window.onload = function() {
     Enigma.init();
