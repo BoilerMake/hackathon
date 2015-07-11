@@ -31,11 +31,8 @@
   var Enigma = {
     keys: [],
     keyCount: 0,
-    colors: ['rgba(255,255,255,'],
     validChars: "0123456789ABCDEFGHIJKLMNOPQURSTUVWXYZ",
     interval: 0,
-    message: "BOILERMAKE",
-    messageCounter: 0,
     charPressed: '',
     canvas: 0,
     ctx: 0,
@@ -76,10 +73,9 @@
     key: function(i, j) {
       this.character = Enigma.validChars.substr( Math.floor(Math.random() * 36), 1);
       this.light = 0;
-      this.messageC = 0;
       this.x = i;
       this.y = j;
-      this.color = Enigma.colors[i % 3];
+      this.color = 'rgba(255,255,255,';
       this.id = Enigma.keyCount++;
       this.opacity = '1.0';
       this.draw = function() {
@@ -96,6 +92,7 @@
         Enigma.ctx.lineWidth = s.lineWidth;
         Enigma.ctx.beginPath();
         Enigma.ctx.strokeStyle = this.color + this.opacity + ')';
+        // X and Y coordinates + .5 for high-res rendering
         Enigma.ctx.arc(this.x + .5, this.y + .5, s.size, 0, CIRCLE, true);
         Enigma.ctx.closePath();
         if (!this.light){
@@ -115,11 +112,7 @@
         if (this.light > 0){
           this.light--;
         }
-        if (this.messageC !== 0) {
-          Enigma.ctx.fillText(this.messageC, this.x + 1, this.y + (s.size / 2.5) - 1);
-        } else {
-          Enigma.ctx.fillText(this.character, this.x + 1, this.y + (s.size / 2.5) - 1);
-        }
+        Enigma.ctx.fillText(this.character, this.x + 1, this.y + (s.size / 2.5) - 1);
       };
     },
     lightKey: function(p, delay, duration) {
