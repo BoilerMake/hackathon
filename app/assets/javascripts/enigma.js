@@ -36,7 +36,6 @@
     canvas: 0,
     ctx: 0,
     settings: {
-      amount: Math.round(window.innerWidth) * Math.round(window.innerHeight) / 22,
       width: window.innerWidth,
       height: window.innerHeight,
       size: 22,
@@ -114,7 +113,6 @@
     },
     userActions: function() {
       window.addEventListener('resize', function() {
-        s.amount = Math.round(window.innerWidth);
         s.width = window.innerWidth;
         s.height = window.innerHeight;
         Enigma.canvas = document.querySelector('canvas');
