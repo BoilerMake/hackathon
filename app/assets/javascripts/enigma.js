@@ -45,18 +45,12 @@
     },
     init: function() {
       s = this.settings;
-      //mobile shit ignore for now
-      /*if ((s.width / s.size * .25) >= (Enigma.message.length)) {
-        while ((Math.round(s.width / s.size) - Enigma.message.length) % 2 === 0) {
-          s.size++;
-        }
-      }*/
       this.userActions();
       Enigma.canvas = document.querySelector('canvas');
       Enigma.canvas.height = s.height;
       Enigma.canvas.width = s.width;
       Enigma.ctx = Enigma.canvas.getContext("2d");
-      //scaleCanvas(Enigma.ctx, Enigma.canvas);
+      scaleCanvas(Enigma.ctx, Enigma.canvas);
       for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
         Enigma.keys[countX] = [];
         for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
