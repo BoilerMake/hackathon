@@ -56,10 +56,11 @@
           Enigma.keys[countX][countY] = new Enigma.key(i, j);
         }
       }
+      //Start canvas drawing
       Enigma.startLoop();
-
       window.setTimeout(function() {
-        window.validSignup();
+        //Wait for specified time to begin fadeout
+        window.fader();
       }, 1500);
     },
     key: function(i, j) {
@@ -162,7 +163,7 @@
     },
   };
 
-  window.validSignup = function() {
+  window.fader = function() {
     gone = 1;
     window.setTimeout(function() {
       var flickerInterval = window.setInterval(function() {
@@ -181,8 +182,6 @@
         $('.flickerIn').css('opacity', '1').removeClass('flickerIn').addClass('flickerOver');
       }, 1050);
     }, 2500);
-    
-
 
     //Clear circles
     for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
@@ -190,7 +189,6 @@
         Enigma.lightKey(Enigma.keys[countX][countY], 3000, -1);
       }
     }
-
   };
   window.onload = function() {
     Enigma.init();
