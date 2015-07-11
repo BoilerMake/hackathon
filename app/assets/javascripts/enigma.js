@@ -1,6 +1,6 @@
 (function(){
   "use strict";
-  /*var backingScale = function() {
+  var backingScale = function() {
     if ('devicePixelRatio' in window) {
       if (window.devicePixelRatio > 1) {
         return window.devicePixelRatio;
@@ -21,7 +21,7 @@
       canvas.style.width = oldWidth + "px";
       canvas.style.height = oldHeight + "px";
     }
-  };*/
+  };
 
   var CIRCLE = Math.PI * 2;
   var ENTERKEY = 13;
@@ -33,7 +33,6 @@
     keyCount: 0,
     validChars: "0123456789ABCDEFGHIJKLMNOPQURSTUVWXYZ",
     interval: 0,
-    charPressed: '',
     canvas: 0,
     ctx: 0,
     settings: {
@@ -107,7 +106,6 @@
           Enigma.ctx.fillStyle = this.color + this.opacity + ')';
           Enigma.ctx.fill();
           Enigma.ctx.fillStyle = this.color;
-          this.character = Enigma.charPressed.toUpperCase();
         }
         if (this.light > 0){
           this.light--;
@@ -129,7 +127,7 @@
         Enigma.canvas.height = s.height;
         Enigma.canvas.width = s.width;
         Enigma.ctx = Enigma.canvas.getContext("2d");
-        //scaleCanvas(Enigma.ctx, Enigma.canvas);
+        scaleCanvas(Enigma.ctx, Enigma.canvas);
 
         if (gone === 0) {
           for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
