@@ -1,11 +1,47 @@
-.label {
-	float: left;
-	width: 20%;
-	color: #333333;
-	text-align: left;
-	text-transform: uppercase;
-}
 .field {
 	padding: 15px 0;
-	margin: 0 10%;	
+	margin: 15px 10%;	
+	.label {
+		float: left;
+		width: 25%;
+		color: #333333;
+		text-align: left;
+		text-transform: uppercase;
+		font-family: 'Source Code Pro', sans-serif;
+		font-size: 1em;
+		line-height: 2.5em;
+	}
+	.user-input {
+		::-webkit-input-placeholder {
+   			color: #CCCCCC;
+		}
+		:-moz-placeholder { /* Firefox 18- */
+   			color: #CCCCCC;
+		}
+		::-moz-placeholder {  /* Firefox 19+ */
+   			color: #CCCCCC;  
+		}
+		:-ms-input-placeholder {  
+   			color: #CCCCCC;  
+		}
+		input {
+			padding: 10px 15px;
+			margin-right: 30px;
+			border-radius: 2px;
+			border: 1px solid #cccccc;
+			font-family: 'Source Code Pro', sans-serif;
+			font-size: 0.7em;
+			text-transform: uppercase;
+			width: 25%;
+			background-color: #F1F1F1;
+			color: #5B5B5B;
+
+		}
+		input:focus {
+			outline: 0;
+			border: 1px solid #5B5B5B;
+			color: #5B5B5B;
+			background-color: white;
+		}
+	}
 }
