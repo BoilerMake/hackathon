@@ -186,22 +186,6 @@
           }
         }
       });
-      $('#interest_signup_email').keypress(function(e) {
-        var i, j;
-        if (e.which !== ENTERKEY) {
-          Enigma.charPressed = String.fromCharCode(e.which);
-          for (i = 0; i < s.height / s.size * .35; i++) {
-            for (j = 0; j < s.width / s.size * .25; j++) {
-              if (Math.random() < 0.1) {
-                Enigma.lightKey(Enigma.keys[i][j], 250, 10);
-              } else {
-                Enigma.keys[i][j].light = 0;
-              }
-            }
-          }
-        }
-        return true;
-      });
     },
     startLoop: function() {
       interval = window.setInterval(function() {
