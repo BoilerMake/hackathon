@@ -8,7 +8,6 @@
     }
     return 1;
   };
-
   var scaleCanvas = function(ctx, canvas){
     var scaleFactor = backingScale(ctx);
     if (scaleFactor > 1) {
@@ -22,7 +21,6 @@
       canvas.style.height = oldHeight + "px";
     }
   };
-
   var CIRCLE = Math.PI * 2;
   var ENTERKEY = 13;
   var interval;
@@ -147,10 +145,11 @@
       }, 105);
     },
     stopLoop: function() {
+      Enigma.keys.length = 0;
       window.clearInterval(interval);
     },
   };
-
+  //fader for logo/circles
   window.fader = function() {
     gone = 1;
     window.setTimeout(function() {
@@ -170,7 +169,6 @@
         $('.flickerIn').css('opacity', '1').removeClass('flickerIn').addClass('flickerOver');
       }, 1050);
     }, 2500);
-
     //Clear circles
     for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
       for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
