@@ -84,8 +84,7 @@
         Enigma.ctx.lineWidth = s.lineWidth;
         Enigma.ctx.beginPath();
         Enigma.ctx.strokeStyle = this.color + this.opacity + ')';
-        // X and Y coordinates + .5 for high-res rendering
-        Enigma.ctx.arc(this.x + .5, this.y + .5, s.size, 0, CIRCLE, true);
+        Enigma.ctx.arc(this.x, this.y, s.size, 0, CIRCLE, true);
         Enigma.ctx.closePath();
         if (!this.light){
           Enigma.ctx.stroke();
