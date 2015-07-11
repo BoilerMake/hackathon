@@ -1,6 +1,7 @@
 .field {
-	padding: 15px 0;
-	margin: 15px 10%;	
+	padding: 30px 15px;
+	margin: 0 10%;
+	border-top: 1px solid #eeeeee;
 	.label {
 		float: left;
 		width: 25%;
@@ -8,8 +9,8 @@
 		text-align: left;
 		text-transform: uppercase;
 		font-family: 'Source Code Pro', sans-serif;
-		font-size: 1em;
-		line-height: 2.5em;
+		font-size: 0.9em;
+		line-height: 2em;
 	}
 	.user-input {
 		::-webkit-input-placeholder {
@@ -24,7 +25,7 @@
 		:-ms-input-placeholder {  
    			color: #CCCCCC;  
 		}
-		input {
+		input, textarea {
 			padding: 10px 15px;
 			margin-right: 30px;
 			border-radius: 2px;
@@ -37,11 +38,23 @@
 			color: #5B5B5B;
 
 		}
-		input:focus {
+		input:focus, textarea:focus {
 			outline: 0;
-			border: 1px solid #5B5B5B;
+			border: 1px solid #CCCCCC;
 			color: #5B5B5B;
 			background-color: white;
+			box-shadow: 0 0 10px #EEEEEE;
+		}
+		textarea {
+			height: 100px;
+			width: 50%;
+			resize: none;
+
 		}
 	}
+}
+.submit {
+	margin: 5px 10% 35px 0;
+	float: right;
+	width: 10%;
 }
