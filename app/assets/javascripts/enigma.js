@@ -113,37 +113,25 @@
     },
     userActions: function() {
       window.addEventListener('resize', function() {
-        s.width = window.innerWidth;
-        s.height = window.innerHeight;
         Enigma.canvas = document.querySelector('canvas');
         Enigma.canvas.height = s.height;
         Enigma.canvas.width = s.width;
         Enigma.ctx = Enigma.canvas.getContext("2d");
         scaleCanvas(Enigma.ctx, Enigma.canvas);
-
-        if (gone === 0) {
-          for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
-            Enigma.keys[countX] = [];
-            for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
-              Enigma.keys[countX][countY] = new Enigma.key(i, j);
-            }
+        for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
+          Enigma.keys[countX] = [];
+          for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
+            Enigma.keys[countX][countY] = new Enigma.key(i, j);
           }
-        } else {
-          //recreate circles                
-          for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
-            Enigma.keys[countX] = [];
-            for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
-              Enigma.keys[countX][countY] = new Enigma.key(i, j);
-            }
-          }
-          //then hide them
+        }
+        if (gone === 1) {
+          //hide the circles
           for (var i = 0, countX = 0; i < s.width; countX++, i += s.scaledSize) {
             Enigma.keys[countX] = [];
             for (var j = 0, countY = 0; j < s.height; countY++, j += s.scaledSize) {
               Enigma.keys[countX][countY].opacity = '0';
             }
           }
-
         }
       });
     },
