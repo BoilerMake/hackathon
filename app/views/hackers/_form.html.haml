@@ -93,9 +93,8 @@
           .field
             .label
               Dietary Restrictions
-              .sub-label
-                Please enter any dietary restrictions, leave blank if none.
             .user-input
-              = application_fields.text_area :dietary_restrictions, rows: '4'
+              = application_fields.text_area :dietary_restrictions, rows: '4', placeholder: 'Please enter any dietary restrictions, leave blank if none.'
+                
         .submit
           = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'
