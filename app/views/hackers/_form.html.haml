@@ -55,7 +55,7 @@
             .label
               Link to Resume
             .user-input.filepicker
-              = application_fields.filepicker_field :resume, button_class: 'button outline confirm', onchange: 'filePicked(event)', button_text: @resume_button_text, mimetypes: 'application/pdf'
+              = application_fields.filepicker_field :resume, button_class: 'button outline confirm', onchange: 'filePicked(event)', button_text: @resume_button_text, mimetypes: 'application/pdf', placeholder: 'https://www.dropbox.com/link'
               %p.note{style: 'display:none;'}
                 Resume Uploaded
                 %br
