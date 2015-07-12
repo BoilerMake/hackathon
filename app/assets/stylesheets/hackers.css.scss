@@ -24,8 +24,14 @@ body {
 		line-height: 2em;
 		label {
 			font-family: 'Source Sans Pro', sans-serif;
-			font-weight: 100;
+			font-weight: 200;
+			&.required {
+				font-weight: 400;
+			}
 		}
+	}
+	.required {
+		font-weight: 400 !important;
 	}
 	.user-input {
 		::-webkit-input-placeholder {
@@ -129,7 +135,7 @@ body {
 		text-align: center;
 		text-transform: uppercase;
 		font-family: 'Source Sans Pro', sans-serif;
-		font-weight: 100;
+		font-weight: 200;
 		letter-spacing: 2px;
 		word-spacing: 5px;
 		font-size: 2em;
