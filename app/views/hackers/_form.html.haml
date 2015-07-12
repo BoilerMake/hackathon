@@ -25,13 +25,13 @@
       = form_for @hacker do |f|
         .field
           .label.required
-            = f.label 'Your name', {class: 'required'}
+            = f.label 'Your name*', {class: 'required'}
           .user-input
             = f.text_field :first_name, placeholder: "First Name"
             = f.text_field :last_name, placeholder: "Last Name"
         .field
           .label
-            = f.label :school_id, {class: 'required'}
+            = f.label 'School*', {class: 'required'}
           .user-input
             = f.text_field :school_id, { id: 'schools', value: @school, readonly: true, style: 'opacity:0.5;'}
         = f.fields_for :application, @hacker.application do |application_fields|
@@ -52,7 +52,7 @@
               = application_fields.text_field :linkedin, placeholder: 'https://www.linkedin.com/pub/my_name/99/999/999'
           .field
             .label.required
-              Link to Resume
+              Link to Resume*
             .user-input.filepicker
               = application_fields.filepicker_field :resume, button_class: 'button outline confirm', onchange: 'filePicked(event)', button_text: @resume_button_text, mimetypes: 'application/pdf', placeholder: 'https://www.dropbox.com/link'
               %p.note{style: 'display:none;'}
@@ -63,12 +63,12 @@
                 = link_to "Current resume", @application.resume, target: '_blank'
           .field
             .label.required
-              T-shirt Size
+              T-shirt Size*
             .user-input
               = application_fields.collection_select :tshirt_size, @shirts, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
           .field
             .label.required
-              Cell Phone
+              Cell Phone*
             .user-input
               = application_fields.text_field :cell_phone, placeholder: '(877)-CASH-NOW'
               .sub-field
@@ -79,7 +79,7 @@
           
           .field
             .label.required
-              Year of Graduation
+              Year of Graduation*
             .user-input
               = application_fields.number_field :expected_graduation
           .field
