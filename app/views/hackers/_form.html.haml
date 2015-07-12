@@ -1,18 +1,10 @@
-.nav
-  = link_to dashboard_path do
-    .nav-active
-      Application
-  - if current_user.team.present?
-    = link_to my_team_path do
-      My Team
-  - else
-    = link_to new_team_path do
-      Create Team
+
 .container
   = render 'shared/flash.html.haml'
   .application
-    %h1.alert-h1
-      Decision:
+    .decision
+      %h1
+        Decision:
       %span.status
         = current_user.status
     - if current_user.accepted? && current_user.confirmed?

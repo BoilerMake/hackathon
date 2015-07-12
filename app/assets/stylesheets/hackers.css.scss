@@ -58,3 +58,45 @@
 	float: right;
 	width: 10%;
 }
+.decision {
+	display: none;
+}
+
+.head {
+	position: fixed;
+	width: 100%;
+	background-color: white;
+	top: 0;
+	padding: 15px 0;
+	text-align: center;
+	h1.intro {
+		text-align: center;
+		text-transform: uppercase;
+		font-family: 'Source Code Pro', sans-serif;
+		font-size: 2em;
+		line-height: 1em;
+	}
+	span.navigation {
+		float: right;
+		margin-right: 15%;
+		margin-top: -2.5em;
+		a {
+			margin-left: 30px;
+			display: inline-block;
+			background-color: #EEEEEE;
+			padding: 5px 10px;
+			border-radius: 2px;
+			font-family: 'Source Code Pro', sans-serif;
+			font-size: 0.8em;
+			color: #b1b1b1;
+		}
+		a:hover {
+			text-decoration: none;
+			background-color: #b1b1b1;
+			color: white;
+		}
+	}
+}
+.container {
+	margin-top: 50px;
+}
