@@ -72,11 +72,12 @@
               Cell Phone
             .user-input
               = application_fields.text_field :cell_phone, placeholder: '(877)-CASH-NOW'
-          .field
-            .label
-              Text Alerts?
-            .user-input
-              = application_fields.check_box :can_text
+              .sub-field
+                .sub-user-input
+                  = application_fields.check_box :can_text
+                .sub-label Text Alerts?
+                
+          
           .field
             .label
               Year of Graduation
