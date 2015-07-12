@@ -1,11 +1,21 @@
+$black: #333333;
+$white: #FFFFFF;
+$text-color: #5B5B5B;
+$highlight-color: #CCCCCC;
+$sm-highlight-color: #EEEEEE;
+$background: white;
+
+body {
+	background-color: $background;
+}
 .field {
 	padding: 30px 15px;
 	margin: 0 10%;
-	border-top: 1px solid #eeeeee;
+	border-top: 1px solid $sm-highlight-color;
 	.label {
 		float: left;
 		width: 25%;
-		color: #333333;
+		color: $black;
 		text-align: left;
 		text-transform: uppercase;
 		font-family: 'Source Code Pro', sans-serif;
@@ -14,36 +24,36 @@
 	}
 	.user-input {
 		::-webkit-input-placeholder {
-   			color: #CCCCCC;
+   			color: $highlight-color;
 		}
 		:-moz-placeholder { /* Firefox 18- */
-   			color: #CCCCCC;
+   			color: $highlight-color;
 		}
 		::-moz-placeholder {  /* Firefox 19+ */
-   			color: #CCCCCC;  
+   			color: $highlight-color;  
 		}
 		:-ms-input-placeholder {  
-   			color: #CCCCCC;  
+   			color: $highlight-color;  
 		}
 		input, textarea, select {
 			padding: 10px 15px;
 			margin-right: 30px;
 			border-radius: 2px;
-			border: 1px solid #cccccc;
+			border: 1px solid $highlight-color;
 			font-family: 'Source Code Pro', sans-serif;
 			font-size: 0.7em;
 			text-transform: uppercase;
 			width: 25%;
-			background-color: #F1F1F1;
-			color: #5B5B5B;
+			background-color: $sm-highlight-color;
+			color: $text-color;
 
 		}
 		input:focus, textarea:focus, select:focus {
 			outline: 0;
-			border: 1px solid #CCCCCC;
-			color: #5B5B5B;
-			background-color: white;
-			box-shadow: 0 0 10px #EEEEEE;
+			border: 1px solid $highlight-color;
+			color: $text-color;
+			background-color: $white;
+			box-shadow: 0 0 10px $sm-highlight-color;
 		}
 		textarea {
 			height: 100px;
@@ -62,7 +72,7 @@
 		width: 25%;
 		.sub-label {
 			float: right;
-			color: #b1b1b1;
+			color: $black;
 			text-align: left;
 			text-transform: uppercase;
 			font-family: 'Source Code Pro', sans-serif;
@@ -80,21 +90,21 @@
 	float: right;
 	#save {
 		display: inline-block;
-		background-color: #CCCCCC;
+		background-color: $highlight-color;
 		padding: 10px 50px;
 		border-radius: 2px;
 		font-family: 'Source Code Pro', sans-serif;
 		font-size: 0.8em;
-		color: white;
+		color: $white;
 		float: right;
-		border: 1px solid white;
+		border: 1px solid $white;
 		text-transform: uppercase;
 	}
 	#save:hover {
 		text-decoration: none;
-		border: 1px solid #CCCCCC;
-		background-color: white;
-		color: #CCCCCC;
+		border: 1px solid $highlight-color;
+		background-color: $white;
+		color: $highlight-color;
 	}
 }
 .decision {
@@ -104,10 +114,11 @@
 .head {
 	position: fixed;
 	width: 100%;
-	background-color: white;
+	background-color: $background;
 	top: 0;
 	padding: 15px 0;
 	text-align: center;
+	z-index: 1;
 	h1.intro {
 		text-align: center;
 		text-transform: uppercase;
@@ -115,7 +126,7 @@
 		font-size: 2em;
 		line-height: 1em;
 		a {
-			color: #333333;
+			color: $black;
 		}
 		a:hover {
 			text-decoration: none;
@@ -128,17 +139,17 @@
 		a {
 			margin-left: 30px;
 			display: inline-block;
-			background-color: #EEEEEE;
+			background-color: $sm-highlight-color;
 			padding: 5px 10px;
 			border-radius: 2px;
 			font-family: 'Source Code Pro', sans-serif;
 			font-size: 0.8em;
-			color: #333333;
+			color: $black;
 		}
 		a:hover {
 			text-decoration: none;
-			background-color: #333333;
-			color: white;
+			background-color: $black;
+			color: $white;
 		}
 	}
 }
