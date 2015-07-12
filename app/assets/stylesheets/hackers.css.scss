@@ -118,6 +118,9 @@ body {
 		background-color: $black;
 		color: $white;
 	}
+	#save:focus {
+		outline: 0;
+	}
 }
 .decision {
 	display: none;
@@ -169,4 +172,13 @@ body {
 }
 .container {
 	margin-top: 50px;
+}
+.alert {
+	width: 80%;
+	margin: 0 auto;
+	border-radius: 0;
+	font-family: 'Source Code Pro', sans-serif;
+	font-size: 0.8em;
+	text-align: center;
+	text-transform: uppercase;
 }
