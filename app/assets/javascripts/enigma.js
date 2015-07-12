@@ -34,8 +34,8 @@
     canvas: 0,
     ctx: 0,
     settings: {
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: window.innerWidth * 1.2,
+      height: window.innerHeight * 1.2,
       size: 22,
       scaledSize: 22 * 4,
       lineWidth: 1.2,
