@@ -35,16 +35,6 @@ body, html {
   50% { box-shadow: 0 0 10px white; }
   100% { box-shadow: 0 0 40px white; }
 }
-@keyframes letterBreath {
-  0% { letter-spacing: 2px; }
-  50% { letter-spacing: 0; }
-  100% { letter-spacing: 2px; }
-}
-@keyframes letterBreathSmall {
-  0% { letter-spacing: 1px; }
-  50% { letter-spacing: 0; }
-  100% { letter-spacing: 1px; }
-}
 
 
 .bg-image {
@@ -117,13 +107,6 @@ body, html {
     font-size: 3.5em;
     text-transform: uppercase;
     margin: 0;
-    letter-spacing: 0;
-
-    &.flickerOver {
-      letter-spacing: 2px;
-      transition: letter-spacing 5s;
-      animation: letterBreath 15s 5s infinite;
-    }
   }
 
   p {
@@ -134,13 +117,6 @@ body, html {
     font-size: 1em;
     text-transform: uppercase;
     margin-top: -5px;
-    letter-spacing: 0;
-
-    &.flickerOver {
-      letter-spacing: 1px;
-      transition: letter-spacing 5s;
-      animation: letterBreathSmall 15s 5s infinite;
-    }
   }
 }
 
