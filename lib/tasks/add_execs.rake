@@ -12,9 +12,9 @@ task :addExecs => :environment do
     end
     if exec.nil?
       pass = SecureRandom.urlsafe_base64
-      exec = Exec.create email: email,
-                         password: pass,
-                         password_confirmation: pass
+      exec = Exec.create! email: email,
+                          password: pass,
+                          password_confirmation: pass
       exec.send_password_reset
       puts "Account for #{email} was created"
     end

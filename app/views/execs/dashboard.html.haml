@@ -10,8 +10,11 @@
   .exec-toolbar
     = link_to 'Announcements', updates_path, class: 'button outline'
   %h2
-    = "Hackers wanting to kick ass at #{HACKATHON}:"
-    %span{style: 'color: #f5a623;'}=  @applied_count
+    = "Motherfuckers wanting updates on how to kick ass at #{HACKATHON}:"
+    %span{style: 'color: #f5a623;'}=  @interested_count
   %h2
-    = "Schools Represented:"
-    %span{style: 'color: #f5a623;'}=  @school_count
+    = "Valid Motherfuckers:"
+    %span{style: 'color: #f5a623;'}=  @interested_and_valid_count
+  %h2
+    = "Motherfuckers who like to learn:"
+    %span{style: 'color: #f5a623;'}=  @interested_student_count
