@@ -65,7 +65,7 @@
             .label.required
               Upload Resume*
             .user-input.filepicker
-              = f.s3_file_field :avatar, :class => 'js-s3_file_field'
+              = f.s3_file_field :avatar, :class => 'js-s3_file_field', :key => "resume/${timestamp}-${filename}"
               .progress
                 .meter{ :style => "width: 0%" }
           .field
