@@ -31,9 +31,20 @@ class UsersController < ApplicationController
                                    :tshirt_size,
                                    :cell_phone,
                                    :linkedin,
+                                   :major,
                                    :dietary_restrictions,
                                    :previous_experience,
                                    :essay,
-                                   :school_other)
+                                   :school_other,
+                                   :major,
+                                   :degree,
+                                   :essay1,
+                                   :essay2,
+                                   :race,
+                                   :ethnicity,
+                                   :grad_date,
+                                   :job_interest,
+                                   :job_date
+                                   )
     end
 end
