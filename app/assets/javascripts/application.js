@@ -17,4 +17,5 @@
 //= require bootstrap-dropdown
 //= require bootstrap-modal
 //= require jquery.ui.all
+//= require s3_file_field
 //= require_tree .

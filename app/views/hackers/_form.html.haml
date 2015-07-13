@@ -63,6 +63,13 @@
                 = link_to "Current resume", @application.resume, target: '_blank'
           .field
             .label.required
+              Upload Resume*
+            .user-input.filepicker
+              = f.s3_file_field :avatar, :class => 'js-s3_file_field'
+              .progress
+                .meter{ :style => "width: 0%" }
+          .field
+            .label.required
               T-shirt Size*
             .user-input
               = application_fields.collection_select :tshirt_size, @shirts, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
