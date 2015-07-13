@@ -222,7 +222,9 @@ body {
 	padding: 10px;
 }
 .application-status {
-	margin: 0 10%;
+	@media (min-width: 1068px) {
+		margin: 0 10%;
+	}
 	text-align: center;
 	color: $black;
 	background-color: $sm-highlight-color;
