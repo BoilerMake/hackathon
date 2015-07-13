@@ -1,11 +1,8 @@
 .container
-  = render 'shared/flash.html.haml'
-  .application
-    .decision
-      %h1
-        Decision:
-      %span.status
-        = current_user.status
+  .application-status
+    %span.fore Application status:
+    %span.decision
+      = current_user.status
     - if current_user.accepted? && current_user.confirmed?
       / fill in
     - elsif current_user.accepted? && !current_user.application_completed?
@@ -13,13 +10,14 @@
     - elsif current_user.accepted? && !current_user.confirmed
       / fill in
     - elsif current_user.standby?
-      / fill in
     - elsif current_user.declined?
       / fill in
     - elsif current_user.rejected?
       / fill in
     - else
-      / error
+      Error
+  = render 'shared/flash.html.haml'
+
   .application
     .form
       = form_for @hacker do |f|
