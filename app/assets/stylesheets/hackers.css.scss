@@ -212,3 +212,12 @@ body {
 	text-align: center;
 	text-transform: uppercase;
 }
+.js-s3_file_field {
+  @media screen and (min-width: 768px) {
+    margin-left: 25%;
+  }
+}
+.file_alert {
+	width: 265px;
+	margin-left: 25% !important;
+}
