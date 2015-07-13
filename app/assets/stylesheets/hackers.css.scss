@@ -1,0 +1,214 @@
+$black: #333333;
+$white: #FFFFFF;
+$text-color: #5B5B5B;
+$highlight-color: #CCCCCC;
+$sm-highlight-color: #EEEEEE;
+$background: white;
+
+body {
+	background-color: $background;
+}
+.field {
+	padding: 30px 15px;
+	@media (min-width: 1068px) {
+		margin: 0 10%;
+	}
+	border-top: 1px solid $sm-highlight-color;
+	.label {
+		float: left;
+		width: 25%;
+		color: $black;
+		text-align: left;
+		text-transform: uppercase;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 200;
+		font-size: 1.1em;
+		line-height: 2em;
+		label {
+			font-family: 'Source Sans Pro', sans-serif;
+			font-weight: 200;
+			&.required {
+				font-weight: 400;
+			}
+		}
+	}
+	.required {
+		font-weight: 400 !important;
+	}
+	.user-input {
+
+		@media (max-width: 768px) {
+			clear: both;
+		}
+		::-webkit-input-placeholder {
+   			color: $highlight-color;
+		}
+		:-moz-placeholder { /* Firefox 18- */
+   			color: $highlight-color;
+		}
+		::-moz-placeholder {  /* Firefox 19+ */
+   			color: $highlight-color;  
+		}
+		:-ms-input-placeholder {  
+   			color: $highlight-color;  
+		}
+		input, textarea, select {
+			padding: 10px 15px;
+			margin-right: 30px;
+			border: 1px solid $highlight-color;
+			font-family: 'Source Code Pro', sans-serif;
+			font-size: 0.7em;
+			text-transform: uppercase;
+			width: 30%;
+			background-color: $sm-highlight-color;
+			color: $text-color;
+			@media (max-width: 768px) {
+				width: 100% !important;
+				margin: 5px auto;
+			}
+			@media (min-width: 768px) and (max-width: 1068px) {
+				width: 65% !important;
+				margin-top: 5px;
+			}
+		}
+		input:focus, textarea:focus, select:focus {
+			outline: 0;
+			border: 1px solid $highlight-color;
+			color: $text-color;
+			background-color: $white;
+			box-shadow: 0 0 10px $sm-highlight-color;
+		}
+		textarea {
+			height: 100px;
+			width: 50%;
+			resize: none;
+		}
+		select {
+			-webkit-appearance: none;
+    		-moz-appearance: none;
+    		appearance: none;
+    		border-radius: 0;
+		}
+	}
+	.sub-field {
+		margin-left: 25%;
+		margin-top: 5px;
+		width: 30%;
+		@media (max-width: 768px) {
+			margin-left: 0;
+		}
+		.sub-label {
+			float: right;
+			@media (max-width: 1068px) {
+				float: left;
+				margin-left: 15px;
+			}
+			color: $black;
+			text-align: left;
+			text-transform: uppercase;
+			font-family: 'Source Code Pro', sans-serif;
+			font-size: 0.7em;
+			line-height: 2em;
+		}
+	 	.sub-user-input {
+	 		float: right;
+	 		margin: -2px -20px 0 10px;
+	 		@media (max-width: 1068px) {
+				float: left;
+				margin: -2px -20px 15px 0;
+			}
+		}
+	}
+}
+.submit {
+	width: 80%;
+	margin: 15px auto 45px auto;
+	text-align: center;
+	#save {
+		display: inline-block;
+		background-color: $white;
+		padding: 10px 60px;
+		//border-radius: 2px;
+		font-family: 'Source Code Pro', sans-serif;
+		font-size: 0.8em;
+		color: $black;
+		border: 1px solid $black;
+		text-transform: uppercase;
+	}
+	#save:hover {
+		text-decoration: none;
+		border: 1px solid $white;
+		background-color: $black;
+		color: $white;
+	}
+	#save:focus {
+		outline: 0;
+	}
+}
+.decision {
+	display: none;
+}
+.head {
+	position: fixed;
+	width: 100%;
+	background-color: $background;
+	top: 0;
+	padding: 15px 0;
+	text-align: center;
+	z-index: 1;
+	h1.intro {
+		text-align: center;
+		text-transform: uppercase;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 200;
+		letter-spacing: 2px;
+		word-spacing: 5px;
+		font-size: 2em;
+		line-height: 1em;
+		a {
+			color: $black;
+			text-decoration: none !important;
+		}
+	}
+	span.navigation {
+		float: right;
+		margin-right: 15%;
+		margin-top: -2.5em;
+		@media (max-width: 768px) {
+			float: none;
+			text-align: center;
+			margin-right: 0;
+		}	
+		a {
+			margin-left: 30px;
+			@media (max-width: 768px) {
+				margin: 5px 10px;
+			}
+			display: inline-block;
+			background-color: $sm-highlight-color;
+			padding: 6px 10px;
+			font-family: 'Source Code Pro', sans-serif;
+			text-transform: uppercase;
+			font-size: 0.8em;
+			color: $black;
+		}
+		a:hover {
+			text-decoration: none;
+			background-color: $black;
+			color: $white;
+		}
+
+	}
+}
+.container {
+	margin-top: 50px;
+}
+.alert {
+	width: 80%;
+	margin: 0 auto;
+	border-radius: 0;
+	font-family: 'Source Code Pro', sans-serif;
+	font-size: 0.8em;
+	text-align: center;
+	text-transform: uppercase;
+}
