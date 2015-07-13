@@ -7,19 +7,11 @@
     =image_tag("logo-thin-white.svg", class: "flickerIn")
     %h1.flickerIn BoilerMake
     %p.flickerIn Oct. 16–18 | Purdue University
-<<<<<<< HEAD
-    %div.btn-row
-      %button.btn.flickerIn Apply
-      %button.btn.flickerIn Sponsor
-    %div.btn-row
-      %button.btn-plain.flickerIn Already Registered?
-=======
     %div.button-row
       %button.button.flickerIn#applyButton Apply
       %button.button.flickerIn Sponsor
     %div.button-row
       %button.button-plain.flickerIn Already Registered?
->>>>>>> 7c46b42cd0e78a6a0ddef1d4e8720fa4cd32ca0b
 
 %div.full-form#signupForm{style: 'display: none;'}
   = form_for @hacker do |f|
@@ -34,8 +26,6 @@
       = button_tag "Cancel", :type => 'button', class: 'button'
 }
 
-<<<<<<< HEAD
-=======
 %div.full-form#loginForm{style: 'display: none;'}
   = form_tag sessions_path do
     = label_tag 'Email'
@@ -49,6 +39,5 @@
     %div.button-row
       = submit_tag 'log in', { class: 'button' }
       = button_tag "Cancel", :type => 'button', class: 'button'
->>>>>>> 7c46b42cd0e78a6a0ddef1d4e8720fa4cd32ca0b
 
 = render "shared/header"
