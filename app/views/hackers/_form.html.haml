@@ -2,20 +2,10 @@
   .application-status
     %span.fore Application status:
     %span.decision
-      = current_user.status
-    - if current_user.accepted? && current_user.confirmed?
-      / fill in
-    - elsif current_user.accepted? && !current_user.application_completed?
-      / fill in
-    - elsif current_user.accepted? && !current_user.confirmed
-      / fill in
-    - elsif current_user.standby?
-    - elsif current_user.declined?
-      / fill in
-    - elsif current_user.rejected?
-      / fill in
+    - if current_user.first_name? && current_user.last_name? && current_user.school_id? && current_user.resume? && current_user.tshirt_size? && current_user.cell_phone? && current_user.expected_graduation? 
+      Complete
     - else
-      Error
+      Incomplete
   = render 'shared/flash.html.haml'
 
   .application
