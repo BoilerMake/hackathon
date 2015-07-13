@@ -65,7 +65,11 @@
             .label.required
               Upload Resume*
             .user-input.filepicker
-              = f.s3_file_field :avatar, :class => 'js-s3_file_field', :key => "resume/${timestamp}-${filename}"
+              #info{:style => "display:none;"}
+                Success
+                = link_to "upload different file", "#", :id => "refresh"
+              = f.s3_file_field :s3, :class => 'js-s3_file_field', :key => "resume/${timestamp}-${filename}"
+              = application_fields.hidden_field :resume, id: "hidden_resume"
           .field
             .label.required
               T-shirt Size*
