@@ -67,8 +67,8 @@
       this.x = i;
       this.y = j;
       this.color = 'rgba(255,255,255,';
-      this.id = Enigma.keyCount++;
-      this.opacity = '1.0';
+        this.id = Enigma.keyCount++;
+        this.opacity = '1.0';
       //draw the individual circle
       this.draw = function() {
         if (this.light === -1){ return; }
@@ -95,60 +95,60 @@
         }
         if (this.light > 0 && this.light !== Math.floor(Math.random() * 10)) {
           Enigma.ctx.fillStyle = this.color + this.opacity + ')';
-          Enigma.ctx.fill();
-          Enigma.ctx.fillStyle = this.color;
+        Enigma.ctx.fill();
+        Enigma.ctx.fillStyle = this.color;
         }
         if (this.light > 0){
           this.light--;
         }
         Enigma.ctx.fillText(this.character, this.x + 1, this.y + (s.size / 2.5) - 1);
-      };
-    },
-    lightKey: function(p, delay, duration) {
-      window.setTimeout(function(){
-        p.light = duration;
-      }, Math.random() * delay);
-    },
-    userActions: function() {
-      window.addEventListener('resize', function() {
-        Enigma.ctx.clearRect(0, 0, Enigma.canvas.width, Enigma.canvas.height);
-        Enigma.canvas = document.querySelector('canvas');
-        Enigma.canvas.height = s.height;
-        Enigma.canvas.width = s.width;
-        Enigma.ctx = Enigma.canvas.getContext("2d");
-        scaleCanvas(Enigma.ctx, Enigma.canvas);
-        for (var i = 0, countX = 0; i <= s.width; countX++, i += s.scaledSize) {
-          Enigma.keys[countX] = [];
-          for (var j = 0, countY = 0; j <= s.height; countY++, j += s.scaledSize) {
-            Enigma.keys[countX][countY] = new Enigma.key(i, j);
-          }
-        }
-        if (gone === 1) {
-          //hide the circles
-          for (var i = 0, countX = 0; i <= s.width; countX++, i += s.scaledSize) {
-            for (var j = 0, countY = 0; j <= s.height; countY++, j += s.scaledSize) {
-                Enigma.keys[countX][countY].opacity = '0';
-            }
-          }
-        }
-      });
-    },
-    startLoop: function() {
-      interval = window.setInterval(function() {
+    };
+},
+lightKey: function(p, delay, duration) {
+  window.setTimeout(function(){
+    p.light = duration;
+  }, Math.random() * delay);
+},
+userActions: function() {
+  window.addEventListener('resize', function() {
+    Enigma.canvas.height = s.height;
+    Enigma.canvas.width = s.width;
+    Enigma.ctx = Enigma.canvas.getContext("2d");
+    scaleCanvas(Enigma.ctx, Enigma.canvas);
+    for (var i = 0, countX = 0; i <= s.width; countX++, i += s.scaledSize) {
+      Enigma.keys[countX] = [];
+      for (var j = 0, countY = 0; j <= s.height; countY++, j += s.scaledSize) {
+        Enigma.keys[countX][countY] = new Enigma.key(i, j);
+      }
+    }
+    if (gone === 1) {
+      window.fader();
+    }
+  });
+},
+startLoop: function() {
+  interval = window.setInterval(function() {
         //continue drawing them
         Enigma.ctx.clearRect(0, 0, Enigma.canvas.width, Enigma.canvas.height);
         for (var i = 0, countX = 0; i <= s.width; countX++, i += s.scaledSize) {
           for (var j = 0, countY = 0; j <= s.height; countY++, j += s.scaledSize) {
-              Enigma.keys[countX][countY].draw();
+            Enigma.keys[countX][countY].draw();
           }
         }
       }, 105);
-    },
-    stopLoop: function() {
-      Enigma.keys.length = 0;
-      window.clearInterval(interval);
-    },
-  };
+},
+stopLoop: function() {
+  for (var i = 0, countX = 0; i <= s.width; countX++, i += s.scaledSize) {
+    for (var j = 0, countY = 0; j <= s.height; countY++, j += s.scaledSize) {
+      if (Enigma.keys[countX][countY].opacity != '0') {
+        break;
+      }
+    }
+  }
+  Enigma.keys.length = 0;
+  window.clearInterval(interval);
+},
+};
   //fader for logo/circles
   window.fader = function() {
     gone = 1;
