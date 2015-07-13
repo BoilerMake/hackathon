@@ -8,10 +8,10 @@
     %h1.flickerIn BoilerMake
     %p.flickerIn Oct. 16–18 | Purdue University
     %div.button-row
-      %button.button.flickerIn#applyButton Apply
+      %button.button.flickerIn#applyButton{onclick: 'showForm("#signupForm")'} Apply
       %button.button.flickerIn Sponsor
     %div.button-row
-      %button.button-plain.flickerIn Already Registered?
+      %button.button-plain.flickerIn{onclick: 'showForm("#loginForm")'} Already Registered?
 
 %div.full-form#signupForm{style: 'display: none;'}
   = form_for @hacker do |f|
@@ -23,7 +23,7 @@
     = f.password_field :password_confirmation
     %div.button-row
       = f.submit "Register", class: 'button'
-      = button_tag "Cancel", :type => 'button', class: 'button'
+      = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
 
 %div.full-form#loginForm{style: 'display: none;'}
   = form_tag sessions_path do
@@ -31,12 +31,8 @@
     = email_field_tag :email, nil
     = label_tag 'Password'
     = password_field_tag :password, nil
-    .remember-me-container
-      %input{type: "checkbox"}
-      %span
-        Remember Me
     %div.button-row
       = submit_tag 'log in', { class: 'button' }
-      = button_tag "Cancel", :type => 'button', class: 'button'
+      = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
 
 = render "shared/header"
