@@ -77,11 +77,12 @@ body, html {
   position: static;
   display: block;
   width: 32em;
+  max-width: 100%;
   margin: 0 auto;
 
   img {
-    width: 14em;
-    margin: 0 9em 1em;
+    width: 40%;
+    margin: 0 30% 1em;
     border-radius: 1000px;
     user-drag: none;
     -moz-user-select: none;
