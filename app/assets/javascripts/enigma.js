@@ -24,6 +24,7 @@
   var CIRCLE = Math.PI * 2;
   var ENTERKEY = 13;
   var interval;
+  var counter = 0;
   var gone = 0;
   var s;
   var Enigma = {
@@ -111,6 +112,8 @@ lightKey: function(p, delay, duration) {
 },
 userActions: function() {
   window.addEventListener('resize', function() {
+    s.width = window.innerWidth * 1.2;
+    s.height = window.innerHeight * 1.2;
     Enigma.canvas.height = s.height;
     Enigma.canvas.width = s.width;
     Enigma.ctx = Enigma.canvas.getContext("2d");
@@ -141,6 +144,7 @@ stopLoop: function() {
   for (var i = 0, countX = 0; i <= s.width; countX++, i += s.scaledSize) {
     for (var j = 0, countY = 0; j <= s.height; countY++, j += s.scaledSize) {
       if (Enigma.keys[countX][countY].opacity != '0') {
+        console.log(counter);
         break;
       }
     }
