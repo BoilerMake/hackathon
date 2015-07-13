@@ -26,6 +26,7 @@
   var interval;
   var counter = 0;
   var gone = 0;
+  var timeoutTracker = 0;
   var s;
   var Enigma = {
     keys: [],
@@ -112,6 +113,10 @@ lightKey: function(p, delay, duration) {
 },
 userActions: function() {
   window.addEventListener('resize', function() {
+    Enigma.resizeEvent();
+  });
+},
+resizeEvent: function() {
     s.width = window.innerWidth * 1.2;
     s.height = window.innerHeight * 1.2;
     Enigma.canvas.height = s.height;
@@ -127,7 +132,6 @@ userActions: function() {
     if (gone === 1) {
       window.fader();
     }
-  });
 },
 startLoop: function() {
   interval = window.setInterval(function() {
@@ -141,44 +145,38 @@ startLoop: function() {
       }, 105);
 },
 stopLoop: function() {
-  for (var i = 0, countX = 0; i <= s.width; countX++, i += s.scaledSize) {
-    for (var j = 0, countY = 0; j <= s.height; countY++, j += s.scaledSize) {
-      if (Enigma.keys[countX][countY].opacity != '0') {
-        console.log(counter);
-        break;
-      }
-    }
-  }
   Enigma.keys.length = 0;
   window.clearInterval(interval);
+  Enigma.resizeEvent();
 },
 };
   //fader for logo/circles
   window.fader = function() {
+    timeoutTracker = 0;
     gone = 1;
-    window.setTimeout(function() {
-      var flickerInterval = window.setInterval(function() {
-        $('.flickerIn').each(function(index, el) {
-          var n = Math.random();
-          if (n > 0.67)
-            $(el).css('opacity', '1');
-          else if (n > 0.33)
-            $(el).css('opacity', '0.5');
-          else
-            $(el).css('opacity', '0');
-        });
-      }, 105);
       window.setTimeout(function() {
-        Enigma.stopLoop();
-        $('.flickerIn').css('opacity', '1').removeClass('flickerIn').addClass('flickerOver');
-      }, 1050);
-    }, 2500);
-    //Clear circles
-    for (var i = 0, countX = 0; i <= s.width; countX++, i += s.scaledSize) {
-      for (var j = 0, countY = 0; j <= s.height; countY++, j += s.scaledSize) {
-        Enigma.lightKey(Enigma.keys[countX][countY], 3000, -1);
+        var flickerInterval = window.setInterval(function() {
+            $('.flickerIn').each(function(index, el) {
+              var n = Math.random();
+              if (n > 0.67)
+                $(el).css('opacity', '1');
+              else if (n > 0.33)
+                $(el).css('opacity', '0.5');
+              else
+                $(el).css('opacity', '0');
+            });
+        }, 105);
+        window.setTimeout(function() {
+          Enigma.stopLoop(); 
+          $('.flickerIn').css('opacity', '1').removeClass('flickerIn').addClass('flickerOver');
+        }, 1050);
+      }, 2500);
+      //Clear circles
+      for (var i = 0, countX = 0; i <= s.width; countX++, i += s.scaledSize) {
+        for (var j = 0, countY = 0; j <= s.height; countY++, j += s.scaledSize) {
+          Enigma.lightKey(Enigma.keys[countX][countY], 3000, -1);
+        }
       }
-    }
   };
   window.onload = function() {
     Enigma.init();
