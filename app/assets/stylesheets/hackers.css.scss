@@ -63,11 +63,11 @@ body {
 			background-color: $sm-highlight-color;
 			color: $text-color;
 			@media (max-width: 768px) {
-				width: 100%;
+				width: 100% !important;
 				margin: 5px auto;
 			}
 			@media (min-width: 768px) and (max-width: 1068px) {
-				width: 65%;
+				width: 65% !important;
 				margin-top: 5px;
 			}
 		}
