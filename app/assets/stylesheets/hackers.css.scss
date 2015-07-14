@@ -22,9 +22,6 @@ body {
 		float: left;
 		width: 25%;
 		padding-right: 15px;
-		@media (min-width: 1068px) {
-			width: 35%;
-		}
 		color: $black;
 		text-align: left;
 		text-transform: uppercase;
