@@ -1,90 +1,101 @@
-.nav
-  = link_to dashboard_path do
-    .nav-active
-      Application
-  - if current_user.team.present?
-    = link_to my_team_path do
-      My Team
-  - else
-    = link_to new_team_path do
-      Create Team
-.container
-  = render 'shared/flash.html.haml'
-  .application
-    %h1.alert-h1
-      Decision:
-      %span.status
-        = current_user.status
-    - if current_user.accepted? && current_user.confirmed?
-      / fill in
-    - elsif current_user.accepted? && !current_user.application_completed?
-      / fill in
-    - elsif current_user.accepted? && !current_user.confirmed
-      / fill in
-    - elsif current_user.standby?
-      / fill in
-    - elsif current_user.declined?
-      / fill in
-    - elsif current_user.rejected?
-      / fill in
+.container#application-page
+  .application-status
+    %span.fore Application status:
+    %span.decision
+    - if current_user.first_name? && current_user.last_name? && current_user.school_id? && current_user.resume? && current_user.tshirt_size? && current_user.cell_phone? && current_user.essay1? && current_user.essay2?
+      Complete
     - else
-      / error
+      Incomplete
+  = render 'shared/flash.html.haml'
+
   .application
     .form
       = form_for @hacker do |f|
-        .label
-          = f.label 'First Name'
-        = f.text_field :first_name
-        .label
-          = f.label 'Last Name'
-        = f.text_field :last_name
-        .label
-          = f.label :school_id
-        = f.text_field :school_id, { id: 'schools',
-                                    value: @school,
-                                    readonly: true,
-                                    style: 'opacity:0.5;'}
+        .field
+          .label.required
+            = f.label 'Your name*', {class: 'required'}
+          .user-input
+            = f.text_field :first_name, placeholder: "First Name"
+            = f.text_field :last_name, placeholder: "Last Name"
+        .field
+          .label
+            = f.label 'School*', {class: 'required'}
+          .user-input
+            = f.text_field :school_id, { id: 'schools', value: @school}
         = f.fields_for :application, @hacker.application do |application_fields|
-          .label
-            Gender
-          = application_fields.collection_select :gender, @genders, :to_s,
-            :to_s, {include_blank: "Please select"},
-            class: 'gender'
-          .label
-            GitHub
-          = application_fields.text_field :github
-          .label
-            LinkedIn
-          = application_fields.text_field :linkedin, placeholder: 'https://www.linkedin.com/pub/my_name/99/999/999'
-          .label
-            Link to Resume
-          .filepicker
-            = application_fields.filepicker_field :resume, button_class: 'button outline confirm', onchange: 'filePicked(event)', button_text: @resume_button_text, mimetypes: 'application/pdf'
-            %p.note{style: 'display:none;'}
-              Resume Uploaded
-              %br
-              Don't forget to hit "Save" below!
-            - if @application.resume.present?
-              = link_to "Current resume", @application.resume, target: '_blank'
-          .label
-            T-shirt Size
-          = application_fields.collection_select :tshirt_size, @shirts,
-                                                 :to_s, :to_s,
-                                                 {include_blank: "Please select"},
-                                                 class: 'gender'
-          .label
-            Cell Phone
-          = application_fields.text_field :cell_phone
-          .label
-            Get Text Alerts?
-          = application_fields.check_box :can_text
-          .label
-            Year of Graduation
-          = application_fields.number_field :expected_graduation
-          .label
-            Dietary Restrictions
-            .sub-label
-              Please enter any dietary restrictions, leave blank if none.
-          = application_fields.text_area :dietary_restrictions, rows: '4'
+          .field
+            .label
+              Gender Identification
+            .user-input.user-input-select
+              = application_fields.collection_select :gender, @genders, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+          .field
+            .label
+              GitHub
+            .user-input
+              = application_fields.text_field :github, placeholder: 'https://github.com/username'
+          .field
+            .label
+              Major
+            .user-input
+              = application_fields.text_field :major, placeholder: 'Computer Science'
+          .field
+            .label
+              Degree
+            .user-input
+              = application_fields.text_field :degree, placeholder: 'Bachelor of Science'
+          .field
+            .label
+              Grad month/date
+            .user-input
+              = application_fields.text_field :grad_date, placeholder: '05/2017'
+          .field.job-interest
+            .label
+              Job interest
+            .user-input.user-input-select
+              = application_fields.collection_select :job_interest, @job_interests, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+          .field.job-dates
+            .label
+              Availability to start working
+            .user-input.user-input-select
+              = application_fields.collection_select :job_date, @job_dates, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+          .field
+            .label.required
+              Upload Resume*
+            .user-input.filepicker
+              #info{:style => "display:none;"}
+                Success.
+                = link_to "upload different file", "#", :id => "refresh"
+              = f.s3_file_field :s3, :class => 'js-s3_file_field', :key => "resume/${timestamp}-${filename}"
+              = application_fields.hidden_field :resume, id: "hidden_resume"
+          .field
+            .label.required
+              T-shirt Size*
+            .user-input.user-input-select
+              = application_fields.collection_select :tshirt_size, @shirts, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+          .field
+            .label.required
+              Cell Phone*
+            .user-input
+              = application_fields.text_field :cell_phone, placeholder: '(877)-CASH-NOW'
+              .sub-field
+                .sub-user-input
+                  = application_fields.check_box :can_text
+                .sub-label Text Alerts?
+          .field
+            .label
+              Dietary Restrictions
+            .user-input
+              = application_fields.text_area :dietary_restrictions, rows: '4', placeholder: 'Please enter any dietary restrictions, leave blank if none.'
+          .field
+            .label.required
+              What do you love about computers?*
+            .user-input
+              = application_fields.text_area :essay1, rows: '4', placeholder: 'They are always there for me...'
+          .field
+            .label.required
+              What's the coolest thing you have done in the last 12 months*
+            .user-input
+              = application_fields.text_area :essay2, rows: '4', placeholder: 'I made a castle out of legos...'
+                
         .submit
           = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'

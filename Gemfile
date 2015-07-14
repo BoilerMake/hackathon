@@ -14,6 +14,9 @@ gem 'haml-rails'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
 
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 gem 'cancancan', '~> 1.8'
 
 gem 'unicorn'
@@ -30,7 +33,7 @@ gem 'mailchimp-api', require: 'mailchimp'
 gem 'validates_email_format_of'
 
 gem 'font-awesome-sass'
-
+gem 's3_file_field', :git => 'git://github.com/gatherdigital/s3_file_field'
 # these should move in the future
 gem 'better_errors'
 gem 'awesome_print'

@@ -11,29 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501040050) do
+ActiveRecord::Schema.define(version: 20150714014504) do
 
   create_table "applications", force: true do |t|
     t.string   "gender"
     t.string   "github"
     t.string   "tshirt_size"
     t.string   "cell_phone"
-    t.string   "linkedin"
     t.string   "dietary_restrictions"
-    t.text     "previous_experience"
-    t.text     "essay"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "hacker_id"
-    t.string   "address_line_one"
-    t.string   "address_line_two"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip_code"
     t.string   "resume"
-    t.integer  "expected_graduation"
     t.boolean  "can_text",             default: true
-    t.string   "badge_id"
+    t.string   "major"
+    t.string   "degree"
+    t.text     "essay1"
+    t.text     "essay2"
+    t.string   "race"
+    t.string   "ethnicity"
+    t.string   "grad_date"
+    t.string   "job_interest"
+    t.string   "job_date"
   end
 
   create_table "delayed_jobs", force: true do |t|

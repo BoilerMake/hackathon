@@ -1,15 +1,44 @@
-%canvas#background This text is displayed if your browser does not support HTML5 Canvas.
-
-%div#logo
-  =image_tag("white-bm_logo.png", size: "250x250")
-  %h1 BoilerMake
-  %h2 Purdue University
-  = form_for @interest_signup, :html => { :novalidate => 'novalidate: novalidate' }, remote: true, "data-type" => :json do |f|
-    = f.email_field :email, placeholder: "Enter email for updates", novalidate: "novalidate"
-%h3 
-  Funded by the 
-  %a{href: "http://www.purduesg.com/sfab/"} Student Activity Fee Fund
+=render "shared/flash.html.haml"
+%div.bg-image#bg
+  %canvas#background This text is displayed if your browser does not support HTML5 Canvas.
 
 
+%div.content
+  .cover
+    =image_tag("logo-thin-white.svg", class: "flickerIn")
+    %h1.flickerIn BoilerMake
+    %p.flickerIn Oct. 16–18 | Purdue University
+    %div.button-row
+      %button.button.flickerIn#applyButton{onclick: 'showForm("#signupForm")'} Apply
+      %a{href: 'mailto:sponsorship@boilermake.org'}
+        %button.button.flickerIn Sponsor
+    %div.button-row
+      %button.button-plain.flickerIn{onclick: 'showForm("#loginForm")'} Already Registered?
 
-= render 'shared/header'
+%div.full-form#signupForm{style: 'display: none;'}
+
+  = form_for @hacker do |f|
+    = f.label :email
+    = f.email_field :email
+    = f.label :password
+    = f.password_field :password
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+    .button-row
+      = f.submit "Register", class: 'button'
+      = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
+  - if @errors
+    = javascript_tag do
+      window.shouldSkipIntro = true;
+
+%div.full-form#loginForm{style: 'display: none;'}
+  = form_tag sessions_path do
+    = label_tag 'Email'
+    = email_field_tag :email, nil
+    = label_tag 'Password'
+    = password_field_tag :password, nil
+    %div.button-row
+      = submit_tag 'log in', { class: 'button' }
+      = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
+
+= render "shared/header"

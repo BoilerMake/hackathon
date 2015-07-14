@@ -1,6 +1,8 @@
-.header
-  .container
-    = link_to '', root_path, class: 'logo'
-    = link_to 'Log Out', logout_path, id: 'logout', class: 'button outline', style: 'cursor:pointer;'
 .head
-  %h1 WELCOME
+  .container
+    %span.logo
+      =image_tag("bm_logo_basic.png")
+    %span.intro 
+      = link_to 'Welcome', '#' 
+    %span.navigation
+      = link_to 'Log Out', logout_path, id: 'logout', class: 'button outline', style: 'cursor:pointer;'

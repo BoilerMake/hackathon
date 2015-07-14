@@ -1,7 +1,8 @@
 = content_for :partial_css do
   = stylesheet_link_tag 'header'
 %header
+  %script{:src => "//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"}
+  %script{:src => "//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"}
   %script{:src => "//use.typekit.net/pcy4ypw.js"}
   :javascript
     try{Typekit.load();}catch(e){}
-  %link{:rel => :stylesheet, :type => :"text/css", :href => "https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400|Roboto:300,500"}
