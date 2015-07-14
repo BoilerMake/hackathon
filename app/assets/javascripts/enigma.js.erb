@@ -59,7 +59,6 @@
       var coreLoop = Enigma.startLoop();
       window.setTimeout(function() {
         //Wait for specified time to begin fadeout
-        console.log("INIT TIMEOUT FIRING");
         window.fader(coreLoop);
       }, 1500);
       this.userActions(coreLoop);
@@ -131,7 +130,6 @@
       }
     }
     if (gone === 1) {
-      console.log("RESIZE EVENT FIRING");
       window.fader(coreLoop);
     }
   },
@@ -144,7 +142,6 @@
           Enigma.keys[countX][countY].draw();
         }
       }
-      console.log("DRAWING MOAR KEY THINGS");
     }, 105);
   },
   stopLoop: function(flickerInterval, coreInterval) {
@@ -153,7 +150,6 @@
     window.clearInterval(flickerInterval);
     Enigma.canvas = null;
     Enigma = null;
-    console.log("STOPPING LOOP");
   },
 };
   //fader for logo/circles
@@ -183,14 +179,11 @@
               $(el).css('opacity', '0');
             }
           });
-          console.log("FlickerIn Interval");
       }, 105);
       window.setTimeout(function() {
         Enigma.stopLoop(flickerInterval, coreInterval);
         flickerOver();
-        console.log("Stoploop timeout");
       }, flickerDuration);
-      console.log("2500 timeout");
     }, flickerStart);
 
     //Clear circles
@@ -199,7 +192,6 @@
         Enigma.lightKey(Enigma.keys[countX][countY], maxCircleTime, -1);
       }
     }
-    console.log("window.fader done");
   };
   window.onload = function() {
     if (!window.shouldSkipIntro){
