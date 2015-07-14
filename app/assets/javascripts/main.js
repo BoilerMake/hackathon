@@ -9,7 +9,7 @@ $(function() {
         var string = "";
         jQuery.each(data, function(i, val) {
           if(i == "success") {
-            alert("SUCCESS YO");
+            window.location.href = "/dashboard";
           }
           string += (i + " " + val);
         });
