@@ -82,8 +82,8 @@ body {
 			}
 			@media (min-width: 768px) and (max-width: 1068px) {
 				width: 65% !important;
-				margin-top: 5px;
 				&.second-input {
+					margin-top: 5px;
 					margin-left: 27%;
 				}
 			}
@@ -108,16 +108,19 @@ body {
 		}
 		&.user-input-select {
 			select {
-				padding-left: 25px;
+				padding-left: 30px;
+				background: url('down_arrow.png') $white;
+				background-size: auto 100%;
+				background-repeat: no-repeat;
 			}
-			&::before {
-				content: "\25bc";
-				font-size: 0.8em;
-				position: absolute;
-				margin-left: 10px;
-				margin-top: 10px;
-				color: $highlight-color;
-			}
+			// &::before {
+			// 	content: "\25bc";
+			// 	font-size: 0.8em;
+			// 	position: absolute;
+			// 	margin-left: 10px;
+			// 	margin-top: 10px;
+			// 	color: $highlight-color;
+			// }
 		}
 	}
 	.sub-field {
