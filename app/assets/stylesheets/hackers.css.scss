@@ -29,6 +29,9 @@ body {
 		font-weight: 200;
 		font-size: 1.1em;
 		line-height: 1.3em;
+		@media (max-width: 768px) {
+			width: 100%;
+		}
 		label {
 			font-family: 'Source Sans Pro', sans-serif;
 			font-weight: 200;

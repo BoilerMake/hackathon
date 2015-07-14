@@ -28,16 +28,16 @@
               Gender
             .user-input
               = application_fields.collection_select :gender, @genders, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
-          .field
-            .label
-              Race
-            .user-input
-              = application_fields.collection_select :race, @races, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
-          .field
-            .label
-              Ethnicity
-            .user-input
-              = application_fields.collection_select :ethnicity, @ethnicities, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+          / .field
+          /   .label
+          /     Race
+          /   .user-input
+          /     = application_fields.collection_select :race, @races, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+          / .field
+          /   .label
+          /     Ethnicity
+          /   .user-input
+          /     = application_fields.collection_select :ethnicity, @ethnicities, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
           .field
             .label
               GitHub
@@ -98,14 +98,14 @@
               = application_fields.text_area :dietary_restrictions, rows: '4', placeholder: 'Please enter any dietary restrictions, leave blank if none.'
           .field
             .label.required
-              What is your favorite thing about hackathons?*
+              What do you love about computers?*
             .user-input
-              = application_fields.text_area :essay1, rows: '4', placeholder: '200 words max, please.'
+              = application_fields.text_area :essay1, rows: '4', placeholder: 'It\'s always there for me...'
           .field
             .label.required
-              Tell us the coolest thing you have done in the last 12 months*
+              What's the coolest thing you have done in the last 12 months*
             .user-input
-              = application_fields.text_area :essay2, rows: '4', placeholder: '200 words max, please.'
+              = application_fields.text_area :essay2, rows: '4', placeholder: 'I made a castle out of legos...'
                 
         .submit
           = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'
