@@ -21,6 +21,10 @@ body {
 	.label {
 		float: left;
 		width: 25%;
+		padding-right: 15px;
+		@media (min-width: 1068px) {
+			width: 35%;
+		}
 		color: $black;
 		text-align: left;
 		text-transform: uppercase;
@@ -35,6 +39,7 @@ body {
 				font-weight: 400;
 			}
 		}
+		white-space: normal !important;
 	}
 	.required {
 		font-weight: 400 !important;
@@ -65,7 +70,6 @@ body {
 			text-transform: uppercase;
 			width: 30%;
 			background-color: $sm-highlight-color;
-			color: $text-color;
 			@media (max-width: 768px) {
 				width: 100% !important;
 				margin: 5px auto;
@@ -238,4 +242,7 @@ body {
 	.decision {
 		font-weight: 600;
 	}
+}
+.clear {
+	clear: both;
 }

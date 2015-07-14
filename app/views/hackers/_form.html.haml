@@ -2,7 +2,7 @@
   .application-status
     %span.fore Application status:
     %span.decision
-    - if current_user.first_name? && current_user.last_name? && current_user.school_id? && current_user.resume? && current_user.tshirt_size? && current_user.cell_phone? && current_user.expected_graduation? 
+    - if current_user.first_name? && current_user.last_name? && current_user.school_id? && current_user.resume? && current_user.tshirt_size? && current_user.cell_phone? && current_user.essay1? && current_user.essay2?
       Complete
     - else
       Incomplete
@@ -42,7 +42,7 @@
             .label
               GitHub
             .user-input
-              = application_fields.text_field :github, placeholder: 'https://github.com/shanedewael'
+              = application_fields.text_field :github, placeholder: 'https://github.com/username'
           .field
             .label
               Major
@@ -98,12 +98,12 @@
               = application_fields.text_area :dietary_restrictions, rows: '4', placeholder: 'Please enter any dietary restrictions, leave blank if none.'
           .field
             .label.required
-              What is your favorite thing about hackathons?
+              What is your favorite thing about hackathons?*
             .user-input
               = application_fields.text_area :essay1, rows: '4', placeholder: '200 words max, please.'
           .field
             .label.required
-              Tell us the coolest things you have done in the last 12 months
+              Tell us the coolest thing you have done in the last 12 months*
             .user-input
               = application_fields.text_area :essay1, rows: '4', placeholder: '200 words max, please.'
                 
