@@ -13,6 +13,6 @@ class UserMailer < ActionMailer::Base
 
   def welcome_email user
     @user = user
-    mail to: @user.email, subject: "#{HACKATHON} - Important information"
+    mail to: @user.email, subject: "#{HACKATHON} - Hype intensifies"
   end
 end
