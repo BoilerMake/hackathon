@@ -64,9 +64,10 @@
                 Upload Resume*
               .user-input.filepicker
                 #info{:style => @resume_div_style}
-                  %span
+                  %span.file-text
                     = @resume_button_text
-                  = link_to "Upload new file", "#", :id => "refresh"
+                  %span.new-file-prompt
+                    = link_to "Upload new file", "#", :id => "refresh"
                 = f.s3_file_field :s3, :class => 'js-s3_file_field',
                                        :key => "resume/${timestamp}-${filename}",
                                        :style => @file_field_style
