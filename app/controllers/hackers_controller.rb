@@ -1,5 +1,5 @@
 class HackersController < ApplicationController
-  before_filter :set_genders, :downcase_email, :set_shirts
+  before_filter :set_genders, :downcase_email, :set_shirts, :set_races, :set_ethnicities, :set_job_interests, :set_job_dates
   before_action :set_hacker, only: [:update, :destroy]
   before_filter :authenticate, only: [:update, :destroy, :dashboard]
   skip_before_action :require_login
@@ -139,6 +139,22 @@ class HackersController < ApplicationController
     @shirts = ['Small', 'Medium', 'Large', 'XL', 'XXL']
   end
 
+  def set_races
+    @races = ['White','Black or African American','Asian','American Indian or Alaskan Native','Native Hawaiian or Other Pacific Islander']
+  end
+
+  def set_ethnicities
+    @ethnicities = ['Hispanic or Latino', 'Not Hispanic or Latino']
+  end
+
+  def set_job_interests
+    @job_interests = ['Internship','Full time employment','Part time employment while in school','not interested']
+  end
+
+  def set_job_dates
+    @job_dates = ['Spring 2016','Summer 2016','Fall 2016']
+  end
+
   def downcase_email
     if params[:hacker]
       params[:hacker][:email].downcase! if params[:hacker][:email]
@@ -147,6 +163,7 @@ class HackersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def hacker_params
-    params.require(:hacker).permit(:first_name, :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, application_attributes: [ :id, :gender, :address_line_one, :address_line_two, :city, :state, :zip_code, :expected_graduation, :github, :tshirt_size, :cell_phone, :resume, :linkedin, :badge_id, :dietary_restrictions, :previous_experience, :essay, :school_other, :can_text ])
+    params.require(:hacker).permit(:first_name,
+     :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, application_attributes: [ :id, :gender, :address_line_one, :address_line_two, :city, :state, :zip_code, :expected_graduation, :github, :tshirt_size, :cell_phone, :resume, :linkedin, :badge_id, :dietary_restrictions, :previous_experience, :essay, :school_other, :can_text,:major,:degree,:essay1,:essay2,:race,:ethnicity,:grad_date,:job_interest,:job_date])
   end
 end

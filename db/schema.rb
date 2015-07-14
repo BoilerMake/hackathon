@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501040050) do
+ActiveRecord::Schema.define(version: 20150713223505) do
 
   create_table "applications", force: true do |t|
     t.string   "gender"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20150501040050) do
     t.integer  "expected_graduation"
     t.boolean  "can_text",             default: true
     t.string   "badge_id"
+    t.string   "major"
+    t.string   "degree"
+    t.text     "essay1"
+    t.text     "essay2"
+    t.string   "race"
+    t.string   "ethnicity"
+    t.string   "grad_date"
+    t.string   "job_interest"
+    t.string   "job_date"
   end
 
   create_table "delayed_jobs", force: true do |t|

@@ -40,25 +40,44 @@
               = application_fields.collection_select :gender, @genders, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
           .field
             .label
+              Race
+            .user-input
+              = application_fields.collection_select :race, @races, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+          .field
+            .label
+              Ethnicity
+            .user-input
+              = application_fields.collection_select :ethnicity, @ethnicities, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+          .field
+            .label
               GitHub
             .user-input
               = application_fields.text_field :github, placeholder: 'https://github.com/shanedewael'
           .field
             .label
-              LinkedIn
+              Major
             .user-input
-              = application_fields.text_field :linkedin, placeholder: 'https://www.linkedin.com/pub/my_name/99/999/999'
+              = application_fields.text_field :major, placeholder: 'Computer Science'
           .field
-            .label.required
-              Link to Resume*
-            .user-input.filepicker
-              = application_fields.filepicker_field :resume, button_class: 'button outline confirm', onchange: 'filePicked(event)', button_text: @resume_button_text, mimetypes: 'application/pdf', placeholder: 'https://www.dropbox.com/link'
-              %p.note{style: 'display:none;'}
-                Resume Uploaded
-                %br
-                Don't forget to hit "Save" below!
-              - if @application.resume.present?
-                = link_to "Current resume", @application.resume, target: '_blank'
+            .label
+              Degree
+            .user-input
+              = application_fields.text_field :degree, placeholder: 'Bachelor of Science'
+          .field
+            .label
+              Grad month/date
+            .user-input
+              = application_fields.text_field :grad_date, placeholder: '05/2017'
+          .field.job-interest
+            .label
+              Job interest
+            .user-input
+              = application_fields.collection_select :job_interest, @job_interests, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+          .field.job-dates
+            .label
+              Availability to start working
+            .user-input
+              = application_fields.collection_select :job_date, @job_dates, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
           .field
             .label.required
               Upload Resume*
@@ -82,18 +101,21 @@
                 .sub-user-input
                   = application_fields.check_box :can_text
                 .sub-label Text Alerts?
-                
-          
-          .field
-            .label.required
-              Year of Graduation*
-            .user-input
-              = application_fields.number_field :expected_graduation
           .field
             .label
               Dietary Restrictions
             .user-input
               = application_fields.text_area :dietary_restrictions, rows: '4', placeholder: 'Please enter any dietary restrictions, leave blank if none.'
+          .field
+            .label.required
+              What is your favorite thing about hackathons?
+            .user-input
+              = application_fields.text_area :essay1, rows: '4', placeholder: '200 words max, please.'
+          .field
+            .label.required
+              Tell us the coolest things you have done in the last 12 months
+            .user-input
+              = application_fields.text_area :essay1, rows: '4', placeholder: '200 words max, please.'
                 
         .submit
           = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'
