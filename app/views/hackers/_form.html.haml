@@ -70,14 +70,14 @@
               Grad month/date
             .user-input
               = application_fields.text_field :grad_date, placeholder: '05/2017'
-          .field
+          .field.job-interest
             .label
-              job 1
+              Job interest
             .user-input
               = application_fields.collection_select :job_interest, @job_interests, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
-          .field
+          .field.job-dates
             .label
-              job 2
+              Availability to start working
             .user-input
               = application_fields.collection_select :job_date, @job_dates, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
           .field
