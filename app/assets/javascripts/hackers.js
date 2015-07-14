@@ -10,16 +10,10 @@ $(document).ready(function(){
     }
 
     $('#hacker_application_attributes_job_interest').on('change', function() {
-        console.log(this.value);
-          if ( this.value == 'not interested')
-          {
-            $(".job-dates").hide();
-          }
-          else
-          {
-            $(".job-dates").show();
-          }
+      if ( this.value == 'not interested') {
+        $(".job-dates").hide();
+      } else {
+        $(".job-dates").show();
+      }
     });
-
-
 });
