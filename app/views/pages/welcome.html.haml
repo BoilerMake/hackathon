@@ -8,12 +8,17 @@
     =image_tag("logo-thin-white.svg", class: "flickerIn")
     %h1.flickerIn BoilerMake
     %p.flickerIn Oct. 16–18 | Purdue University
-    %div.button-row
-      %button.button.flickerIn#applyButton{onclick: 'showForm("#signupForm")'} Apply
-      %a{href: 'mailto:sponsorship@boilermake.org'}
-        %button.button.flickerIn Sponsor
-    %div.button-row
-      %button.button-plain.flickerIn{onclick: 'showForm("#loginForm")'} Already Registered?
+    - if current_user.present?
+      %div.button-row
+        %a{href: dashboard_url}
+          %button.button.flickerIn Dashboard
+    - else
+      %div.button-row
+        %button.button.flickerIn#applyButton{onclick: 'showForm("#signupForm")'} Apply
+        %a{href: 'mailto:sponsorship@boilermake.org'}
+          %button.button.flickerIn Sponsor
+      %div.button-row
+        %button.button-plain.flickerIn{onclick: 'showForm("#loginForm")'} Already Registered?
 
 %div.full-form#signupForm{style: 'display: none;'}
 
