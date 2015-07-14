@@ -50,7 +50,7 @@ class HackersController < ApplicationController
         user = User.find(@hacker.id)
         cookies[:auth_token] = user.auth_token
 
-        #UserMailer.welcome_email(@hacker).deliver
+        UserMailer.welcome_email(@hacker).deliver
 
         if session[:return_to].present?
           format.html { redirect_to session[:return_to], notice: 'Account created successfully.' }
