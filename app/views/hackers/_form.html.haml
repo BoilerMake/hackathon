@@ -21,7 +21,7 @@
           .label
             = f.label 'School*', {class: 'required'}
           .user-input
-            = f.text_field :school_id, { id: 'schools', value: @school, placeholder: "Purdue University"}
+            = f.text_field :school_id, { id: 'schools', value: @school}
         = f.fields_for :application, @hacker.application do |application_fields|
           .field
             .label
@@ -62,10 +62,13 @@
             .label.required
               Upload Resume*
             .user-input.filepicker
-              #info{:style => "display:none;"}
-                Success.
-                = link_to "upload different file", "#", :id => "refresh"
-              = f.s3_file_field :s3, :class => 'js-s3_file_field', :key => "resume/${timestamp}-${filename}"
+              #info{:style => @resume_div_style}
+                %span
+                  = @resume_button_text
+                = link_to "Upload new file", "#", :id => "refresh"
+              = f.s3_file_field :s3, :class => 'js-s3_file_field',
+                                     :key => "resume/${timestamp}-${filename}",
+                                     :style => @file_field_style
               = application_fields.hidden_field :resume, id: "hidden_resume"
           .field
             .label.required
@@ -76,7 +79,7 @@
             .label.required
               Cell Phone*
             .user-input
-              = application_fields.text_field :cell_phone, placeholder: '(123)-456-7890'
+              = application_fields.text_field :cell_phone, placeholder: '(877)-CASH-NOW'
               .sub-field
                 .sub-user-input
                   = application_fields.check_box :can_text
@@ -95,7 +98,6 @@
             .label.required
               What's the coolest thing you have done in the last 12 months*
             .user-input
-              = application_fields.text_area :essay2, rows: '4', placeholder: 'I made a castle out of legos...'
-                
+
         .submit
           = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'
