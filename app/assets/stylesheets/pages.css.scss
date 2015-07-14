@@ -307,3 +307,9 @@ button {
 input {
   border-radius: 0 !important;
 }
+.button:focus {
+    outline: 0;
+}
+input:focus {
+    outline: 0;
+}
