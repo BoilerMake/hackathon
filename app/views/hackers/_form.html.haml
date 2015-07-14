@@ -25,7 +25,7 @@
         = f.fields_for :application, @hacker.application do |application_fields|
           .field
             .label
-              Gender
+              Gender Identification
             .user-input
               = application_fields.collection_select :gender, @genders, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
           / .field
