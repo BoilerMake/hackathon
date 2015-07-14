@@ -28,6 +28,7 @@
   var gone = 0;
   var timeoutTracker = 0;
   var s;
+  var loadFullAnimation = true;
   var Enigma = {
     keys: [],
     keyCount: 0,
@@ -57,11 +58,13 @@
         }
       }
       //Start canvas drawing
-      Enigma.startLoop();
-      window.setTimeout(function() {
+      if (loadFullAnimation) {
+        Enigma.startLoop();
+        window.setTimeout(function() {
         //Wait for specified time to begin fadeout
-        window.fader();
-      }, 1500);
+          window.fader();
+        }, 1500);
+      }
     },
     key: function(i, j) {
       this.character = Enigma.validChars.substr( Math.floor(Math.random() * 36), 1);
