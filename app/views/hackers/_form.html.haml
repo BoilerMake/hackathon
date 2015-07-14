@@ -21,7 +21,7 @@
           .label
             = f.label 'School*', {class: 'required'}
           .user-input
-            = f.text_field :school_id, { id: 'schools', value: @school, readonly: true, style: 'opacity:0.5;'}
+            = f.text_field :school_id, { id: 'schools', value: @school}
         = f.fields_for :application, @hacker.application do |application_fields|
           .field
             .label
