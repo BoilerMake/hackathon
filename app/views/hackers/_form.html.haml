@@ -21,7 +21,7 @@
           .label
             = f.label 'School*', {class: 'required'}
           .user-input
-            = f.text_field :school_id, { id: 'schools', value: @school}
+            = f.text_field :school_id, { id: 'schools', value: @school, placeholder: "Purdue University"}
         = f.fields_for :application, @hacker.application do |application_fields|
           .field
             .label
@@ -79,11 +79,7 @@
             .label.required
               Cell Phone*
             .user-input
-              = application_fields.text_field :cell_phone, placeholder: '(877)-CASH-NOW'
-              .sub-field
-                .sub-user-input
-                  = application_fields.check_box :can_text
-                .sub-label Text Alerts?
+              = application_fields.text_field :cell_phone, placeholder: '(123)-456-7890'
           .field
             .label
               Dietary Restrictions
@@ -98,6 +94,7 @@
             .label.required
               What's the coolest thing you have done in the last 12 months*
             .user-input
+              = application_fields.text_area :essay2, rows: '4', placeholder: 'I made a castle out of legos...'
 
         .submit
           = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'
