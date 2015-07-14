@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def welcome
     @hacker          = Hacker.new
+    @errors          = params[:errors]
     @interest_signup = InterestSignup.new
     @updates         = Update.all.order('created_at DESC')
   end
