@@ -82,12 +82,12 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
+    :address        => 'smtp.mailgun.org',
     :port           => '587',
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com',
+    :user_name      => ENV['MAILGUN_USERNAME'],
+    :password       => ENV['MAILGUN_PASSWORD'],
+    :domain         => 'boilermake.org',
     :enable_starttls_auto => true
   }
 
