@@ -83,6 +83,9 @@ body {
 			@media (min-width: 768px) and (max-width: 1068px) {
 				width: 65% !important;
 				margin-top: 5px;
+				&.second-input {
+					margin-left: 27%;
+				}
 			}
 		}
 		input:focus, textarea:focus, select:focus {
