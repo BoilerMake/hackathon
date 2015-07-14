@@ -15,7 +15,6 @@
       %button.button-plain.flickerIn{onclick: 'showForm("#loginForm")'} Already Registered?
 
 %div.full-form#signupForm{style: 'display: none;'}
-  %div#signup_alert
   = form_for @hacker do |f|
     = f.label :email
     = f.email_field :email

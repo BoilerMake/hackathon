@@ -52,13 +52,24 @@ class HackersController < ApplicationController
 
         UserMailer.welcome_email(@hacker).deliver
 
-        if session[:return_to].present? # not sure what this does
-          @hacker.errors.add("success", "Success")
+        if session[:return_to].present?
+          format.html { redirect_to session[:return_to], notice: 'Account created successfully.' }
         else
-          @hacker.errors.add("success", "Success")
+          format.html { redirect_to :dashboard, notice: 'Account created successfully.' }
         end
+
+        format.json { render :show, status: :created, location: @hacker }
+      else
+        if @hacker.errors[:email].present?
+          flash[:alert] = "#{@hacker.email} #{@hacker.errors[:email][0]}"
+        elsif @hacker.errors[:password_confirmation].present?
+          flash[:alert] = "Your passwords don't match."
+        else
+          flash[:alert] = "Some error occured. Email support@boilermake.org."
+        end
+        format.html { redirect_to root_path }
+        format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
-      format.json { render json: @hacker.errors}
     end
   end
 
