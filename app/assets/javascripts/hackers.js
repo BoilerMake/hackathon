@@ -15,6 +15,6 @@ $(document).ready(function(){
     });
 
     window.setTimeout(function() {
-      $('.alert').slideUp(250);
+      $('.alert').not('.file_alert').slideUp(250);
     }, 2000);
 });
