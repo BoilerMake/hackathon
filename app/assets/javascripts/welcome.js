@@ -1,10 +1,10 @@
 /*global $:false */
 
 var showForm = function(id) {
-  $(id).css('display', 'block');
+  $(id).fadeIn(250);
 };
 var hideForm = function(id) {
-  $('.full-form').css('display', 'none');
+  $('.full-form').fadeOut(250);
 };
 
 $(document).ready(function(){

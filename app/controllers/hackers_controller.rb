@@ -24,7 +24,15 @@ class HackersController < ApplicationController
     @application ||= @hacker.build_application
     @school = @hacker.school.name if @hacker.school
 
-    @resume_button_text = @application.resume.present? ? 'Replace Resume': 'Pick File'
+    if @application.resume.present?
+      @resume_button_text ='Already Uploaded! '
+      @resume_div_style = ''
+      @file_field_style = 'display:none;'
+    else
+      @resume_button_text = 'Success'
+      @resume_div_style = 'display:none;'
+      @file_field_style = ''
+    end
   end
 
   # GET /users/new
