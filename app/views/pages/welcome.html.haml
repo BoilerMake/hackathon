@@ -32,7 +32,7 @@
     .button-row
       = f.submit "Register", class: 'button'
       = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
-  - if @errors
+  - if @should_skip_intro
     = javascript_tag do
       window.shouldSkipIntro = true;
 
