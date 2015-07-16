@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete(:auth_token)
-    flash[:notice] = 'Logged out!'
+    flash[:success] = 'Logged out!'
     redirect_to root_url(should_skip_intro: true)
   end
 
