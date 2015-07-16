@@ -12,6 +12,8 @@
       %div.button-row
         %a{href: dashboard_url}
           %button.button.flickerIn Dashboard
+        %a{href: logout_path}
+          %button.button.flickerIn Log Out
     - else
       %div.button-row
         %button.button.flickerIn#applyButton{onclick: 'showForm("#signupForm")'} Apply
