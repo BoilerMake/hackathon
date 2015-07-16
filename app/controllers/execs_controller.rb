@@ -95,6 +95,7 @@ class ExecsController < ApplicationController
     @interested_student_count = InterestSignup.where("email LIKE '%.edu'").count
     @confirmed_count = Hacker.where(confirmed: true).count
     @applied_count = Hacker.all.count
+    @applied_student_count = Hacker.where("email LIKE '%.edu'").count
     @schools = Hacker.all.map{ |h| h.school }.keep_if{ |h| h.present? }.uniq.sort_by do |s|
       s.users.count
     end.reverse
