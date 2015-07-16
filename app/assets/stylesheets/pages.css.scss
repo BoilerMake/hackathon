@@ -100,6 +100,7 @@ body, html {
       box-shadow: 0 0 40px white;
       transition: box-shadow 5s;
       animation: glow 15s 5s infinite;
+      transform: translateZ(0);
     }
   }
 
