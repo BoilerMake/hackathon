@@ -75,7 +75,7 @@ class HackersController < ApplicationController
         else
           flash[:alert] = "Some error occured. Email support@boilermake.org."
         end
-        format.html { redirect_to root_path(errors: true) }
+        format.html { redirect_to root_path(should_skip_intro: true) }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
     end
