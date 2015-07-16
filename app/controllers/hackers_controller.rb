@@ -102,7 +102,7 @@ class HackersController < ApplicationController
         format.html { redirect_to :dashboard }
         format.json { render :show, status: :ok, location: @hacker }
       else
-        flash[:error] = "That school doesn't exist. Email team@boilermake.org." if new_params[:school_id] == -1
+        flash[:alert] = "That school doesn't exist. Email team@boilermake.org." if new_params[:school_id] == -1
         format.html { render :dashboard }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
