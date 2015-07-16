@@ -34,12 +34,6 @@ body, html {
   99% { opacity: 0; }
   100% { opacity: 1; }
 }
-@keyframes glow {
-  0% { box-shadow: 0 0 40px white; }
-  50% { box-shadow: 0 0 10px white; }
-  100% { box-shadow: 0 0 40px white; }
-}
-
 
 .bg-image {
   position: fixed;
@@ -99,8 +93,6 @@ body, html {
     &.flickerOver {
       box-shadow: 0 0 40px white;
       transition: box-shadow 5s;
-      animation: glow 15s 5s infinite;
-      transform: translateZ(0);
     }
   }
 
