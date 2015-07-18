@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'execs/review'
   get 'execs/hacker_detail/:hacker_id' => 'execs#hacker_detail'
 
+  get 'visualization' => 'visualization#index'
   resources :interest_signups, only: [:create]
   resources :updates, only: [:index, :new, :create]
   get 'confirm', to: 'hackers#confirm'
