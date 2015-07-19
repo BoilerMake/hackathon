@@ -1,11 +1,17 @@
 class SchoolsController < ApplicationController
   before_action :set_school, only: [:show, :edit, :update, :destroy]
+  before_action :category_selection, only: [:edit, :new]
   skip_before_action :require_login
+  load_and_authorize_resource
 
   # GET /schools
   # GET /schools.json
   def index
-    @schools = School.all
+    if request.format.json?
+      @schools = School.all
+    else
+      @schools = School.paginate(:page => params[:page])
+    end
   end
 
   # GET /schools/1
@@ -68,8 +74,13 @@ class SchoolsController < ApplicationController
       @school = School.find(params[:id])
     end
 
+    def category_selection
+      @categories = ['high_school', 'university']
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def school_params
-      params.require(:school).permit(:name)
+      params.require(:school).permit(:name, :state, :country, :category,
+                                     :is_target)
     end
 end

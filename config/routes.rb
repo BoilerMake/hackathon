@@ -18,9 +18,8 @@ Rails.application.routes.draw do
   resources :updates, only: [:index, :new, :create]
   get 'confirm', to: 'hackers#confirm'
 
-
-  resources :schools, only: [:index, :show]
-  resources :hackers, except: [:destroy]
+  resources :schools
+  resources :hackers, except: [:index, :destroy]
 
   resources :sessions
   resources :password_resets

@@ -3,6 +3,10 @@
 %table
   %tr
     %th Name
+    %th State
+    %th Country
+    %th Category
+    %th Is Target
     %th
     %th
     %th
@@ -10,6 +14,10 @@
   - @schools.each do |school|
     %tr
       %td= school.name
+      %td= school.state
+      %td= school.country
+      %td= school.category
+      %td= school.is_target
       %td= link_to 'Show', school
       %td= link_to 'Edit', edit_school_path(school)
       %td= link_to 'Destroy', school, :method => :delete, :data => { :confirm => 'Are you sure?' }
@@ -17,3 +25,5 @@
 %br
 
 = link_to 'New School', new_school_path
+
+= will_paginate @schools
