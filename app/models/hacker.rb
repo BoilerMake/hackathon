@@ -37,7 +37,6 @@ class Hacker < User
     if application.present?
       application_attrs = [ application.resume,
                             application.tshirt_size,
-                            application.cell_phone,
                             application.essay1,
                             application.essay2 ]
       application_attrs.map! do |el|

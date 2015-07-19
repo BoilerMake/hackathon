@@ -79,8 +79,10 @@
               .user-input.user-input-select
                 = application_fields.collection_select :tshirt_size, @shirts, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
             .field
-              %label.label.required{for: 'hacker_application_attributes_cell_phone'}
-                Cell Phone*
+              %label.label{for: 'hacker_application_attributes_cell_phone'}
+                Cell Phone
+                %span.sub-label
+                  Only used for text updates at the event
               .user-input
                 = application_fields.text_field :cell_phone, placeholder: '(123)-456-7890'
             .field
