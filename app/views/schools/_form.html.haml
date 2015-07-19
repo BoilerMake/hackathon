@@ -6,8 +6,35 @@
         - @school.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+  .form
+    .field
+      = f.label :name
+      %br
+      = f.text_field :name
+    .field
+      = f.label :state
+      %p
+        If its in the US, this should be a two char state code,
+        if its outside the US, it'll be ignored most likely, but if there is a
+        state equivalent for that country, use it here
+      = f.text_field :state
+    .field
+      = f.label :country
+      %p
+        ISO 3 char country code, no exceptions.
+        =link_to "https://en.wikipedia.org/wiki/ISO_3166-1"
+      = f.text_field :country
+    .field
+      = f.label :category, "high school or 4 yr university"
+      %br
+      = f.collection_select :category,
+                            @categories,
+                            :to_s,
+                            :to_s,
+                            {include_blank: "Please select"}
+    .field
+      = f.label :is_target, "Is this school a 'Target School'?"
+      = f.check_box :is_target
+
+    .actions
+      = f.submit 'Save'
