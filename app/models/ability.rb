@@ -9,6 +9,7 @@ class Ability
       elsif user.hacker?
         can :manage, [Application]
         can [ :dashboard, :new, :create, :update, :confirm ], Hacker
+        can [ :index ], School
       end
     end
     can :index, Update
