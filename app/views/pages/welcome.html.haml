@@ -10,8 +10,10 @@
     %p.flickerIn Oct. 16–18 | Purdue University
     - if current_user.present?
       %div.button-row
-        %a{href: dashboard_url}
+        = link_to dashboard_url do
           %button.button.flickerIn Dashboard
+        = link_to logout_url do
+          %button.button.flickerIn Log Out
     - else
       %div.button-row
         %button.button.flickerIn#applyButton{onclick: 'showForm("#signupForm")'} Apply
