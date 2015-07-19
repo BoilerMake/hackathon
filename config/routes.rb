@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'confirm', to: 'hackers#confirm'
 
 
-  resources :schools, only: [:index, :show]
+  resources :schools
   resources :hackers, except: [:index, :destroy]
 
   resources :sessions

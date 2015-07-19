@@ -4,6 +4,22 @@
   %b Name:
   = @school.name
 
+%p
+  %b State:
+  = @school.state
+
+%p
+  %b Country:
+  = @school.country
+
+%p
+  %b Category:
+  = @school.category
+
+%p
+  %b Target School?:
+  = @school.is_target ? "Yes": "No"
+
 = link_to 'Edit', edit_school_path(@school)
 \|
 = link_to 'Back', schools_path

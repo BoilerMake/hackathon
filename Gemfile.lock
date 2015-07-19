@@ -252,6 +252,7 @@ GEM
       raindrops (~> 0.7)
     validates_email_format_of (1.6.2)
       i18n
+    will_paginate (3.0.7)
 
 PLATFORMS
   ruby
@@ -297,3 +298,4 @@ DEPENDENCIES
   underscore-rails
   unicorn
   validates_email_format_of
+  will_paginate (~> 3.0.6)
