@@ -1,23 +1,15 @@
 .container
-	%h1
-		= "Welcome, #{current_user.email}"
-	%h2
-		HACKER REVIEW
-	%pre{style: 'color: #f5a623;'}=  @hackers.to_yaml
-	%table{:border => 1, class: 'table'}
-		%tbody
-			%tr
-				%td First Name
-				%td Last Name
-				%td Email
-				%td School
-				%td Application
-			- @hackers.each do |object|
-				%tr
-					%td= object.first_name
-					%td= object.last_name
-					%td= object.email
-					%td
-						%pre= object.school.to_yaml
-					%td
-						%pre= object.application.to_yaml
+  %h1
+    = "Welcome, #{current_user.email}"
+  %h2
+    HACKER REVIEW
+  %table{:border => 1, class: 'table'}
+    %tbody
+      %tr
+        %td Name
+        %td School
+      - @hackers.each do |object|
+        %tr
+          %td
+            %a{href: "hacker_detail/#{object.id}"}= "#{object.first_name} #{object.last_name}"
+          %td= "#{object.school.name}, #{object.school.state}, #{object.school.country} ( #{object.school.category})"
