@@ -108,10 +108,11 @@ class ExecsController < ApplicationController
   end
 
   def hacker_detail
-    @hacker = Hacker.find params[:hacker_id]
-    github_username="nickysemenza"
-    #todo: parse github username
+    require 'uri'
     require 'net/http'
+    @hacker = Hacker.find params[:hacker_id]
+
+    github_username=URI(@hacker.application.github).path.split('/').last
     parsed_url = URI.parse('https://api.github.com/users/'+github_username)
     http = Net::HTTP.new(parsed_url.host, parsed_url.port)
     http.use_ssl = true
@@ -125,7 +126,6 @@ class ExecsController < ApplicationController
     request = Net::HTTP::Get.new(parsed_url.request_uri)
     request.basic_auth 'boilermake-web', 'cff6c84e6672405c31e9e36166bbaa3011d21f4b'
     @hacker_github_repos= ActiveSupport::JSON.decode(http.request(request).body)
-
 
     @hacker_ranking = HackerRanking.new
     @hacker_ranking.exec_id=current_user.id
