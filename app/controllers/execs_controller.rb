@@ -108,24 +108,8 @@ class ExecsController < ApplicationController
   end
 
   def hacker_detail
-    require 'uri'
-    require 'net/http'
     @hacker = Hacker.find params[:hacker_id]
-
-    github_username=URI(@hacker.application.github).path.split('/').last
-    parsed_url = URI.parse("https://api.github.com/users/#{github_username}")
-    http = Net::HTTP.new(parsed_url.host, parsed_url.port)
-    http.use_ssl = true
-    request = Net::HTTP::Get.new(parsed_url.request_uri)
-    request.basic_auth ENV['github_api_username'], ENV['github_api_secret']
-    @hacker_github= ActiveSupport::JSON.decode(http.request(request).body)
-
-    parsed_url = URI.parse("https://api.github.com/users/#{github_username}/repos?sort=updated")
-    http = Net::HTTP.new(parsed_url.host, parsed_url.port)
-    http.use_ssl = true
-    request = Net::HTTP::Get.new(parsed_url.request_uri)
-    request.basic_auth ENV['github_api_username'], ENV['github_api_secret']
-    @hacker_github_repos= ActiveSupport::JSON.decode(http.request(request).body)
+    @hacker_github_info = get_github_info @hacker
 
     query = HackerRanking.where("hacker_id = ? and exec_id = ?", @hacker.id, current_user.id)
     if(query.any?)
@@ -133,14 +117,33 @@ class ExecsController < ApplicationController
     else
       @hacker_ranking = HackerRanking.create(exec_id: current_user.id, hacker_id: @hacker.id)
     end
-
-    # @hacker_ranking = HackerRanking.new
-    # @hacker_ranking.exec_id=current_user.id
-    #todo: how do i do this stuff
   end
 
   private
   def difference_in_days earliest, latest
     ( (latest - earliest) / (60 * 60 * 24) ).floor
+  end
+  def get_github_info(hacker)
+    require 'uri'
+    require 'net/http'
+    info = Hash.new
+    
+    github_username=URI(@hacker.application.github).path.split('/').last
+
+    parsed_url = URI.parse("https://api.github.com/users/#{github_username}")
+    http = Net::HTTP.new(parsed_url.host, parsed_url.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(parsed_url.request_uri)
+    request.basic_auth ENV['github_api_username'], ENV['github_api_secret']
+    info['profile']= ActiveSupport::JSON.decode(http.request(request).body)
+
+    parsed_url = URI.parse("https://api.github.com/users/#{github_username}/repos?sort=updated")
+    http = Net::HTTP.new(parsed_url.host, parsed_url.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(parsed_url.request_uri)
+    request.basic_auth ENV['github_api_username'], ENV['github_api_secret']
+    info['repos']= ActiveSupport::JSON.decode(http.request(request).body)
+
+    return info
   end
 end

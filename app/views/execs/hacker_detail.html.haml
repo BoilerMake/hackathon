@@ -1,5 +1,4 @@
 %h1= "Reviewing HACKER: #{@hacker.first_name} #{@hacker.last_name} FROM #{@hacker.school.name}"
-/ %pre= @hacker_github_repos.to_yaml
 %div{class: 'row'}
   %div{class: 'col-md-6'}
     %div{class: 'row'}
@@ -19,52 +18,52 @@
             %div{class: "panel-heading"}
               %h3{class: "panel-title"}
                 ="Github:"
-                %a{href: @hacker_github['html_url'], target: "blank"}="@#{@hacker_github['login']}"
+                %a{href: @hacker_github_info['profile']['html_url'], target: "blank"}="@#{@hacker_github_info['profile']['login']}"
             %div{class: "panel-body"}
               %table{:border => 1, class: 'table table-striped'}
                 %tbody
                   %tr
                     %td public_repos
-                    %td= @hacker_github['public_repos']
+                    %td= @hacker_github_info['profile']['public_repos']
                   %tr
                     %td public_gists
-                    %td= @hacker_github['public_gists']
+                    %td= @hacker_github_info['profile']['public_gists']
                   %tr
                     %td followers
-                    %td= @hacker_github['followers']
+                    %td= @hacker_github_info['profile']['followers']
                   %tr
                     %td following
-                    %td= @hacker_github['following']
+                    %td= @hacker_github_info['profile']['following']
                   %tr
                     %td blog url
                     %td
-                      %a{href: @hacker_github['blog'], target: "blank"}="#{@hacker_github['blog']}"
+                      %a{href: @hacker_github_info['profile']['blog'], target: "blank"}="#{@hacker_github_info['profile']['blog']}"
               %h3 repositories sorted by activity date
-              - @hacker_github_repos.take(4).each do |each_repo|
+              - @hacker_github_info['repos'].take(4).each do |repo|
                 %table{:border => 1, class: 'table table-striped'}
                   %tbody
                     %tr
                       %td name
                       %td
-                        %a{href: each_repo['html_url'], target: "blank"}="#{each_repo['full_name']}"
+                        %a{href: repo['html_url'], target: "blank"}="#{repo['full_name']}"
                     %tr
                       %td description
-                      %td=each_repo['description']
+                      %td=repo['description']
                     %tr
                       %td language
-                      %td=each_repo['language']
+                      %td=repo['language']
                     %tr
                       %td creation date
-                      %td=each_repo['created_at']
+                      %td=repo['created_at']
                     %tr
                       %td last pushed
-                      %td=each_repo['pushed_at']
+                      %td=repo['pushed_at']
                     %tr
                       %td # of stars
-                      %td=each_repo['stargazers_count']
+                      %td=repo['stargazers_count']
                     %tr
                       %td # of watchers
-                      %td=each_repo['watchers_count']
+                      %td=repo['watchers_count']
                               
       %div{class: 'col-md-6'}
         %div{class: "panel panel-default"}
