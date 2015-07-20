@@ -18,7 +18,8 @@
           %div{class: "panel panel-default"}
             %div{class: "panel-heading"}
               %h3{class: "panel-title"}
-                ="Github"
+                ="Github:"
+                %a{href: @hacker_github['html_url'], target: "blank"}="@#{@hacker_github['login']}"
             %div{class: "panel-body"}
               %table{:border => 1, class: 'table table-striped'}
                 %tbody
@@ -35,15 +36,17 @@
                     %td following
                     %td= @hacker_github['following']
                   %tr
-                    %td blog url?
-                    %td= @hacker_github['blog']  
+                    %td blog url
+                    %td
+                      %a{href: @hacker_github['blog'], target: "blank"}="#{@hacker_github['blog']}"
               %h3 repositories sorted by activity date
               - @hacker_github_repos.take(4).each do |each_repo|
                 %table{:border => 1, class: 'table table-striped'}
                   %tbody
                     %tr
                       %td name
-                      %td=each_repo['full_name']
+                      %td
+                        %a{href: each_repo['html_url'], target: "blank"}="#{each_repo['full_name']}"
                     %tr
                       %td description
                       %td=each_repo['description']
@@ -131,6 +134,7 @@
 
   %div{class: 'col-md-6'}
     %h1 resume
+    %a{href: @hacker.application.resume, target: "blank"}="open in new tab"
     <object data="#{@hacker.application.resume}" width="100%" height="1000px">
     <p>your browser can't embed PDFS :( <a href="#{@hacker.application.resume}" type="application/pdf">check it out here though</a></p>
     </object>
