@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'execs/shirts' => 'execs#shirts'
 
   get 'execs/review'
-  get 'execs/hacker_detail'
+  get 'execs/hacker_detail/:hacker_id' => 'execs#hacker_detail'
 
   resources :interest_signups, only: [:create]
   resources :updates, only: [:index, :new, :create]
