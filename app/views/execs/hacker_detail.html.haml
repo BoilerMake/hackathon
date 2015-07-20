@@ -38,7 +38,7 @@
                     %td blog url?
                     %td= @hacker_github['blog']  
               %h3 repositories sorted by activity date
-              - @hacker_github_repos.each do |each_repo|
+              - @hacker_github_repos.take(4).each do |each_repo|
                 %table{:border => 1, class: 'table table-striped'}
                   %tbody
                     %tr
