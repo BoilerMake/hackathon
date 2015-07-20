@@ -69,7 +69,7 @@
             %h3{class: "panel-title"}
               ="User Control"
           %div{class: "panel-body"}
-            = form_for @hacker_ranking do |f|
+            = form_for @hacker_ranking, remote: true, "data-type" => :json do |f|
               %h3 your ranking:	
               .field
                 = f.number_field :ranking, placeholder: "ranking", class: 'second-input'
