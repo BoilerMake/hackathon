@@ -113,22 +113,29 @@ class ExecsController < ApplicationController
     @hacker = Hacker.find params[:hacker_id]
 
     github_username=URI(@hacker.application.github).path.split('/').last
-    parsed_url = URI.parse('https://api.github.com/users/'+github_username)
+    parsed_url = URI.parse("https://api.github.com/users/#{github_username}")
     http = Net::HTTP.new(parsed_url.host, parsed_url.port)
     http.use_ssl = true
     request = Net::HTTP::Get.new(parsed_url.request_uri)
     request.basic_auth 'boilermake-web', 'cff6c84e6672405c31e9e36166bbaa3011d21f4b'
     @hacker_github= ActiveSupport::JSON.decode(http.request(request).body)
 
-    parsed_url = URI.parse('https://api.github.com/users/'+github_username+'/repos?sort=updated')
+    parsed_url = URI.parse("https://api.github.com/users/#{github_username}/repos?sort=updated")
     http = Net::HTTP.new(parsed_url.host, parsed_url.port)
     http.use_ssl = true
     request = Net::HTTP::Get.new(parsed_url.request_uri)
     request.basic_auth 'boilermake-web', 'cff6c84e6672405c31e9e36166bbaa3011d21f4b'
     @hacker_github_repos= ActiveSupport::JSON.decode(http.request(request).body)
 
-    @hacker_ranking = HackerRanking.new
-    @hacker_ranking.exec_id=current_user.id
+    query = HackerRanking.where("hacker_id = ? and exec_id = ?", @hacker.id, current_user.id)
+    if(query.any?)
+      @hacker_ranking = query.first
+    else
+      @hacker_ranking = HackerRanking.create(exec_id: current_user.id, hacker_id: @hacker.id)
+    end
+
+    # @hacker_ranking = HackerRanking.new
+    # @hacker_ranking.exec_id=current_user.id
     #todo: how do i do this stuff
   end
 
