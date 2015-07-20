@@ -1,25 +1,25 @@
 %h1= "Reviewing HACKER: #{@hacker.first_name} #{@hacker.last_name} FROM #{@hacker.school.name}"
-%div{class: 'row'}
-  %div{class: 'col-md-6'}
-    %div{class: 'row'}
-      %div{class: 'col-md-6'}
-        %div{class: "panel panel-default"}
-          %div{class: "panel-heading"}
-            %h3{class: "panel-title"}
+.row
+  .col-md-6
+    .row
+      .col-md-6
+        .panel.panel-default
+          .panel-heading
+            .panel-title
               ="Essays"
-          %div{class: "panel-body"}
+          .panel-body
             %h4="Q:What do you love about computers?"
             %p="A: #{@hacker.application.essay1}"
             %hr
             %h4="Q:What's the coolest thing you have done in the last 12 months"
             %p="A: #{@hacker.application.essay2}"
         %br
-          %div{class: "panel panel-default"}
-            %div{class: "panel-heading"}
-              %h3{class: "panel-title"}
+          .panel.panel-default
+            .panel-heading
+              .panel-title
                 ="Github:"
                 %a{href: @hacker_github_info['profile']['html_url'], target: "blank"}="@#{@hacker_github_info['profile']['login']}"
-            %div{class: "panel-body"}
+            .panel-body
               %table{:border => 1, class: 'table table-striped'}
                 %tbody
                   %tr
@@ -65,40 +65,38 @@
                       %td # of watchers
                       %td=repo['watchers_count']
                               
-      %div{class: 'col-md-6'}
-        %div{class: "panel panel-default"}
-          %div{class: "panel-heading"}
-            %h3{class: "panel-title"}
+      .col-md-6
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
               ="User Control"
-          %div{class: "panel-body"}
+          .panel-body
             = form_for @hacker_ranking, remote: true, "data-type" => :json do |f|
               %h3 your ranking:	
               .field
                 = f.number_field :ranking, placeholder: "ranking", class: 'second-input'
               .submit
                 = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'
-        %div{class: "panel panel-default"}
-          %div{class: "panel-heading"}
-            %h3{class: "panel-title"}
-              ="Diversity"
-          %div{class: "panel-body"}
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title Diversity
+          .panel-body
             %table{:border => 1, class: 'table table-striped'}
               %tbody
                 %tr
                   %td Gender
                   %td= @hacker.application.gender
-                  
                 %tr
                   %td Race
                   %td= @hacker.application.race
                 %tr
                   %td Ethnicity
                   %td= @hacker.application.ethnicity
-        %div{class: "panel panel-default"}
-          %div{class: "panel-heading"}
-            %h3{class: "panel-title"}
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
               ="Education"
-          %div{class: "panel-body"}
+          .panel-body
             %table{:border => 1, class: 'table table-striped'}
               %tbody
                 %tr
@@ -114,11 +112,11 @@
                 %tr
                   %td Graduation Date
                   %td= @hacker.application.grad_date
-        %div{class: "panel panel-default"}
-          %div{class: "panel-heading"}
-            %h3{class: "panel-title"}
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
               ="Other"
-          %div{class: "panel-body"}
+          .panel-body
             %table{:border => 1, class: 'table table-striped'}
               %tbody
                 %tr
@@ -131,9 +129,11 @@
                   %td Application Last Updated
                   %td= @hacker.updated_at
 
-  %div{class: 'col-md-6'}
+  .col-md-6
     %h1 resume
     %a{href: @hacker.application.resume, target: "blank"}="open in new tab"
-    <object data="#{@hacker.application.resume}" width="100%" height="1000px">
-    <p>your browser can't embed PDFS :( <a href="#{@hacker.application.resume}" type="application/pdf">check it out here though</a></p>
-    </object>
+    %object{data: "#{@hacker.application.resume}", width: "100%", height: "1000px"}
+      %p 
+        ="either your browser can't embed PDFS or this applicant is a n00b and uploaded a .doc resume or something"
+        %a{href: "#{@hacker.application.resume}", target: "_blank", type:"application/pdf"}
+          ="check it out here though"
