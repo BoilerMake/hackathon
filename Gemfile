@@ -34,6 +34,9 @@ gem 'validates_email_format_of'
 
 gem 'font-awesome-sass'
 gem 's3_file_field', :git => 'git://github.com/gatherdigital/s3_file_field'
+
+gem 'will_paginate', '~> 3.0.6'
+
 # these should move in the future
 gem 'better_errors'
 gem 'awesome_print'

@@ -1,0 +1,20 @@
+%h1 Listing hackers
+
+%table.table.striped
+  %tr
+    %th First
+    %th Last
+    %th School
+    %th Email
+    %th
+
+  - @hackers.each do |hacker|
+    %tr
+      %td= hacker.first_name
+      %td= hacker.last_name
+      %td= hacker.school.present? ? hacker.school.name : ""
+      %td= hacker.email
+      %td= link_to 'Show', hacker
+
+= will_paginate @hackers
+
