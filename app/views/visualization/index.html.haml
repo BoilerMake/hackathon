@@ -11,4 +11,6 @@
     = javascript_include_tag    'bootstrap.min.js'
     = csrf_meta_tags
   %body
-    #{@total_apps}
+    So far, #{@total_hackers} hackers have signed up, and #{@total_apps} have applied.
+    
+    schools: #{@school_info}

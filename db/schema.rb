@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150714014504) do
+ActiveRecord::Schema.define(version: 20150721163116) do
 
   create_table "applications", force: true do |t|
     t.string   "gender"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 20150714014504) do
     t.string   "country"
     t.string   "category"
     t.boolean  "is_target"
+    t.string   "lat"
+    t.string   "lng"
   end
 
   create_table "teams", force: true do |t|
