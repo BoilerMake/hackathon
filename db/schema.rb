@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150720065634) do
+ActiveRecord::Schema.define(version: 20150721163116) do
 
   create_table "applications", force: :cascade do |t|
     t.string   "gender",               limit: 255
@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 20150720065634) do
     t.string   "country",    limit: 255
     t.string   "category",   limit: 255
     t.boolean  "is_target"
+    t.string   "lat"
+    t.string   "lng"
   end
 
   create_table "teams", force: :cascade do |t|
