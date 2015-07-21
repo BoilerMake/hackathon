@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 
   resources :schools, only: [:index, :show]
-  resources :hackers, except: [:index, :destroy]
+  resources :hackers, except: [:destroy]
 
   resources :sessions
   resources :password_resets
