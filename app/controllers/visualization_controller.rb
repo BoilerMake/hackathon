@@ -6,7 +6,7 @@ class VisualizationController < ApplicationController
   	@total_apps = Application.count
   	@school_info = Hash.new
   	Hacker.all.each do |hacker|
-      if hacker.school_id != nil
+      if hacker.school_id
       	@school = School.find_by(id: hacker.school_id)
         if @school.lat == nil or @school.lng == nil
           @test = getCoordinates(hacker.school_id)
@@ -21,8 +21,8 @@ class VisualizationController < ApplicationController
   	end
   end
 
-  def getCoordinates (schoolid)
-    @school = School.find_by(id: schoolid)
+  def getCoordinates (s)
+    @school = School.find s
     response = Net::HTTP.get_response(URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=Purdue+University"))
     parsed = JSON.parse(response.body)
     @school.lat = parsed['results'][0]['geometry']['location']['lat']
