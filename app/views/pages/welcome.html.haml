@@ -2,8 +2,7 @@
 %div.bg-image#bg
   %canvas#background This text is displayed if your browser does not support HTML5 Canvas.
 
-
-%div.content
+.main-content
   .cover
     =image_tag("logo-thin-white.svg", class: "flickerIn")
     %h1.flickerIn BoilerMake
@@ -47,9 +46,17 @@
     %div.button-row
       = submit_tag 'log in', { class: 'button' }
       = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
+.navigation
 
-%h3.bottom-message
-  Funded by the
-  = link_to 'Student Activity Fee Fund', 'http://www.purduesg.com/sfab/'
+.about
+  .body-content
+    %h2 About
+    .column-left
+      BoilerMake is the premier hacking experience for 500 students from across the U.S. and Canada.  At the event, hackers form teams of up to four and create something entirely from scratch within the 36-hour period while interacting with recruiters and engineers from top tech companies.  Everything is on us, including swag, food, and hardware to hack on, so apply today and join us for a weekend where you will be mentored, challenged, and inspired. Check out our video from last year!
+    .column-right
+      .video
+      %a.gallery-button
+        BoilerMake 2014 Gallery
+    .clear
 
 = render "shared/header"
