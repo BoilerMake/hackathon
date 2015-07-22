@@ -19,10 +19,13 @@
           zoom: 4
         };
         var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(40, -80), 
+          map: map,
+          title: 'Hello World!'
+        });
       });
     = csrf_meta_tags
   %body
-    So far, #{@total_hackers} hackers have signed up, and #{@total_apps} have applied.
-    
     schools: #{@school_info}
     %div#map-canvas

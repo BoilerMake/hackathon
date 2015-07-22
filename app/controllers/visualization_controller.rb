@@ -2,8 +2,6 @@ class VisualizationController < ApplicationController
 	skip_before_action :require_login
 	layout false
   def index
-  	@total_hackers = Hacker.count
-  	@total_apps = Application.count
   	@school_info = Hash.new
   	Hacker.all.each do |hacker|
       if hacker.school_id
