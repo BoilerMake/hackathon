@@ -328,7 +328,7 @@ input:focus {
     }
     span.nav-links {
       display: inline-block;
-      width: 50%;
+      width: 70%;
       float: right;
       text-align: right;
       margin-top: 13px;
@@ -362,7 +362,7 @@ input:focus {
       width: 45%;
       float: left;
       font-family: 'Source Sans Pro', sans-serif;
-      font-size: 0.95em;
+      font-size: .95em;
       font-weight: 300;
       color: #333333;
     }
@@ -408,18 +408,21 @@ input:focus {
       margin-top: 60px;
       margin-bottom: 20px;
     }
-
   }
-  
-
 }
 .fix-div {
-    position: fixed;
-    top: 0;
-    width: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 .replace-div {
   padding: 30px 60px;
   height: 75px;
   display: none;
+}
+
+.faq {
+  background-size: cover;
+  background-color: #C4CBCB;
+  height: 100vh;
 }

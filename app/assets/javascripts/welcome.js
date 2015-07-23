@@ -20,6 +20,9 @@ $(document).ready(function(){
   	scrollTop = $(window).scrollTop();
   	navTop = nav.offset().top;
   	isFixed = nav.hasClass('fix-div');
+  	console.log("scrollTop: " + scrollTop);
+  	console.log("navTop: " + navTop);
+  	console.log("OrigTop: " + origTop);
   	if (origTop === null) {
   		origTop = navTop;
   	}
@@ -27,6 +30,7 @@ $(document).ready(function(){
   		nav.removeClass('fix-div');
   		$('.replace-div').css("display", "none");
   	} else if (scrollTop >= navTop && !isFixed) {
+  		console.log("HEREEREJREIOJREOI");
   		nav.addClass('fix-div');
   		$('.replace-div').css("display", "block");
   	}
