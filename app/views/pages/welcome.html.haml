@@ -47,6 +47,14 @@
         = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
   .replace-div
   .navigation
+    .nav-content
+      %span.logo
+        = image_tag("bm_logo_basic.png")
+      %span.nav-links
+        = link_to 'About', logout_path
+        = link_to 'FAQs', logout_path
+        = link_to 'Sponsors', logout_path
+        = link_to 'Apply', logout_path
 
   .about
     .body-content

@@ -312,9 +312,44 @@ input:focus {
 }
 .navigation {
   background-color: white;
-  padding: 30px 60px;
-  height: 75px;
+  height: 70px;
+  padding-top: 5px;
   box-shadow: 0 1px 10px #ADADAD;
+  .nav-content {
+    width: 80%;
+    margin: 0 auto;
+    span.logo {
+    display: inline-block;
+    width: 20%;
+    text-align: left;
+      img {
+        height: 60px;
+      }
+    }
+    span.nav-links {
+      display: inline-block;
+      width: 50%;
+      float: right;
+      text-align: right;
+      margin-top: 13px;
+      a {
+        margin: 0;
+        display: inline-block;
+        padding: 6px 10px;
+        font-family: 'Source Code Pro', sans-serif;
+        text-transform: uppercase;
+        font-size: 0.85em;
+        color: #333333;
+        margin-left: 10px;
+      }
+      a:hover {
+        text-decoration: none;
+        background-color: #755853;
+        color: white;
+        border-radius: 2px;
+      }
+    }
+  }
 }
 .about {
   background-size: cover;
