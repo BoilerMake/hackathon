@@ -1,60 +1,62 @@
 =render "shared/flash.html.haml"
-%div.bg-image#bg
-  %canvas#background This text is displayed if your browser does not support HTML5 Canvas.
+%div#container-scroll
+  %div.bg-image#bg
+    %canvas#background This text is displayed if your browser does not support HTML5 Canvas.
 
-.main-content
-  .cover
-    =image_tag("logo-thin-white.svg", class: "flickerIn")
-    %h1.flickerIn BoilerMake
-    %p.flickerIn Oct. 16–18 | Purdue University
-    - if current_user.present?
+  .main-content
+    .cover
+      =image_tag("logo-thin-white.svg", class: "flickerIn")
+      %h1.flickerIn BoilerMake
+      %p.flickerIn Oct. 16–18 | Purdue University
+      - if current_user.present?
+        %div.button-row
+          %a{href: dashboard_url}
+            %button.button.flickerIn Dashboard
+      - else
+        %div.button-row
+          %button.button.flickerIn#applyButton{onclick: 'showForm("#signupForm")'} Apply
+          %a{href: 'mailto:sponsorship@boilermake.org'}
+            %button.button.flickerIn Sponsor
+        %div.button-row
+          %button.button-plain.flickerIn{onclick: 'showForm("#loginForm")'} Already Registered?
+
+  %div.full-form#signupForm{style: 'display: none;'}
+
+    = form_for @hacker do |f|
+      = f.label :email
+      = f.email_field :email
+      = f.label :password
+      = f.password_field :password
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+      .button-row
+        = f.submit "Register", class: 'button'
+        = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
+    - if @should_skip_intro
+      = javascript_tag do
+        window.shouldSkipIntro = true;
+
+  %div.full-form#loginForm{style: 'display: none;'}
+    = form_tag sessions_path do
+      = label_tag 'Email'
+      = email_field_tag :email, nil
+      = label_tag 'Password'
+      = password_field_tag :password, nil
       %div.button-row
-        %a{href: dashboard_url}
-          %button.button.flickerIn Dashboard
-    - else
-      %div.button-row
-        %button.button.flickerIn#applyButton{onclick: 'showForm("#signupForm")'} Apply
-        %a{href: 'mailto:sponsorship@boilermake.org'}
-          %button.button.flickerIn Sponsor
-      %div.button-row
-        %button.button-plain.flickerIn{onclick: 'showForm("#loginForm")'} Already Registered?
+        = submit_tag 'log in', { class: 'button' }
+        = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
+  .replace-div
+  .navigation
 
-%div.full-form#signupForm{style: 'display: none;'}
-
-  = form_for @hacker do |f|
-    = f.label :email
-    = f.email_field :email
-    = f.label :password
-    = f.password_field :password
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
-    .button-row
-      = f.submit "Register", class: 'button'
-      = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
-  - if @should_skip_intro
-    = javascript_tag do
-      window.shouldSkipIntro = true;
-
-%div.full-form#loginForm{style: 'display: none;'}
-  = form_tag sessions_path do
-    = label_tag 'Email'
-    = email_field_tag :email, nil
-    = label_tag 'Password'
-    = password_field_tag :password, nil
-    %div.button-row
-      = submit_tag 'log in', { class: 'button' }
-      = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
-.navigation
-
-.about
-  .body-content
-    %h2 About
-    .column-left
-      BoilerMake is the premier hacking experience for 500 students from across the U.S. and Canada.  At the event, hackers form teams of up to four and create something entirely from scratch within the 36-hour period while interacting with recruiters and engineers from top tech companies.  Everything is on us, including swag, food, and hardware to hack on, so apply today and join us for a weekend where you will be mentored, challenged, and inspired. Check out our video from last year!
-    .column-right
-      .video
-      %a.gallery-button
-        BoilerMake 2014 Gallery
-    .clear
+  .about
+    .body-content
+      %h2 About
+      .column-left
+        BoilerMake is the premier hacking experience for 500 students from across the U.S. and Canada.  At the event, hackers form teams of up to four and create something entirely from scratch within the 36-hour period while interacting with recruiters and engineers from top tech companies.  Everything is on us, including swag, food, and hardware to hack on, so apply today and join us for a weekend where you will be mentored, challenged, and inspired. Check out our video from last year!
+      .column-right
+        .video
+        %a.gallery-button
+          BoilerMake 2014 Gallery
+      .clear
 
 = render "shared/header"

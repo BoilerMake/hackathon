@@ -315,7 +315,6 @@ input:focus {
   padding: 30px 60px;
   height: 75px;
   box-shadow: 0 1px 10px #ADADAD;
-  margin-top: -75px;
 }
 .about {
   background-size: cover;
@@ -378,4 +377,14 @@ input:focus {
   }
   
 
+}
+.fix-div {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.replace-div {
+  padding: 30px 60px;
+  height: 75px;
+  display: none;
 }
