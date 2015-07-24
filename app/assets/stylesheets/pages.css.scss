@@ -425,4 +425,49 @@ input:focus {
   background-size: cover;
   background-color: #C4CBCB;
   height: 100vh;
+  .body-content {
+    margin: 0 auto;
+    width: 80%;
+    h2 {
+      padding-top: 60px;
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 2.3em;
+      text-align: left;
+      color: #FFFFFF;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+    .col {
+      width: 31%;
+      margin-right: 3%;
+      float: left;
+    }
+    .col-last {
+      width: 31%;
+      margin: 0;
+      float: left;
+    }
+    .clear {
+      clear: both;
+    }
+    h4 {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: #879796;
+      font-size: 0.75em;
+      text-align: left;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    p {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: #FFFFFF;
+      font-size: 0.75em;
+      text-align: left;
+      font-weight: 300;
+      margin-bottom: 25px;
+    }
+  }
 }
