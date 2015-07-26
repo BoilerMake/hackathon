@@ -68,6 +68,24 @@ class SchoolsController < ApplicationController
     end
   end
 
+  def export
+    require 'csv'
+    @csv_string = CSV.generate do |csv|
+      csv << ['id', 'name', 'state', 'country', 'category', 'is_target']
+      School.all.each do |h|
+        csv << [h.id,
+                h.name,
+                h.state,
+                h.country,
+                h.category,
+                h.is_target]
+      end
+    end
+    send_data @csv_string,
+              :filename => "schools.csv",
+              :type => "text/csv"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_school

@@ -11,25 +11,15 @@
     = link_to 'Announcements', updates_path, class: 'button outline'
     = link_to 'Hacker Listing', hackers_path, class: 'button outline'
     = link_to 'Schools', schools_path, class: 'button outline'
+    = link_to 'Export Schools as CSV', schools_export_path, class: 'button outline'
   %h2
     HACKER REGISTRATIONS
   %h3
     = "Motherfuckers wanting to kick ass at #{HACKATHON}:"
     %span{style: 'color: #f5a623;'}=  @applied_count
   %h3
-    = "Motherfuckers who like to learn:"
+    = "People with EDU emails"
     %span{style: 'color: #f5a623;'}=  @interested_student_count
   %h3
-    = "Schools"
+    = "Unique schools"
     %span{style: 'color: #f5a623;'}=  @school_count
-  %h2
-    INTEREST_UPDATES (OLD)
-  %h3
-    = "Motherfuckers wanting updates on how to kick ass at #{HACKATHON}:"
-    %span{style: 'color: #f5a623;'}=  @interested_count
-  %h3
-    = "Valid Motherfuckers:"
-    %span{style: 'color: #f5a623;'}=  @interested_and_valid_count
-  %h3
-    = "Motherfuckers who like to learn:"
-    %span{style: 'color: #f5a623;'}=  @interested_student_count

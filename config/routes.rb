@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   resources :updates, only: [:index, :new, :create]
   get 'confirm', to: 'hackers#confirm'
 
+  get 'schools/export'
+
   resources :schools
   resources :hackers, except: [:index, :destroy]
 
