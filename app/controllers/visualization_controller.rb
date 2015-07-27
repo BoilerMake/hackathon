@@ -19,9 +19,10 @@ class VisualizationController < ApplicationController
   	end
   end
 
-  def getCoordinates (s)
-    @school = School.find s
-    response = Net::HTTP.get_response(URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=Purdue+University"))
+  def getCoordinates (school_id)
+    @school = School.find school_id
+    formatted_name = @school.name.gsub(/\s+/,'+')
+    response = Net::HTTP.get_response(URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{formatted_name}"))
     parsed = JSON.parse(response.body)
     @school.lat = parsed['results'][0]['geometry']['location']['lat']
     @school.lng = parsed['results'][0]['geometry']['location']['lng']
