@@ -8,11 +8,6 @@ var hideForm = function(id) {
 };
 
 $(document).ready(function(){
-  $("#new_interest_signup").on('ajax:success', function(e, data, status, xhr){
-    console.log(data);
-  }).on('ajax:error', function(e, data, status, error){
-    console.log(error);
-  });
   var origTop = null;
   $(window).on("scroll", function(e) {
   	var scrollTop, navTop, isFixed;
@@ -20,9 +15,6 @@ $(document).ready(function(){
   	scrollTop = $(window).scrollTop();
   	navTop = nav.offset().top;
   	isFixed = nav.hasClass('fix-div');
-  	console.log("scrollTop: " + scrollTop);
-  	console.log("navTop: " + navTop);
-  	console.log("OrigTop: " + origTop);
   	if (origTop === null) {
   		origTop = navTop;
   	}
@@ -35,9 +27,6 @@ $(document).ready(function(){
   		$('.replace-div').css("display", "block");
   	}
   });
-  //var leftHeight = $(".column-left").height();
-  //var calcHeight = leftHeight - $(".gallery-button").height() - 15 - 24;
-  //$(".video").css("height", calcHeight);
 });
 
 
