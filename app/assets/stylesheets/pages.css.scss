@@ -49,6 +49,7 @@ body, html {
   width: 32em;
   max-width: 100%;
   margin: 0 auto;
+  text-align: center;
   img {
     width: 40%;
     margin: 0 30% 1em;
@@ -79,6 +80,16 @@ body, html {
     font-size: 1em;
     text-transform: uppercase;
     margin-top: -5px;
+
+    &.scroll {
+      display: inline-block;
+      margin-top: 2em;
+      font-size: 0.7em;
+      background: white;
+      color: #525C5B;
+      padding: 4px 6px;
+      font-weight: 400;
+    }
   }
 }
 
@@ -114,8 +125,10 @@ body, html {
   }
   .button-plain {
     font-size: 0.7em;
+    text-decoration: underline;
 
     &:hover {
+      text-decoration: none;
       background-color: white;
       color: #2A2A2A;
       font-weight: 200;
@@ -155,29 +168,7 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
-  // z-index: -2;
 }
-// input[type="email"] {
-//   background-color: transparent;
-//   display: block;
-//   border: 2px solid #FFFFFF;
-//   padding: 10px 0;
-//   margin-top: 15%;
-//   color: #FFFFFF;
-//   text-align: center;
-//   font-family: 'Source Code Pro',sans-serif;
-//   text-transform: uppercase;
-//   font-size: .7em;
-//   border-radius: 3px;
-//   -webkit-border-radius: 3px;
-//   -moz-border-radius: 3px;
-//   width: 98%;
-//   margin: 13% auto 0 auto;
-//   &:focus {
-//     outline: none;
-//     color: #FFFFFF;
-//   }
-// }
 #error_explanation {
   background-color: #894242;
   display: inline-block;
