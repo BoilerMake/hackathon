@@ -10,8 +10,12 @@
     %p.flickerIn Oct. 16–18 | Purdue University
     - if current_user.present?
       %div.button-row
-        = link_to dashboard_url do
-          %button.button.flickerIn Dashboard
+        - if current_user.exec?
+          = link_to execs_dashboard_url do
+            %button.button.flickerIn Dashboard
+        - else
+          = link_to dashboard_url do
+            %button.button.flickerIn Dashboard
         = link_to logout_url do
           %button.button.flickerIn Log Out
     - else
