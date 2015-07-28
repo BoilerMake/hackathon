@@ -39,13 +39,12 @@ body, html {
   opacity: 0;
 }
 
-.content {
+.vertical-center {
   position: relative;
   top: 50vh;
   transform: translateY(-50%);
 }
 .cover {
-  position: static;
   display: block;
   width: 32em;
   max-width: 100%;
@@ -54,13 +53,6 @@ body, html {
     width: 40%;
     margin: 0 30% 1em;
     border-radius: 1000px;
-    user-drag: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-user-drag: none;
-    user-drag: none;
 
     &.flickerOver {
       box-shadow: 0 0 40px white;
@@ -314,7 +306,8 @@ input:focus {
   background-color: white;
   height: 70px;
   padding-top: 5px;
-  box-shadow: 0 1px 10px #ADADAD;
+  box-shadow: 0 1px 10px #333333;
+  z-index: 100;
   .nav-content {
     width: 80%;
     margin: 0 auto;
@@ -354,24 +347,35 @@ input:focus {
 .about {
   background-size: cover;
   background-color: white;
-  height: 100vh;
+  padding: 80px 0;
+  margin-top: -70px;
   .body-content {
-    margin: 60px auto;
+    margin: 0 auto;
     width: 80%;
-    .column-left {
+    max-width: 40em;
+    .col {
       width: 45%;
-      float: left;
+      display: inline-block;
+      margin-right: 5%;
+      vertical-align: top;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+    .column-left {
       font-family: 'Source Sans Pro', sans-serif;
       font-size: .95em;
       font-weight: 300;
       color: #333333;
     }
     .column-right {
-      width: 50%;
-      float: right;
-      padding-left: 5%;
+      margin-right: 0;
       .video {
-        background-color: #879796;
+        display: block;
+        background: url('video-preview.jpg');
+        background-size: cover;
+        background-position: center;
         width: 100%;
         height: 50px;
         margin-bottom: 15px;
@@ -423,13 +427,14 @@ input:focus {
 
 .faq {
   background-size: cover;
-  background-color: #C4CBCB;
-  height: 100vh;
+  background-color: #525C5B;
+  min-height: 100vh;
+  padding: 40px 0;
   .body-content {
     margin: 0 auto;
     width: 80%;
+    max-width: 40em;
     h2 {
-      padding-top: 60px;
       font-family: 'Source Sans Pro', sans-serif;
       font-size: 2.3em;
       text-align: left;
@@ -443,20 +448,25 @@ input:focus {
       width: 31%;
       margin-right: 3%;
       float: left;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        margin-right: 0;
+      }
     }
     .col-last {
-      width: 31%;
-      margin: 0;
-      float: left;
+      margin-right: 0;
     }
     .clear {
       clear: both;
     }
     h4 {
       font-family: 'Source Sans Pro', sans-serif;
-      color: #879796;
+      color: #525C5B;
       font-size: 0.75em;
       text-align: left;
+      background-color: white;
+      box-sizing: border-box;
+      padding: 6px;
       text-transform: uppercase;
       margin-bottom: 5px;
       margin-top: 5px;
