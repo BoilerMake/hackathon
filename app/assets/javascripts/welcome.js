@@ -13,4 +13,31 @@ $(document).ready(function(){
   }).on('ajax:error', function(e, data, status, error){
     console.log(error);
   });
+  var origTop = null;
+  $(window).on("scroll", function(e) {
+  	var scrollTop, navTop, isFixed;
+  	var nav = $('.navigation');
+  	scrollTop = $(window).scrollTop();
+  	navTop = nav.offset().top;
+  	isFixed = nav.hasClass('fix-div');
+  	console.log("scrollTop: " + scrollTop);
+  	console.log("navTop: " + navTop);
+  	console.log("OrigTop: " + origTop);
+  	if (origTop === null) {
+  		origTop = navTop;
+  	}
+  	if (isFixed && scrollTop <= origTop) {
+  		nav.removeClass('fix-div');
+  		$('.replace-div').css("display", "none");
+  	} else if (scrollTop >= navTop && !isFixed) {
+  		console.log("HEREEREJREIOJREOI");
+  		nav.addClass('fix-div');
+  		$('.replace-div').css("display", "block");
+  	}
+  });
+  var leftHeight = $(".column-left").height();
+  var calcHeight = leftHeight - $(".gallery-button").height() - 15 - 24;
+  $(".video").css("height", calcHeight);
 });
+
+

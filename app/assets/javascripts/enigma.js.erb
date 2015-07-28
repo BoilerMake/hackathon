@@ -36,8 +36,8 @@
     canvas: 0,
     ctx: 0,
     settings: {
-      width: window.innerWidth * 1.2,
-      height: window.innerHeight * 1.2,
+      width: window.innerWidth,
+      height: window.innerHeight,
       size: 22,
       scaledSize: 22 * 4,
       lineWidth: 1.2,
@@ -117,8 +117,8 @@
     });
   },
   resizeEvent: function(coreLoop) {
-    s.width = window.innerWidth * 1.2;
-    s.height = window.innerHeight * 1.2;
+    s.width = window.innerWidth;
+    s.height = window.innerHeight;
     Enigma.canvas.height = s.height;
     Enigma.canvas.width = s.width;
     Enigma.ctx = Enigma.canvas.getContext("2d");

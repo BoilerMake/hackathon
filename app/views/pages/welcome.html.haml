@@ -1,59 +1,102 @@
 =render "shared/flash.html.haml"
-%div.bg-image#bg
-  %canvas#background This text is displayed if your browser does not support HTML5 Canvas.
+%div#container-scroll
+  %div.bg-image#bg
+    %canvas#background This text is displayed if your browser does not support HTML5 Canvas.
 
+  .main-content
+    .cover.vertical-center
+      =image_tag("logo-thin-white.svg", class: "flickerIn")
+      %h1.flickerIn BoilerMake
+      %p.flickerIn Oct. 16–18 | Purdue University
+      - if current_user.present?
+        %div.button-row
+          - if current_user.exec?
+            = link_to execs_dashboard_url do
+              %button.button.flickerIn Dashboard
+          - else
+            = link_to dashboard_url do
+              %button.button.flickerIn Dashboard
+          = link_to logout_url do
+            %button.button.flickerIn Log Out
+      - else
+        %div.button-row
+          %button.button.flickerIn#applyButton{onclick: 'showForm("#signupForm")'} Apply
+          %a{href: 'mailto:sponsorship@boilermake.org'}
+            %button.button.flickerIn Sponsor
+        %div.button-row
+          %button.button-plain.flickerIn{onclick: 'showForm("#loginForm")'} Already Registered?
 
-%div.content
-  .cover
-    =image_tag("logo-thin-white.svg", class: "flickerIn")
-    %h1.flickerIn BoilerMake
-    %p.flickerIn Oct. 16–18 | Purdue University
-    - if current_user.present?
+  %div.full-form#signupForm{style: 'display: none;'}
+    = form_for @hacker do |f|
+      = f.label :email
+      = f.email_field :email
+      = f.label :password
+      = f.password_field :password
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+      .button-row
+        = f.submit "Register", class: 'button'
+        = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
+    - if @should_skip_intro
+      = javascript_tag do
+        window.shouldSkipIntro = true;
+
+  %div.full-form#loginForm{style: 'display: none;'}
+    = form_tag sessions_path do
+      = label_tag 'Email'
+      = email_field_tag :email, nil
+      = label_tag 'Password'
+      = password_field_tag :password, nil
       %div.button-row
-        - if current_user.exec?
-          = link_to execs_dashboard_url do
-            %button.button.flickerIn Dashboard
-        - else
-          = link_to dashboard_url do
-            %button.button.flickerIn Dashboard
-        = link_to logout_url do
-          %button.button.flickerIn Log Out
-    - else
-      %div.button-row
-        %button.button.flickerIn#applyButton{onclick: 'showForm("#signupForm")'} Apply
-        %a{href: 'mailto:sponsorship@boilermake.org'}
-          %button.button.flickerIn Sponsor
-      %div.button-row
-        %button.button-plain.flickerIn{onclick: 'showForm("#loginForm")'} Already Registered?
+        = submit_tag 'log in', { class: 'button' }
+        = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
+  .replace-div
+  .navigation
+    .nav-content
+      %span.logo
+        = image_tag("bm_logo_basic.png")
+      %span.nav-links
+        = link_to 'About', '#about'
+        = link_to 'FAQs', '#faq'
 
-%div.full-form#signupForm{style: 'display: none;'}
+  .about#about
+    .body-content
+      %h2 About
+      .col.column-left
+        BoilerMake is the premier hacking experience for 500 students from across the U.S. and Canada.  At the event, hackers form teams of up to four and create something entirely from scratch within the 36-hour period while interacting with recruiters and engineers from top tech companies.  Everything is on us, including swag, food, and hardware to hack on, so apply today and join us for a weekend where you will be mentored, challenged, and inspired. Check out our video from last year!
+      .col.column-right
+        / %iframe{:src => "https://www.youtube.com/embed/Wgs1nLJKqNY" :width => '100px'}
+        %a.video{:href => "https://www.youtube.com/watch?v=Wgs1nLJKqNY"}
+        / %iframe{:width => "560" :height => "315" :src => "https://www.youtube.com/embed/Wgs1nLJKqNY", :frameborder => "0" :allowfullscreen}
+        %a.gallery-button{:href => "https://www.flickr.com/photos/austinlouden/sets/72157650067773245"}
+          BoilerMake 2014 Gallery
+      .clear
 
-  = form_for @hacker do |f|
-    = f.label :email
-    = f.email_field :email
-    = f.label :password
-    = f.password_field :password
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation
-    .button-row
-      = f.submit "Register", class: 'button'
-      = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
-  - if @should_skip_intro
-    = javascript_tag do
-      window.shouldSkipIntro = true;
-
-%div.full-form#loginForm{style: 'display: none;'}
-  = form_tag sessions_path do
-    = label_tag 'Email'
-    = email_field_tag :email, nil
-    = label_tag 'Password'
-    = password_field_tag :password, nil
-    %div.button-row
-      = submit_tag 'log in', { class: 'button' }
-      = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
-
-%h3.bottom-message
-  Funded by the
-  = link_to 'Student Activity Fee Fund', 'http://www.purduesg.com/sfab/'
+  .faq#faq
+    .body-content
+      %h2 FAQs
+      .col
+        %h4 Can I edit my application?
+        %p Yes, you can edit all of your information up until our application deadline
+        %h4 I have no experience. Should I apply?
+        %p Yes! Hackathons are a melting pot for learning new technologies and innovation. Companies will have mentors there who are willing to help you overcome any problems you are having.
+        %h4 How do I get there?
+        %p If an area or school get’s enough applicants we will send a bus there and there will be a bus coordinator for that area. There are some specific cases where we will provide travel reimbursement. If you are very eager to come and didn’t get accepted and want to drive yourself be sure to let us know at team@boilermake.org.
+      .col
+        %h4 When do applications close?
+        %p September 13th 11:59pm EST is when applications are closed.
+        %h4 Wait I didn't see a team option on the application?
+        %p That was intentional! The only time we will be asking you for your teammates is when you submit your hack for judging. If a hacker you were planning to team with didn’t get accepted please notify us at team@boilermake.org and we will help you out.
+        %h4 I want a team/I want to work solo
+        %p It’s common for people to work solo or meet hackers at the event and form a team once you get there. Don’t stress out about not having a team!
+        
+      .col.col-last
+        %h4 I'm not in college can I still apply?
+        %p Yes, we encourage you to apply!
+        %h4 You mentioned "bus coordinator" what/who is that?
+        %p Every school that we send a bus to will have a bus coordinator. They will be your main contact about anything BoilerMake related. With acceptances we will give you the contact info of your coordinator. They will be the one at your school responsible for filling the bus and making sure you are on the bus ride home.
+        
+       
+      .clear
 
 = render "shared/header"
