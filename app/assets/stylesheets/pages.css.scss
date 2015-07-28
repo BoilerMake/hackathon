@@ -35,60 +35,25 @@ body, html {
   100% { opacity: 1; }
 }
 
-.bg-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url('boards_bg_faded2.jpg');
-  background-size: cover;
-  background-position: center;
-  z-index: -30;
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0.1;
-    background-color: #2A2A2A;
-    z-index: -20;
-  }
-  #background {
-    z-index: -10;
-  }
-}
-
 .flickerIn {
   opacity: 0;
 }
 
-.content {
+.vertical-center {
   position: relative;
   top: 50vh;
   transform: translateY(-50%);
 }
 .cover {
-  position: static;
   display: block;
   width: 32em;
   max-width: 100%;
   margin: 0 auto;
-
+  text-align: center;
   img {
     width: 40%;
     margin: 0 30% 1em;
     border-radius: 1000px;
-    user-drag: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-user-drag: none;
-    user-drag: none;
 
     &.flickerOver {
       box-shadow: 0 0 40px white;
@@ -115,6 +80,18 @@ body, html {
     font-size: 1em;
     text-transform: uppercase;
     margin-top: -5px;
+  }
+  .scrolldown {
+    opacity: 0.35;
+    p {
+      display: inline-block;
+      margin-top: 2em;
+      font-size: 0.7em;
+      background: white;
+      color: #525C5B;
+      padding: 4px 6px;
+      font-weight: 400;
+    }
   }
 }
 
@@ -150,8 +127,10 @@ body, html {
   }
   .button-plain {
     font-size: 0.7em;
+    text-decoration: underline;
 
     &:hover {
+      text-decoration: none;
       background-color: white;
       color: #2A2A2A;
       font-weight: 200;
@@ -191,29 +170,7 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
-  // z-index: -2;
 }
-// input[type="email"] {
-//   background-color: transparent;
-//   display: block;
-//   border: 2px solid #FFFFFF;
-//   padding: 10px 0;
-//   margin-top: 15%;
-//   color: #FFFFFF;
-//   text-align: center;
-//   font-family: 'Source Code Pro',sans-serif;
-//   text-transform: uppercase;
-//   font-size: .7em;
-//   border-radius: 3px;
-//   -webkit-border-radius: 3px;
-//   -moz-border-radius: 3px;
-//   width: 98%;
-//   margin: 13% auto 0 auto;
-//   &:focus {
-//     outline: none;
-//     color: #FFFFFF;
-//   }
-// }
 #error_explanation {
   background-color: #894242;
   display: inline-block;
@@ -331,5 +288,190 @@ input:focus {
   &.alert-info {
     border-color: white;
     color: white;
+  }
+}
+.main-content {
+  background-size: cover;
+  background-image: url('boards_bg_faded2.jpg');
+  background-attachment: fixed;
+  height: 100vh;
+}
+.navigation {
+  background-color: white;
+  height: 70px;
+  padding-top: 5px;
+  box-shadow: 0 1px 10px #333333;
+  z-index: 100;
+  .nav-content {
+    width: 80%;
+    margin: 0 auto;
+    span.logo {
+    display: inline-block;
+    width: 20%;
+    text-align: left;
+      img {
+        height: 60px;
+      }
+    }
+    span.nav-links {
+      display: inline-block;
+      width: 70%;
+      float: right;
+      text-align: right;
+      margin-top: 13px;
+      a {
+        margin: 0;
+        display: inline-block;
+        padding: 6px 10px;
+        font-family: 'Source Code Pro', sans-serif;
+        text-transform: uppercase;
+        font-size: 0.85em;
+        color: #333333;
+        margin-left: 10px;
+      }
+      a:hover {
+        text-decoration: none;
+        background-color: #755853;
+        color: white;
+        border-radius: 2px;
+      }
+    }
+  }
+}
+.about {
+  background-size: cover;
+  background-color: white;
+  padding: 80px 0;
+  margin-top: -70px;
+  .body-content {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 40em;
+    .col {
+      width: 45%;
+      display: inline-block;
+      margin-right: 5%;
+      vertical-align: top;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+    .column-left {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: .95em;
+      font-weight: 300;
+      color: #333333;
+    }
+    .column-right {
+      margin-right: 0;
+      .video {
+        display: block;
+        background: url('video-preview.jpg');
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 15px;
+      }
+      a.gallery-button {
+        display: block;
+        border-radius: 2px;
+        border: 1px solid #879796;
+        text-align: center;
+        color: #879796;
+        font-family: 'source-code-pro', 'Source Code Pro', sans-serif;
+        font-size: 0.7em;
+        padding: 12px 0;
+        cursor: pointer;
+        text-decoration: none;
+        text-transform: uppercase;
+        &:hover {
+          background-color: #879796;
+          color: white;
+        }
+      }
+    }
+    .clear {
+      clear: both;
+    }
+    h2 {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 2.3em;
+      text-align: left;
+      color: #755853;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 60px;
+      margin-bottom: 20px;
+    }
+  }
+}
+.fix-div {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.replace-div {
+  padding: 30px 60px;
+  height: 75px;
+  display: none;
+}
+
+.faq {
+  background-size: cover;
+  background-color: #525C5B;
+  min-height: 100vh;
+  padding: 40px 0;
+  .body-content {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 40em;
+    h2 {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 2.3em;
+      text-align: left;
+      color: #FFFFFF;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+    .col {
+      width: 31%;
+      margin-right: 3%;
+      float: left;
+      @media screen and (max-width: 768px) {
+        width: 100%;
+        margin-right: 0;
+      }
+    }
+    .col-last {
+      margin-right: 0;
+    }
+    .clear {
+      clear: both;
+    }
+    h4 {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: #525C5B;
+      font-size: 0.75em;
+      text-align: left;
+      background-color: white;
+      box-sizing: border-box;
+      padding: 6px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    p {
+      font-family: 'Source Sans Pro', sans-serif;
+      color: #FFFFFF;
+      font-size: 0.75em;
+      text-align: left;
+      font-weight: 300;
+      margin-bottom: 25px;
+    }
   }
 }

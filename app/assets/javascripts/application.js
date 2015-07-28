@@ -16,6 +16,6 @@
 //= require excellentexport
 //= require bootstrap-dropdown
 //= require bootstrap-modal
-//= require jquery.ui.all
+//= require jquery-ui
 //= require s3_file_field
 //= require_tree .
