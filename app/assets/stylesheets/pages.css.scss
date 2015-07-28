@@ -293,6 +293,7 @@ input:focus {
 .main-content {
   background-size: cover;
   background-image: url('boards_bg_faded2.jpg');
+  background-attachment: fixed;
   height: 100vh;
 }
 .navigation {
