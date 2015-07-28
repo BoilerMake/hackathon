@@ -23,7 +23,7 @@
       canvas.height = canvas.height * scaleFactor;
       // update the context for the new canvas scale
       canvas.getContext("2d").scale(scaleFactor, scaleFactor);
-      canvas.style.width = oldWidth + "px";
+      canvas.style.width = "100%";
       canvas.style.height = oldHeight + "px";
     }
   };
@@ -119,7 +119,7 @@
   },
   userActions: function(coreLoop) {
     window.addEventListener('resize', function() {
-      Enigma.resizeEvent(coreLoop);
+      if (Enigma && Enigma.resizeEvent(coreLoop));
     });
   },
   resizeEvent: function(coreLoop) {
@@ -200,7 +200,7 @@
     }
   };
   window.onload = function() {
-    console.log(window.isMobile());
+    // console.log(window.isMobile());
     if (!window.shouldSkipIntro && !window.isMobile()){
       Enigma.init();
     }
