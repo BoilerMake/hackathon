@@ -24,4 +24,7 @@ Rails.application.routes.draw do
 
   resources :sessions
   resources :password_resets
+
+  get 'slack_integrations/applicants_by_school'
+
 end
