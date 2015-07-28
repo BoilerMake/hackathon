@@ -25,7 +25,8 @@
             %button.button.flickerIn Sponsor
         %div.button-row
           %button.button-plain.flickerIn{onclick: 'showForm("#loginForm")'} Already Registered?
-      %p.flickerIn.scroll scroll down
+      .scrolldown
+        %p.flickerIn scroll down
 
   %div.full-form#signupForm{style: 'display: none;'}
     = form_for @hacker do |f|

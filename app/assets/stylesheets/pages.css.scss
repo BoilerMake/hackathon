@@ -80,8 +80,10 @@ body, html {
     font-size: 1em;
     text-transform: uppercase;
     margin-top: -5px;
-
-    &.scroll {
+  }
+  .scrolldown {
+    opacity: 0.35;
+    p {
       display: inline-block;
       margin-top: 2em;
       font-size: 0.7em;
