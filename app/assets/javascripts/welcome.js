@@ -35,9 +35,9 @@ $(document).ready(function(){
   		$('.replace-div').css("display", "block");
   	}
   });
-  var leftHeight = $(".column-left").height();
-  var calcHeight = leftHeight - $(".gallery-button").height() - 15 - 24;
-  $(".video").css("height", calcHeight);
+  //var leftHeight = $(".column-left").height();
+  //var calcHeight = leftHeight - $(".gallery-button").height() - 15 - 24;
+  //$(".video").css("height", calcHeight);
 });
 
 
