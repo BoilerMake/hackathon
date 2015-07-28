@@ -4,7 +4,7 @@
     %canvas#background This text is displayed if your browser does not support HTML5 Canvas.
 
   .main-content
-    .cover
+    .cover.vertical-center
       =image_tag("logo-thin-white.svg", class: "flickerIn")
       %h1.flickerIn BoilerMake
       %p.flickerIn Oct. 16–18 | Purdue University
@@ -51,23 +51,23 @@
       %span.logo
         = image_tag("bm_logo_basic.png")
       %span.nav-links
-        = link_to 'About', logout_path
-        = link_to 'FAQs', logout_path
-        = link_to 'Sponsors', logout_path
-        = link_to 'Apply', logout_path
+        = link_to 'About', '#about'
+        = link_to 'FAQs', '#faq'
 
-  .about
+  .about#about
     .body-content
       %h2 About
-      .column-left
+      .col.column-left
         BoilerMake is the premier hacking experience for 500 students from across the U.S. and Canada.  At the event, hackers form teams of up to four and create something entirely from scratch within the 36-hour period while interacting with recruiters and engineers from top tech companies.  Everything is on us, including swag, food, and hardware to hack on, so apply today and join us for a weekend where you will be mentored, challenged, and inspired. Check out our video from last year!
-      .column-right
-        .video
-        %a.gallery-button
+      .col.column-right
+        / %iframe{:src => "https://www.youtube.com/embed/Wgs1nLJKqNY" :width => '100px'}
+        %a.video{:href => "https://www.youtube.com/watch?v=Wgs1nLJKqNY"}
+        / %iframe{:width => "560" :height => "315" :src => "https://www.youtube.com/embed/Wgs1nLJKqNY", :frameborder => "0" :allowfullscreen}
+        %a.gallery-button{:href => "https://www.flickr.com/photos/austinlouden/sets/72157650067773245"}
           BoilerMake 2014 Gallery
       .clear
 
-  .faq
+  .faq#faq
     .body-content
       %h2 FAQs
       .col
@@ -85,7 +85,7 @@
         %h4 I want a team/I want to work solo
         %p It’s common for people to work solo or meet hackers at the event and form a team once you get there. Don’t stress out about not having a team!
         
-      .col-last
+      .col.col-last
         %h4 I'm not in college can I still apply?
         %p Yes, we encourage you to apply!
         %h4 You mentioned "bus coordinator" what/who is that?
