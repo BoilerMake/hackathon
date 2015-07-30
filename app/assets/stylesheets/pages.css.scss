@@ -301,7 +301,7 @@ input:focus {
   background-color: white;
   height: 70px;
   padding-top: 5px;
-  box-shadow: 0 1px 10px #333333;
+  box-shadow: 0 1px 10px rgba(50, 50, 50, .5);
   z-index: 100;
   .nav-content {
     width: 80%;
