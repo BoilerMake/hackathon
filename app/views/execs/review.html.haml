@@ -1,0 +1,15 @@
+.container
+  %h1
+    = "Welcome, #{current_user.email}"
+  %h2
+    HACKER REVIEW
+  %table{:border => 1, class: 'table'}
+    %tbody
+      %tr
+        %td Name
+        %td School
+      - @hackers.each do |object|
+        %tr
+          %td
+            %a{href: "hacker_detail/#{object.id}"}= "#{object.first_name} #{object.last_name}"
+          %td= "#{object.school.name}, #{object.school.state}, #{object.school.country} ( #{object.school.category})"
