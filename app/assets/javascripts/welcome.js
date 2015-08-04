@@ -15,6 +15,7 @@ $(document).ready(function(){
   	scrollTop = $(window).scrollTop();
   	navTop = nav.offset().top;
   	isFixed = nav.hasClass('fix-div');
+
   	if (origTop === null) {
   		origTop = navTop;
   	}
@@ -22,7 +23,7 @@ $(document).ready(function(){
   		nav.removeClass('fix-div');
   		$('.replace-div').css("display", "none");
   	} else if (scrollTop >= navTop && !isFixed) {
-  		console.log("HEREEREJREIOJREOI");
+  		// console.log("HEREEREJREIOJREOI");
   		nav.addClass('fix-div');
   		$('.replace-div').css("display", "block");
   	}
