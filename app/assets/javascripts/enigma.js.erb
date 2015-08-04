@@ -29,6 +29,7 @@
   };
   var flickerOver = function(){
     $('.flickerIn').css('opacity', '1').removeClass('flickerIn').addClass('flickerOver');
+    $('#scrollBtn').removeAttr("style");
   }
   var CIRCLE = Math.PI * 2;
   var gone = 0;

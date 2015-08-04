@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'execs/export'
   get 'execs/shirts' => 'execs#shirts'
 
+  get 'execs/review'
+  get 'execs/hacker_detail/:hacker_id' => 'execs#hacker_detail'
+
   resources :interest_signups, only: [:create]
   resources :updates, only: [:index, :new, :create]
   get 'confirm', to: 'hackers#confirm'
@@ -22,6 +25,7 @@ Rails.application.routes.draw do
   resources :schools
   resources :hackers, except: [:index, :destroy]
 
+  resources :hacker_rankings
   resources :sessions
   resources :password_resets
 
