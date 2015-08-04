@@ -1,0 +1,139 @@
+%h1= "Reviewing HACKER: #{@hacker.first_name} #{@hacker.last_name} FROM #{@hacker.school.name}"
+.row
+  .col-md-6
+    .row
+      .col-md-6
+        .panel.panel-default
+          .panel-heading
+            .panel-title
+              ="Essays"
+          .panel-body
+            %h4="Q:What do you love about computers?"
+            %p="A: #{@hacker.application.essay1}"
+            %hr
+            %h4="Q:What's the coolest thing you have done in the last 12 months"
+            %p="A: #{@hacker.application.essay2}"
+        %br
+          .panel.panel-default
+            .panel-heading
+              .panel-title
+                ="Github:"
+                %a{href: @hacker_github_info['profile']['html_url'], target: "blank"}="@#{@hacker_github_info['profile']['login']}"
+            .panel-body
+              %table{:border => 1, class: 'table table-striped'}
+                %tbody
+                  %tr
+                    %td public_repos
+                    %td= @hacker_github_info['profile']['public_repos']
+                  %tr
+                    %td public_gists
+                    %td= @hacker_github_info['profile']['public_gists']
+                  %tr
+                    %td followers
+                    %td= @hacker_github_info['profile']['followers']
+                  %tr
+                    %td following
+                    %td= @hacker_github_info['profile']['following']
+                  %tr
+                    %td blog url
+                    %td
+                      %a{href: @hacker_github_info['profile']['blog'], target: "blank"}="#{@hacker_github_info['profile']['blog']}"
+              %h3 repositories sorted by activity date
+              - @hacker_github_info['repos'].take(4).each do |repo|
+                %table{:border => 1, class: 'table table-striped'}
+                  %tbody
+                    %tr
+                      %td name
+                      %td
+                        %a{href: repo['html_url'], target: "blank"}="#{repo['full_name']}"
+                    %tr
+                      %td description
+                      %td=repo['description']
+                    %tr
+                      %td language
+                      %td=repo['language']
+                    %tr
+                      %td creation date
+                      %td=repo['created_at']
+                    %tr
+                      %td last pushed
+                      %td=repo['pushed_at']
+                    %tr
+                      %td # of stars
+                      %td=repo['stargazers_count']
+                    %tr
+                      %td # of watchers
+                      %td=repo['watchers_count']
+                              
+      .col-md-6
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              ="User Control"
+          .panel-body
+            = form_for @hacker_ranking, remote: true, "data-type" => :json do |f|
+              %h3 your ranking:	
+              .field
+                = f.number_field :ranking, placeholder: "ranking", class: 'second-input'
+              .submit
+                = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title Diversity
+          .panel-body
+            %table{:border => 1, class: 'table table-striped'}
+              %tbody
+                %tr
+                  %td Gender
+                  %td= @hacker.application.gender
+                %tr
+                  %td Race
+                  %td= @hacker.application.race
+                %tr
+                  %td Ethnicity
+                  %td= @hacker.application.ethnicity
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              ="Education"
+          .panel-body
+            %table{:border => 1, class: 'table table-striped'}
+              %tbody
+                %tr
+                  %td School
+                  %td= "#{@hacker.school.name}, #{@hacker.school.state}, #{@hacker.school.country} ( #{@hacker.school.category})"
+                %tr
+                  %td Degree
+                  %td= @hacker.application.degree
+                  
+                %tr
+                  %td Major
+                  %td= @hacker.application.major
+                %tr
+                  %td Graduation Date
+                  %td= @hacker.application.grad_date
+        .panel.panel-default
+          .panel-heading
+            %h3.panel-title
+              ="Other"
+          .panel-body
+            %table{:border => 1, class: 'table table-striped'}
+              %tbody
+                %tr
+                  %td Status
+                  %td= @hacker.status
+                %tr
+                  %td Application Created
+                  %td= @hacker.created_at
+                %tr
+                  %td Application Last Updated
+                  %td= @hacker.updated_at
+
+  .col-md-6
+    %h1 resume
+    %a{href: @hacker.application.resume, target: "blank"}="open in new tab"
+    %object{data: "#{@hacker.application.resume}", width: "100%", height: "1000px"}
+      %p 
+        ="either your browser can't embed PDFS or this applicant is a n00b and uploaded a .doc resume or something"
+        %a{href: "#{@hacker.application.resume}", target: "_blank", type:"application/pdf"}
+          ="check it out here though"

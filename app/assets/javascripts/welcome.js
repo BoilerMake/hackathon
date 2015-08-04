@@ -29,5 +29,6 @@ $(document).ready(function(){
   	}
   });
 });
-
-
+$('#scrollBtn').on('click', function(event){     
+    console.log("clicked");
+});
