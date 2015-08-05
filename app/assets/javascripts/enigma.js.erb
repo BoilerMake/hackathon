@@ -23,12 +23,13 @@
       canvas.height = canvas.height * scaleFactor;
       // update the context for the new canvas scale
       canvas.getContext("2d").scale(scaleFactor, scaleFactor);
-      canvas.style.width = oldWidth + "px";
-      canvas.style.height = oldHeight + "px";
+      canvas.style.width = "100%";
+      canvas.style.height = "100%";
     }
   };
   var flickerOver = function(){
     $('.flickerIn').css('opacity', '1').removeClass('flickerIn').addClass('flickerOver');
+    $('#scrollBtn').removeAttr("style");
   }
   var CIRCLE = Math.PI * 2;
   var gone = 0;
@@ -119,7 +120,7 @@
   },
   userActions: function(coreLoop) {
     window.addEventListener('resize', function() {
-      Enigma.resizeEvent(coreLoop);
+      if (Enigma && Enigma.resizeEvent(coreLoop));
     });
   },
   resizeEvent: function(coreLoop) {
@@ -200,7 +201,7 @@
     }
   };
   window.onload = function() {
-    console.log(window.isMobile());
+    // console.log(window.isMobile());
     if (!window.shouldSkipIntro && !window.isMobile()){
       Enigma.init();
     }

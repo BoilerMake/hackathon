@@ -2,6 +2,7 @@ class Hacker < User
   belongs_to :school
   belongs_to :team
   has_one :application
+  has_many :hacker_ranking
 
   validate :team_size_is_okay
 

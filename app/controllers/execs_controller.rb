@@ -68,9 +68,47 @@ class ExecsController < ApplicationController
     @school_count = @schools.count
 
   end
+  def review
+    @hackers = Hacker.all
+  end
+
+  def hacker_detail
+    @hacker = Hacker.find params[:hacker_id]
+    @hacker_github_info = get_github_info @hacker
+
+    query = HackerRanking.where("hacker_id = ? and exec_id = ?", @hacker.id, current_user.id)
+    if(query.any?)
+      @hacker_ranking = query.first
+    else
+      @hacker_ranking = HackerRanking.create(exec_id: current_user.id, hacker_id: @hacker.id)
+    end
+  end
 
   private
   def difference_in_days earliest, latest
     ( (latest - earliest) / (60 * 60 * 24) ).floor
+  end
+  def get_github_info(hacker)
+    require 'uri'
+    require 'net/http'
+    info = Hash.new
+    
+    github_username=URI(@hacker.application.github).path.split('/').last
+
+    parsed_url = URI.parse("https://api.github.com/users/#{github_username}")
+    http = Net::HTTP.new(parsed_url.host, parsed_url.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(parsed_url.request_uri)
+    request.basic_auth ENV['github_api_username'], ENV['github_api_secret']
+    info['profile']= ActiveSupport::JSON.decode(http.request(request).body)
+
+    parsed_url = URI.parse("https://api.github.com/users/#{github_username}/repos?sort=updated")
+    http = Net::HTTP.new(parsed_url.host, parsed_url.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(parsed_url.request_uri)
+    request.basic_auth ENV['github_api_username'], ENV['github_api_secret']
+    info['repos']= ActiveSupport::JSON.decode(http.request(request).body)
+
+    return info
   end
 end
