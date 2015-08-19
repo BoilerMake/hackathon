@@ -1,9 +1,9 @@
-=render "shared/flash.html.haml"
 %div#container-scroll
   %div.bg-image#bg
     %canvas#background This text is displayed if your browser does not support HTML5 Canvas.
 
   .main-content
+    =render "shared/flash.html.haml"
     .cover.vertical-center
       =image_tag("logo-thin-white.svg", class: "flickerIn")
       %h1.flickerIn BoilerMake
