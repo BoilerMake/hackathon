@@ -82,15 +82,23 @@ body, html {
     margin-top: -5px;
   }
   .scrolldown {
-    opacity: 0.35;
-    p {
+    p, a {
+      opacity: 0.35;
       display: inline-block;
       margin-top: 2em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      text-align: center;
+      font-family: 'Source Code Pro', sans-serif;
       font-size: 0.7em;
       background: white;
       color: #525C5B;
       padding: 4px 6px;
       font-weight: 400;
+    }
+    a:hover {
+      opacity: 1;
+      text-underline: none;
     }
   }
 }
@@ -301,7 +309,7 @@ input:focus {
   background-color: white;
   height: 70px;
   padding-top: 5px;
-  box-shadow: 0 1px 10px #333333;
+  box-shadow: 0 1px 10px rgba(50, 50, 50, .5);
   z-index: 100;
   .nav-content {
     width: 80%;
