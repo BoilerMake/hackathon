@@ -1,7 +1,7 @@
 - flash.each do |name, msg|
   - if name == 'alert'
-    = content_tag :div, msg, class: 'alert alert-danger' # red flash
+    = content_tag :div, msg, class: 'alert alert-danger flash-alert' # red flash
   - elsif name =='success'
-    = content_tag :div, msg, class: 'alert alert-success' # green flash
+    = content_tag :div, msg, class: 'alert alert-success flash-alert' # green flash
   - else # normally a :notice
-    = content_tag :div, msg, class: 'alert alert-info' # blue flash
+    = content_tag :div, msg, class: 'alert alert-info flash-alert' # blue flash

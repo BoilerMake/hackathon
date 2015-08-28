@@ -7,7 +7,7 @@ body, html {
   margin: 0;
   padding: 0;
   font-size: 20px;
-
+  overflow-x:hidden;
   @media screen and (max-width: 768px) {
     font-size: 16px;
   }
@@ -82,15 +82,23 @@ body, html {
     margin-top: -5px;
   }
   .scrolldown {
-    opacity: 0.35;
-    p {
+    p, a {
+      opacity: 0.35;
       display: inline-block;
       margin-top: 2em;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      text-align: center;
+      font-family: 'Source Code Pro', sans-serif;
       font-size: 0.7em;
       background: white;
       color: #525C5B;
       padding: 4px 6px;
       font-weight: 400;
+    }
+    a:hover {
+      opacity: 1;
+      text-underline: none;
     }
   }
 }
@@ -476,4 +484,12 @@ input:focus {
       margin-bottom: 25px;
     }
   }
+}
+.flash-alert {
+  margin-top: 0px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
