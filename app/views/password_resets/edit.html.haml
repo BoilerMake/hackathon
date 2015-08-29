@@ -1,43 +1,9 @@
-= content_for :extra_css do
-  = stylesheet_link_tag 'hackers'
-.header
-  .container
-    .logo
-    - if current_user.nil?
-      %a#login.button.outline{:style => "cursor:pointer;"} Log In
-      = form_tag sessions_path, id: 'login-form' do
-        = email_field_tag :email, nil,
-          { style: 'display:none;margin-top:35px', id: 'emaillogin',
-            class: 'flat-input sign-up', placeholder: 'Email'}
-        .clearfix
-        = password_field_tag :password, nil,
-          { style: 'display:none;', id: 'passwordlogin',
-            class: 'flat-input sign-up', placeholder: 'Password' }
-        .clearfix
-        %p.login-text
-          %input.login-text{:type => "checkbox"}
-          Remember Me
-        %a.login-text#forgotpassword Forgot Password
-        = submit_tag :Submit,
-          { style: 'display:none;', id: 'submitlogin',
-            class: 'flat-button submit' }
-    - else
-      = link_to 'Log Out', logout_path, class: 'button outline'
-  = render 'shared/flash.html.haml'
-
-.forgotpassword-reset
-  %h1 Let's get you back up and running.
-  %p Enter a password that you'll love.
-  = form_for @user, url: password_reset_path(params[:id]) do |f|
-    - if @user.errors.any?
-      .error_messages
-        %h2 Form is invalid
-        %ul
-          - for message in @user.errors.full_messages
-            %li= message
-    .field
-      = f.password_field :password, {class: 'flat-input', placeholder: 'New Password'}
-    .field
-      = f.password_field :password_confirmation, {class: 'flat-input', placeholder: 'Confirm New Password'}
-    .actions
-      = f.submit "Update Password", {class: 'flat-button submit'}
+%div#container-scroll
+  %div.full-form#resetPasswordForm
+    = form_for @user, url: password_reset_path(params[:id]) do |f|
+      = f.label :password
+      = f.password_field :password
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+      .button-row
+        = f.submit "Update Password", class: 'button'
