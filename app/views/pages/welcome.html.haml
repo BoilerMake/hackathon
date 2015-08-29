@@ -51,7 +51,17 @@
       = password_field_tag :password, nil
       %div.button-row
         = submit_tag 'log in', { class: 'button' }
-        = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
+        = button_tag "Cancel", type: 'button', class: 'button', onclick: 'hideForm()'
+        = button_tag "Forgot Password?", type: 'button', class: 'button', onclick: 'showForm("#forgotPasswordForm")'
+
+  %div.full-form#forgotPasswordForm{style: 'display: none;'}
+    = form_tag password_resets_path, method: :post do
+      = label_tag 'Email'
+      = email_field_tag :email, nil
+      %div.button-row
+        = submit_tag 'Reset Password', { class: 'button' }
+        = button_tag "Cancel", type: 'button', class: 'button', onclick: 'hideForm()'
+
   .replace-div
   .navigation
     .nav-content

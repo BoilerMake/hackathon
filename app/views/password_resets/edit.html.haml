@@ -1,16 +1,9 @@
-.forgotpassword-reset
-  %h1 Let's get you back up and running.
-  %p Enter a password that you'll love.
-  = form_for @user, url: password_reset_path(params[:id]) do |f|
-    - if @user.errors.any?
-      .error_messages
-        %h2 Form is invalid
-        %ul
-          - for message in @user.errors.full_messages
-            %li= message
-    .field
-      = f.password_field :password, {class: 'flat-input', placeholder: 'New Password'}
-    .field
-      = f.password_field :password_confirmation, {class: 'flat-input', placeholder: 'Confirm New Password'}
-    .actions
-      = f.submit "Update Password", {class: 'flat-button submit'}
+%div#container-scroll
+  %div.full-form#resetPasswordForm
+    = form_for @user, url: password_reset_path(params[:id]) do |f|
+      = f.label :password
+      = f.password_field :password
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+      .button-row
+        = f.submit "Update Password", class: 'button'
