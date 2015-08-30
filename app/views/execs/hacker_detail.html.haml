@@ -62,13 +62,13 @@
                     %tr
                       %td # of watchers
                       %td=repo['watchers_count']
-                              
       .col-md-6
         .panel.panel-default
           .panel-heading
             %h3.panel-title
               ="User Control"
           .panel-body
+            .rank-response
             = form_for @hacker_ranking, remote: true, "data-type" => :json do |f|
               %h3 your ranking: 
               .field
@@ -103,7 +103,6 @@
                 %tr
                   %td Degree
                   %td= @hacker.application.degree
-                  
                 %tr
                   %td Major
                   %td= @hacker.application.major
