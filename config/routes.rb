@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get 'schools/export'
 
   resources :schools
-  resources :hackers, except: [:index, :destroy]
+  resources :hackers, except: [:destroy]
 
   resources :hacker_rankings
   resources :sessions
