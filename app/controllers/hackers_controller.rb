@@ -9,7 +9,7 @@ class HackersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @hackers = Hacker.paginate(:page => params[:page])
+    @hackers = Hacker.started_applicants.paginate(:page => params[:page])
   end
 
   # GET /users/1
