@@ -92,7 +92,10 @@ class ExecsController < ApplicationController
     require 'uri'
     require 'net/http'
     info = Hash.new
-    
+
+    if(@hacker.application.github==nil)
+      return nil
+    end
     github_username=URI(@hacker.application.github).path.split('/').last
 
     parsed_url = URI.parse("https://api.github.com/users/#{github_username}")

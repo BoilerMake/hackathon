@@ -9,59 +9,62 @@
               ="Essays"
           .panel-body
             %h4 Q:What do you love about computers?
-            %p A: #{@hacker.application.essay1}"
+            %p A: #{@hacker.application.essay1}
             %hr
             %h4 Q: What's the coolest thing you have done in the last 12 months
-            %p A: #{@hacker.application.essay2}"
+            %p A: #{@hacker.application.essay2}
         %br
-          .panel.panel-default
-            .panel-heading
-              .panel-title
-                ="Github:"
-                %a= link_to(@hacker_github_info['profile']['login'], @hacker_github_info['profile']['html_url'], target: "blank")
-            .panel-body
-              %table.table.table-striped{border: 1}
-                %tbody
-                  %tr
-                    %td public_repos
-                    %td= @hacker_github_info['profile']['public_repos']
-                  %tr
-                    %td public_gists
-                    %td= @hacker_github_info['profile']['public_gists']
-                  %tr
-                    %td followers
-                    %td= @hacker_github_info['profile']['followers']
-                  %tr
-                    %td following
-                    %td= @hacker_github_info['profile']['following']
-                  %tr
-                    %td blog url
-                    %td= link_to(@hacker_github_info['profile']['blog'], @hacker_github_info['profile']['blog'], target: "blank")
-              %h3 repositories sorted by activity date
-              - @hacker_github_info['repos'].take(4).each do |repo|
+          -if @hacker_github_info
+            .panel.panel-default
+              .panel-heading
+                .panel-title
+                  ="Github:"
+                  %a= link_to(@hacker_github_info['profile']['login'], @hacker_github_info['profile']['html_url'], target: "blank")
+              .panel-body
                 %table.table.table-striped{border: 1}
                   %tbody
                     %tr
-                      %td name
-                      %td= link_to(repo['full_name'], repo['html_url'], target: "blank")
+                      %td public_repos
+                      %td= @hacker_github_info['profile']['public_repos']
                     %tr
-                      %td description
-                      %td=repo['description']
+                      %td public_gists
+                      %td= @hacker_github_info['profile']['public_gists']
                     %tr
-                      %td language
-                      %td=repo['language']
+                      %td followers
+                      %td= @hacker_github_info['profile']['followers']
                     %tr
-                      %td creation date
-                      %td=repo['created_at']
+                      %td following
+                      %td= @hacker_github_info['profile']['following']
                     %tr
-                      %td last pushed
-                      %td=repo['pushed_at']
-                    %tr
-                      %td # of stars
-                      %td=repo['stargazers_count']
-                    %tr
-                      %td # of watchers
-                      %td=repo['watchers_count']
+                      %td blog url
+                      %td= link_to(@hacker_github_info['profile']['blog'], @hacker_github_info['profile']['blog'], target: "blank")
+                %h3 repositories sorted by activity date
+                - @hacker_github_info['repos'].take(4).each do |repo|
+                  %table.table.table-striped{border: 1}
+                    %tbody
+                      %tr
+                        %td name
+                        %td= link_to(repo['full_name'], repo['html_url'], target: "blank")
+                      %tr
+                        %td description
+                        %td=repo['description']
+                      %tr
+                        %td language
+                        %td=repo['language']
+                      %tr
+                        %td creation date
+                        %td=repo['created_at']
+                      %tr
+                        %td last pushed
+                        %td=repo['pushed_at']
+                      %tr
+                        %td # of stars
+                        %td=repo['stargazers_count']
+                      %tr
+                        %td # of watchers
+                        %td=repo['watchers_count']
+          -else
+            ="no github found"
       .col-md-6
         .panel.panel-default
           .panel-heading
