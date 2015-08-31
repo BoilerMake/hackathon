@@ -21,9 +21,16 @@ class SlackIntegrationsController < ApplicationController
       nospecify_count = Application.where(gender: "Prefer not to specify").count
 
       str_rep = "Males: #{male_count} \n
-Females: #{female_count} \n
-Other: #{other_count} \n
-Prefer Not to Specify : #{nospecify_count}"
+                 Females: #{female_count} \n
+                 Other: #{other_count} \n
+                 Prefer Not to Specify : #{nospecify_count}"
+    elsif params[:text] == nil
+      application_count = Application.all.count
+      application_completed_count = Hacker.all.select(&:application_completed?).count
+      registered_count = Hacker.all.count
+      str_rep = "Registered: #{registered_count} \n
+                 Started an application: #{application_count} \n
+                 Completed an application: #{application_completed_count} \n"
     end
 
     render text: str_rep
