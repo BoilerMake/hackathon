@@ -6,7 +6,7 @@
     }
 .container
   %h1
-    = "Welcome, #{current_user.email}"
+    = "Welcome, #{current_user.email}. You have ranked #{current_user.hacker_ranking.count} hackers!"
   .exec-toolbar
     = link_to 'Announcements', updates_path, class: 'button outline'
     = link_to 'Hacker Listing', hackers_path, class: 'button outline'
