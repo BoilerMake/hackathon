@@ -13,6 +13,9 @@ class Hacker < User
           .where(applications: {can_text: true })
           .where.not(applications: {cell_phone: nil})
   end
+  def self.started_applicants
+    Hacker.joins(:application)
+  end
 
   def accepted?
     status == 'Accepted'
@@ -30,6 +33,9 @@ class Hacker < User
     status == 'Declined'
   end
 
+  def application_started?
+    !application.nil?
+  end
   def application_completed?
     false if application.nil?
     attributes = [ first_name, last_name, school_id ].map do |el|

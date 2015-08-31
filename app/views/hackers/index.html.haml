@@ -1,5 +1,5 @@
 %h1 Listing hackers
-
+= will_paginate @hackers
 %table.table.striped
   %tr
     %th First
@@ -8,7 +8,7 @@
     %th Email
     %th
     %th Number of rankings
-
+    %th Application Completed?
   - @hackers.each do |hacker|
     %tr
       %td= hacker.first_name
@@ -16,7 +16,8 @@
       %td= hacker.school.present? ? hacker.school.name : ""
       %td= hacker.email
       %td
-        %a{href: "/execs/hacker_detail/#{hacker.id}"}="Show"
+        %a{href: "/execs/hacker_detail/#{hacker.id}",disabled: hacker.application_completed?}="Show"
       %td= "#{hacker.hacker_ranking.count}"
+      %td= "#{hacker.application_completed?}"
 = will_paginate @hackers
 
