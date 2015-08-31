@@ -24,7 +24,7 @@ class SlackIntegrationsController < ApplicationController
                  Females: #{female_count} \n
                  Other: #{other_count} \n
                  Prefer Not to Specify : #{nospecify_count}"
-    elsif params[:text] == nil
+    elsif params[:text] == ""
       application_count = Application.all.count
       application_completed_count = Hacker.all.select(&:application_completed?).count
       registered_count = Hacker.all.count
