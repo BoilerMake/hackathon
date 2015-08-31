@@ -8,71 +8,72 @@
             .panel-title
               ="Essays"
           .panel-body
-            %h4="Q:What do you love about computers?"
-            %p="A: #{@hacker.application.essay1}"
+            %h4 Q:What do you love about computers?
+            %p A: #{@hacker.application.essay1}
             %hr
-            %h4="Q:What's the coolest thing you have done in the last 12 months"
-            %p="A: #{@hacker.application.essay2}"
+            %h4 Q: What's the coolest thing you have done in the last 12 months
+            %p A: #{@hacker.application.essay2}
         %br
-          .panel.panel-default
-            .panel-heading
-              .panel-title
-                ="Github:"
-                %a{href: @hacker_github_info['profile']['html_url'], target: "blank"}="@#{@hacker_github_info['profile']['login']}"
-            .panel-body
-              %table{:border => 1, class: 'table table-striped'}
-                %tbody
-                  %tr
-                    %td public_repos
-                    %td= @hacker_github_info['profile']['public_repos']
-                  %tr
-                    %td public_gists
-                    %td= @hacker_github_info['profile']['public_gists']
-                  %tr
-                    %td followers
-                    %td= @hacker_github_info['profile']['followers']
-                  %tr
-                    %td following
-                    %td= @hacker_github_info['profile']['following']
-                  %tr
-                    %td blog url
-                    %td
-                      %a{href: @hacker_github_info['profile']['blog'], target: "blank"}="#{@hacker_github_info['profile']['blog']}"
-              %h3 repositories sorted by activity date
-              - @hacker_github_info['repos'].take(4).each do |repo|
-                %table{:border => 1, class: 'table table-striped'}
+          -if @hacker_github_info
+            .panel.panel-default
+              .panel-heading
+                .panel-title
+                  ="Github:"
+                  %a= link_to(@hacker_github_info['profile']['login'], @hacker_github_info['profile']['html_url'], target: "blank")
+              .panel-body
+                %table.table.table-striped{border: 1}
                   %tbody
                     %tr
-                      %td name
-                      %td
-                        %a{href: repo['html_url'], target: "blank"}="#{repo['full_name']}"
+                      %td public_repos
+                      %td= @hacker_github_info['profile']['public_repos']
                     %tr
-                      %td description
-                      %td=repo['description']
+                      %td public_gists
+                      %td= @hacker_github_info['profile']['public_gists']
                     %tr
-                      %td language
-                      %td=repo['language']
+                      %td followers
+                      %td= @hacker_github_info['profile']['followers']
                     %tr
-                      %td creation date
-                      %td=repo['created_at']
+                      %td following
+                      %td= @hacker_github_info['profile']['following']
                     %tr
-                      %td last pushed
-                      %td=repo['pushed_at']
-                    %tr
-                      %td # of stars
-                      %td=repo['stargazers_count']
-                    %tr
-                      %td # of watchers
-                      %td=repo['watchers_count']
-                              
+                      %td blog url
+                      %td= link_to(@hacker_github_info['profile']['blog'], @hacker_github_info['profile']['blog'], target: "blank")
+                %h3 repositories sorted by activity date
+                - @hacker_github_info['repos'].take(4).each do |repo|
+                  %table.table.table-striped{border: 1}
+                    %tbody
+                      %tr
+                        %td name
+                        %td= link_to(repo['full_name'], repo['html_url'], target: "blank")
+                      %tr
+                        %td description
+                        %td=repo['description']
+                      %tr
+                        %td language
+                        %td=repo['language']
+                      %tr
+                        %td creation date
+                        %td=repo['created_at']
+                      %tr
+                        %td last pushed
+                        %td=repo['pushed_at']
+                      %tr
+                        %td # of stars
+                        %td=repo['stargazers_count']
+                      %tr
+                        %td # of watchers
+                        %td=repo['watchers_count']
+          -else
+            ="no github found"
       .col-md-6
         .panel.panel-default
           .panel-heading
             %h3.panel-title
               ="User Control"
           .panel-body
+            .rank-response
             = form_for @hacker_ranking, remote: true, "data-type" => :json do |f|
-              %h3 your ranking:	
+              %h3 your ranking: 
               .field
                 = f.number_field :ranking, placeholder: "ranking", class: 'second-input'
               .submit
@@ -81,7 +82,7 @@
           .panel-heading
             %h3.panel-title Diversity
           .panel-body
-            %table{:border => 1, class: 'table table-striped'}
+            %table.table.table-striped{border: 1}
               %tbody
                 %tr
                   %td Gender
@@ -97,7 +98,7 @@
             %h3.panel-title
               ="Education"
           .panel-body
-            %table{:border => 1, class: 'table table-striped'}
+            %table.table.table-striped{border: 1}
               %tbody
                 %tr
                   %td School
@@ -105,7 +106,6 @@
                 %tr
                   %td Degree
                   %td= @hacker.application.degree
-                  
                 %tr
                   %td Major
                   %td= @hacker.application.major
@@ -117,7 +117,7 @@
             %h3.panel-title
               ="Other"
           .panel-body
-            %table{:border => 1, class: 'table table-striped'}
+            %table.table.table-striped{border: 1}
               %tbody
                 %tr
                   %td Status

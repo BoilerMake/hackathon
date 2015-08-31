@@ -59,7 +59,9 @@ class ExecsController < ApplicationController
     @interested_and_valid_count = InterestSignup.where(in_mailchimp: true).count
     @interested_student_count = InterestSignup.where("email LIKE '%.edu'").count
     @confirmed_count = Hacker.where(confirmed: true).count
-    @applied_count = Hacker.all.count
+    @application_count = Application.all.count
+    @application_completed_count = Hacker.all.select(&:application_completed?).count
+    @registered_count = Hacker.all.count
     @applied_student_count = Hacker.where("email LIKE '%.edu'").count
     @schools = Hacker.all.map{ |h| h.school }.keep_if{ |h| h.present? }.uniq.sort_by do |s|
       s.users.count
@@ -92,7 +94,10 @@ class ExecsController < ApplicationController
     require 'uri'
     require 'net/http'
     info = Hash.new
-    
+
+    if(@hacker.application.github==nil)
+      return nil
+    end
     github_username=URI(@hacker.application.github).path.split('/').last
 
     parsed_url = URI.parse("https://api.github.com/users/#{github_username}")
