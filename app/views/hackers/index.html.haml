@@ -7,6 +7,7 @@
     %th School
     %th Email
     %th
+    %th Number of rankings
 
   - @hackers.each do |hacker|
     %tr
@@ -14,7 +15,8 @@
       %td= hacker.last_name
       %td= hacker.school.present? ? hacker.school.name : ""
       %td= hacker.email
-      %td= link_to 'Show', hacker
-
+      %td
+        %a{href: "/execs/hacker_detail/#{hacker.id}"}="Show"
+      %td= "#{hacker.hacker_ranking.count}"
 = will_paginate @hackers
 
