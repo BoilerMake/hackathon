@@ -59,6 +59,8 @@ class ExecsController < ApplicationController
     @interested_and_valid_count = InterestSignup.where(in_mailchimp: true).count
     @interested_student_count = InterestSignup.where("email LIKE '%.edu'").count
     @confirmed_count = Hacker.where(confirmed: true).count
+    @application_count = Application.all.count
+    @application_completed_count = Hacker.all.select(&:application_completed?).count
     @applied_count = Hacker.all.count
     @applied_student_count = Hacker.where("email LIKE '%.edu'").count
     @schools = Hacker.all.map{ |h| h.school }.keep_if{ |h| h.present? }.uniq.sort_by do |s|
