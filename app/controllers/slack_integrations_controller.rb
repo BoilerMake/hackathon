@@ -26,7 +26,7 @@ class SlackIntegrationsController < ApplicationController
                  Prefer Not to Specify : #{nospecify_count}"
     elsif params[:text] == ""
       application_count = Application.all.count
-      application_completed_count = Hacker.all.select(&:application_completed?).count
+      application_completed_count = Hacker.application_completed.count
       registered_count = Hacker.all.count
       str_rep = "Registered: #{registered_count} \n
                  Started an application: #{application_count} \n
