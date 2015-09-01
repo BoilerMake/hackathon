@@ -70,10 +70,6 @@ class ExecsController < ApplicationController
     @school_count = @schools.count
 
   end
-  def review
-    @hackers = Hacker.all
-  end
-
   def hacker_detail
     @hacker = Hacker.find params[:hacker_id]
     @hacker_github_info = get_github_info @hacker

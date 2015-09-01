@@ -9,6 +9,7 @@
     %th
     %th Number of rankings
     %th Application Completed?
+    %th Have I ranked?
   - @hackers.each do |hacker|
     %tr
       %td= hacker.first_name
@@ -16,8 +17,12 @@
       %td= hacker.school.present? ? hacker.school.name : ""
       %td= hacker.email
       %td
-        %a{href: "/execs/hacker_detail/#{hacker.id}",disabled: hacker.application_completed?}="Show"
+        -if(hacker.should_i_rank)
+          %a{href: "/execs/hacker_detail/#{hacker.id}", style: 'color: green;'}="RANK"
+        -else
+          %a{href: "/execs/hacker_detail/#{hacker.id}", style: 'color: orange;'}="view"
       %td= "#{hacker.hacker_ranking.count}"
-      %td= "#{hacker.application_completed?}"
+      %td= "#{hacker.application_completed?  ? 'YES' : 'no'}"
+      %td= "#{hacker.have_i_ranked ? 'YES' : 'no'}"
 = will_paginate @hackers
 
