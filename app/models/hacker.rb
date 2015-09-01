@@ -13,8 +13,28 @@ class Hacker < User
           .where(applications: {can_text: true })
           .where.not(applications: {cell_phone: nil})
   end
+
   def self.started_applicants
     Hacker.joins(:application)
+  end
+
+  def self.application_completed
+    Hacker.started_applicants.where.not(
+      school_id: nil,
+      first_name: nil,
+      last_name: nil,
+      "applications.resume" => nil,
+      "applications.tshirt_size" => nil,
+      "applications.essay1" => nil,
+      "applications.essay2" => nil
+    ).where.not(
+      first_name: "",
+      last_name: "",
+      "applications.resume" => "",
+      "applications.tshirt_size" => "",
+      "applications.essay1" => "",
+      "applications.essay2" => ""
+    )
   end
 
   def accepted?
@@ -36,6 +56,7 @@ class Hacker < User
   def application_started?
     !application.nil?
   end
+
   def application_completed?
     false if application.nil?
     attributes = [ first_name, last_name, school_id ].map do |el|
