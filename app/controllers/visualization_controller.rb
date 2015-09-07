@@ -1,31 +1,26 @@
 class VisualizationController < ApplicationController
-	skip_before_action :require_login
-	layout false
+  skip_before_action :require_login
+
   def index
-  	@school_info = Hash.new
-  	Hacker.all.each do |hacker|
-      if hacker.school_id
-      	@school = School.find_by(id: hacker.school_id)
-        if @school.lat == nil or @school.lng == nil
-          @test = getCoordinates(hacker.school_id)
-        end
-        if @school_info[@school.name] == nil
-          @school_info[@school.name] = [1, @school.lat, @school.lng, @school.state]
-        else
-           @count = @school_info[@school.name][0] + 1
-           @school_info[@school.name] = [@count, @school.lat, @school.lng, @school.state]
-        end
- 	  end
-  	end
+    @school_info = Hash.new
+
+    Hacker.where.not(school_id: nil).each do |hacker|
+      school = hacker.school
+      if school.lat.nil? || school.lng.nil?
+        school.populate_coordinates!
+      end
+
+      if @school_info[school.name].present?
+        @school_info[school.name][:count] = @school_info[school.name][:count] + 1
+      else
+        @school_info[school.name] = {
+          count: 1,
+          lat: school.lat,
+          lng: school.lng,
+          state: school.state
+        }
+      end
+    end
   end
 
-  def getCoordinates (school_id)
-    @school = School.find school_id
-    formatted_name = @school.name.gsub(/\s+/,'+')
-    response = Net::HTTP.get_response(URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{formatted_name}"))
-    parsed = JSON.parse(response.body)
-    @school.lat = parsed['results'][0]['geometry']['location']['lat']
-    @school.lng = parsed['results'][0]['geometry']['location']['lng']
-    @school.save
-  end
 end
