@@ -4,12 +4,22 @@ class SlackIntegrationsController < ApplicationController
 
   def applicants
     str_rep = ""
-    if params[:text] == "by_school"
-      result = School.select('count(schools.id) as applicant_count, name')
-              .joins(:users)
-              .group('schools.name')
-              .order('applicant_count DESC')
-              .limit(10)
+    split_text = params[:text].split " "
+    if split_text.first == "by_school"
+      result = [];
+      if split_text[1] == "min_hackers" && split_text[2]
+        result = School.select('count(schools.id) as applicant_count, name')
+                .joins(:users)
+                .group('schools.name')
+                .order('applicant_count DESC')
+                .having("count(schools.id) >= ?", split_text[2].to_i)
+      else
+        result = School.select('count(schools.id) as applicant_count, name')
+                .joins(:users)
+                .group('schools.name')
+                .order('applicant_count DESC')
+                .limit(10)
+      end
 
       result.each do |school|
         str_rep = str_rep + "\n#{school.name}: #{school.applicant_count}\n"
