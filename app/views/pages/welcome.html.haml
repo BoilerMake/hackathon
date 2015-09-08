@@ -1,3 +1,5 @@
+%a{:href=> "https://mlh.io/?utm_campaign=Trust%20Badge", :id=> "mlh-trust-badge", :style=>"position:fixed;top:0;right:20px;max-width:100px;width:10%;min-width: 60px;display:block;z-index:10000", :target=>"_blank"}
+  %img{:src=>"https://s3.amazonaws.com/logged-assets/trust-badge/f2015.png", :alt=>"MLH Official - Fall 2015", :style=>"width:100%;"}
 %div#container-scroll
   %div.bg-image#bg
     %canvas#background This text is displayed if your browser does not support HTML5 Canvas.
@@ -51,7 +53,17 @@
       = password_field_tag :password, nil
       %div.button-row
         = submit_tag 'log in', { class: 'button' }
-        = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
+        = button_tag "Cancel", type: 'button', class: 'button', onclick: 'hideForm()'
+        = button_tag "Forgot Password?", type: 'button', class: 'button', onclick: 'showForm("#forgotPasswordForm")'
+
+  %div.full-form#forgotPasswordForm{style: 'display: none;'}
+    = form_tag password_resets_path, method: :post do
+      = label_tag 'Email'
+      = email_field_tag :email, nil
+      %div.button-row
+        = submit_tag 'Reset Password', { class: 'button' }
+        = button_tag "Cancel", type: 'button', class: 'button', onclick: 'hideForm()'
+
   .replace-div
   .navigation
     .nav-content
@@ -60,6 +72,7 @@
       %span.nav-links
         = link_to 'About', '#about'
         = link_to 'FAQ', '#faq'
+        = link_to 'Sponsors', '#sponsors'
 
   .about#about
     .body-content
@@ -77,6 +90,10 @@
   .faq#faq
     .body-content
       %h2 FAQ
+      %p
+        BoilerMake abides by the  
+        %a{:href=> "http://static.mlh.io/docs/mlh-code-of-conduct.pdf"}
+          MLH Code of Coduct.
       .col
         %h4 Can I edit my application?
         %p Yes, you can edit all of your information up until our application deadline
@@ -100,5 +117,45 @@
         
        
       .clear
+
+  .sponsors#sponsors
+    .body-content
+      %h2 Sponsors
+      .sponsor.platinum
+        %a{:href => "http://www.inin.com"}
+          Interactive Intelligence
+      .clear
+      .sponsor.gold
+        %a{:href => "http://www.purduesg.com/sfab/"}
+          =image_tag "sfab.jpg"
+      .sponsor.gold
+        %a{:href => "http://www.walmart.com/"}
+          =image_tag "walmart.jpg"
+      .clear
+      .sponsor.silver
+        %a{:href => "http://www.bloomberg.com/"}
+          Bloomberg
+      .sponsor.silver
+        %a{:href => "https://www.rockwellcollins.com/"}
+          Rockwell Collins
+      .sponsor.silver
+        %a{:href => "http://www.boozallen.com/"}
+          Booz Allen Hamilton
+      .clear
+      .sponsor.silver
+        %a{:href => "http://www.salesforce.com/"}
+          Salesforce
+      .sponsor.silver
+        %a{:href => "http://www.att.com/"}
+          =image_tag "att.png"
+      .sponsor.silver
+        %a{:href => "http://www.claritypartners.com/"}
+          =image_tag "clarity.png"
+      .clear
+      .sponsor.api
+        %a{:href => "https://www.slice.com/"}
+          =image_tag "slice.png"
+
+
 
 = render "shared/header"

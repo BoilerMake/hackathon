@@ -52,6 +52,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'quiet_assets', '~> 1.0.3'
   gem 'pry-byebug'
+  gem 'letter_opener'
 end
 
 group :development, :test do
