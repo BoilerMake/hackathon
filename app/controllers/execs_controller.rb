@@ -38,6 +38,37 @@ class ExecsController < ApplicationController
     send_data @csv_string,
               :filename => "application_incomplete_hackers.csv",
               :type => "text/csv"
+  def checkin
+
+  end
+
+  def user_query
+    query_str = StringIO.new
+    query_arr = []
+    prev = false
+    if params[:first_name].present?
+      query_str << "first_name LIKE ? "
+      query_arr << "%#{params[:first_name]}%"
+      prev = true
+    end
+
+    if params[:last_name].present?
+      query_str << "OR " if prev
+      query_str << "last_name LIKE ? "
+      query_arr << "%#{params[:first_name]}%"
+      prev = true
+    end
+
+    if params[:email].present?
+      query_str << "OR " if prev
+      query_str << "email LIKE ? "
+      query_arr << "%#{params[:email]}%"
+    end
+    result = Hacker.where(query_str.string, query_arr)
+
+    respond_to do |format|
+      format.json { render json: result.to_json }
+    end
   end
 
   def shirts

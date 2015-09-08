@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get 'execs/hacker_detail/:hacker_id' => 'execs#hacker_detail'
   post 'execs/decision_submission'
 
+  get 'execs/checkin'
+  post 'execs/checkin/query' => 'execs#user_query'
+
   get 'visualization' => 'visualization#index'
   resources :interest_signups, only: [:create]
   resources :updates, only: [:index, :new, :create]
