@@ -10,29 +10,51 @@
         center: { lat: 40.424, lng: -86.929},
         zoom: 5
       };
+
       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
       var school_info = #{@school_info.to_json}
+
       window.school_info = school_info;
-      for(school_name in school_info){
+
+      var markers = [];
+      var infowindows = [];
+
+      for(school_name in school_info) {
+
+        console.log(school_name);
+
         var school = school_info[school_name];
-        var contentStr = '<div class="info_window">' +
-          '<span style="font-weight:bold">' +
-          school_name +
-          '</span><br>' +
-          'Hackers Applied: ' +
-          school.count;
+
+        var contentStr =  '<div class="info_window">' +
+                            '<span style="font-weight:bold">' + school_name + '</span>' +
+                            '<br>' +
+                            'Hackers Applied: ' + school.count +
+                          '</div>';
+
         var infowindow = new google.maps.InfoWindow({
           content: contentStr
         });
+        infowindows.push(infowindow);
+
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(school.lat, school.lng),
           map: map,
           label: "" + school.count
         });
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
+
+        markers.push(marker);
+
+        markers[markers.length - 1].addListener('click', function() {
+          infowindows[infowindows.length - 1].open(map, markers[markers.length - 1]);
+          console.log(infowindows[infowindows.length - 1].content);
+          console.log(markers[markers.length - 1].label);
         });
       }
+
+      window.markers = markers;
+      window.infowindows = infowindows;
+      console.log(markers);
 
     });
 %body
