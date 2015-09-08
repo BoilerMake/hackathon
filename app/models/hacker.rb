@@ -28,6 +28,7 @@ class Hacker < User
       "applications.essay1" => nil,
       "applications.essay2" => nil
     ).where.not(
+      school_id: -1,
       first_name: "",
       last_name: "",
       "applications.resume" => "",

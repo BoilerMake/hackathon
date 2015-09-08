@@ -4,7 +4,7 @@ class VisualizationController < ApplicationController
   def index
     @school_info = Hash.new
 
-    Hacker.where.not(school_id: nil).each do |hacker|
+    Hacker.where.not(school_id: nil).where.not(school_id: -1).each do |hacker|
       school = hacker.school
       if school.lat.nil? || school.lng.nil?
         school.populate_coordinates!
