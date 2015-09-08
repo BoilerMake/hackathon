@@ -12,6 +12,7 @@
       };
       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
       var school_info = #{@school_info.to_json}
+      var infowindow = new google.maps.InfoWindow();
       window.school_info = school_info;
       for(school_name in school_info){
         var school = school_info[school_name];
@@ -27,10 +28,12 @@
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(school.lat, school.lng),
           map: map,
-          label: "" + school.count
+          label: "" + school.count,
+          content: contentStr
         });
         marker.addListener('click', function() {
-          infowindow.open(map, this);
+          infowindow.setContent(this.content);
+    	  infowindow.open(map, this);
         });
       }
 
