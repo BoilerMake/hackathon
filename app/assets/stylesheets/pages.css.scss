@@ -508,7 +508,42 @@ input:focus {
       text-transform: uppercase;
       letter-spacing: 0.06em;
       margin-bottom: 20px;
+  }
+  .sponsor {
+    text-align: center;
+    margin: 50px 0;
+    img {
+      width: 100%;
     }
+    a {
+      color: #333333;
+    }
+  }
+  .platinum {
+    width: 100%;
+  }
+  .gold {
+    width: 50%;
+    padding: 0 5%;
+    float: left;
+  }
+  .silver {
+    width: 33%;
+    padding: 0 5%;
+    float: left;
+  }
+  .bronze, .api {
+    width: 25%;
+    padding: 0 5%;
+    float: left;
+  }
+  .clear {
+    clear: both;
+  }
+  .center {
+    float: none !important;
+    margin: 0 auto;
+  }
 }
 .flash-alert {
   margin-top: 0px;
