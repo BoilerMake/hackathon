@@ -9,6 +9,10 @@ class VisualizationController < ApplicationController
       if school.lat.nil? || school.lng.nil?
         school.populate_coordinates!
       end
+      if school.lat.nil? || school.lng.nil?
+        # if after hitting the api, its still blank, then skip this
+        next
+      end
 
       if @school_info[school.name].present?
         @school_info[school.name][:count] = @school_info[school.name][:count] + 1
