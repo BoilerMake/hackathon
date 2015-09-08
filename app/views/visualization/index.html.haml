@@ -1,0 +1,43 @@
+= content_for :extra_css do
+  :css
+    html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+=content_for :extra_js do
+  = javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDi41SgBLNJiRvy4wJR8azY6YO_yM8I7p0'
+
+  :javascript
+    $(document).ready(function () {
+      var mapOptions = {
+        center: { lat: 40.424, lng: -86.929},
+        zoom: 5
+      };
+
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+      var school_info = #{@school_info.to_json}
+      var infowindow = new google.maps.InfoWindow();
+
+      for(school_name in school_info) {
+
+        var school = school_info[school_name];
+
+        var contentStr =  '<div class="info_window">' +
+                            '<span style="font-weight:bold">' + school_name + '</span>' +
+                            '<br>' +
+                            'Hackers Applied: ' + school.count +
+                          '</div>';
+
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(school.lat, school.lng),
+          map: map,
+          label: "" + school.count,
+          content: contentStr
+        });
+
+        marker.addListener('click', function() {
+          infowindow.setContent(this.content);
+          infowindow.open(map, this);
+        });
+      }
+    });
+%body
+  %div#map-canvas
