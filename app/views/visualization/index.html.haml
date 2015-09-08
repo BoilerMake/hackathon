@@ -15,14 +15,8 @@
 
       var school_info = #{@school_info.to_json}
       var infowindow = new google.maps.InfoWindow();
-      window.school_info = school_info;
-
-      var markers = [];
-      var infowindows = [];
 
       for(school_name in school_info) {
-
-        console.log(school_name);
 
         var school = school_info[school_name];
 
@@ -32,27 +26,18 @@
                             'Hackers Applied: ' + school.count +
                           '</div>';
 
-        var infowindow = new google.maps.InfoWindow({
-          content: contentStr
-        });
-        infowindows.push(infowindow);
-
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(school.lat, school.lng),
           map: map,
           label: "" + school.count,
           content: contentStr
         });
+
         marker.addListener('click', function() {
           infowindow.setContent(this.content);
-        infowindow.open(map, this);
+          infowindow.open(map, this);
         });
       }
-
-      window.markers = markers;
-      window.infowindows = infowindows;
-      console.log(markers);
-
     });
 %body
   %div#map-canvas
