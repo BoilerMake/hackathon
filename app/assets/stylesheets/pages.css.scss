@@ -490,6 +490,26 @@ input:focus {
     }
   }
 }
+.sponsors {
+  background-size: cover;
+  background-color: white;
+  padding: 80px 0;
+  .body-content {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 40em;
+  }
+  h2 {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 2.3em;
+      text-align: left;
+      color: #755853;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+    }
+}
 .flash-alert {
   margin-top: 0px;
   position: absolute;
