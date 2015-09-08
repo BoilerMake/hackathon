@@ -15,10 +15,22 @@
 
       var school_info = #{@school_info.to_json}
       var infowindow = new google.maps.InfoWindow();
+      school_info["test school"] = { count: 30, lat: 45, lng: -86 };
+      school_info["test school2"] = { count: 300, lat: 45.667, lng: -85 };
+      school_info["test school3"] = { count: 65, lat: 43.112, lng: -86.11 };
 
       for(school_name in school_info) {
 
         var school = school_info[school_name];
+
+        var markerLabel = "" + school.count;
+
+        if (school.count >= 10){
+          markerLabel = "+";
+        }
+        if (school.count >= 100){
+          markerLabel = "*";
+        }
 
         var contentStr =  '<div class="info_window">' +
                             '<span style="font-weight:bold">' + school_name + '</span>' +
@@ -29,8 +41,9 @@
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(school.lat, school.lng),
           map: map,
-          label: "" + school.count,
-          content: contentStr
+          label: markerLabel,
+          content: contentStr,
+          title: ""+school.count
         });
 
         marker.addListener('click', function() {
