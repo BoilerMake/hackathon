@@ -45,7 +45,7 @@
       = javascript_tag do
         window.shouldSkipIntro = true;
 
-  %div.full-form#loginForm{style: 'display: none;'}
+  %div.full-form.loginForm#loginForm{style: 'display: none;'}
     = form_tag sessions_path do
       = label_tag 'Email'
       = email_field_tag :email, nil
@@ -56,7 +56,7 @@
         = button_tag "Cancel", type: 'button', class: 'button', onclick: 'hideForm()'
         = button_tag "Forgot Password?", type: 'button', class: 'button', onclick: 'showForm("#forgotPasswordForm")'
 
-  %div.full-form#forgotPasswordForm{style: 'display: none;'}
+  %div.full-form.passwordForm#forgotPasswordForm{style: 'display: none;'}
     = form_tag password_resets_path, method: :post do
       = label_tag 'Email'
       = email_field_tag :email, nil
