@@ -205,6 +205,9 @@
     if (!window.shouldSkipIntro && !window.isMobile()){
       Enigma.init();
     }
+    if (window.isMobile()) {
+      $('#mlh-banner').css('display', 'none');
+    }
     document.getElementById('bg').className += ' fadeOut';
     if (window.shouldSkipIntro || window.isMobile()){
       flickerOver();
