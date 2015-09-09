@@ -217,7 +217,6 @@ canvas {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255,255,255,0.9);
 
   form {
     position: relative;
@@ -258,6 +257,12 @@ canvas {
       }
     }
   }
+}
+.loginForm {
+  background-color: rgba(255,255,255,0.9);
+}
+.passwordForm {
+  background-color: rgba(255,255,255,1.0);
 }
 button {
   outline: 0;
