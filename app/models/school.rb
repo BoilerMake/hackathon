@@ -6,7 +6,7 @@ class School < ActiveRecord::Base
   end
 
   def populate_coordinates!
-    formatted_name = self.name.gsub(/\s+/,'+')
+    formatted_name = self.name.gsub(/\s+/,'+').gsub(/\P{ASCII}/, '')
     response = Net::HTTP.get_response(URI.parse("http://maps.googleapis.com/maps/api/geocode/json?address=#{formatted_name}"))
     parsed = JSON.parse(response.body)
     if parsed['results'].length > 0
