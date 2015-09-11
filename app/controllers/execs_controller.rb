@@ -15,6 +15,27 @@ class ExecsController < ApplicationController
     end
   end
 
+  def incomplete_hackers
+    require 'csv'
+    @csv_string = CSV.generate do |csv|
+      csv << ['id', 'fname', 'lname', 'email', 'school']
+      Hacker.application_incomplete.each do |h|
+        school_name = ''
+        if h[:school_id].present? && h[:school_id] != -1
+          school_name = School.find(h[:school_id]).name
+        end
+        csv << [h.id,
+                h.first_name,
+                h.last_name,
+                h.email,
+                school_name]
+      end
+    end
+    send_data @csv_string,
+              :filename => "application_incomplete_hackers.csv",
+              :type => "text/csv"
+  end
+
   def shirts
     @shirt_sizes = ['Small', 'Medium', 'Large', 'XL', 'XXL']
     @shirts = Hash.new

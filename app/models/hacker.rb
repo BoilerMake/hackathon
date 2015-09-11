@@ -38,6 +38,27 @@ class Hacker < User
     )
   end
 
+  def self.application_incomplete
+    Hacker.started_applicants.where(
+      "school_id = ? OR
+      first_name = ? OR
+      last_name = ? OR
+      applications.resume = ? OR
+      applications.tshirt_size = ? OR
+      applications.essay1 = ? OR
+      applications.essay2 = ? OR
+      school_id = ? OR
+      first_name = ? OR
+      last_name = ? OR
+      applications.resume = ? OR
+      applications.tshirt_size = ? OR
+      applications.essay1 = ? OR
+      applications.essay2 = ?",
+      nil, nil, nil, nil, nil, nil, nil, -1, "", "", "", "", "", ""
+    )
+  end
+
+
   def accepted?
     status == 'Accepted'
   end
