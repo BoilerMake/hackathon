@@ -10,6 +10,17 @@ class HackersController < ApplicationController
   # GET /users.json
   def index
     @hackers = Hacker.started_applicants.paginate(:page => params[:page])
+    @hackers.each do |hacker|
+      hacker.class_eval do
+        attr_accessor :have_i_ranked
+        attr_accessor :should_i_rank
+      end
+    end
+    @hackers.each do |hacker|
+      have_ranked = (HackerRanking.where(exec: current_user).where(hacker: hacker).count ==1)
+      hacker.have_i_ranked = have_ranked
+      hacker.should_i_rank = (!have_ranked && hacker.hacker_ranking.count<3 && hacker.application_completed?)
+    end
   end
 
   # GET /users/1
