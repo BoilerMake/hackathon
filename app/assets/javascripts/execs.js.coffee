@@ -5,3 +5,4 @@ $(document).on "ajax:success", "form", (xhr, data, response) ->
   console.log(data)
   console.log(response)
   $('.rank-response').append '<h5>'+response+'</h5>'
+  window.location.replace '/execs/ranker'

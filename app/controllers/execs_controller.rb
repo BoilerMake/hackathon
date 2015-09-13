@@ -70,6 +70,24 @@ class ExecsController < ApplicationController
     @school_count = @schools.count
 
   end
+
+  def ranker
+    found = "none"
+    Hacker.application_completed.each do |hacker|
+      if hacker.school.nil?
+        raise "FUCK"
+      end
+
+      have_ranked = (HackerRanking.where(exec: current_user).where(hacker: hacker).count ==1)
+      if(!have_ranked && hacker.hacker_ranking.count<3)
+        found = hacker
+        break
+      end
+    end
+    redirect_to :action => "hacker_detail", :hacker_id => found.id
+    #respond_with hacker_detail
+    #render json: found
+  end
   def hacker_detail
     @hacker = Hacker.find params[:hacker_id]
     @hacker_github_info = get_github_info @hacker
@@ -91,7 +109,7 @@ class ExecsController < ApplicationController
     require 'net/http'
     info = Hash.new
 
-    if(@hacker.application.github==nil)
+    if(@hacker.application.github==nil || @hacker.application.github=="")
       return nil
     end
     github_username=URI(@hacker.application.github).path.split('/').last
