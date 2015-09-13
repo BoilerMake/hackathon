@@ -7,6 +7,13 @@ class HackerRankingsController < ApplicationController
       format.json { render json: @hacker_ranking.to_json }
     end
   end
+  def create
+    respond_to do |format|
+      @hacker_ranking = HackerRanking.create(ranking_params)
+      @hacker_ranking.save!
+      format.json { render json: @hacker_ranking.to_json }
+    end
+  end
 
   def show
     @hacker_ranking = HackerRanking.find(params['id'])

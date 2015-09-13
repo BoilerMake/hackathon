@@ -76,6 +76,8 @@
               %h3 your ranking: 
               .field
                 = f.number_field :ranking, placeholder: "ranking", class: 'second-input'
+                = f.hidden_field :exec_id, class: 'display: none', value: current_user.id
+                = f.hidden_field :hacker_id, class: 'display: none', value: @hacker.id
               .submit
                 = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'
         .panel.panel-default

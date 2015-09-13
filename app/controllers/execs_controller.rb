@@ -95,10 +95,6 @@ class ExecsController < ApplicationController
   def ranker
     found = "none"
     Hacker.application_completed.each do |hacker|
-      if hacker.school.nil?
-        raise "FUCK"
-      end
-
       have_ranked = (HackerRanking.where(exec: current_user).where(hacker: hacker).count ==1)
       if(!have_ranked && hacker.hacker_ranking.count<3)
         found = hacker
@@ -117,7 +113,7 @@ class ExecsController < ApplicationController
     if(query.any?)
       @hacker_ranking = query.first
     else
-      @hacker_ranking = HackerRanking.create(exec_id: current_user.id, hacker_id: @hacker.id)
+      @hacker_ranking = HackerRanking.new(exec_id: current_user.id, hacker_id: @hacker.id)
     end
   end
 
