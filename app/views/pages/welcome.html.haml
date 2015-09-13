@@ -30,7 +30,7 @@
       .scrolldown.flickerIn
         %a{:href => "#about", :id => "scrollBtn"} scroll down
 
-  %div.full-form#signupForm{style: 'display: none;'}
+  %div.full-form.applyForm#signupForm{style: 'display: none;'}
     = form_for @hacker do |f|
       = f.label :email
       = f.email_field :email
@@ -155,6 +155,7 @@
       .sponsor.api
         %a{:href => "https://www.slice.com/"}
           =image_tag "slice.png"
+      
 
 
 
