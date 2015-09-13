@@ -28,6 +28,7 @@ class Hacker < User
       "applications.essay1" => nil,
       "applications.essay2" => nil
     ).where.not(
+      school_id: -1,
       first_name: "",
       last_name: "",
       "applications.resume" => "",
@@ -36,6 +37,27 @@ class Hacker < User
       "applications.essay2" => ""
     )
   end
+
+  def self.application_incomplete
+    Hacker.started_applicants.where(
+      "school_id = ? OR
+      first_name = ? OR
+      last_name = ? OR
+      applications.resume = ? OR
+      applications.tshirt_size = ? OR
+      applications.essay1 = ? OR
+      applications.essay2 = ? OR
+      school_id = ? OR
+      first_name = ? OR
+      last_name = ? OR
+      applications.resume = ? OR
+      applications.tshirt_size = ? OR
+      applications.essay1 = ? OR
+      applications.essay2 = ?",
+      nil, nil, nil, nil, nil, nil, nil, -1, "", "", "", "", "", ""
+    )
+  end
+
 
   def accepted?
     status == 'Accepted'
