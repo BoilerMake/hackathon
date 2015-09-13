@@ -81,9 +81,10 @@ class Hacker < User
 
   def application_completed?
     false if application.nil?
-    attributes = [ first_name, last_name, school_id ].map do |el|
+    attributes = [ first_name, last_name ].map do |el|
       el.present?
     end
+    attributes << (school_id.present? && school_id != -1)
     if application.present?
       application_attrs = [ application.resume,
                             application.tshirt_size,
