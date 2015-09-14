@@ -22,7 +22,7 @@
             %button.button.flickerIn Log Out
       - else
         %div.button-row
-          %button.button.flickerIn#applyButton{onclick: 'showForm("#signupForm")'} Apply
+          %button.button.flickerIn#applyButton{style: 'cursor:normal'} Registrations Closed
           %a{href: 'mailto:sponsorship@boilermake.org'}
             %button.button.flickerIn Sponsor
         %div.button-row
@@ -30,20 +30,9 @@
       .scrolldown.flickerIn
         %a{:href => "#about", :id => "scrollBtn"} scroll down
 
-  %div.full-form.applyForm#signupForm{style: 'display: none;'}
-    = form_for @hacker do |f|
-      = f.label :email
-      = f.email_field :email
-      = f.label :password
-      = f.password_field :password
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation
-      .button-row
-        = f.submit "Register", class: 'button'
-        = button_tag "Cancel", :type => 'button', class: 'button', onclick: 'hideForm()'
-    - if @should_skip_intro
-      = javascript_tag do
-        window.shouldSkipIntro = true;
+  - if @should_skip_intro
+    = javascript_tag do
+      window.shouldSkipIntro = true;
 
   %div.full-form.loginForm#loginForm{style: 'display: none;'}
     = form_tag sessions_path do
