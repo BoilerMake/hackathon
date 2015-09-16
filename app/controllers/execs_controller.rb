@@ -93,7 +93,7 @@ class ExecsController < ApplicationController
   end
 
   def ranker
-    found = "none"
+    found = nil
     Hacker.application_completed.each do |hacker|
       have_ranked = (HackerRanking.where(exec: current_user).where(hacker: hacker).count ==1)
       if(!have_ranked && hacker.hacker_ranking.count<3)
@@ -101,9 +101,11 @@ class ExecsController < ApplicationController
         break
       end
     end
-    redirect_to :action => "hacker_detail", :hacker_id => found.id
-    #respond_with hacker_detail
-    #render json: found
+    if(found == nil)
+      render html: "looks like everyone is ranked!"
+    elsif
+      redirect_to :action => "hacker_detail", :hacker_id => found.id
+    end
   end
   def hacker_detail
     @hacker = Hacker.find params[:hacker_id]
