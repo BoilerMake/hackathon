@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'execs/export'
   get 'execs/shirts' => 'execs#shirts'
 
-  get 'execs/review'
+  get 'execs/ranker'
   get 'execs/hacker_detail/:hacker_id' => 'execs#hacker_detail'
 
   get 'visualization' => 'visualization#index'
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'schools/export'
 
   resources :schools
-  resources :hackers, except: [:destroy]
+  resources :hackers, except: [:destroy, :create, :update]
 
   resources :hacker_rankings
   resources :sessions

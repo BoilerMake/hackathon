@@ -47,7 +47,7 @@ class ExecsController < ApplicationController
   def export
     require 'csv'
     @csv_string = CSV.generate do |csv|
-      csv << ['id', 'fname', 'lname', 'email', 'school']
+      csv << ['id', 'fname', 'lname', 'email', 'school', 'created_at', 'updated_at']
       Hacker.all.each do |h|
         school_name = ''
         team_id     = 0
@@ -61,7 +61,9 @@ class ExecsController < ApplicationController
                 h.first_name,
                 h.last_name,
                 h.email,
-                school_name]
+                school_name,
+                h.created_at,
+                h.updated_at]
       end
     end
     send_data @csv_string,
@@ -91,6 +93,22 @@ class ExecsController < ApplicationController
     @school_count = @schools.count
 
   end
+
+  def ranker
+    found = nil
+    Hacker.application_completed.each do |hacker|
+      have_ranked = (HackerRanking.where(exec: current_user).where(hacker: hacker).count ==1)
+      if(!have_ranked && hacker.hacker_ranking.count<3)
+        found = hacker
+        break
+      end
+    end
+    if(found == nil)
+      render html: "looks like everyone is ranked!"
+    elsif
+      redirect_to :action => "hacker_detail", :hacker_id => found.id
+    end
+  end
   def hacker_detail
     @hacker = Hacker.find params[:hacker_id]
     @hacker_github_info = get_github_info @hacker
@@ -99,7 +117,7 @@ class ExecsController < ApplicationController
     if(query.any?)
       @hacker_ranking = query.first
     else
-      @hacker_ranking = HackerRanking.create(exec_id: current_user.id, hacker_id: @hacker.id)
+      @hacker_ranking = HackerRanking.new(exec_id: current_user.id, hacker_id: @hacker.id)
     end
   end
 
@@ -112,7 +130,7 @@ class ExecsController < ApplicationController
     require 'net/http'
     info = Hash.new
 
-    if(@hacker.application.github==nil)
+    if(@hacker.application.github==nil || @hacker.application.github=="")
       return nil
     end
     github_username=URI(@hacker.application.github).path.split('/').last

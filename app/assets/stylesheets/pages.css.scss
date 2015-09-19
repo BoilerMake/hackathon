@@ -547,14 +547,15 @@ input:focus {
     width: 25%;
     padding: 0 5%;
     float: left;
-    margin: 15px 0;
+    margin: 20px 0;
   }
   .clear {
     clear: both;
   }
   .center {
-    float: none !important;
+    float: none;
     margin: 0 auto;
+    display: inline-block;
   }
 }
 .flash-alert {
