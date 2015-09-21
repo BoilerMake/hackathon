@@ -78,6 +78,7 @@ class ExecsController < ApplicationController
 
 
   def dashboard
+    @execs = Exec.all
     @interested_count = InterestSignup.count
     @interested_and_valid_count = InterestSignup.where(in_mailchimp: true).count
     @interested_student_count = InterestSignup.where("email LIKE '%.edu'").count

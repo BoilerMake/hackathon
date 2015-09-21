@@ -17,6 +17,17 @@
   %h2
     = link_to 'rank hackers', execs_ranker_path
   %h2
+    Ranking Leaderboard
+  %table.table.striped
+    %tr
+      %td Email
+      %td Hackers ranked
+    - @execs.each do |exec|
+      %tr
+        %td= exec.email
+        %td= exec.hacker_ranking.count
+
+  %h2
     HACKER REGISTRATIONS
   %h3
     = "Motherfuckers wanting to kick ass at #{HACKATHON}:"
