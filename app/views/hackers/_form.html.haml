@@ -102,4 +102,4 @@
                 = application_fields.text_area :essay2, rows: '4', placeholder: 'I made a castle out of legos...'
 
           .submit
-            = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'
+            = button_tag 'Applications Locked', id: 'save', class: '', style: 'cursor:default;', disabled: true
