@@ -73,13 +73,17 @@
           .panel-body
             .rank-response
             = form_for @hacker_ranking, remote: true, "data-type" => :json do |f|
-              %h3 your ranking: 
-              .field
-                = f.number_field :ranking, placeholder: "ranking", class: 'second-input'
-                = f.hidden_field :exec_id, class: 'display: none', value: current_user.id
-                = f.hidden_field :hacker_id, class: 'display: none', value: @hacker.id
-              .submit
-                = f.submit 'Save', id: 'save', class: '', style: 'cursor:pointer;'
+              %h3 your ranking:
+              .rankings{style: "max-width:100px"}
+                %span#bad_ranking{style: "font-size:200%;cursor:pointer"}
+                  1
+                %span#meh_ranking{style: "font-size:200%;cursor:pointer"}
+                  2
+                %span#good_ranking{style: "font-size:200%;cursor:pointer"}
+                  3
+              = f.hidden_field :ranking, id: "ranking_field"
+              = f.hidden_field :exec_id, class: 'display: none', value: current_user.id
+              = f.hidden_field :hacker_id, class: 'display: none', value: @hacker.id
         .panel.panel-default
           .panel-heading
             %h3.panel-title Diversity
