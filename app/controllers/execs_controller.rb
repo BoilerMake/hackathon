@@ -121,6 +121,7 @@ class ExecsController < ApplicationController
   def difference_in_days earliest, latest
     ( (latest - earliest) / (60 * 60 * 24) ).floor
   end
+
   def get_github_info(hacker)
     require 'uri'
     require 'net/http'
@@ -136,7 +137,13 @@ class ExecsController < ApplicationController
     http.use_ssl = true
     request = Net::HTTP::Get.new(parsed_url.request_uri)
     request.basic_auth ENV['github_api_username'], ENV['github_api_secret']
-    info['profile']= ActiveSupport::JSON.decode(http.request(request).body)
+    body = ActiveSupport::JSON.decode(http.request(request).body)
+
+    if body["message"] == "Not Found"
+      return nil
+    end
+
+    info['profile']= body
 
     parsed_url = URI.parse("https://api.github.com/users/#{github_username}/repos?sort=updated")
     http = Net::HTTP.new(parsed_url.host, parsed_url.port)
