@@ -153,5 +153,7 @@ class ExecsController < ApplicationController
     info['repos']= ActiveSupport::JSON.decode(http.request(request).body)
 
     return info
+  rescue
+    return nil
   end
 end
