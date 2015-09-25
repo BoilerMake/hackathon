@@ -114,6 +114,14 @@ class ExecsController < ApplicationController
     end
   end
 
+  def school_groups
+    @results = School.select('count(schools.id) as applicant_count, name, schools.id as schools_id')
+                .joins(:users)
+                .group('schools.name')
+                .order('applicant_count DESC')
+                .limit(5)
+  end
+
   private
   def difference_in_days earliest, latest
     ( (latest - earliest) / (60 * 60 * 24) ).floor
