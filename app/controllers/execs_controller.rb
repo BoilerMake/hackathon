@@ -129,6 +129,9 @@ class ExecsController < ApplicationController
   def school_applications
     @school = School.find params[:school_id]
     @hackers = Hacker.where(school_id: @school.id).all
+    @hackers.each do |hacker|
+      HackerRanking.where(hacker_id: hacker.id)
+    end
   end
 
   private
