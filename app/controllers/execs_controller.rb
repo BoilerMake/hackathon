@@ -119,6 +119,7 @@ class ExecsController < ApplicationController
                 .joins(:users)
                 .group('schools.name')
                 .order('applicant_count DESC')
+                .group('schools_id')
                 .limit(5)
   end
 
