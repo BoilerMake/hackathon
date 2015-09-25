@@ -125,8 +125,10 @@ class ExecsController < ApplicationController
                 .group('schools_id')
                 .limit(5)
   end
-  
+
   def school_applications
+    @school = School.find params[:school_id]
+    @hackers = Hacker.where(school_id: @school.id).all
   end
 
   private
