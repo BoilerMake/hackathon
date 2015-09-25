@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'execs/export'
   get 'execs/shirts' => 'execs#shirts'
 
+  get 'execs/school_groups'
   get 'execs/ranker'
   get 'execs/hacker_detail/:hacker_id' => 'execs#hacker_detail'
 

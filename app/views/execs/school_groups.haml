@@ -1,0 +1,15 @@
+<pre>
+#{@results.to_yaml}
+</pre>
+.container
+  %h1 School List
+  %table.table.striped.table-bordered.table-hover
+    %tr
+      %th School Name
+      %th Applicant Count
+      %th View Hackers
+    - @results.each do |result|
+      %tr
+        %td= result.name
+        %td= result.applicant_count
+        %td= link_to("text", "execs/school/", target: "blank")
