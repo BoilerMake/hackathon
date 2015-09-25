@@ -125,6 +125,9 @@ class ExecsController < ApplicationController
                 .group('schools_id')
                 .limit(5)
   end
+  
+  def school_applications
+  end
 
   private
   def difference_in_days earliest, latest

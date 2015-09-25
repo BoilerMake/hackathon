@@ -1,0 +1,14 @@
+/ <pre>
+/ #{@results.to_yaml}
+/ </pre>
+.container
+  %h1 Applications from :SCHOOL
+  %table.table.striped.table-bordered.table-hover
+    %tr
+      %th Rank
+      %th Name
+      
+    / - @results.each do |result|
+    /   %tr
+    /     %td= link_to(result.name, "school/" + result.schools_id.to_s, target: "blank")
+    /     %td= result.applicant_count

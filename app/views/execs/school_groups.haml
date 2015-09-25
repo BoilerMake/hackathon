@@ -9,5 +9,5 @@
       %th Applicant Count
     - @results.each do |result|
       %tr
-        %td= link_to(result.name, "execs/school/" + result.schools_id.to_s, target: "blank")
+        %td= link_to(result.name, "school/" + result.schools_id.to_s, target: "blank")
         %td= result.applicant_count
