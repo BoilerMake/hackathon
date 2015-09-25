@@ -1,14 +1,44 @@
+:css
+  body {
+    margin-top: 50px;
+  }
+  .move {
+    margin-right: 8px;
+  }
+
+.navbar.navbar-default.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand #{@school.name}
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          %button.btn.btn-success.navbar-btn.move Accept
+        %li
+          %button.btn.btn-warning.navbar-btn.move Waitlist
+        %li
+          %button.btn.btn-danger.navbar-btn.move Deny
 / <pre>
-/ #{@results.to_yaml}
+/ #{@hackers.to_yaml}
 / </pre>
 .container
-  %h1 Applications from :SCHOOL
+  %h1 Applications from #{@school.name}
   %table.table.striped.table-bordered.table-hover
     %tr
-      %th Rank
+      %th 
+      %th Status
+      %th Ranking
       %th Name
-      
-    / - @results.each do |result|
-    /   %tr
-    /     %td= link_to(result.name, "school/" + result.schools_id.to_s, target: "blank")
-    /     %td= result.applicant_count
+      %th Major
+      %th Gender
+      %th Email
+    - @hackers.each do |hacker|
+      %tr
+        %td
+          %input{ :type=>"checkbox" }
+        %td Status
+        %td Ranking
+        %td= hacker.first_name + " " + hacker.last_name
+        %td= hacker.application.major
+        %td= hacker.application.gender
+        %td= hacker.email 
