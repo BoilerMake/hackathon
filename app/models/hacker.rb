@@ -123,6 +123,15 @@ class Hacker < User
     full_name.present? ? full_name : email
   end
 
+  def average_ranking
+    sum = hacker_ranking.map{|h| h.ranking}.reduce(:+)
+    count = hacker_ranking.count.to_f
+    if(count==0)
+      return 0
+    end
+    return (sum/count).round(2)
+  end
+
   # this validation should never trigger, but its here as a failsafe
   # handled in TeamsController#join
   def team_size_is_okay
