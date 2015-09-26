@@ -26,8 +26,11 @@
   %table.table.striped.table-bordered.table-hover
     %tr
       %th 
+        %a= "make this select all"
+        %input{ :type=>"checkbox" }
       %th Status
-      %th Ranking
+      %th Number of Rankings
+      %th Average Ranking
       %th Name
       %th Major
       %th Gender
@@ -36,9 +39,10 @@
       %tr
         %td
           %input{ :type=>"checkbox" }
-        %td Status
-        %td Ranking
+        %td= hacker.status
+        %td= hacker.hacker_ranking.count
+        %td= hacker.average_ranking 
         %td= hacker.first_name + " " + hacker.last_name
         %td= hacker.application.major
         %td= hacker.application.gender
-        %td= hacker.email 
+        %td= hacker.email
