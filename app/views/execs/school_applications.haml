@@ -1,3 +1,4 @@
+= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.23.4/js/jquery.tablesorter.min.js'
 :css
   body {
     margin-top: 50px;
@@ -5,6 +6,22 @@
   .move {
     margin-right: 8px;
   }
+:javascript
+  $(document).ready(function() { 
+      $("#myTable").tablesorter();
+      $('#select-all').click(function(event) {   
+        if(this.checked) {
+          $(':checkbox').each(function() {
+            this.checked = true;                        
+          });
+        }
+        else {
+          $(':checkbox').each(function() {
+            this.checked = false;                        
+          });
+        }
+       });
+   }); 
 
 .navbar.navbar-default.navbar-fixed-top
   .container-fluid
@@ -23,22 +40,25 @@
 / </pre>
 .container
   %h1 Applications from #{@school.name}
-  %table.table.striped.table-bordered.table-hover
-    %tr
-      %th 
-        %a= "make this select all"
-        %input{ :type=>"checkbox" }
-      %th Status
-      %th Number of Rankings
-      %th Average Ranking
-      %th Name
-      %th Major
-      %th Gender
-      %th Email
+  %small Click on table headers to sort
+  %table{:class => "table striped table-bordered table-hover tablesorter", :id => "myTable"}
+    %thead
+      %tr
+        %th
+          All
+          %input{:type=>"checkbox", :id => "select-all"}
+        %th Status
+        %th Number of Rankings
+        %th Average Ranking
+        %th Name
+        %th Major
+        %th Gender
+        %th Email
+    %tbody
     - @hackers.each do |hacker|
       %tr
         %td
-          %input{ :type=>"checkbox" }
+          %input{:type=>"checkbox", name: "checkbox-" + hacker.id.to_s}
         %td= hacker.status
         %td= hacker.hacker_ranking.count
         %td= hacker.average_ranking 
