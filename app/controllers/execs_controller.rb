@@ -124,7 +124,11 @@ class ExecsController < ApplicationController
   end
 
   def decision_submission
-    logger.debug @params
+    # logger.debug params[:'hackers']
+    params[:'hackers'].each do |h|
+      logger.debug h
+    end
+
     redirect_to :execs_school_groups
   end
 

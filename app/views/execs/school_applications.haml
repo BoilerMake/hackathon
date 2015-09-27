@@ -30,7 +30,7 @@
 
            $('.table tr').each(function (i, row) {
              if(i != 0) { // Don't need the first row
-               if($(row).find(".status-cell").html() == 2) {
+               if($(row).find(".status-cell").html() == "Accepted") {
                 $(row).children(':checkbox').attr('checked', this.checked);
                 var t = $(row).find('input:checkbox:first');
                 t.prop("checked", true);
@@ -43,14 +43,14 @@
              }
            });
          }
-         else if(id == "wait") {
+         else if(id == "standby") {
            $(".navbar").css('background-color', '#F9E600');
            $(".navbar-default .navbar-brand").css('color', '#000')
            $("#decision_type").val(1);
 
            $('.table tr').each(function (i, row) {
              if(i != 0) { // Don't need the first row
-               if($(row).find(".status-cell").html() == 1) {
+               if($(row).find(".status-cell").html() == "Standby") {
                 $(row).children(':checkbox').attr('checked', this.checked);
                 var t = $(row).find('input:checkbox:first');
                 t.prop("checked", true);
@@ -63,13 +63,13 @@
              }
            });
          }
-         else if(id == "deny") {
+         else if(id == "reject") {
            $(".navbar").css('background-color', '#8C2323');
            $(".navbar-default .navbar-brand").css('color', '#fff')
            $("#decision_type").val(0);
            $('.table tr').each(function (i, row) {
              if(i != 0) { // Don't need the first row
-               if($(row).find(".status-cell").html() == 0) {
+               if($(row).find(".status-cell").html() == "Rejected") {
                 $(row).children(':checkbox').attr('checked', this.checked);
                 var t = $(row).find('input:checkbox:first');
                 t.prop("checked", true);
@@ -94,9 +94,9 @@
         %li
           %button{:class => "btn btn-success navbar-btn move", :id => "accept"} Accept
         %li
-          %button{:class => "btn btn-warning navbar-btn move", :id => "wait"} Waitlist
+          %button{:class => "btn btn-warning navbar-btn move", :id => "standby"} Standby
         %li
-          %button{:class => "btn btn-danger navbar-btn move", :id => "deny"} Deny
+          %button{:class => "btn btn-danger navbar-btn move", :id => "reject"} Reject
 / <pre>
 / #{@hackers.to_yaml}
 / </pre>
@@ -104,6 +104,8 @@
   %h1 Applications from #{@school.name}
   = form_tag '/execs/decision_submission' do
     = hidden_field_tag :decision_type
+    = submit_tag
+    %hr
     %small Click on table headers to sort
     %table{:class => "table striped table-bordered table-hover tablesorter", :id => "myTable"}
       %thead
@@ -122,9 +124,9 @@
       - @hackers.each do |hacker|
         %tr
           = hidden_field_tag :hacker_id, value: hacker.id
-          %td{:class => "checkbox-cell"}= check_box_tag hacker.id
+          %td{:class => "checkbox-cell"}= check_box_tag 'hackers[]', hacker.id, false
           - if hacker.status == nil
-            %td{:class => "status-cell"} 0
+            %td{:class => "status-cell"} Rejected
           - else
             %td{:class => "status-cell"}= hacker.status
           %td= hacker.hacker_ranking.count
@@ -133,4 +135,4 @@
           %td= hacker.application.major
           %td= hacker.application.gender
           %td= hacker.email
-    = submit_tag
+    
