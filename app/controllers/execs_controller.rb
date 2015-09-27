@@ -93,7 +93,8 @@ class ExecsController < ApplicationController
   def ranker
     to_be_ranked = Hacker
       .application_completed
-      .where("users.id NOT IN (SELECT hacker_id FROM hacker_rankings WHERE exec_id = 1)")
+      .where("users.id NOT IN (SELECT hacker_id FROM hacker_rankings WHERE exec_id = ?)",
+              current_user.id)
     if (to_be_ranked.length > 0)
       redirect_to :action => "hacker_detail", :hacker_id => to_be_ranked.first.id
     else
