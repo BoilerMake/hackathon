@@ -129,7 +129,7 @@
           = hidden_field_tag :hacker_id, value: hacker.id
           %td{:class => "checkbox-cell"}= check_box_tag 'hackers[]', hacker.id, false, disabled: true
           - if hacker.status == nil
-            %td{:class => "status-cell"} Rejected
+            %td{:class => "status-cell"} n/a
           - else
             %td{:class => "status-cell"}= hacker.status
           %td= hacker.hacker_ranking.count
