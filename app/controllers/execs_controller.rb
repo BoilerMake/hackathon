@@ -123,12 +123,14 @@ class ExecsController < ApplicationController
                 .limit(5)
   end
 
+  def decision_submission
+    logger.debug @params
+    redirect_to :execs_school_groups
+  end
+
   def school_applications
     @school = School.find params[:school_id]
     @hackers = Hacker.where(school_id: @school.id).all
-    @hackers.each do |hacker|
-      HackerRanking.where(hacker_id: hacker.id)
-    end
   end
 
   private

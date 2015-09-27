@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   get 'execs/ranker'
   get 'execs/hacker_detail/:hacker_id' => 'execs#hacker_detail'
+  post 'execs/decision_submission'
 
   get 'visualization' => 'visualization#index'
   resources :interest_signups, only: [:create]

@@ -7,21 +7,21 @@
     margin-right: 8px;
   }
 :javascript
-  $(document).ready(function() { 
+  $(document).ready(function() {
       $("#myTable").tablesorter();
-      $('#select-all').click(function(event) {   
+      $('#select-all').click(function(event) {
         if(this.checked) {
           $(':checkbox').each(function() {
-            this.checked = true;                        
+            this.checked = true;
           });
         }
         else {
           $(':checkbox').each(function() {
-            this.checked = false;                        
+            this.checked = false;
           });
         }
        });
-   }); 
+   });
 
 .navbar.navbar-default.navbar-fixed-top
   .container-fluid
@@ -40,29 +40,32 @@
 / </pre>
 .container
   %h1 Applications from #{@school.name}
-  %small Click on table headers to sort
-  %table{:class => "table striped table-bordered table-hover tablesorter", :id => "myTable"}
-    %thead
-      %tr
-        %th
-          All
-          %input{:type=>"checkbox", :id => "select-all"}
-        %th Status
-        %th Number of Rankings
-        %th Average Ranking
-        %th Name
-        %th Major
-        %th Gender
-        %th Email
-    %tbody
-    - @hackers.each do |hacker|
-      %tr
-        %td
-          %input{:type=>"checkbox", name: hacker.id.to_s}
-        %td= hacker.status
-        %td= hacker.hacker_ranking.count
-        %td= hacker.average_ranking 
-        %td= hacker.first_name + " " + hacker.last_name
-        %td= hacker.application.major
-        %td= hacker.application.gender
-        %td= hacker.email
+  = form_tag '/execs/decision_submission' do
+    = hidden_field_tag :decision_type
+    %small Click on table headers to sort
+    %table{:class => "table striped table-bordered table-hover tablesorter", :id => "myTable"}
+      %thead
+        %tr
+          %th
+            All
+            %input{:type=>"checkbox", :id => "select-all"}
+          %th Status
+          %th Number of Rankings
+          %th Average Ranking
+          %th Name
+          %th Major
+          %th Gender
+          %th Email
+      %tbody
+      - @hackers.each do |hacker|
+        %tr
+          = hidden_field_tag :hacker_id, value: hacker.id
+          %td= check_box_tag hacker.id
+          %td= hacker.status
+          %td= hacker.hacker_ranking.count
+          %td= hacker.average_ranking
+          %td= hacker.first_name + " " + hacker.last_name
+          %td= hacker.application.major
+          %td= hacker.application.gender
+          %td= hacker.email
+    = submit_tag
