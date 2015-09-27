@@ -91,20 +91,16 @@ class ExecsController < ApplicationController
   end
 
   def ranker
-    found = nil
-    Hacker.application_completed.each do |hacker|
-      have_ranked = (HackerRanking.where(exec: current_user).where(hacker: hacker).count ==1)
-      if(!have_ranked && hacker.hacker_ranking.count<3)
-        found = hacker
-        break
-      end
-    end
-    if(found == nil)
+    to_be_ranked = Hacker
+      .application_completed
+      .where("users.id NOT IN (SELECT hacker_id FROM hacker_rankings WHERE exec_id = 1)")
+    if (to_be_ranked.length > 0)
+      redirect_to :action => "hacker_detail", :hacker_id => to_be_ranked.first.id
+    else
       render html: "looks like everyone is ranked!"
-    elsif
-      redirect_to :action => "hacker_detail", :hacker_id => found.id
     end
   end
+
   def hacker_detail
     @hacker = Hacker.find params[:hacker_id]
     @hacker_github_info = get_github_info @hacker
