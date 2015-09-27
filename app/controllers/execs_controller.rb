@@ -92,9 +92,13 @@ class ExecsController < ApplicationController
 
   def ranker
     to_be_ranked = Hacker
-      .application_completed
-      .where("users.id NOT IN (SELECT hacker_id FROM hacker_rankings WHERE exec_id = ?)",
-              current_user.id)
+        .application_completed
+        .joins("LEFT OUTER JOIN hacker_rankings on users.id = hacker_rankings.hacker_id")
+        .select("users.id, count(hacker_rankings.id) as ranking_count")
+        .where("users.id NOT IN (SELECT hacker_id FROM hacker_rankings WHERE exec_id = ?)", current_user.id)
+        .group("users.id")
+        .order("ranking_count ASC")
+
     if (to_be_ranked.length > 0)
       redirect_to :action => "hacker_detail", :hacker_id => to_be_ranked.first.id
     else
@@ -143,7 +147,7 @@ class ExecsController < ApplicationController
 
   def school_applications
     @school = School.find params[:school_id]
-    @hackers = Hacker.where(school_id: @school.id).all
+    @hackers = Hacker.application_completed.where(school_id: @school.id).all
   end
 
   private
