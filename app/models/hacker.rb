@@ -71,12 +71,12 @@ class Hacker < User
     status == 'Rejected'
   end
 
-  def declined?
-    status == 'Declined'
-  end
-
   def application_started?
     !application.nil?
+  end
+
+  def extra_fields_completed?
+    transportation_method.present?
   end
 
   def application_completed?

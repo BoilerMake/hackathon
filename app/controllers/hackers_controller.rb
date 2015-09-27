@@ -1,5 +1,7 @@
 class HackersController < ApplicationController
-  before_filter :set_genders, :downcase_email, :set_shirts, :set_races, :set_ethnicities, :set_job_interests, :set_job_dates
+  before_filter :set_genders, :downcase_email, :set_shirts, :set_races,
+                :set_ethnicities, :set_job_interests, :set_job_dates,
+                :set_transportation_methods
   before_action :set_hacker, only: [:update, :destroy]
   before_filter :authenticate, only: [:update, :destroy, :dashboard]
   skip_before_action :require_login
@@ -132,11 +134,15 @@ class HackersController < ApplicationController
   end
 
   def confirm
-    if current_user.accepted? && current_user.application_completed?
+    if current_user.accepted? \
+       && current_user.extra_fields_completed? \
+       && current_user.application_completed?
       current_user.update(confirmed: true)
       redirect_to dashboard_path
+    elsif current_user.accepted?
+      redirect_to dashboard_path, flash: { notice: "Please fill out all required fields" }
     else
-      redirect_to root_path, flash: { error: "Nice try, but you can't get in that way" }
+      redirect_to root_path, flash: { alert: "Nice try, but you can't get in that way" }
     end
   end
 
@@ -149,6 +155,16 @@ class HackersController < ApplicationController
 
   def authenticate
     redirect_to root_url, notice: 'Not Logged in' unless current_user
+  end
+
+  def set_transportation_methods
+    @transportation_methods = ['Carnegie Mellon/University of Pittsburgh -> Ohio St',
+                               'University of Iowa -> UIUC',
+                               'Madison -> Northwestern -> Downtown Chicago',
+                               'Waterloo -> Michigan State',
+                               'University of Michigan',
+                               'Georgia Tech -> Rose-Hulman',
+                               'Drive Separately']
   end
 
   def set_genders
@@ -184,6 +200,6 @@ class HackersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def hacker_params
     params.require(:hacker).permit(:first_name,
-     :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, application_attributes: [ :id, :gender, :address_line_one, :address_line_two, :city, :state, :zip_code, :expected_graduation, :github, :tshirt_size, :cell_phone, :resume, :linkedin, :badge_id, :dietary_restrictions, :previous_experience, :essay, :school_other, :can_text,:major,:degree,:essay1,:essay2,:race,:ethnicity,:grad_date,:job_interest,:job_date])
+     :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, :transportation_method, application_attributes: [ :id, :gender, :address_line_one, :address_line_two, :city, :state, :zip_code, :expected_graduation, :github, :tshirt_size, :cell_phone, :resume, :linkedin, :badge_id, :dietary_restrictions, :previous_experience, :essay, :school_other, :can_text,:major,:degree,:essay1,:essay2,:race,:ethnicity,:grad_date,:job_interest,:job_date])
   end
 end

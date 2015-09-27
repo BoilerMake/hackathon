@@ -11,40 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721163116) do
+ActiveRecord::Schema.define(version: 20150927184247) do
 
   create_table "applications", force: :cascade do |t|
-    t.string   "gender"
-    t.string   "github"
-    t.string   "tshirt_size"
-    t.string   "cell_phone"
-    t.string   "dietary_restrictions"
+    t.string   "gender",               limit: 255
+    t.string   "github",               limit: 255
+    t.string   "tshirt_size",          limit: 255
+    t.string   "cell_phone",           limit: 255
+    t.string   "dietary_restrictions", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "hacker_id"
-    t.string   "resume"
-    t.boolean  "can_text",             default: true
-    t.string   "major"
-    t.string   "degree"
+    t.string   "resume",               limit: 255
+    t.boolean  "can_text",                         default: true
+    t.string   "major",                limit: 255
+    t.string   "degree",               limit: 255
     t.text     "essay1"
     t.text     "essay2"
-    t.string   "race"
-    t.string   "ethnicity"
-    t.string   "grad_date"
-    t.string   "job_interest"
-    t.string   "job_date"
+    t.string   "race",                 limit: 255
+    t.string   "ethnicity",            limit: 255
+    t.string   "grad_date",            limit: 255
+    t.string   "job_interest",         limit: 255
+    t.string   "job_date",             limit: 255
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
-    t.integer  "priority",   default: 0, null: false
-    t.integer  "attempts",   default: 0, null: false
-    t.text     "handler",                null: false
+    t.integer  "priority",               default: 0, null: false
+    t.integer  "attempts",               default: 0, null: false
+    t.text     "handler",                            null: false
     t.text     "last_error"
     t.datetime "run_at"
     t.datetime "locked_at"
     t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
+    t.string   "locked_by",  limit: 255
+    t.string   "queue",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,19 +60,19 @@ ActiveRecord::Schema.define(version: 20150721163116) do
   end
 
   create_table "interest_signups", force: :cascade do |t|
-    t.string   "email"
+    t.string   "email",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "in_mailchimp", default: false
+    t.boolean  "in_mailchimp",             default: false
   end
 
   create_table "schools", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "state"
-    t.string   "country"
-    t.string   "category"
+    t.string   "state",      limit: 255
+    t.string   "country",    limit: 255
+    t.string   "category",   limit: 255
     t.boolean  "is_target"
     t.string   "lat"
     t.string   "lng"
@@ -81,34 +81,35 @@ ActiveRecord::Schema.define(version: 20150721163116) do
   create_table "teams", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "secret_key"
+    t.string   "secret_key", limit: 255
   end
 
   create_table "updates", force: :cascade do |t|
-    t.string   "title"
-    t.string   "body"
+    t.string   "title",         limit: 255
+    t.string   "body",          limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "short_message"
-    t.string   "text_sent"
-    t.boolean  "should_text",   default: true
+    t.string   "short_message", limit: 255
+    t.string   "text_sent",     limit: 255
+    t.boolean  "should_text",               default: true
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "first_name",             limit: 255
+    t.string   "last_name",              limit: 255
     t.integer  "school_id"
     t.integer  "team_id"
-    t.string   "email"
+    t.string   "email",                  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
-    t.string   "auth_token"
-    t.string   "password_reset_token"
+    t.string   "password_digest",        limit: 255
+    t.string   "auth_token",             limit: 255
+    t.string   "password_reset_token",   limit: 255
     t.datetime "password_reset_sent_at"
-    t.string   "type"
-    t.string   "status"
-    t.boolean  "confirmed",              default: false
+    t.string   "type",                   limit: 255
+    t.string   "status",                 limit: 255
+    t.boolean  "confirmed",                          default: false
+    t.string   "transportation_method"
   end
 
 end
