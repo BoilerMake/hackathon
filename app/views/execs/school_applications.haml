@@ -26,7 +26,7 @@
          if(id == "accept") {
            $(".navbar").css('background-color', '#0BB500');
            $(".navbar-default .navbar-brand").css('color', '#fff')
-           $("#decision_type").val(2);
+           $("#decision_type").val("Accepted");
 
            $('.table tr').each(function (i, row) {
              if(i != 0) { // Don't need the first row
@@ -46,7 +46,7 @@
          else if(id == "standby") {
            $(".navbar").css('background-color', '#F9E600');
            $(".navbar-default .navbar-brand").css('color', '#000')
-           $("#decision_type").val(1);
+           $("#decision_type").val("Standby");
 
            $('.table tr').each(function (i, row) {
              if(i != 0) { // Don't need the first row
@@ -66,7 +66,7 @@
          else if(id == "reject") {
            $(".navbar").css('background-color', '#8C2323');
            $(".navbar-default .navbar-brand").css('color', '#fff')
-           $("#decision_type").val(0);
+           $("#decision_type").val("Rejected");
            $('.table tr').each(function (i, row) {
              if(i != 0) { // Don't need the first row
                if($(row).find(".status-cell").html() == "Rejected") {

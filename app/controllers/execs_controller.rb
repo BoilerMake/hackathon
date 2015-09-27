@@ -125,9 +125,11 @@ class ExecsController < ApplicationController
 
   def decision_submission
     # logger.debug params[:'hackers']
-    params[:'hackers'].each do |h|
-      logger.debug h
-    end
+    
+      params[:hackers].each do |hacker_id|
+        Hacker.find(hacker_id).update(status: params[:decision_type])
+      end
+    
 
     redirect_to :execs_school_groups
   end
