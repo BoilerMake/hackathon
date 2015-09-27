@@ -4,7 +4,7 @@
   :css
     body {
     }
-.container
+.container  
   %h1
     = "Welcome, #{current_user.email}. You have ranked #{current_user.hacker_ranking.count} hackers!"
   .exec-toolbar
@@ -18,6 +18,28 @@
     = link_to 'Acceptance Manager Thing', execs_school_groups_path
   %h2
     = link_to 'rank hackers', execs_ranker_path
+  %h2
+    = "disribution of rankings"
+  %table.table.striped.table.bordered
+    %tr
+      %td ranking
+      %td count
+    - @rating_distribution.each do |k,v|
+      %tr
+        %td= k
+        %td= v   
+  %h2
+    = "number of times a hacker has been ranked"
+  %table.table.striped.table.bordered
+    %tr
+      %td #of times ranked
+      %td #of hackers who have been ranked said # of times
+    - @ranks.each do |k,v|
+      %tr
+        %td= k
+        %td= v
+  %h3
+    ="Number of rankings completed: #{@rating_count}" 
   %h2
     Ranking Leaderboard
   %table.table.striped

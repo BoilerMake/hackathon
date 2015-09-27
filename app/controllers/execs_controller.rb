@@ -87,7 +87,19 @@ class ExecsController < ApplicationController
       .uniq
       .where.not(school_id: nil)
       .where.not("school_id = -1").count
-
+    @rating_distribution = HackerRanking.where.not(ranking: nil).group("ranking").count
+    @rating_distribution.keys.sort.each { |k| @rating_distribution[k] = @rating_distribution.delete k }
+    counts1 = Hacker
+        .application_completed
+        .joins("LEFT OUTER JOIN hacker_rankings on users.id = hacker_rankings.hacker_id")
+        .group("users.id")
+        .count
+    @ranks = Hash.new(0)    
+    counts1.each do |k,v|
+        @ranks[v]+=1
+    end
+    @ranks.keys.sort.each { |k| @ranks[k] = @ranks.delete k }
+    @rating_count = HackerRanking.count
   end
 
   def ranker
