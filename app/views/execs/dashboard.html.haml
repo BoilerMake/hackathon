@@ -19,7 +19,21 @@
   %h2
     = link_to 'rank hackers', execs_ranker_path
   %h2
-    = "disribution of rankings"
+    Ranking Leaderboard
+  %table.table.striped
+    %tr
+      %td Email
+      %td Hackers ranked
+    - @execs.each do |exec|
+      - rank_count = exec.hacker_ranking.count
+      - swag = '😕'
+      - swag = '😐' if rank_count >= 150
+      - swag = '😃' if rank_count >= 250
+      %tr
+        %td= swag + exec.email
+        %td= rank_count
+
+  %h2 Distribution of Rankings
   %table.table.striped.table.bordered
     %tr
       %td ranking
@@ -27,9 +41,8 @@
     - @rating_distribution.each do |k,v|
       %tr
         %td= k
-        %td= v   
-  %h2
-    = "number of times a hacker has been ranked"
+        %td= v
+  %h2 Number of Times a Hacker Has Been Ranked
   %table.table.striped.table.bordered
     %tr
       %td #of times ranked
@@ -39,17 +52,7 @@
         %td= k
         %td= v
   %h3
-    ="Number of rankings completed: #{@rating_count}" 
-  %h2
-    Ranking Leaderboard
-  %table.table.striped
-    %tr
-      %td Email
-      %td Hackers ranked
-    - @execs.each do |exec|
-      %tr
-        %td= exec.email
-        %td= exec.hacker_ranking.count
+    ="Number of rankings completed: #{@rating_count}"
 
   %h2
     HACKER REGISTRATIONS
