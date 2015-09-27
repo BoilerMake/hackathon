@@ -58,7 +58,7 @@
     - @hackers.each do |hacker|
       %tr
         %td
-          %input{:type=>"checkbox", name: "checkbox-" + hacker.id.to_s}
+          %input{:type=>"checkbox", name: hacker.id.to_s}
         %td= hacker.status
         %td= hacker.hacker_ranking.count
         %td= hacker.average_ranking 
