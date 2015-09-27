@@ -23,6 +23,9 @@
        });
        $(".move").click(function(event) {
          var id = $(this).attr('id');
+         $(':checkbox').each(function() {
+            $(this).prop('disabled', false);
+          });
          if(id == "accept") {
            $(".navbar").css('background-color', '#0BB500');
            $(".navbar-default .navbar-brand").css('color', '#fff')
@@ -112,7 +115,7 @@
         %tr
           %th
             All
-            %input{:type=>"checkbox", :id => "select-all"}
+            %input{:type=>"checkbox", :id => "select-all", disabled: true}
           %th Status
           %th Number of Rankings
           %th Average Ranking
@@ -124,7 +127,7 @@
       - @hackers.each do |hacker|
         %tr
           = hidden_field_tag :hacker_id, value: hacker.id
-          %td{:class => "checkbox-cell"}= check_box_tag 'hackers[]', hacker.id, false
+          %td{:class => "checkbox-cell"}= check_box_tag 'hackers[]', hacker.id, false, disabled: true
           - if hacker.status == nil
             %td{:class => "status-cell"} Rejected
           - else
