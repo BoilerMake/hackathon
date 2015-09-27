@@ -21,6 +21,68 @@
           });
         }
        });
+       $(".move").click(function(event) {
+         var id = $(this).attr('id');
+         if(id == "accept") {
+           $(".navbar").css('background-color', '#0BB500');
+           $(".navbar-default .navbar-brand").css('color', '#fff')
+           $("#decision_type").val(2);
+
+           $('.table tr').each(function (i, row) {
+             if(i != 0) { // Don't need the first row
+               if($(row).find(".status-cell").html() == 2) {
+                $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", true);
+               }
+               else {
+               $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", false);
+               }
+             }
+           });
+         }
+         else if(id == "wait") {
+           $(".navbar").css('background-color', '#F9E600');
+           $(".navbar-default .navbar-brand").css('color', '#000')
+           $("#decision_type").val(1);
+
+           $('.table tr').each(function (i, row) {
+             if(i != 0) { // Don't need the first row
+               if($(row).find(".status-cell").html() == 1) {
+                $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", true);
+               }
+               else {
+               $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", false);
+               }
+             }
+           });
+         }
+         else if(id == "deny") {
+           $(".navbar").css('background-color', '#8C2323');
+           $(".navbar-default .navbar-brand").css('color', '#fff')
+           $("#decision_type").val(0);
+           $('.table tr').each(function (i, row) {
+             if(i != 0) { // Don't need the first row
+               if($(row).find(".status-cell").html() == 0) {
+                $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", true);
+               }
+               else {
+               $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", false);
+               }
+             }
+           });
+         }
+       });
    });
 
 .navbar.navbar-default.navbar-fixed-top
@@ -30,11 +92,11 @@
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li
-          %button.btn.btn-success.navbar-btn.move Accept
+          %button{:class => "btn btn-success navbar-btn move", :id => "accept"} Accept
         %li
-          %button.btn.btn-warning.navbar-btn.move Waitlist
+          %button{:class => "btn btn-warning navbar-btn move", :id => "wait"} Waitlist
         %li
-          %button.btn.btn-danger.navbar-btn.move Deny
+          %button{:class => "btn btn-danger navbar-btn move", :id => "deny"} Deny
 / <pre>
 / #{@hackers.to_yaml}
 / </pre>
@@ -60,8 +122,11 @@
       - @hackers.each do |hacker|
         %tr
           = hidden_field_tag :hacker_id, value: hacker.id
-          %td= check_box_tag hacker.id
-          %td= hacker.status
+          %td{:class => "checkbox-cell"}= check_box_tag hacker.id
+          - if hacker.status == nil
+            %td{:class => "status-cell"} 0
+          - else
+            %td{:class => "status-cell"}= hacker.status
           %td= hacker.hacker_ranking.count
           %td= hacker.average_ranking
           %td= hacker.first_name + " " + hacker.last_name
