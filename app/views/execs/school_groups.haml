@@ -1,6 +1,8 @@
-/ <pre>
-/ #{@results.to_yaml}
-/ </pre>
+- if flash != nil
+  -flash.each do |key, value|
+    .alert{ :class => "alert alert-danger" }
+      %strong
+        = value
 .container
   %h1 School List
   %table.table.striped.table-bordered.table-hover

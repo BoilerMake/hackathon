@@ -125,13 +125,14 @@ class ExecsController < ApplicationController
 
   def decision_submission
     # logger.debug params[:'hackers']
-    
+    if params[:hackers] == nil
+      redirect_to :execs_school_groups, flash: { error: "You need to select applicants before submitting" }
+    else
       params[:hackers].each do |hacker_id|
         Hacker.find(hacker_id).update(status: params[:decision_type])
       end
-    
-
-    redirect_to :execs_school_groups
+      redirect_to :execs_school_groups
+    end
   end
 
   def school_applications
