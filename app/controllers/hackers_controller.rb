@@ -146,6 +146,15 @@ class HackersController < ApplicationController
     end
   end
 
+  def decline
+    if current_user.accepted?
+      current_user.update(declined: true)
+      redirect_to dashboard_path, flash: { notice: "Sorry to hear you won't be able to make it :(" }
+    else
+      redirect_to root_path
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

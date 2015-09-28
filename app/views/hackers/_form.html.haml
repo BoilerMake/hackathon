@@ -4,14 +4,18 @@
     .application-status
       %span.fore Decision status:
       %span.decision
-        - if @hacker.accepted?
-          You're in!
-          - if @hacker.confirmed
+        - if @hacker.declined?
+          Sorry to hear you won't be able to make it :(
+        - elsif @hacker.accepted?
+          Congrats, you're in!
+          - if @hacker.confirmed?
             Thanks for telling us you'll be at the event!
           - else
-            In order to make sure you'll actually attend and not ditch us at the
-            last minute, please click here to confirm your attendance.
-            = link_to 'Here', confirm_url
+            Please confirm or decline your attendance as soon as possible
+            so we can accept those who are still on the waitlist.
+            NOTE: These are final, you can't undo these.
+            = link_to 'Confirm', confirm_url
+            = link_to 'Decline', decline_url
         - if @hacker.standby?
           Almost
         - if @hacker.rejected?
@@ -21,13 +25,13 @@
       .application
         .form
           = form_for @hacker do |f|
-            .field
+            .field.hidden
               .label.required
                 = f.label :first_name, 'Your name*', {class: 'required'}
               .user-input
                 = f.text_field :first_name, placeholder: "First Name"
                 = f.text_field :last_name, placeholder: "Last Name", class: 'second-input'
-            .field
+            .field.hidden
               .label
                 = f.label :school_id, 'School*', {class: 'required'}
               .user-input
@@ -45,12 +49,12 @@
                         {include_blank: "Please select"},
                         class: 'gender'
             = f.fields_for :application, @hacker.application do |application_fields|
-              .field
+              .field.hidden
                 %label.label{for: 'hacker_application_attributes_gender'}
                   Gender Identification
                 .user-input.user-input-select
                   = application_fields.collection_select :gender, @genders, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
-              .field
+              .field.hidden
                 %label.label{for: 'hacker_application_attributes_github'}
                   GitHub
                 .user-input
@@ -93,7 +97,7 @@
                                          :key => "resume/${timestamp}-${filename}",
                                          :style => @file_field_style
                   = application_fields.hidden_field :resume, id: "hidden_resume"
-              .field
+              .field.hidden
                 %label.label.required{for: 'hacker_application_attributes_tshirt_size'}
                   T-shirt Size*
                 .user-input.user-input-select
