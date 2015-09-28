@@ -159,6 +159,10 @@ class ExecsController < ApplicationController
   def school_applications
     @school = School.find params[:school_id]
     @hackers = Hacker.application_completed.where(school_id: @school.id).all
+    @accepted = Hacker.application_completed.where(school_id: @school.id).where(status: "Accepted").count
+    @standby = Hacker.application_completed.where(school_id: @school.id).where(status: "Standby").count
+    @rejected = Hacker.application_completed.where(school_id: @school.id).where(status: "Rejected").count
+    @not_decided = Hacker.application_completed.where(school_id: @school.id).where(status: nil).count
   end
 
   private
