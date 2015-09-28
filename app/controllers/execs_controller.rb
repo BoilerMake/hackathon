@@ -167,7 +167,7 @@ class ExecsController < ApplicationController
   end
 
   def undecided_applications
-    @hackers = Hacker.application_completed.where(status: nil).all.paginate(:page => params[:page])
+    @hackers = Hacker.application_completed.where(status: nil).all
   end
 
   private
