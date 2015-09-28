@@ -132,7 +132,6 @@ class ExecsController < ApplicationController
   end
 
   def school_groups
-    @unmarked = Hacker.application_completed.where(status: nil)
     @results = School.select('count(schools.id) as applicant_count, name, schools.id as schools_id')
                 .joins(:users)
                 .group('schools.name')
@@ -165,6 +164,10 @@ class ExecsController < ApplicationController
     @standby = Hacker.application_completed.where(school_id: @school.id).where(status: "Standby").count
     @rejected = Hacker.application_completed.where(school_id: @school.id).where(status: "Rejected").count
     @not_decided = Hacker.application_completed.where(school_id: @school.id).where(status: nil).count
+  end
+
+  def undecided_applications
+    @hackers = Hacker.application_completed.where(status: nil).all
   end
 
   private

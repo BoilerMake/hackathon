@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'execs/shirts' => 'execs#shirts'
 
   get 'execs/school_groups'
+  get 'execs/undecided_applications'
   get 'execs/school/:school_id' => 'execs#school_applications'
 
   get 'execs/ranker'
