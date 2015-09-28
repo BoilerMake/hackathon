@@ -1,17 +1,16 @@
 =render "shared/flash.html.haml"
 .container#application-page
   .application-container
-    .application-status
-      %span.fore Decision status:
-      %span.decision
-        - if @hacker.declined?
-          Sorry to hear you won't be able to make it.
-        - elsif @hacker.rejected?
-          Declined
-        - elsif @hacker.accepted?
-          Accepted.
-        - if @hacker.standby?
-          Waitlisted.
+    - if !@hacker.declined?
+      .application-status
+        %span.fore Decision status:
+        %span.decision
+          - if @hacker.rejected?
+            Declined
+          - elsif @hacker.accepted?
+            Accepted.
+          - if @hacker.standby?
+            Waitlisted.
 
     - if @hacker.confirmed?
       %p.additional-info.squished
@@ -20,6 +19,14 @@
         details and get ready to hack!
         %br
         \#hypeintesifies
+    - elsif @hacker.declined?
+      %p.additional-info
+        We're sorry to hear you can't make it, hopefully we'll see you next year.
+        %br
+        %br
+        Email us at
+        %a{:href => "mailto:team@boilermake.org"} team@boilermake.org
+        with any questions!
     - elsif @hacker.accepted? && !@hacker.declined?
       %p.additional-info.squished
         Pending confirmation.
