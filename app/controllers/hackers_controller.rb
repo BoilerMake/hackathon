@@ -112,23 +112,24 @@ class HackersController < ApplicationController
     end
 
     okay = true
-    if params[:confirmed]
-      okay = false
+    if params["hacker"]["confirmed"]
       if current_user.accepted? \
-       && current_user.extra_fields_completed?
+          && params["hacker"]["transportation_method"].present?
         okay = true
+      else
+        okay = false
       end
     end
 
     respond_to do |format|
-      if @hacker.update(new_params) && new_params[:school_id] != -1 && okay
+      if okay && @hacker.update(new_params) && new_params[:school_id] != -1
         flash[:success] = "Your application has been updated."
         format.html { redirect_to :dashboard }
         format.json { render :show, status: :ok, location: @hacker }
       else
         flash[:alert] = "That school doesn't exist. Email team@boilermake.org." if new_params[:school_id] == -1
         flash[:alert] = "Please fill everything out" if !okay
-        format.html { render :dashboard }
+        format.html { redirect_to :dashboard }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
     end
