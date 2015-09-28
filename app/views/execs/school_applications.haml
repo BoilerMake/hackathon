@@ -105,6 +105,7 @@
 / </pre>
 .container
   %h1 Applications from #{@school.name}
+  %h3 Accepted: #{@accepted} | Standby: #{@standby} | Rejected: #{@rejected} | n/a: #{@not_decided}
   = form_tag '/execs/decision_submission' do
     = hidden_field_tag :decision_type
     = submit_tag
