@@ -110,7 +110,7 @@ ActiveRecord::Schema.define(version: 20150928221859) do
     t.string   "status"
     t.boolean  "confirmed",              default: false
     t.string   "transportation_method"
-    t.boolean  "declined",                           default: false
+    t.boolean  "declined",               default: false
   end
 
 end
