@@ -275,7 +275,7 @@ body {
 	background-color: $white;
 	font-size: 2em;
 	font-family: 'Source Code Pro', sans-serif;
-	padding: 0 15px;
+	padding: 10px 15px 0;
 	letter-spacing: 0.5;
 	margin-bottom: 15px;
 	text-transform: uppercase;
@@ -284,7 +284,7 @@ body {
 		font-size: 0.5em;
 		font-weight: 500;
 		a {
-			width: 49%;
+			width: 47%;
 			text-align: center;
 			display: inline-block;
 			background: none;
@@ -314,6 +314,19 @@ body {
 		}
 	}
 }
+
+.additional-info {
+	font-size: 1em;
+	margin: 45px 60px;
+	letter-spacing: 0.8;
+	font-family: 'Source Code Pro', sans-serif;
+
+	&.squished {
+		margin: 0 15px 5px;
+		text-align: center;
+	}
+}
+
 .clear {
 	clear: both;
 }

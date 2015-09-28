@@ -7,15 +7,37 @@
         - if @hacker.declined?
           Sorry to hear you won't be able to make it.
         - elsif @hacker.rejected?
-          Rejected
+          Declined
         - elsif @hacker.accepted?
-          - if @hacker.confirmed?
-            You're all set. Watch your email for details abouth your bus
-            pickup location and time and get ready to hack!
-          - elsif !@hacker.confirmed?
-            Accepted pending confirmation.
-        - elsif @hacker.standby?
-          Waitlist. People on the waitlist will be given spots on the bus as they become available, so be on the lookout for an email as October 16th approaches
+          Accepted.
+        - if @hacker.standby?
+          Waitlisted.
+
+    - if @hacker.confirmed?
+      %p.additional-info.squished
+        You're all set. Watch your email for more
+        %br
+        details and get ready to hack!
+        %br
+        \#hypeintesifies
+    - elsif @hacker.accepted? && !@hacker.declined?
+      %p.additional-info.squished
+        Pending confirmation.
+    - if @hacker.standby?
+      %p.additional-info
+        People on the waitlist will be given spots as they become available, so be on the lookout for an email as October 16th approaches!
+        %br
+        %br
+        Email us at
+        %a{:href => "mailto:team@boilermake.org"} team@boilermake.org
+        with any questions!
+    - if @hacker.rejected?
+      %p.additional-info
+        Just because BoilerMake filled up doesn't mean you can't go to other awesome hackathons instead.
+        %br
+        Check out
+        %a{:href => "https://mlh.io/seasons/f2015/events"} mlh.io
+        for more information!
 
     - if current_user.accepted? && !current_user.declined?
       .application
@@ -130,4 +152,4 @@
                 - if !@hacker.confirmed? && !@hacker.declined?
                   = link_to 'I\'ll be there!', dashboard_url, class: 'confirm-button', id: "confirm_button"
                 - if !@hacker.declined?
-                  = link_to 'I can\'t come anymore :\'(', dashboard_url, class: 'confirm-button', id: "decline_button"
+                  = link_to 'I can\'t come :\'(', dashboard_url, class: 'confirm-button', id: "decline_button"

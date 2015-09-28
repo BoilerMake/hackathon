@@ -76,6 +76,7 @@ class Hacker < User
   end
 
   def declined?
+    # a true value here means that they have declined
     declined
   end
 
