@@ -5,21 +5,17 @@
       %span.fore Decision status:
       %span.decision
         - if @hacker.declined?
-          Sorry to hear you won't be able to make it :(
+          Declined.
         - elsif @hacker.accepted?
-          Congrats, you're in!
+          Accepted pending confirmation.
           - if @hacker.confirmed?
-            Thanks for telling us you'll be at the event!
+            You're all set. Watch your email for details abouth your bus
+            pickup location and time and get ready to hack!
           - else
-            Please confirm or decline your attendance as soon as possible
-            so we can accept those who are still on the waitlist.
-            NOTE: These are final, you can't undo these.
-            = link_to 'Confirm', confirm_url
-            = link_to 'Decline', decline_url
         - if @hacker.standby?
-          Almost
+          Waitlisted
         - if @hacker.rejected?
-          Better luck next time
+          Declined
 
     - if current_user.accepted?
       .application
@@ -124,6 +120,12 @@
                   What's the coolest thing you have done in the last 12 months*
                 .user-input
                   = application_fields.text_area :essay2, rows: '4', placeholder: 'I made a castle out of legos...'
+            = f.hidden_field :confirmed, value: false
+            = f.hidden_field :declined, value: false
 
-            .submit
+            .submit.hidden
               = button_tag 'Save Application', id: 'save', class: '', style: 'cursor:pointer;'
+            %div.application-status
+              %span.note
+                = link_to 'I\'ll be there!', dashboard_url, class: 'confirm-button', id: "confirm_button"
+                = link_to 'I can\'t come anymore :\'(', dashboard_url, class: 'confirm-button', id: "deny_button"

@@ -110,13 +110,24 @@ class HackersController < ApplicationController
     else
       new_params[:school_id] = nil
     end
+
+    okay = true
+    if params[:confirmed]
+      okay = false
+      if current_user.accepted? \
+       && current_user.extra_fields_completed?
+        okay = true
+      end
+    end
+
     respond_to do |format|
-      if @hacker.update(new_params) && new_params[:school_id] != -1
+      if @hacker.update(new_params) && new_params[:school_id] != -1 && okay
         flash[:success] = "Your application has been updated."
         format.html { redirect_to :dashboard }
         format.json { render :show, status: :ok, location: @hacker }
       else
         flash[:alert] = "That school doesn't exist. Email team@boilermake.org." if new_params[:school_id] == -1
+        flash[:alert] = "Please fill everything out" if !okay
         format.html { render :dashboard }
         format.json { render json: @hacker.errors, status: :unprocessable_entity }
       end
@@ -169,7 +180,6 @@ class HackersController < ApplicationController
   def set_transportation_methods
     @transportation_methods = ['Carnegie Mellon/University of Pittsburgh -> Ohio St',
                                'University of Iowa -> UIUC',
-                               'Madison -> Northwestern -> Downtown Chicago',
                                'Waterloo -> Michigan State',
                                'University of Michigan',
                                'Georgia Tech -> Rose-Hulman',
@@ -209,6 +219,6 @@ class HackersController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def hacker_params
     params.require(:hacker).permit(:first_name,
-     :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, :transportation_method, application_attributes: [ :id, :gender, :address_line_one, :address_line_two, :city, :state, :zip_code, :expected_graduation, :github, :tshirt_size, :cell_phone, :resume, :linkedin, :badge_id, :dietary_restrictions, :previous_experience, :essay, :school_other, :can_text,:major,:degree,:essay1,:essay2,:race,:ethnicity,:grad_date,:job_interest,:job_date])
+     :last_name, :password, :password_digest, :password_confirmation, :school_id, :team_id, :email, :transportation_method, :confirmed, :declined, application_attributes: [ :id, :gender, :address_line_one, :address_line_two, :city, :state, :zip_code, :expected_graduation, :github, :tshirt_size, :cell_phone, :resume, :linkedin, :badge_id, :dietary_restrictions, :previous_experience, :essay, :school_other, :can_text,:major,:degree,:essay1,:essay2,:race,:ethnicity,:grad_date,:job_interest,:job_date])
   end
 end

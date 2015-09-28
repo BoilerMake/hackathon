@@ -273,14 +273,45 @@ body {
 	text-align: center;
 	color: $black;
 	background-color: $white;
-	font-size: 0.8em;
+	font-size: 2em;
 	font-family: 'Source Code Pro', sans-serif;
-	padding: 10px 0;
-	margin: 0 10%;
+	padding: 0 15px;
+	letter-spacing: 0.5;
 	margin-bottom: 15px;
 	text-transform: uppercase;
-	.decision {
-		font-weight: 600;
+	font-weight: 300;
+	.note {
+		font-size: 0.5em;
+		font-weight: 500;
+		a {
+			width: 49%;
+			text-align: center;
+			display: inline-block;
+			background: none;
+			padding: 10px 15px;
+			font-family: 'Source Code Pro', sans-serif;
+			font-size: 0.8em;
+			border: 1px solid #6A9794;
+			background: #6A9794;
+			text-transform: uppercase;
+			text-decoration: none;
+			color: white;
+
+			&:last-child {
+				border: 1px solid #755652;
+				background: none;
+				color: #755652;
+				&:hover {
+					color: white;
+					background: #755652;
+				}
+			}
+
+			&:hover {
+				background: none;
+				color: #6A9794;
+			}
+		}
 	}
 }
 .clear {

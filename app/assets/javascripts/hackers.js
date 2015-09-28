@@ -18,4 +18,19 @@ $(document).ready(function(){
     window.setTimeout(function() {
       $('.alert').not('.file_alert').slideUp(250);
     }, 2000);
+
+    $("#confirm_button").on("click", function(e){
+      $("#hacker_confirmed").val(true);
+
+      $(".edit_hacker").submit();
+      e.preventDefault();
+    });
+
+    $("#decline_button").on("click", function(e){
+      $("#hacker_declined").val(true);
+
+      $(".edit_hacker").submit();
+      e.preventDefault();
+      return false;
+    });
 });
