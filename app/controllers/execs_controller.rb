@@ -132,6 +132,7 @@ class ExecsController < ApplicationController
   end
 
   def school_groups
+    @unmarked = Hacker.application_completed.where(status: nil)
     @results = School.select('count(schools.id) as applicant_count, name, schools.id as schools_id')
                 .joins(:users)
                 .group('schools.name')
