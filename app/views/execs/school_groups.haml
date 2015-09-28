@@ -14,7 +14,7 @@
         %td= link_to(result.name, "school/" + result.schools_id.to_s, target: "blank")
         %td= result.applicant_count
   %hr      
-  %h1 hackers with n/a status irregardless of school
+  %h1 hackers with n/a status irregardless of school (#{@unmarked.count})
   %table.table.striped.table-bordered.table-hover
     %tr
       %th Applicant Name
