@@ -5,19 +5,19 @@
       %span.fore Decision status:
       %span.decision
         - if @hacker.declined?
-          Declined.
+          Sorry to hear you won't be able to make it.
+        - elsif @hacker.rejected?
+          Rejected
         - elsif @hacker.accepted?
-          Accepted pending confirmation.
           - if @hacker.confirmed?
             You're all set. Watch your email for details abouth your bus
             pickup location and time and get ready to hack!
-          - else
-        - if @hacker.standby?
-          Waitlisted
-        - if @hacker.rejected?
-          Declined
+          - elsif !@hacker.confirmed?
+            Accepted pending confirmation.
+        - elsif @hacker.standby?
+          Waitlist. People on the waitlist will be given spots on the bus as they become available, so be on the lookout for an email as October 16th approaches
 
-    - if current_user.accepted?
+    - if current_user.accepted? && !current_user.declined?
       .application
         .form
           = form_for @hacker do |f|
@@ -127,5 +127,7 @@
               = button_tag 'Save Application', id: 'save', class: '', style: 'cursor:pointer;'
             %div.application-status
               %span.note
-                = link_to 'I\'ll be there!', dashboard_url, class: 'confirm-button', id: "confirm_button"
-                = link_to 'I can\'t come anymore :\'(', dashboard_url, class: 'confirm-button', id: "deny_button"
+                - if !@hacker.confirmed? && !@hacker.declined?
+                  = link_to 'I\'ll be there!', dashboard_url, class: 'confirm-button', id: "confirm_button"
+                - if !@hacker.declined?
+                  = link_to 'I can\'t come anymore :\'(', dashboard_url, class: 'confirm-button', id: "decline_button"

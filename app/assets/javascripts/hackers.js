@@ -21,6 +21,7 @@ $(document).ready(function(){
 
     $("#confirm_button").on("click", function(e){
       $("#hacker_confirmed").val(true);
+      $("#hacker_declined").val(false);
 
       $(".edit_hacker").submit();
       e.preventDefault();
@@ -28,9 +29,9 @@ $(document).ready(function(){
 
     $("#decline_button").on("click", function(e){
       $("#hacker_declined").val(true);
+      $("#hacker_confirmed").val(false);
 
       $(".edit_hacker").submit();
       e.preventDefault();
-      return false;
     });
 });
