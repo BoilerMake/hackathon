@@ -5,17 +5,18 @@
       %span.fore Decision status:
       %span.decision
         - if @hacker.accepted?
-          You're in!
+          Accepted
+          %br
           - if @hacker.confirmed
-            Thanks for telling us you'll be at the event!
+            %span.note Confirmed
           - else
-            In order to make sure you'll actually attend and not ditch us at the
-            last minute, please click here to confirm your attendance.
-            = link_to 'Here', confirm_url
+            %span.note
+              = link_to 'I\'ll be there!', confirm_url, class: 'confirm-button'
+              = link_to 'I can\'t come anymore :\'(', confirm_url, class: 'confirm-button'
         - if @hacker.standby?
-          Almost
+          Waitlisted
         - if @hacker.rejected?
-          Better luck next time
+          Declined
 
     - if current_user.accepted?
       .application
