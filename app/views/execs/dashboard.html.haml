@@ -9,12 +9,17 @@
     = "Welcome, #{current_user.email}. You have ranked #{current_user.hacker_ranking.count} hackers!"
   .exec-toolbar
     = link_to 'Announcements', updates_path, class: 'button outline'
+    |
     = link_to 'Hacker Listing', hackers_path, class: 'button outline'
+    |
     = link_to 'Schools', schools_path, class: 'button outline'
+    |
     = link_to 'Export Schools as CSV', schools_export_path, class: 'button outline'
+    |
     = link_to 'Export Hackers as CSV', execs_export_path, class: 'button outline'
+    |
     = link_to 'CSV of hackers with incomplete applications', execs_incomplete_hackers_path, class: 'button outline'
-
+    |
     = link_to 'Acceptance Manager Thing', execs_school_groups_path
   %h2
     = link_to 'rank hackers', execs_ranker_path
