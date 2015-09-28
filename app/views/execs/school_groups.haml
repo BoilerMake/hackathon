@@ -17,9 +17,13 @@
   %h1 hackers with n/a status irregardless of school (#{@unmarked.count})
   %table.table.striped.table-bordered.table-hover
     %tr
+      %th # of rankings
+      %th average ranking
       %th Applicant Name
       %th School Name
     - @unmarked.each do |result|
       %tr
+        %td= result.hacker_ranking.count
+        %td= result.average_ranking
         %td= result.full_name
         %td= result.school.name
