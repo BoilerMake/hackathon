@@ -136,7 +136,6 @@ class ExecsController < ApplicationController
                 .group('schools.name')
                 .order('applicant_count DESC')
                 .group('schools_id')
-                .limit(5)
   end
 
   def decision_submission
