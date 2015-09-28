@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   get 'pages/welcome'
 
+  get 'sponsors/resume_portal'
+
   get 'execs/dashboard'
   get 'execs/sticker_recipients'
   get 'execs/hackers_for'

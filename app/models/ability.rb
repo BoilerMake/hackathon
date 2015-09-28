@@ -6,6 +6,8 @@ class Ability
     if user.present?
       if user.exec?
         can :manage, :all
+      elsif user.sponsor?
+        can [:resume_portal], Sponsor
       elsif user.hacker?
         can :manage, [Application]
         can [ :dashboard, :new, :create, :update, :confirm ], Hacker

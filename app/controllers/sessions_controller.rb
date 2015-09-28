@@ -40,6 +40,8 @@ class SessionsController < ApplicationController
     else
       if current_user.exec?
         redirect_to execs_dashboard_url
+      elsif current_user.sponsor?
+        redirect_to sponsors_resume_portal_url
       else
         redirect_to dashboard_url
       end
