@@ -81,6 +81,8 @@ class ExecsController < ApplicationController
   def dashboard
     @execs = Exec.all
     @confirmed_count = Hacker.where(confirmed: true).count
+    @accepted_count = Hacker.where(status: "Accepted").count
+    @standby_count = Hacker.where(status: "Standby").count
     @application_count = Application.all.count
     @application_completed_count = Hacker.application_completed.count
     @registered_count = Hacker.all.count
@@ -88,6 +90,8 @@ class ExecsController < ApplicationController
       .uniq
       .where.not(school_id: nil)
       .where.not("school_id = -1").count
+
+
     @rating_distribution = HackerRanking.where.not(ranking: nil).group("ranking").count
     @rating_distribution.keys.sort.each { |k| @rating_distribution[k] = @rating_distribution.delete k }
     counts1 = Hacker

@@ -23,6 +23,20 @@
     = link_to 'Acceptance Manager Thing', execs_school_groups_path
   %h2
     = link_to 'rank hackers', execs_ranker_path
+
+
+  %h2
+    Hacker Stats
+  %h3
+    \# of Hackers Accepted
+    %span{style: 'color: #f5a623;'}=  @accepted_count
+  %h3
+    \# of Hackers who have Confirmed
+    %span{style: 'color: #f5a623;'}=  @confirmed_count
+  %h3
+    \# of Hackers on Waitlist
+    %span{style: 'color: #f5a623;'}=  @standby_count
+
   %h2
     Ranking Leaderboard
   %table.table.striped
