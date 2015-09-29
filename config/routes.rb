@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'pages/welcome'
 
   get 'sponsors/resume_portal'
+  get 'sponsors/hackers' => `sponsors#hackers`
 
   get 'execs/dashboard'
   get 'execs/sticker_recipients'

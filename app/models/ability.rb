@@ -7,7 +7,7 @@ class Ability
       if user.exec?
         can :manage, :all
       elsif user.sponsor?
-        can [:resume_portal], Sponsor
+        can [:resume_portal, :hackers], Sponsor
       elsif user.hacker?
         can :manage, [Application]
         can [ :dashboard, :new, :create, :update, :confirm ], Hacker

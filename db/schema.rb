@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150721163116) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "applications", force: :cascade do |t|
     t.string   "gender"
     t.string   "github"
@@ -49,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150721163116) do
     t.datetime "updated_at"
   end
 
-  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
   create_table "hacker_rankings", force: :cascade do |t|
     t.integer  "exec_id"

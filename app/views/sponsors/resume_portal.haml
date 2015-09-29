@@ -1,21 +1,10 @@
-%h1 Resumes!!
-%h2 Welcome #{current_user.company_name}
+.portal-wrapper
+  .portal-header.container
+    %h1 Resumes!!
+    %h2 Welcome #{current_user.company_name}
 
-We've prepared here a listing of all the hackers that we've decided to accept to BoilerMake. If there's any extra information you'd like to have, please contact us at team@boilermake.org
+    We've prepared here a listing of all the hackers that we've decided to accept to BoilerMake. If there's any extra information you'd like to have, please contact us at team@boilermake.org
 
-%table.table.striped
-  %th Name
-  %th School
-  %th Major
-  %th Gender
-  %th Email
-  %th Resume
-  - @hackers.each do |hacker|
-    %tr
-      %td= hacker.full_name
-      %td= hacker.school.name
-      %td= hacker.application.major
-      %td= hacker.application.gender
-      %td= hacker.email
-      %td
-        = link_to 'Click', hacker.application.resume
+  #main-view
+
+%script{:src => "bundle.js"}
