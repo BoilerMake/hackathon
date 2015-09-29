@@ -66,6 +66,8 @@
   text-align: center;
 }
 
+//STYLING FOR SPONSOR RESUME PORTAL
+
 body, html {
   margin: 0;
   padding: 0;
@@ -82,41 +84,59 @@ body, html {
   max-width: 90%;
   margin: 0 auto 4em;
   padding: 35px;
-}
-.portal-wrapper h1 {
-  text-align: center;
-  font-family: 'Source Sans Pro', sans-serif;
-  text-transform: uppercase;
-  font-size: 1.7em;
-  margin: 10px 0;
-}
-.portal-wrapper h2 {
-  margin: 0 0 25px 0;
-  font-size: 0.9em;
-  text-align: center;
-  font-family: 'Source Code Pro', sans-serif;
-}
-.portal-wrapper p {
-  text-align: center;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 0.6em;
-  font-style: italic;
-  padding: 0 15% 25px 15%;
-  border-bottom: 1px solid #EEEEEE;
-  margin-bottom: 25px;
-}
-.portal-wrapper .controls {
-  margin-bottom: 15px;
+  h1 {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.7em;
+    margin: 10px 0;
+  }
+  h2 {
+    margin: 0 0 25px 0;
+    font-size: 0.9em;
+    text-align: center;
+    font-family: 'Source Code Pro', sans-serif;
+  }
+  p {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.6em;
+    font-style: italic;
+    padding: 0 15% 25px 15%;
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 25px;
+  }
+  .controls {
+    margin-bottom: 15px;
+    font-size: 0.8em;
+  }
+  .search-container {
+    font-family: 'Source Code Pro', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    input, textarea, select {
+      border: 1px solid #CCCCCC;
+      font-family: 'Source Code Pro', sans-serif;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      margin-left: 10px;
+      &.second-input {
+        margin-top: 5px;
+      }
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: 0;
+      box-shadow: 0 0 5px #EEEEEE;
+    }
+  }
+  table {
+    th {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: 0.9em;
+    }
+  }
+  .per-page-container {
   font-size: 0.8em;
-}
-.portal-wrapper table {
-
-}
-.portal-wrapper table th {
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 0.9em;
-}
-.per-page-container {
-  font-size: 0.8em;
-  font-family: 'Source Sans Pro', sans-serif;
+  }
 }
