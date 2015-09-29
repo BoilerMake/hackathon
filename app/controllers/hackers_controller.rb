@@ -184,7 +184,8 @@ class HackersController < ApplicationController
                                'Waterloo -> Michigan State',
                                'University of Michigan',
                                'Georgia Tech -> Rose-Hulman',
-                               'Drive Separately']
+                               'Drive Separately',
+                               "Purdue Student"]
   end
 
   def set_genders
