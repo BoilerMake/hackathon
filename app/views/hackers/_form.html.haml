@@ -9,12 +9,20 @@
             Declined.
           - elsif @hacker.accepted?
             Accepted.
-          - if @hacker.standby?
+          - elsif @hacker.standby?
             Waitlisted.
-          - if !@hacker.application_completed?
+          - elsif !@hacker.application_completed?
             Declined.
 
-    - if !@hacker.application_completed?
+    - if @hacker.standby?
+      %p.additional-info
+        People on the waitlist will be given spots as they become available, so be on the lookout for an email as October 16th approaches!
+        %br
+        %br
+        Email us at
+        %a{:href => "mailto:team@boilermake.org"} team@boilermake.org
+        with any questions!
+    - elsif !@hacker.application_completed?
       %p.additional-info
         Your application was left incomplete.
     - if @hacker.confirmed?
@@ -35,14 +43,6 @@
     - elsif @hacker.accepted? && !@hacker.declined?
       %p.additional-info.squished
         Pending confirmation.
-    - if @hacker.standby?
-      %p.additional-info
-        People on the waitlist will be given spots as they become available, so be on the lookout for an email as October 16th approaches!
-        %br
-        %br
-        Email us at
-        %a{:href => "mailto:team@boilermake.org"} team@boilermake.org
-        with any questions!
     - if @hacker.rejected?
       %p.additional-info
         Just because BoilerMake filled up doesn't mean you can't go to other awesome hackathons instead.
