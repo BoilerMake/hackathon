@@ -6,12 +6,17 @@
         %span.fore Decision status:
         %span.decision
           - if @hacker.rejected?
-            Declined
+            Declined.
           - elsif @hacker.accepted?
             Accepted.
           - if @hacker.standby?
             Waitlisted.
+          - if !@hacker.application_completed?
+            Declined.
 
+    - if !@hacker.application_completed?
+      %p.additional-info
+        Your application was left incomplete.
     - if @hacker.confirmed?
       %p.additional-info.squished
         You're all set. Watch your email for more
