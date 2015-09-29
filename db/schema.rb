@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721163116) do
+ActiveRecord::Schema.define(version: 20150928221859) do
 
   create_table "applications", force: :cascade do |t|
     t.string   "gender"
@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(version: 20150721163116) do
     t.string   "type"
     t.string   "status"
     t.boolean  "confirmed",              default: false
+    t.string   "transportation_method"
+    t.boolean  "declined",               default: false
   end
 
 end
