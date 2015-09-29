@@ -63,6 +63,10 @@ class Hacker < User
     status == 'Accepted'
   end
 
+  def confirmed?
+    status == 'Accepted' && confirmed
+  end
+
   def standby?
     status == 'Standby'
   end
@@ -72,11 +76,16 @@ class Hacker < User
   end
 
   def declined?
-    status == 'Declined'
+    # a true value here means that they have declined
+    declined
   end
 
   def application_started?
     !application.nil?
+  end
+
+  def extra_fields_completed?
+    transportation_method.present?
   end
 
   def application_completed?
