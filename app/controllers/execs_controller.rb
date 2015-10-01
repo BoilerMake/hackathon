@@ -47,7 +47,9 @@ class ExecsController < ApplicationController
   def export
     require 'csv'
     @csv_string = CSV.generate do |csv|
-      csv << ['id', 'fname', 'lname', 'email', 'school', 'status', 'created_at', 'updated_at']
+      csv << ['id', 'fname', 'lname', 'email', 'school', 'status',
+              'confirmed?', 'declined? (this means they said they cant come)',
+              'bus route', 'created_at', 'updated_at']
       Hacker.all.each do |h|
         school_name = ''
         team_id     = 0
@@ -63,6 +65,9 @@ class ExecsController < ApplicationController
                 h.email,
                 school_name,
                 h.status,
+                h.confirmed,
+                h.declined,
+                h.transportation_method,
                 h.created_at,
                 h.updated_at]
       end
