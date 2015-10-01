@@ -60,7 +60,6 @@
 }
 
 .pagination {
-  position: absolute;
   bottom: 0;
   width: 100%;
   text-align: center;
@@ -138,5 +137,17 @@ body, html {
   .per-page-container {
   font-size: 0.8em;
   font-family: 'Source Sans Pro', sans-serif;
+  }
+  tbody {
+    font-size: 0.9em;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  .btn-group li {
+    font-family: 'Source Code Pro', sans-serif;
+    color: #333333;
+  }
+  .btn-group li a {
+    color: #333333;
+    font-family: 'Source Code Pro', sans-serif;
   }
 }
