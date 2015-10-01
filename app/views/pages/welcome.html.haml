@@ -15,6 +15,9 @@
           - if current_user.exec?
             = link_to execs_dashboard_url do
               %button.button.flickerIn Dashboard
+          - elsif current_user.sponsor?
+            = link_to sponsors_resume_portal_url do
+              %button.button.flickerIn Dashboard
           - else
             = link_to dashboard_url do
               %button.button.flickerIn Dashboard
