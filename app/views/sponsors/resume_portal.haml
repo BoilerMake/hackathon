@@ -3,7 +3,14 @@
     %h1 Resume Portal
     %h2 Welcome, #{current_user.company_name}
 
-    %p We've prepared here a listing of all the hackers that we've decided to accept to BoilerMake. If there's any extra information you'd like to have, please contact us at team@boilermake.org
+    %p We've prepared here a listing of all the hackers that we've decided to accept to BoilerMake. If there's any extra information you'd like to have, please contact us at
+    = mail_to "team@boilermake.org", "team@boilermake.org"
+
+    %p We've also put together an excel document with some extra information if you'd like to view the following data that way.
+    = link_to "BoilerMake-F15-Hackers.xlsx", "https://boilermake-resumes.s3.amazonaws.com/BoilerMake-F15.xlsx"
+
+    %p And we have a zip file full of all of the resumes if that's your preference.
+    = link_to "BoilerMake-F15-Resumes.zip", "https://boilermake-resumes.s3.amazonaws.com/BoilerMake-Fall15-Resumes.zip"
 
   #main-view
 
