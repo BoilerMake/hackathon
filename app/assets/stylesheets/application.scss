@@ -129,9 +129,13 @@ body, html {
     }
   }
   table {
-    th {
+    width: 100% !important;
+    table-layout: fixed;
+    th, td {
       font-family: 'Source Sans Pro', sans-serif;
+      overflow: scroll;
       font-size: 0.9em;
+      width: 100%;
     }
   }
   .per-page-container {
