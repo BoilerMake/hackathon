@@ -1,0 +1,142 @@
+= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.23.4/js/jquery.tablesorter.min.js'
+:css
+  body {
+    margin-top: 50px;
+  }
+  .move {
+    margin-right: 8px;
+  }
+:javascript
+  $(document).ready(function() {
+      $("#myTable").tablesorter();
+      $('#select-all').click(function(event) {
+        if(this.checked) {
+          $(':checkbox').each(function() {
+            this.checked = true;
+          });
+        }
+        else {
+          $(':checkbox').each(function() {
+            this.checked = false;
+          });
+        }
+       });
+       $(".move").click(function(event) {
+         var id = $(this).attr('id');
+         $(':checkbox').each(function() {
+            $(this).prop('disabled', false);
+          });
+         if(id == "accept") {
+           $(".navbar").css('background-color', '#0BB500');
+           $(".navbar-default .navbar-brand").css('color', '#fff')
+           $("#decision_type").val("Accepted");
+
+           $('.table tr').each(function (i, row) {
+             if(i != 0) { // Don't need the first row
+               if($(row).find(".status-cell").html() == "Accepted") {
+                $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", true);
+               }
+               else {
+               $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", false);
+               }
+             }
+           });
+         }
+         else if(id == "standby") {
+           $(".navbar").css('background-color', '#F9E600');
+           $(".navbar-default .navbar-brand").css('color', '#000')
+           $("#decision_type").val("Standby");
+
+           $('.table tr').each(function (i, row) {
+             if(i != 0) { // Don't need the first row
+               if($(row).find(".status-cell").html() == "Standby") {
+                $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", true);
+               }
+               else {
+               $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", false);
+               }
+             }
+           });
+         }
+         else if(id == "reject") {
+           $(".navbar").css('background-color', '#8C2323');
+           $(".navbar-default .navbar-brand").css('color', '#fff')
+           $("#decision_type").val("Rejected");
+           $('.table tr').each(function (i, row) {
+             if(i != 0) { // Don't need the first row
+               if($(row).find(".status-cell").html() == "Rejected") {
+                $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", true);
+               }
+               else {
+               $(row).children(':checkbox').attr('checked', this.checked);
+                var t = $(row).find('input:checkbox:first');
+                t.prop("checked", false);
+               }
+             }
+           });
+         }
+       });
+   });
+
+.navbar.navbar-default.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand Undecided Applications
+    .collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          %button{:class => "btn btn-success navbar-btn move", :id => "accept"} Accept
+        %li
+          %button{:class => "btn btn-warning navbar-btn move", :id => "standby"} Standby
+        %li
+          %button{:class => "btn btn-danger navbar-btn move", :id => "reject"} Reject
+/ <pre>
+/ #{@hackers.to_yaml}
+/ </pre>
+.container
+  %h1 Undecided Applications
+  = form_tag '/execs/decision_submission' do
+    = hidden_field_tag :decision_type
+    = submit_tag
+    %hr
+    %small Click on table headers to sort
+    %table{:class => "table striped table-bordered table-hover tablesorter", :id => "myTable"}
+      %thead
+        %tr
+          %th
+            All
+            %input{:type=>"checkbox", :id => "select-all", disabled: true}
+          %th Status
+          %th School
+          %th Number of Rankings
+          %th Average Ranking
+          %th Name
+          %th Major
+          %th Gender
+          %th Email
+      %tbody
+      - @hackers.each do |hacker|
+        %tr
+          = hidden_field_tag :hacker_id, value: hacker.id
+          %td{:class => "checkbox-cell"}= check_box_tag 'hackers[]', hacker.id, false, disabled: true
+          - if hacker.status == nil
+            %td{:class => "status-cell"} n/a
+          - else
+            %td{:class => "status-cell"}= hacker.status
+          %td= hacker.school.name
+          %td= hacker.hacker_ranking.count
+          %td= hacker.average_ranking
+          %td= hacker.first_name + " " + hacker.last_name
+          %td= hacker.application.major
+          %td= hacker.application.gender
+          %td= hacker.email

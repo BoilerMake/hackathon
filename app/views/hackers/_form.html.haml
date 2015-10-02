@@ -1,105 +1,167 @@
 =render "shared/flash.html.haml"
 .container#application-page
   .application-container
-    .application-status
-      %span.fore Application status:
-      %span.decision
-      - if @hacker.application_completed?
-        Complete
-      - else
-        Incomplete
-    /= render 'shared/flash.html.haml'
+    - if !@hacker.declined?
+      .application-status
+        %span.fore Decision status:
+        %span.decision
+          - if @hacker.rejected?
+            Declined.
+          - elsif @hacker.accepted?
+            Accepted.
+          - elsif @hacker.standby?
+            Waitlisted.
+          - elsif !@hacker.application_completed?
+            Declined.
 
-    .application
-      .form
-        = form_for @hacker do |f|
-          .field
-            .label.required
-              = f.label :first_name, 'Your name*', {class: 'required'}
-            .user-input
-              = f.text_field :first_name, placeholder: "First Name"
-              = f.text_field :last_name, placeholder: "Last Name", class: 'second-input'
-          .field
-            .label
-              = f.label :school_id, 'School*', {class: 'required'}
-            .user-input
-              = f.text_field :school_id, { id: 'schools', value: @school, placeholder: "Purdue University"}
-          = f.fields_for :application, @hacker.application do |application_fields|
-            .field
-              %label.label{for: 'hacker_application_attributes_gender'}
-                Gender Identification
-              .user-input.user-input-select
-                = application_fields.collection_select :gender, @genders, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
-            .field
-              %label.label{for: 'hacker_application_attributes_github'}
-                GitHub
-              .user-input
-                = application_fields.text_field :github, placeholder: 'https://github.com/username'
-            .field
-              %label.label{for: 'hacker_application_attributes_major'}
-                Major
-              .user-input
-                = application_fields.text_field :major, placeholder: 'Computer Science'
-            .field
-              %label.label{for: 'hacker_application_attributes_degree'}
-                Degree
-              .user-input
-                = application_fields.text_field :degree, placeholder: 'Bachelor of Science'
-            .field
-              %label.label{for: 'hacker_application_attributes_grad_date'}
-                Grad month/date
-              .user-input
-                = application_fields.text_field :grad_date, placeholder: '05/2017'
-            .field.job-interest
-              %label.label{for: 'hacker_application_attributes_job_interest'}
-                Job interest
-              .user-input.user-input-select
-                = application_fields.collection_select :job_interest, @job_interests, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
-            .field.job-dates
-              %label.label{for: 'hacker_application_attributes_job_date'}
-                Availability to start working
-              .user-input.user-input-select
-                = application_fields.collection_select :job_date, @job_dates, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
-            .field
-              %label.label.required
-                Upload Resume*
-              .user-input.filepicker
-                .alert.alert-success.file_alert#info{:style => @resume_div_style}
-                  %span.file-text
-                    = @resume_button_text
-                  %span.new-file-prompt
-                    = link_to "Upload new file", "#", :id => "refresh"
-                = f.s3_file_field :s3, :class => 'js-s3_file_field',
-                                       :key => "resume/${timestamp}-${filename}",
-                                       :style => @file_field_style
-                = application_fields.hidden_field :resume, id: "hidden_resume"
-            .field
-              %label.label.required{for: 'hacker_application_attributes_tshirt_size'}
-                T-shirt Size*
-              .user-input.user-input-select
-                = application_fields.collection_select :tshirt_size, @shirts, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
-            .field
-              %label.label{for: 'hacker_application_attributes_cell_phone'}
-                Cell Phone
-                %span.sub-label
-                  Only used for text updates at the event
-              .user-input
-                = application_fields.text_field :cell_phone, placeholder: '(123)-456-7890'
-            .field
-              %label.label{for: 'hacker_application_attributes_dietary_restrictions'}
-                Dietary Restrictions
-              .user-input
-                = application_fields.text_area :dietary_restrictions, rows: '4', placeholder: 'Please enter any dietary restrictions, leave blank if none.'
-            .field
-              %label.label.required{for: 'hacker_application_attributes_essay1'}
-                What do you love about computers?*
-              .user-input
-                = application_fields.text_area :essay1, rows: '4', placeholder: 'They are always there for me...'
-            .field
-              %label.label.required{for: 'hacker_application_attributes_essay2'}
-                What's the coolest thing you have done in the last 12 months*
-              .user-input
-                = application_fields.text_area :essay2, rows: '4', placeholder: 'I made a castle out of legos...'
+    - if @hacker.standby?
+      %p.additional-info
+        People on the waitlist will be given spots as they become available, so be on the lookout for an email as October 16th approaches!
+        %br
+        %br
+        Email us at
+        %a{:href => "mailto:team@boilermake.org"} team@boilermake.org
+        with any questions!
+    - elsif !@hacker.application_completed?
+      %p.additional-info
+        Your application was left incomplete.
+    - if @hacker.confirmed?
+      %p.additional-info.squished
+        You're all set. Watch your email for more
+        %br
+        details and get ready to hack!
+        %br
+        \#hypeintesifies
+    - elsif @hacker.declined?
+      %p.additional-info
+        We're sorry to hear you can't make it, hopefully we'll see you next year.
+        %br
+        %br
+        Email us at
+        %a{:href => "mailto:team@boilermake.org"} team@boilermake.org
+        with any questions!
+    - elsif @hacker.accepted? && !@hacker.declined?
+      %p.additional-info.squished
+        Pending confirmation.
+    - if @hacker.rejected?
+      %p.additional-info
+        Just because BoilerMake filled up doesn't mean you can't go to other awesome hackathons instead.
+        %br
+        Check out
+        %a{:href => "https://mlh.io/seasons/f2015/events"} mlh.io
+        for more information!
 
-          .submit
-            = button_tag 'Applications Locked', id: 'save', class: '', style: 'cursor:default;', disabled: true
+    - if current_user.accepted? && !current_user.declined?
+      .application
+        .form
+          = form_for @hacker do |f|
+            .field.hidden
+              .label.required
+                = f.label :first_name, 'Your name*', {class: 'required'}
+              .user-input
+                = f.text_field :first_name, placeholder: "First Name"
+                = f.text_field :last_name, placeholder: "Last Name", class: 'second-input'
+            .field.hidden
+              .label
+                = f.label :school_id, 'School*', {class: 'required'}
+              .user-input
+                = f.text_field :school_id, { id: 'schools', value: @school, placeholder: "Purdue University"}
+            .field
+              .label
+                = f.label :transportation_method,
+                          "Transportation Method*",
+                          {class: 'required'}
+              .user-input.user-input-select
+                = f.collection_select :transportation_method,
+                        @transportation_methods,
+                        :to_s,
+                        :to_s,
+                        {include_blank: "Please select"},
+                        class: 'gender'
+            = f.fields_for :application, @hacker.application do |application_fields|
+              .field.hidden
+                %label.label{for: 'hacker_application_attributes_gender'}
+                  Gender Identification
+                .user-input.user-input-select
+                  = application_fields.collection_select :gender, @genders, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+              .field.hidden
+                %label.label{for: 'hacker_application_attributes_github'}
+                  GitHub
+                .user-input
+                  = application_fields.text_field :github, placeholder: 'https://github.com/username'
+              .field.hidden
+                %label.label{for: 'hacker_application_attributes_major'}
+                  Major
+                .user-input
+                  = application_fields.text_field :major, placeholder: 'Computer Science'
+              .field.hidden
+                %label.label{for: 'hacker_application_attributes_degree'}
+                  Degree
+                .user-input
+                  = application_fields.text_field :degree, placeholder: 'Bachelor of Science'
+              .field.hidden
+                %label.label{for: 'hacker_application_attributes_grad_date'}
+                  Grad month/date
+                .user-input
+                  = application_fields.text_field :grad_date, placeholder: '05/2017'
+              .field.job-interest.hidden
+                %label.label{for: 'hacker_application_attributes_job_interest'}
+                  Job interest
+                .user-input.user-input-select
+                  = application_fields.collection_select :job_interest, @job_interests, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+              .field.job-dates.hidden
+                %label.label{for: 'hacker_application_attributes_job_date'}
+                  Availability to start working
+                .user-input.user-input-select
+                  = application_fields.collection_select :job_date, @job_dates, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+              .field.hidden
+                %label.label.required
+                  Upload Resume*
+                .user-input.filepicker
+                  .alert.alert-success.file_alert#info{:style => @resume_div_style}
+                    %span.file-text
+                      = @resume_button_text
+                    %span.new-file-prompt
+                      = link_to "Upload new file", "#", :id => "refresh"
+                  = f.s3_file_field :s3, :class => 'js-s3_file_field',
+                                         :key => "resume/${timestamp}-${filename}",
+                                         :style => @file_field_style
+                  = application_fields.hidden_field :resume, id: "hidden_resume"
+              .field.hidden
+                %label.label.required{for: 'hacker_application_attributes_tshirt_size'}
+                  T-shirt Size*
+                .user-input.user-input-select
+                  = application_fields.collection_select :tshirt_size, @shirts, :to_s, :to_s, {include_blank: "Please select"}, class: 'gender'
+              .field
+                %label.label{for: 'hacker_application_attributes_cell_phone'}
+                  Cell Phone
+                  %span.sub-label
+                    Only used for text updates at the event
+                .user-input
+                  = application_fields.text_field :cell_phone, placeholder: '(123)-456-7890'
+              .field
+                %label.label{for: 'hacker_application_attributes_dietary_restrictions'}
+                  Dietary Restrictions
+                .user-input
+                  = application_fields.text_area :dietary_restrictions, rows: '4', placeholder: 'Please enter any dietary restrictions, leave blank if none.'
+              .field.hidden
+                %label.label.required{for: 'hacker_application_attributes_essay1'}
+                  What do you love about computers?*
+                .user-input
+                  = application_fields.text_area :essay1, rows: '4', placeholder: 'They are always there for me...'
+              .field.hidden
+                %label.label.required{for: 'hacker_application_attributes_essay2'}
+                  What's the coolest thing you have done in the last 12 months*
+                .user-input
+                  = application_fields.text_area :essay2, rows: '4', placeholder: 'I made a castle out of legos...'
+            = f.hidden_field :confirmed, value: false
+            = f.hidden_field :declined, value: false
+
+            .submit.hidden
+              = button_tag 'Save Application', id: 'save', class: '', style: 'cursor:pointer;'
+            %div.application-status
+              %span.note
+                - if !@hacker.confirmed? && !@hacker.declined?
+                  = link_to 'I\'ll be there!', dashboard_url, class: 'confirm-button', id: "confirm_button"
+                - if !@hacker.declined?
+                  = link_to 'I can\'t come :\'(', dashboard_url, class: 'confirm-button', id: "decline_button"

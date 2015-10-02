@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'execs/shirts' => 'execs#shirts'
 
   get 'execs/school_groups'
+  get 'execs/undecided_applications'
   get 'execs/school/:school_id' => 'execs#school_applications'
 
   get 'execs/ranker'
@@ -28,11 +29,12 @@ Rails.application.routes.draw do
   resources :interest_signups, only: [:create]
   resources :updates, only: [:index, :new, :create]
   get 'confirm', to: 'hackers#confirm'
+  get 'decline', to: 'hackers#decline'
 
   get 'schools/export'
 
   resources :schools
-  resources :hackers, except: [:destroy, :create, :update]
+  resources :hackers, except: [:destroy, :create]
 
   resources :hacker_rankings
   resources :sessions

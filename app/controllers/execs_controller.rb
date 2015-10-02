@@ -47,7 +47,12 @@ class ExecsController < ApplicationController
   def export
     require 'csv'
     @csv_string = CSV.generate do |csv|
-      csv << ['id', 'fname', 'lname', 'email', 'school', 'status', 'created_at', 'updated_at']
+      csv << ['id', 'fname', 'lname', 'email', 'school', 'status',
+              'confirmed?', 'declined? (this means they said they cant come)',
+              'bus route', 'created_at', 'updated_at', 'resume_url', 'essay1',
+              'essay2', 'gender', 'github', 'tshirt_size', 'cell_phone',
+              'dietary_restrictions', 'major', 'degree', 'race', 'ethnicity',
+              'grad_date', 'job_interest', 'job_date']
       Hacker.all.each do |h|
         school_name = ''
         team_id     = 0
@@ -63,8 +68,23 @@ class ExecsController < ApplicationController
                 h.email,
                 school_name,
                 h.status,
+                h.confirmed,
+                h.declined,
+                h.transportation_method,
                 h.created_at,
-                h.updated_at]
+                h.updated_at,
+                h.application.nil? ? '' : h.application.resume,
+                h.application.nil? ? '' : h.application.essay1,
+                h.application.nil? ? '' : h.application.essay2,
+                h.application.nil? ? '' : h.application.gender,
+                h.application.nil? ? '' : h.application.dietary_restrictions,
+                h.application.nil? ? '' : h.application.major,
+                h.application.nil? ? '' : h.application.degree,
+                h.application.nil? ? '' : h.application.race,
+                h.application.nil? ? '' : h.application.ethnicity,
+                h.application.nil? ? '' : h.application.grad_date,
+                h.application.nil? ? '' : h.application.job_interest,
+                h.application.nil? ? '' : h.application.job_date]
       end
     end
     send_data @csv_string,
@@ -81,6 +101,8 @@ class ExecsController < ApplicationController
   def dashboard
     @execs = Exec.all
     @confirmed_count = Hacker.where(confirmed: true).count
+    @accepted_count = Hacker.where(status: "Accepted").count
+    @standby_count = Hacker.where(status: "Standby").count
     @application_count = Application.all.count
     @application_completed_count = Hacker.application_completed.count
     @registered_count = Hacker.all.count
@@ -88,6 +110,8 @@ class ExecsController < ApplicationController
       .uniq
       .where.not(school_id: nil)
       .where.not("school_id = -1").count
+
+
     @rating_distribution = HackerRanking.where.not(ranking: nil).group("ranking").count
     @rating_distribution.keys.sort.each { |k| @rating_distribution[k] = @rating_distribution.delete k }
     counts1 = Hacker
@@ -132,7 +156,6 @@ class ExecsController < ApplicationController
   end
 
   def school_groups
-    @unmarked = Hacker.application_completed.where(status: nil)
     @results = School.select('count(schools.id) as applicant_count, name, schools.id as schools_id')
                 .joins(:users)
                 .group('schools.name')
@@ -165,6 +188,10 @@ class ExecsController < ApplicationController
     @standby = Hacker.application_completed.where(school_id: @school.id).where(status: "Standby").count
     @rejected = Hacker.application_completed.where(school_id: @school.id).where(status: "Rejected").count
     @not_decided = Hacker.application_completed.where(school_id: @school.id).where(status: nil).count
+  end
+
+  def undecided_applications
+    @hackers = Hacker.application_completed.where(status: nil).all
   end
 
   private
