@@ -1,0 +1,139 @@
+.pagination li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  position: relative;
+  float: left;
+  margin-left: -1px;
+}
+
+.pagination li:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
+}
+
+.pagination li:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.pagination li:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.pagination {
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+//STYLING FOR SPONSOR RESUME PORTAL
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  overflow-x:hidden;
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
+}
+.portal-wrapper {
+  background: #ffffff;
+  box-shadow: 0 0 10px #CCCCCC;
+  width: 40em;
+  max-width: 90%;
+  margin: 0 auto 4em;
+  padding: 35px;
+  h1 {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-transform: uppercase;
+    font-size: 1.7em;
+    margin: 10px 0;
+  }
+  h2 {
+    margin: 0 0 25px 0;
+    font-size: 0.9em;
+    text-align: center;
+    font-family: 'Source Code Pro', sans-serif;
+  }
+  p {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 0.6em;
+    font-style: italic;
+    padding: 0 15% 25px 15%;
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 25px;
+  }
+  .controls {
+    margin-bottom: 15px;
+    font-size: 0.8em;
+  }
+  .search-container {
+    font-family: 'Source Code Pro', sans-serif;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    input, textarea, select {
+      border: 1px solid #CCCCCC;
+      font-family: 'Source Code Pro', sans-serif;
+      font-size: 0.9em;
+      text-transform: uppercase;
+      margin-left: 10px;
+      &.second-input {
+        margin-top: 5px;
+      }
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: 0;
+      box-shadow: 0 0 5px #EEEEEE;
+    }
+  }
+  table {
+    width: 100% !important;
+    table-layout: fixed;
+    th, td {
+      font-family: 'Source Sans Pro', sans-serif;
+      overflow: scroll;
+      font-size: 0.9em;
+      width: 100%;
+    }
+  }
+  .per-page-container {
+  font-size: 0.8em;
+  font-family: 'Source Sans Pro', sans-serif;
+  }
+  tbody {
+    font-size: 0.9em;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  .btn-group li {
+    font-family: 'Source Code Pro', sans-serif;
+    color: #333333;
+  }
+  .btn-group li a {
+    color: #333333;
+    font-family: 'Source Code Pro', sans-serif;
+  }
+}
