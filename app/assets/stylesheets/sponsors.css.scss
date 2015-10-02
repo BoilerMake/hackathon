@@ -86,6 +86,7 @@ body, html {
     padding: 0 15% 25px 15%;
     border-bottom: 1px solid #EEEEEE;
     margin-bottom: 25px;
+    margin-top: 15px;
   }
   .controls {
     margin-bottom: 15px;
@@ -135,5 +136,15 @@ body, html {
   .btn-group li a {
     color: #333333;
     font-family: 'Source Code Pro', sans-serif;
+  }
+}
+.portal-header {
+  text-align: center;
+  a.lg_link {
+    background-color: #525C5B;
+    color: white;
+    padding: 5px 10px;
+    font-family: 'Source Code Pro', sans-serif;
+    font-size: 0.7em;
   }
 }
