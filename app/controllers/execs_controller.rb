@@ -49,10 +49,8 @@ class ExecsController < ApplicationController
     @csv_string = CSV.generate do |csv|
       csv << ['id', 'fname', 'lname', 'email', 'school', 'status',
               'confirmed?', 'declined? (this means they said they cant come)',
-              'bus route', 'created_at', 'updated_at', 'resume_url', 'essay1',
-              'essay2', 'gender', 'github', 'tshirt_size', 'cell_phone',
-              'dietary_restrictions', 'major', 'degree', 'race', 'ethnicity',
-              'grad_date', 'job_interest', 'job_date']
+              'bus route', 'created_at', 'updated_at', 'resume_url', 'gender',
+              'tshirt_size', 'dietary_restrictions']
       Hacker.all.each do |h|
         school_name = ''
         team_id     = 0
@@ -74,17 +72,9 @@ class ExecsController < ApplicationController
                 h.created_at,
                 h.updated_at,
                 h.application.nil? ? '' : h.application.resume,
-                h.application.nil? ? '' : h.application.essay1,
-                h.application.nil? ? '' : h.application.essay2,
                 h.application.nil? ? '' : h.application.gender,
-                h.application.nil? ? '' : h.application.dietary_restrictions,
-                h.application.nil? ? '' : h.application.major,
-                h.application.nil? ? '' : h.application.degree,
-                h.application.nil? ? '' : h.application.race,
-                h.application.nil? ? '' : h.application.ethnicity,
-                h.application.nil? ? '' : h.application.grad_date,
-                h.application.nil? ? '' : h.application.job_interest,
-                h.application.nil? ? '' : h.application.job_date]
+                h.application.nil? ? '' : h.application.tshirt_size,
+                h.application.nil? ? '' : h.application.dietary_restrictions]
       end
     end
     send_data @csv_string,
