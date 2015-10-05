@@ -2,6 +2,25 @@ class SlackIntegrationsController < ApplicationController
   skip_before_action :require_login
   before_action :auth
 
+  def hackers
+    str_rep = ""
+    split_text = params[:text].split " "
+
+    if split_text.first == 'accepted'
+      str_rep = Hacker.where(status: "Accepted").count.to_s
+    elsif split_text.first == 'waitlisted'
+      str_rep = Hacker.where(status: "Standby").count.to_s
+    elsif split_text.first == 'rejected'
+      str_rep = Hacker.where(status: "Rejected").count.to_s
+    elsif split_text.first == 'cant_attend'
+      str_rep = Hacker.where(status: "Accepted", declined: true).count.to_s
+    elsif split_text.first == 'attending'
+      str_rep = Hacker.where(status: "Accepted", confirmed: true).count.to_s
+    end
+
+    render text: str_rep
+  end
+
   def applicants
     str_rep = ""
     split_text = params[:text].split " "

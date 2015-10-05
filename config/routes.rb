@@ -41,5 +41,6 @@ Rails.application.routes.draw do
   resources :password_resets
 
   get 'slack_integrations/applicants'
+  get 'slack_integrations/hackers'
 
 end
