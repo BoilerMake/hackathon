@@ -68,7 +68,7 @@ class SlackIntegrationsController < ApplicationController
   private
 
   def auth
-    allowed = [ 'g29b5FaoCtlcoNey5wi7XkAr' ]
+    allowed = [ 'g29b5FaoCtlcoNey5wi7XkAr', 'wLZP5R1KbhUI2fx32TmPUxHJ' ]
 
     if allowed.index(params[:token]).nil?
       render text: "not allowed", status: 401
