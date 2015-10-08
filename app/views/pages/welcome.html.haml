@@ -79,36 +79,116 @@
           BoilerMake 2014 Gallery
       .clear
 
-  .faq#faq
-    .body-content
-      %h2 FAQ
-      %p
-        BoilerMake abides by the  
-        %a{:href=> "http://static.mlh.io/docs/mlh-code-of-conduct.pdf"}
-          MLH Code of Coduct.
-      .col
-        %h4 Can I edit my application?
-        %p Yes, you can edit all of your information up until our application deadline
-        %h4 I have no experience. Should I apply?
-        %p Yes! Hackathons are a melting pot for learning new technologies and innovation. Companies will have mentors there who are willing to help you overcome any problems you are having.
-        %h4 How do I get there?
-        %p If an area or school has enough applicants, we will send a bus there and assign a bus coordinator for that area. There are some specific cases where we will provide travel reimbursement. If you are very eager to come and didn’t get accepted and want to drive yourself be sure to let us know at team@boilermake.org.
-      .col
-        %h4 When do applications close?
-        %p Applications close on September 13th at 11:59pm EST.
-        %h4 Wait I didn't see a team option on the application?
-        %p That was intentional! The only time we will be asking you for your teammates is when you submit your hack for judging.
-        %h4 I want a team/I want to work solo
-        %p It’s common for people to work solo or meet hackers at the event and form a team once you get there. Don’t stress out about not having a team!
-        
-      .col.col-last
-        %h4 I'm not in college can I still apply?
-        %p Yes, we encourage you to apply!
-        %h4 You mentioned "bus coordinator" what/who is that?
-        %p Every school that we send a bus to will have a bus coordinator. They will be your main contact about anything BoilerMake related. With acceptances we will give you the contact info of your coordinator. They will be the one at your school responsible for filling the bus and making sure you are on the bus ride home.
-        
-       
-      .clear
+  .gradient-background
+    .schedule#schedule
+      .body-content
+        %h2 Schedule
+        .col
+          %h4 Friday, October 16th
+          .location#loc1
+            .entry
+              %p.time 8-9pm
+              %p.description Registration (Co-rec)
+            .entry
+              %p.time 9-10pm
+              %p.description
+                Opening Banquet (Co-rec)
+                %span.details Dinner + Opening Ceremonies
+          .location#loc2
+            .entry
+              %p.time 11pm
+              %p.description Hacking Begins (Lambert)
+            %h4.margin-top Saturday, October 17th
+            .entry
+              %p.time 12-1am
+              %p.description Apple Watch Dev Workshop
+            .entry
+              %p.time 3-4am
+              %p.description Late Night Snack
+            .entry
+              %p.time 8-9am
+              %p.description Breakfast
+            .entry
+              %p.time 12-1pm
+              %p.description Lunch
+            .entry
+              %p.time 6-7pm
+              %p.description Dinner
+        .col
+          %h4 Sunday, October 18th
+          .location#loc3
+            .entry
+              %p.time 1-2am
+              %p.description Late Night Snack
+            .entry
+              %p.time 8-9am
+              %p.description Breakfast
+            .entry
+              %p.time 11am
+              %p.description Hacking Ends
+            .entry
+              %p.time 12-2pm
+              %p.description Expo
+          .location#loc4
+            .entry
+              %p.time 3-4pm
+              %p.description Closing Ceremonies
+            .entry
+              %p.time 4pm
+              %p.description Safe travels home!
+
+    .locations#locations
+      .body-content
+        %h2 Locations
+        .col
+          %h4
+            %span Check-in, Opening Banquet
+            %br
+            Recreational Sports Center (Co-rec)
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "212", :src => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6074.217218349222!2d-86.91983065246639!3d40.428593897955636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x1720d78cbd5a1dce!2sFrance+A.+C%C3%B3rdova+Recreational+Sports+Center!5e0!3m2!1sen!2sus!4v1444328351380", :style => "border:0", :width => "212"}
+        .col
+          %h4
+            %span THE HACKATHON
+            %br
+            Lambert Fieldhouse (Lambert)
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "212", :src => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.946805360713!2d-86.91811748489242!3d40.43217677936333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8812fd4cc0321787%3A0xcf6f550e52748872!2sLambert+(Ward+L.)+Fieldhouse+and+Gymnasium%2C+800+W+Stadium+Ave%2C+West+Lafayette%2C+IN+47906!5e0!3m2!1sen!2sus!4v1444329221640", :style => "border:0", :width => "212"}
+        .col
+          %h4
+            %span CLOSING CEREMONIES
+            %br
+            Loeb Playhouse in the Stewart Center (Loeb)
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "212", :src => "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d759.3159089952092!2d-86.91350828575308!3d40.42516083560792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x27838a5182e92185!2sStewart+Center!5e0!3m2!1sen!2sus!4v1444329267349", :style => "border:0", :width => "212"}
+
+    .faq#faq
+      .body-content
+        %h2 FAQ
+        %p
+          BoilerMake abides by the  
+          %a{:href=> "http://static.mlh.io/docs/mlh-code-of-conduct.pdf"}
+            MLH Code of Coduct.
+        .col
+          %h4 Can I edit my application?
+          %p Yes, you can edit all of your information up until our application deadline
+          %h4 I have no experience. Should I apply?
+          %p Yes! Hackathons are a melting pot for learning new technologies and innovation. Companies will have mentors there who are willing to help you overcome any problems you are having.
+          %h4 How do I get there?
+          %p If an area or school has enough applicants, we will send a bus there and assign a bus coordinator for that area. There are some specific cases where we will provide travel reimbursement. If you are very eager to come and didn’t get accepted and want to drive yourself be sure to let us know at team@boilermake.org.
+        .col
+          %h4 When do applications close?
+          %p Applications close on September 13th at 11:59pm EST.
+          %h4 Wait I didn't see a team option on the application?
+          %p That was intentional! The only time we will be asking you for your teammates is when you submit your hack for judging.
+          %h4 I want a team/I want to work solo
+          %p It’s common for people to work solo or meet hackers at the event and form a team once you get there. Don’t stress out about not having a team!
+          
+        .col.col-last
+          %h4 I'm not in college can I still apply?
+          %p Yes, we encourage you to apply!
+          %h4 You mentioned "bus coordinator" what/who is that?
+          %p Every school that we send a bus to will have a bus coordinator. They will be your main contact about anything BoilerMake related. With acceptances we will give you the contact info of your coordinator. They will be the one at your school responsible for filling the bus and making sure you are on the bus ride home.
+          
+         
+        .clear
 
   .sponsors#sponsors
     .body-content
