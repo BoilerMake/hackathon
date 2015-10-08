@@ -28,13 +28,13 @@ class SlackIntegrationsController < ApplicationController
       result = [];
       if split_text[1] == "min_hackers" && split_text[2]
         result = School.select('count(schools.id) as applicant_count, name')
-                .joins(:users)
+                .joins(:hackers)
                 .group('schools.name')
                 .order('applicant_count DESC')
                 .having("count(schools.id) >= ?", split_text[2].to_i)
       else
         result = School.select('count(schools.id) as applicant_count, name')
-                .joins(:users)
+                .joins(:hackers)
                 .group('schools.name')
                 .order('applicant_count DESC')
                 .limit(10)

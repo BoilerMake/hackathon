@@ -88,7 +88,7 @@ class ExecsController < ApplicationController
 
   def hackers_for
     @school = School.find params[:school_id]
-    @hackers = @school.users
+    @hackers = @school.hackers
   end
 
 
@@ -151,7 +151,7 @@ class ExecsController < ApplicationController
 
   def school_groups
     @results = School.select('count(schools.id) as applicant_count, name, schools.id as schools_id')
-                .joins(:users)
+                .joins(:hackers)
                 .group('schools.name')
                 .order('applicant_count DESC')
                 .group('schools_id')
