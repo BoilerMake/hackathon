@@ -15,6 +15,10 @@ class ExecsController < ApplicationController
     end
   end
 
+  def transportation
+    @transportation_methods = TransportationMethod.all
+  end
+
   def incomplete_hackers
     require 'csv'
     @csv_string = CSV.generate do |csv|

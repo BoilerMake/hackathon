@@ -11,6 +11,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt-ruby'
 
+gem 'pg'
+
 gem 'haml-rails'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
@@ -65,7 +67,6 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
   gem 'newrelic_rpm'
   gem 'rails_12factor'
 end

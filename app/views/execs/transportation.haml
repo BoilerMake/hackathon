@@ -1,0 +1,19 @@
+SCHOOLS N STUFF
+- @transportation_methods.each do |tm|
+  %h4= tm.name
+  %table.table.striped
+    %tr
+      %td School
+      %td Confirmed
+      %td Confirmed and On Bus
+      %td Waitlisted
+      %td Can't make it
+      %td Not Responded
+    - tm.schools.each do |s|
+      %tr
+        %td= s.name
+        %td= s.hackers.where(confirmed: true).count
+        %td= s.hackers.where(confirmed: true, transportation_method: tm.name).count
+        %td= s.hackers.where(status: 'Standby').count
+        %td= s.hackers.where(declined: true).count
+        %td= s.hackers.where(confirmed: false, declined: false).count

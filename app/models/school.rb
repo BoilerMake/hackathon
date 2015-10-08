@@ -1,9 +1,6 @@
 class School < ActiveRecord::Base
-  has_many :users
-
-  def self.hackers
-    where(type: 'Hacker')
-  end
+  has_many :hackers
+  belongs_to :transportation_method
 
   def populate_coordinates!
     formatted_name = self.name.gsub(/\s+/,'+').gsub(/\P{ASCII}/, '')

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'execs/hackers_for'
   get 'execs/incomplete_hackers'
   get 'execs/export'
+  get 'execs/transportation'
   get 'execs/shirts' => 'execs#shirts'
 
   get 'execs/school_groups'
