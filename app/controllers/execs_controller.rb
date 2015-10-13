@@ -54,7 +54,7 @@ class ExecsController < ApplicationController
     hacker = Hacker.find_by email: params[:email]
     if hacker
       if hacker.update(checked_in_time: Time.now)
-        resp = { json: { email: hacker.email, checked_in_time: hacker.checked_in_time } }
+        resp = { email: hacker.email, checked_in_time: hacker.checked_in_time }
       else
         resp = { status: :internal_server_error }
       end
@@ -62,7 +62,28 @@ class ExecsController < ApplicationController
       resp = { status: :not_found }  # 404
     end
 
-    logger.debug resp
+    respond_to do |format|
+      format.json { render json: resp.to_json }
+    end
+  end
+
+  def hacker_checkin_info
+    resp = nil
+    if params[:checkin_token] == ENV['CHECKIN_TOKEN']
+      hacker = Hacker.find_by email: params[:email]
+
+      if hacker
+        resp = { name: hacker.full_name,
+                 tshirt_size: hacker.application.tshirt_size,
+                 school_name: hacker.school.name,
+                 dietary_restrictions: hacker.application.dietary_restrictions }
+      else
+        resp = { status: :not_found } # 404
+      end
+    else
+      resp = { status: :unauthorized } # returns a HTTP 401
+    end
+
     respond_to do |format|
       format.json { render json: resp.to_json }
     end

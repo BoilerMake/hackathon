@@ -39,8 +39,8 @@ $(document).on 'ajax:success', '#user_query', (xhr, data, response) ->
 # on sucessful checkin, update the checked_in time for current hacker
 # and hide the checkin button
 $(document).on 'ajax:success', '.hacker-checkin', (xhr, data, response) ->
-  result = $(".result[data-hacker_email='#{data.json.email}']")
-  result.find('span.checked_in_time').html(data.json.checked_in_time)
+  result = $(".result[data-hacker_email='#{data.email}']")
+  result.find('span.checked_in_time').html(data.checked_in_time)
   result.find('span.checked_in_time').stop().css('background-color', '#F69C55')
     .animate({ backgroundColor: '#FFFFFF'}, 500)
   result.find('input[type="submit"]').hide()

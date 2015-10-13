@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   post 'execs/decision_submission'
 
   get  'execs/checkin'
+  get  'execs/hacker_checkin_info'
   post 'execs/checkin' => 'execs#checkin_hacker'
   post 'execs/checkin/query' => 'execs#user_query'
 
