@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   get  'execs/checkin'
   get  'execs/hacker_checkin_info'
-  post 'execs/checkin' => 'execs#checkin_hacker'
+  post 'execs/checkin' => 'execs#checkin_hacker', :defaults => { :format => 'json' }
   post 'execs/checkin/query' => 'execs#user_query'
 
   get 'visualization' => 'visualization#index'

@@ -21,5 +21,11 @@ module Hackathon
     # config.i18n.default_locale = :de
     config.serve_static_files = true
     config.time_zone = 'Eastern Time (US & Canada)'
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
   end
 end

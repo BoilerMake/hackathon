@@ -13,6 +13,9 @@ gem 'bcrypt-ruby'
 
 gem 'pg'
 
+gem 'rack-cors', :require => 'rack/cors'
+
+
 gem 'haml-rails'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'

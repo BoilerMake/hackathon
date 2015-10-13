@@ -1,7 +1,8 @@
 class ExecsController < ApplicationController
-  skip_before_action :require_login, only: [:checkin_hacker, :hacker_checkin_info]
-  skip_authorize_resource only: [:checkin_hacker, :hacker_checkin_info]
+  skip_before_action :require_login, only: [:checkin_hacker, :hacker_checkin_info, :handle_options_request]
+  skip_authorize_resource only: [:checkin_hacker, :hacker_checkin_info, :handle_options_request]
   load_and_authorize_resource
+  skip_before_filter :verify_authenticity_token, only: [:checkin_hacker, :hacker_checkin_info, :handle_options_request]
 
   def applied
     @count = Hacker.all.count
