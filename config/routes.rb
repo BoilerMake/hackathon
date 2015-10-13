@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   get 'execs/hacker_detail/:hacker_id' => 'execs#hacker_detail'
   post 'execs/decision_submission'
 
-  get 'execs/checkin'
+  get  'execs/checkin'
+  post 'execs/checkin' => 'execs#checkin_hacker'
   post 'execs/checkin/query' => 'execs#user_query'
 
   get 'visualization' => 'visualization#index'

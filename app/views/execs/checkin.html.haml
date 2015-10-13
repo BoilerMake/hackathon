@@ -1,10 +1,40 @@
+:css
+  .results{
+    margin: 7px;
+  }
+  .result .name{
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+:javascript
+  window.checkin_token = "#{@checkin_token}"
+
 .container
-  = form_tag '/execs/checkin/query', remote: true, "data-type" => :json do
-    = label_tag 'fname'
+  %h1 Hacker Checkin
+  %h2 Lookup
+  = form_tag '/execs/checkin/query',
+             remote: true,
+             "data-type" => :json,
+             id: :user_query do
+    = label_tag 'First Name'
     = text_field_tag :first_name
-    = label_tag 'lname'
+
+    = label_tag 'Last Name'
     = text_field_tag :last_name
-    = label_tag 'email'
+
+    = label_tag 'Email'
     = text_field_tag :email
 
+    = label_tag 'School'
+    = text_field_tag :school
+
     = submit_tag "Submit"
+
+  %h2 Results
+  .results
