@@ -79,7 +79,6 @@ ActiveRecord::Schema.define(version: 20151008195620) do
     t.boolean  "is_target"
     t.string   "lat"
     t.string   "lng"
-    t.integer  "bus_route_id"
     t.integer  "transportation_method_id"
   end
 
