@@ -1,4 +1,6 @@
 class ExecsController < ApplicationController
+  skip_before_action :require_login, only: [:checkin_hacker, :hacker_checkin_info]
+  skip_authorize_resource only: [:checkin_hacker, :hacker_checkin_info]
   load_and_authorize_resource
 
   def applied
@@ -84,9 +86,7 @@ class ExecsController < ApplicationController
       resp = { status: :unauthorized } # returns a HTTP 401
     end
 
-    respond_to do |format|
-      format.json { render json: resp.to_json }
-    end
+    render json: resp.to_json
   end
 
   def user_query
