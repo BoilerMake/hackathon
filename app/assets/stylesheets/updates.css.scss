@@ -43,7 +43,7 @@ h1 {
 	font-weight: 300;
 }
 a.new_announcement {
-	background-color: $text-color;
+	background-color: #535c5b;
 	display: block;
 	padding: 10px 0;
 	text-align: center;
@@ -54,8 +54,8 @@ a.new_announcement {
 	font-size: 0.8em;
 }
 a.new_announcement:hover {
-	background-color: $sm-highlight-color;
-	color: $text-color;
+	background-color: #6e4841;
+	color: $sm-highlight-color;
 }
 .update {
 	width: 80%;
