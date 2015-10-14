@@ -30,7 +30,7 @@ body {
 	margin: 0 auto 4em;
 	padding: 10px 0;
 }
-h1 {
+h1, h2 {
 	text-align: center;
 	color: $black;
 	background-color: $white;
@@ -81,4 +81,53 @@ a.new_announcement:hover {
 		padding: 10px 0;
 	} 
 
+}
+input, textarea, select {
+			padding: 10px 15px;
+			border: 1px solid $highlight-color;
+			font-family: 'Source Code Pro', sans-serif;
+			font-size: 0.7em;
+			text-transform: uppercase;
+			width: 100%;
+			background-color: $sm-highlight-color;
+			@media (max-width: 768px) {
+				width: 100% !important;
+				// margin: 5px auto;
+			}
+			&.second-input {
+				margin-top: 5px;
+			}
+}
+input:focus, textarea:focus, select:focus {
+			outline: 0;
+			border: 1px solid $sm-highlight-color;
+			color: $text-color;
+			background-color: $white;
+			box-shadow: 0 0 5px $sm-highlight-color;
+}
+.submit {
+	width: 100%;
+	padding: 5px 15px;
+	text-align: center;
+	#save {
+		width: 100%;
+		display: inline-block;
+		background: none;
+		padding: 10px 60px;
+		//border-radius: 2px;
+		font-family: 'Source Code Pro', sans-serif;
+		font-size: 0.8em;
+		color: $black;
+		border: 1px solid $black;
+		text-transform: uppercase;
+	}
+	#save:hover {
+		text-decoration: none;
+		border: 1px solid $white;
+		background-color: $black;
+		color: $white;
+	}
+	#save:focus {
+		outline: 0;
+	}
 }
