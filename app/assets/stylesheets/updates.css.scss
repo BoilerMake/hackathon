@@ -1,3 +1,84 @@
 // Place all the styles related to the Updates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$black: #333333;
+$white: #FFFFFF;
+$text-color: #5B5B5B;
+$highlight-color: #CCCCCC;
+$sm-highlight-color: #EEEEEE;
+$background: white;
+body {
+	padding-top: 80px;
+	&::after {
+		content: "";
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background: url('boards_bg_faded2.jpg') rgba(255,255,255,0.9);
+		background-size: cover;
+		z-index: -10;
+		opacity: 0.2;
+	}
+}
+.container {
+	background: $white;
+	box-shadow: 0 0 10px $highlight-color;
+	width: 40em;
+	max-width: 90%;
+	margin: 0 auto 4em;
+	padding: 10px 0;
+}
+h1 {
+	text-align: center;
+	color: $black;
+	background-color: $white;
+	font-size: 2em;
+	font-family: 'Source Code Pro', sans-serif;
+	padding: 10px 15px 0;
+	letter-spacing: 0.5;
+	margin-bottom: 15px;
+	text-transform: uppercase;
+	font-weight: 300;
+}
+a.new_announcement {
+	background-color: $text-color;
+	display: block;
+	padding: 10px 0;
+	text-align: center;
+	color: $sm-highlight-color;
+	font-family: 'Source Sans Pro', sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 0.8em;
+}
+a.new_announcement:hover {
+	background-color: $sm-highlight-color;
+	color: $text-color;
+}
+.update {
+	width: 80%;
+	margin: 25px auto 0 auto;
+	.update-timestamp {
+		float: left;
+		text-align: left;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 0.8em;
+		padding-top: 5px;
+		font-style: italic;
+	}
+	h2.update-title {
+		text-align: center;
+		font-family: 'Source Code Pro', sans-serif;
+		font-size: 1.2em;
+		text-transform: uppercase;
+	}
+	.update-body {
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 0.9em;
+		text-align: center;
+		padding: 10px 0;
+	} 
+
+}

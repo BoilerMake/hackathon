@@ -5,14 +5,15 @@
   = render 'shared/flash.html.haml'
   %h1 Announcements
   - if current_user.present? && current_user.exec?
-    = link_to  'Post New Announcement', new_update_path
+    = link_to  'Post New Announcement', new_update_path, :class=>'new_announcement'
   - @updates.each do |update|
     .update
       .update-header
-        %h2.update-title
-          = update.title
         %span.update-timestamp
           = update.created_at.strftime("%I:%M %p")
+        %h2.update-title
+          = update.title
+        
       .update-header-bottom
       .update-body
         = update.body
