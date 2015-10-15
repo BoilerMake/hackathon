@@ -25,6 +25,8 @@ gem 'autoprefixer-rails'
 
 gem 'cancancan', '~> 1.8'
 
+gem 'passbook'
+
 gem 'unicorn'
 gem 'foreman'
 

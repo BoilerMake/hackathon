@@ -3,7 +3,7 @@
 
 =render "shared/flash.html.haml"
 .container#application-page
-  .application-container
+  .application-container.text-center
     - if !@hacker.declined?
       .application-status
         %span.fore Decision status:
@@ -19,6 +19,8 @@
 
     - if @hacker.confirmed?
       #qr_code{ style: 'margin: 0 auto;' }
+      .application-status.hidden
+        %span.note= link_to "Passbook Here", passbook_url
       :javascript
         new QRCode(document.getElementById("qr_code"), '#{@hacker.email}');
         $('#qr_code img').first().css('margin', '0 auto')

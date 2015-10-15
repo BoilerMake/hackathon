@@ -3,7 +3,7 @@ class HackersController < ApplicationController
                 :set_ethnicities, :set_job_interests, :set_job_dates,
                 :set_transportation_methods
   before_action :set_hacker, only: [:update, :destroy]
-  before_filter :authenticate, only: [:update, :destroy, :dashboard]
+  before_filter :authenticate, only: [:update, :destroy, :dashboard, :passbook]
   skip_before_action :require_login
 
   load_and_authorize_resource
@@ -143,6 +143,22 @@ class HackersController < ApplicationController
       format.html { redirect_to hackers_url, notice: 'Hacker was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def passbook
+    json_data = JSON.parse(IO.read(Rails.root.join('passbook', 'data', 'pass.json')))
+    json_data['barcode']['message'] = current_user.email
+
+    pass = Passbook::PKPass.new json_data.to_json
+
+    pass.addFiles [ Rails.root.join('passbook', 'data', 'background.png'),
+                    Rails.root.join('passbook', 'data', 'icon@2x.png'),
+                    Rails.root.join('passbook', 'data', 'icon.png'),
+                    Rails.root.join('passbook', 'data', 'logo.png'),
+                    Rails.root.join('passbook', 'data', 'logo_web.png') ]
+
+    pkpass = pass.stream
+    send_data pkpass.string, type: 'application/vnd.apple.pkpass', disposition: 'attachment', filename: "pass.pkpass"
   end
 
   def confirm

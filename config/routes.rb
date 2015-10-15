@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   get 'pages/welcome'
 
+  get 'passbook' => 'hackers#passbook'
+
   get 'sponsors/resume_portal'
   get 'sponsors/hackers'
 
