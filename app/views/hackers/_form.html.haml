@@ -1,15 +1,23 @@
 - content_for :extra_js do
   = javascript_include_tag 'https://cdn.rawgit.com/davidshimjs/qrcodejs/master/qrcode.min.js'
-  = javascript_include_tag 'printThis.js'
+  = javascript_include_tag 'http://cdn.rawgit.com/MrRio/jsPDF/master/libs/png_support/zlib.js'
+  = javascript_include_tag 'http://cdn.rawgit.com/MrRio/jsPDF/master/libs/png_support/png.js'
+  = javascript_include_tag 'http://cdn.rawgit.com/MrRio/jsPDF/master/plugins/addimage.js'
+  = javascript_include_tag 'http://cdn.rawgit.com/MrRio/jsPDF/master/plugins/png_support.js'
+  = javascript_include_tag 'http://cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js'
 =render "shared/flash.html.haml"
 :javascript
-  $('#print_qr').click(function(){
-  console.log("clicked??");
-    $("#qr_img").printThis({
-      debug: false,                          
-      removeInline: false,                   
+  $( document ).ready(function() {
+    $('#print_qr').click(function(){
+      var doc = new jsPDF();
+      var img = $('#qr_img').prop('src');
+      doc.setFontSize(40);
+      doc.text(40, 20, 'BoilerMake Check In');
+      doc.addImage(img, 'PNG', 55, 40, 100, 100);
+      //doc.save('test.pdf');
+      doc.output('datauri');
     });
-  });
+  })
 
 .container#application-page
   .application-container.text-center
