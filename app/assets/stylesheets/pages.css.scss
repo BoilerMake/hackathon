@@ -804,6 +804,7 @@ input:focus {
   width: 100%;
   background-color: white;
   opacity: .9;
+  box-shadow: 0 1px 10px rgba(50, 50, 50, .3);
   ul {
     width: 80%;
     margin: 0 auto;
@@ -811,14 +812,17 @@ input:focus {
     font-size: 0.8em;
     list-style: none;
     li {
-      padding: 20px 30px;
+      padding: 20px 0;
       float: left;
-      margin-left: 35px;
-      display: inline;
       color: #CCCCCC;
+      border-left: 1px solid #CCCCCC;
+      width: 33%;
+      max-width: 33%;
+      text-align: center !important;
       &:first-child {
-        background-color: #CCCCCC;
         color: #525C5B;
+        border: 0;
+        opacity: 0.85;
       }
     }
   }
