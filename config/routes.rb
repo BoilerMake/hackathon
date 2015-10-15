@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   get 'pages/welcome'
 
+  get 'passbook' => 'hackers#passbook'
+
   get 'sponsors/resume_portal'
   get 'sponsors/hackers'
 
@@ -25,6 +27,11 @@ Rails.application.routes.draw do
   get 'execs/ranker'
   get 'execs/hacker_detail/:hacker_id' => 'execs#hacker_detail'
   post 'execs/decision_submission'
+
+  get  'execs/checkin'
+  get  'execs/hacker_checkin_info'
+  post 'execs/checkin' => 'execs#checkin_hacker', :defaults => { :format => 'json' }
+  post 'execs/checkin/query' => 'execs#user_query'
 
   get 'visualization' => 'visualization#index'
   resources :interest_signups, only: [:create]

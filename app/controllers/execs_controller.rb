@@ -1,5 +1,9 @@
 class ExecsController < ApplicationController
+  skip_before_action :require_login, only: [:checkin_hacker, :hacker_checkin_info, :handle_options_request]
+  skip_authorize_resource only: [:checkin_hacker, :hacker_checkin_info, :handle_options_request]
   load_and_authorize_resource
+  skip_before_filter :verify_authenticity_token, only: [:checkin_hacker, :hacker_checkin_info, :handle_options_request]
+
   def applied
     @count = Hacker.all.count
   end
@@ -38,6 +42,99 @@ class ExecsController < ApplicationController
     send_data @csv_string,
               :filename => "application_incomplete_hackers.csv",
               :type => "text/csv"
+  end
+
+  def checkin
+    @checkin_token = ENV['CHECKIN_TOKEN']
+  end
+
+  def checkin_hacker
+    resp = nil
+    if params[:checkin_token] != ENV['CHECKIN_TOKEN']
+      resp = { status: :unauthorized } # returns a HTTP 401
+    end
+
+    hacker = Hacker.find_by email: params[:email]
+    if hacker
+      if hacker.update(checked_in_time: Time.now)
+        resp = { email: hacker.email, checked_in_time: hacker.checked_in_time }
+      else
+        resp = { status: :internal_server_error }
+      end
+    else
+      resp = { status: :not_found }  # 404
+    end
+
+    respond_to do |format|
+      format.json { render json: resp.to_json }
+    end
+  end
+
+  def hacker_checkin_info
+    resp = nil
+    if params[:checkin_token] == ENV['CHECKIN_TOKEN']
+      hacker = Hacker.find_by email: params[:email]
+
+      if hacker
+        resp = { name: hacker.full_name,
+                 tshirt_size: hacker.application.tshirt_size,
+                 school_name: hacker.school.name,
+                 dietary_restrictions: hacker.application.dietary_restrictions }
+      else
+        resp = { status: :not_found } # 404
+      end
+    else
+      resp = { status: :unauthorized } # returns a HTTP 401
+    end
+
+    render json: resp.to_json
+  end
+
+  def user_query
+    query_str = StringIO.new
+    query_arr = []
+    prev = false
+    if params[:first_name].present?
+      query_str << "first_name ILIKE ? "
+      query_arr << "%#{params[:first_name]}%"
+      prev = true
+    end
+
+    if params[:last_name].present?
+      query_str << "AND " if prev
+      query_str << "last_name ILIKE ? "
+      query_arr << "%#{params[:last_name]}%"
+      prev = true
+    end
+
+    if params[:email].present?
+      query_str << "AND " if prev
+      query_str << "email ILIKE ? "
+      query_arr << "%#{params[:email]}%"
+    end
+
+    if params[:school].present?
+      query_str << "AND " if prev
+      query_str << "schools.name ILIKE ? "
+      query_arr << "%#{params[:school]}%"
+    end
+
+
+    result = Hacker
+      .joins(:school)
+      .select('schools.name as school_name,
+               users.first_name,
+               users.last_name,
+               users.email,
+               users.checked_in_time,
+               users.status,
+               users.confirmed,
+               users.declined')
+      .where([query_str.string] + query_arr)
+
+    respond_to do |format|
+      format.json { render json: result.to_json }
+    end
   end
 
   def shirts
@@ -227,4 +324,5 @@ class ExecsController < ApplicationController
   rescue
     return nil
   end
+
 end

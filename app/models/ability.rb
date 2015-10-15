@@ -10,7 +10,7 @@ class Ability
         can [:resume_portal, :hackers], Sponsor
       elsif user.hacker?
         can :manage, [Application]
-        can [ :dashboard, :new, :create, :update, :confirm, :decline ], Hacker
+        can [ :dashboard, :new, :create, :update, :confirm, :decline, :passbook ], Hacker
         can [ :index ], School
       end
     end

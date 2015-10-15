@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008195620) do
+ActiveRecord::Schema.define(version: 20151012194209) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 20151008195620) do
     t.string   "grad_date",            limit: 255
     t.string   "job_interest",         limit: 255
     t.string   "job_date",             limit: 255
+  end
+
+  create_table "bus_routes", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -121,6 +127,7 @@ ActiveRecord::Schema.define(version: 20151008195620) do
     t.boolean  "confirmed",                          default: false
     t.string   "transportation_method"
     t.boolean  "declined",                           default: false
+    t.datetime "checked_in_time"
   end
 
 end

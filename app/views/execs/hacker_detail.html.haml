@@ -72,7 +72,7 @@
               ="User Control"
           .panel-body
             .rank-response
-            = form_for @hacker_ranking, remote: true, "data-type" => :json do |f|
+            = form_for @hacker_ranking, remote: true, "data-type" => :json, id: 'hacker_ranking' do |f|
               %h3 your ranking:
               .rankings{style: "max-width:100px"}
                 %span#bad_ranking{style: "font-size:200%;cursor:pointer"}
