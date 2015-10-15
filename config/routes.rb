@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get 'passbook' => 'hackers#passbook'
 
+  get 'springboard' => 'pages#unhackathon'
+
   get 'sponsors/resume_portal'
   get 'sponsors/hackers'
 

@@ -11,4 +11,9 @@ class PagesController < ApplicationController
   def schedule
     redirect_to "#{root_url}#schedule"
   end
+
+  def unhackathon
+    redirect_to "http://unhackathon.org/springboard-projects/"
+  end
+
 end
