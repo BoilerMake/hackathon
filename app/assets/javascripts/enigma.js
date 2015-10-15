@@ -202,12 +202,12 @@
   };
   window.onload = function() {
     // console.log(window.isMobile());
-    if (!window.shouldSkipIntro && !window.isMobile()){
+    /*if (!window.shouldSkipIntro && !window.isMobile()){
       Enigma.init();
     }
     document.getElementById('bg').className += ' fadeOut';
     if (window.shouldSkipIntro || window.isMobile()){
       flickerOver();
-    }
+    }*/
   };
 })();
