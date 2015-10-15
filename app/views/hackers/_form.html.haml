@@ -1,7 +1,16 @@
 - content_for :extra_js do
   = javascript_include_tag 'https://cdn.rawgit.com/davidshimjs/qrcodejs/master/qrcode.min.js'
-
+  = javascript_include_tag 'printThis.js'
 =render "shared/flash.html.haml"
+:javascript
+  $('#print_qr').click(function(){
+  console.log("clicked??");
+    $("#qr_img").printThis({
+      debug: false,                          
+      removeInline: false,                   
+    });
+  });
+
 .container#application-page
   .application-container.text-center
     - if !@hacker.declined?
@@ -18,13 +27,13 @@
             Declined.
 
     - if @hacker.confirmed?
-      #qr_code{ style: 'margin: 0 auto;' }
+      #qr_code{ style: 'margin: 0 auto;'}
+      %a{class: 'button', id: 'print_qr', href: "#"} Print QR Code
       .application-status.hidden
         %span.note= link_to "Passbook Here", passbook_url
       :javascript
         new QRCode(document.getElementById("qr_code"), '#{@hacker.email}');
-        $('#qr_code img').first().css('margin', '0 auto')
-
+        $('#qr_code img').first().css('margin', '0 auto').attr('id', 'qr_img');
 
     - if @hacker.standby?
       %p.additional-info
