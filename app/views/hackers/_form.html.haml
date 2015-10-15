@@ -43,7 +43,7 @@
       #qr_code{ style: 'margin: 0 auto;'}
       .application-status
         %span.note
-          %a{class: 'note', id: 'print_qr', href: "#"} Download QR Code
+          %a{class: 'note', id: 'print_qr', href: "#"} Download QR .PDF
       :javascript
         new QRCode(document.getElementById("qr_code"), '#{@hacker.email}');
         $('#qr_code img').first().css('margin', '0 auto').attr('id', 'qr_img');
