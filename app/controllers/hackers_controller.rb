@@ -148,6 +148,7 @@ class HackersController < ApplicationController
   def passbook
     json_data = JSON.parse(IO.read(Rails.root.join('passbook', 'data', 'pass.json')))
     json_data['barcode']['message'] = current_user.email
+    json_data['eventTicket']['auxiliaryFields'][0]['value'] = current_user.full_name
 
     pass = Passbook::PKPass.new json_data.to_json
 
