@@ -81,6 +81,7 @@ class ExecsController < ApplicationController
         else
           resp = { name: hacker.full_name,
                    tshirt_size: hacker.application.tshirt_size,
+                   checked_in_time: hacker.checked_in_time,
                    school_name: hacker.school.name,
                    dietary_restrictions: hacker.application.dietary_restrictions }
         end
