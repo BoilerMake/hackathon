@@ -7,15 +7,20 @@
   = javascript_include_tag 'http://cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js'
 =render "shared/flash.html.haml"
 :javascript
-  $( document ).ready(function() {
-    $('#print_qr').click(function(){
+  $(document).ready(function() {
+    $('#print_qr').click(function(e){
+      e.preventDefault();
       var doc = new jsPDF();
+      // Get QR image
       var img = $('#qr_img').prop('src');
       doc.setFontSize(40);
-      doc.text(40, 20, 'BoilerMake Check In');
-      doc.addImage(img, 'PNG', 55, 40, 100, 100);
-      //doc.save('test.pdf');
-      doc.output('datauri');
+      doc.text(40, 25, 'BoilerMake 2015');
+      doc.setFontSize(18);
+      doc.text(40, 35, 'Name: #{@hacker.first_name} #{@hacker.last_name}');
+      doc.text(40, 43, 'Email: #{@hacker.email}');
+      doc.text(40, 51, 'School: #{@hacker.school.name}');
+      doc.addImage(img, 'PNG', 55, 60, 100, 100);
+      doc.save('BoilerMake.pdf');
     });
   })
 
@@ -36,9 +41,9 @@
 
     - if @hacker.confirmed?
       #qr_code{ style: 'margin: 0 auto;'}
-      %a{class: 'button', id: 'print_qr', href: "#"} Print QR Code
-      .application-status.hidden
-        %span.note= link_to "Passbook Here", passbook_url
+      .application-status
+        %span.note
+          %a{class: 'note', id: 'print_qr', href: "#"} Download QR Code
       :javascript
         new QRCode(document.getElementById("qr_code"), '#{@hacker.email}');
         $('#qr_code img').first().css('margin', '0 auto').attr('id', 'qr_img');
