@@ -76,10 +76,14 @@ class ExecsController < ApplicationController
       hacker = Hacker.find_by email: params[:email]
 
       if hacker
-        resp = { name: hacker.full_name,
-                 tshirt_size: hacker.application.tshirt_size,
-                 school_name: hacker.school.name,
-                 dietary_restrictions: hacker.application.dietary_restrictions }
+        if !hacker.accepted? && hacker.school.name = "Purdue University"
+          resp = { status: :forbidden }
+        else
+          resp = { name: hacker.full_name,
+                   tshirt_size: hacker.application.tshirt_size,
+                   school_name: hacker.school.name,
+                   dietary_restrictions: hacker.application.dietary_restrictions }
+        end
       else
         resp = { status: :not_found } # 404
       end
