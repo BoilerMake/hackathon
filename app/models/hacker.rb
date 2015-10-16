@@ -100,7 +100,7 @@ class Hacker < User
                             application.essay1,
                             application.essay2 ]
       application_attrs.map! do |el|
-        attributes << el.present?
+        attributes << (el != nil && el != "")
       end
     end
     attributes.reduce(:&)
