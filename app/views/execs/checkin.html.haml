@@ -1,23 +1,11 @@
-:css
-  .results{
-    margin: 7px;
-  }
-  .result .name{
-    font-weight: bold;
-    text-transform: uppercase;
-  }
-
-  .container {
-    max-width: 700px;
-    margin: 0 auto;
-  }
+= content_for :extra_css do
+  = stylesheet_link_tag 'checkin'
 
 :javascript
   window.checkin_token = "#{@checkin_token}"
 
 .container
-  %h1 Hacker Checkin
-  %h2 Lookup
+  %h1 Hacker Check-in
   = form_tag '/execs/checkin/query',
              remote: true,
              "data-type" => :json,
@@ -40,5 +28,4 @@
 
     = submit_tag "Submit"
 
-  %h2 Results
   .results
