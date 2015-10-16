@@ -20508,11 +20508,7 @@
 	        property: 'resume',
 	        header: 'Resume',
 	        cell: function cell(value) {
-	          return _react2['default'].createElement(
-	            'a',
-	            { href: value },
-	            'Download'
-	          );
+	          return _this.resumeLink(value);
 	        }
 	      }],
 	      pagination: {
@@ -20520,6 +20516,25 @@
 	        perPage: 10
 	      }
 	    };
+	  },
+
+	  resumeLink: function resumeLink(value) {
+	    var link = undefined;
+
+	    if (value.length > 2) {
+	      link = _react2['default'].createElement(
+	        'a',
+	        { href: value },
+	        'Download'
+	      );
+	    } else {
+	      link = _react2['default'].createElement(
+	        'span',
+	        null,
+	        'N/A'
+	      );
+	    }
+	    return { link: link };
 	  },
 
 	  onSearch: function onSearch(search) {
@@ -35656,12 +35671,14 @@
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
+	/* global define */
 
 	(function () {
 		'use strict';
 
-		function classNames () {
+		var hasOwn = {}.hasOwnProperty;
 
+		function classNames () {
 			var classes = '';
 
 			for (var i = 0; i < arguments.length; i++) {
@@ -35670,15 +35687,13 @@
 
 				var argType = typeof arg;
 
-				if ('string' === argType || 'number' === argType) {
+				if (argType === 'string' || argType === 'number') {
 					classes += ' ' + arg;
-
 				} else if (Array.isArray(arg)) {
 					classes += ' ' + classNames.apply(null, arg);
-
-				} else if ('object' === argType) {
+				} else if (argType === 'object') {
 					for (var key in arg) {
-						if (arg.hasOwnProperty(key) && arg[key]) {
+						if (hasOwn.call(arg, key) && arg[key]) {
 							classes += ' ' + key;
 						}
 					}
@@ -35690,15 +35705,14 @@
 
 		if (typeof module !== 'undefined' && module.exports) {
 			module.exports = classNames;
-		} else if (true){
-			// AMD. Register as an anonymous module.
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
 			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
 			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			window.classNames = classNames;
 		}
-
 	}());
 
 
@@ -35833,7 +35847,7 @@
 	        var formatter = col.search || formatters.identity;
 	        var formattedValue = formatter(value);
 
-	        if (!formattedValue) {
+	        if (!formattedValue && isNaN(formattedValue)) {
 	            return false;
 	        }
 
@@ -35883,7 +35897,7 @@
 
 	module.exports = function (getHighlights) {
 	    return function (value) {
-	        value = value || '';
+	        value = String(value); // deals with arrays/numbers/...
 
 	        var children = [];
 	        var highlights = getHighlights(value);
@@ -39508,6 +39522,11 @@
 	var React = __webpack_require__(167);
 
 	module.exports = function (options) {
+	    var fields = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+	    var nameField = fields.name || 'name';
+	    var valueField = fields.value || 'value';
+
 	    return React.createClass({
 	        displayName: 'Dropdown',
 
@@ -39531,9 +39550,9 @@
 	                        'option',
 	                        {
 	                            key: i,
-	                            value: option.value
+	                            value: option[valueField]
 	                        },
-	                        option.name
+	                        option[nameField]
 	                    );
 	                })
 	            );

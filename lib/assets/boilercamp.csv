@@ -1,19 +1,37 @@
-Timestamp,First Name,Last Name,Email,Gender,,Dietary Restrictions,T-shirt Size
-10/12/2015 16:22:40,Wilson,Husin,whusin@purdue.edu,Male,,,Medium
-10/12/2015 16:24:18,Yinrong,Liang,liang162@purdue.edu,Male,,,Medium
-10/12/2015 16:29:42,Michael,Chang,chang313@purdue.edu,Male,,,Medium
-10/12/2015 16:31:56,Zaid,Al Haddadin,zalhadda@purdue.edu,Male,,None!,Medium
-10/12/2015 16:35:44,Syed,Sagheer,ssagheer@purdue.edu,Male,,Vegetarian or fish,Medium
-10/12/2015 16:59:50,Farid,Ramos,ramosf@purdue.edu,Male,,,Medium
-10/12/2015 17:07:00,Megan,Lau,lau31@purdue.edu,Female,,n/a,Small
-10/12/2015 17:07:51,Sidhant,Chadda,chadda@purdue.edu,Male,,,Large
-10/12/2015 17:27:02,Sakhi,Aggrawal,saggrawa@purdue.edu,Female,,Vegetarian,Large
-10/12/2015 17:46:42,Yixiong,He,he284@purdue.edu,Male,,,Large
-10/12/2015 17:53:58,Yicheng,Wang,wang2692@purdue.edu,Male,,,Medium
-10/12/2015 18:03:46,Shishir,Lakkadi,slakkadi@purdue.edu,Male,,,Large
-10/12/2015 18:16:40,Clayton,Marshall,marsha88@purdue.edu,Male,,None,Medium
-10/12/2015 19:25:30,Theresa,Ming,tming@purdue.edu,Female,,,Small
-10/12/2015 20:55:49,Vijay,Viswan,vviswan@purdue.edu,Male,,,Medium
-10/12/2015 21:42:07,Andrew,Hoover,hoover852@yahoo.com,Male,,None,Medium
-10/12/2015 22:03:24,Palina,Rawat,rawatp@purdue.edu,Female,,,Medium
-10/12/2015 22:06:34,Aarti,Panda,panda0@purdue.edu,Female,,Vegetarian,Small
+Timestamp,First Name,Last Name,Email,Gender,,Dietary Restrictions,T-shirt Size,Checked In
+10/12/2015 16:22:40,Wilson,Husin,whusin@purdue.edu,Male,,,Medium,
+10/12/2015 16:24:18,Yinrong,Liang,liang162@purdue.edu,Male,,,Medium,
+10/12/2015 16:29:42,Michael,Chang,chang313@purdue.edu,Male,,,Medium,
+10/12/2015 16:31:56,Zaid,Al Haddadin,zalhadda@purdue.edu,Male,,None!,Medium,
+10/12/2015 16:35:44,Syed,Sagheer,ssagheer@purdue.edu,Male,,Vegetarian or fish,Medium,
+10/12/2015 16:59:50,Farid,Ramos,ramosf@purdue.edu,Male,,,Medium,
+10/12/2015 17:07:00,Megan,Lau,lau31@purdue.edu,Female,,n/a,Small,
+10/12/2015 17:07:51,Sidhant,Chadda,chadda@purdue.edu,Male,,,Large,
+10/12/2015 17:27:02,Sakhi,Aggrawal,saggrawa@purdue.edu,Female,,Vegetarian,Large,
+10/12/2015 17:46:42,Yixiong,He,he284@purdue.edu,Male,,,Large,
+10/12/2015 17:53:58,Yicheng,Wang,wang2692@purdue.edu,Male,,,Medium,
+10/12/2015 18:03:46,Shishir,Lakkadi,slakkadi@purdue.edu,Male,,,Large,
+10/12/2015 18:16:40,Clayton,Marshall,marsha88@purdue.edu,Male,,None,Medium,
+10/12/2015 19:25:30,Theresa,Ming,tming@purdue.edu,Female,,,Small,
+10/12/2015 20:55:49,Vijay,Viswan,vviswan@purdue.edu,Male,,,Medium,
+10/12/2015 21:42:07,Andrew,Hoover,hoover852@yahoo.com,Male,,None,Medium,
+10/12/2015 22:03:24,Palina,Rawat,rawatp@purdue.edu,Female,,,Medium,
+10/12/2015 22:06:34,Aarti,Panda,panda0@purdue.edu,Female,,Vegetarian,Small,
+10/12/2015 22:53:44,Annie,Xu,xu768@purdue.edu,Female,,,Medium,
+10/12/2015 23:04:16,Jiayi,Kou,kouj@purdue.edu,Female,,,Small,
+10/12/2015 23:24:16,Wyatt,Larkey,wlarkey@purdue.edu,Male,,,Large,
+10/12/2015 23:40:16,Tomasz,Parzadka,tparzadk@purdue.edu,Male,,,Medium,
+10/13/2015 0:28:35,Vritant,Bhardwaj,bhardwav@purdue.edu,Male,,,X-Large,
+10/13/2015 1:38:33,Rizwanulla ,Mohammed,rmohamme@purdue.edu,Male,,,Medium,
+10/13/2015 9:59:12,Lena,Arafa,larafa@purdue.edu,Female,,,Small,
+10/13/2015 11:36:16,Joseph,Sriprajittichai,jsripraj@purdue.edu,Male,,,Large,
+10/13/2015 13:37:26,Elvin,Uthuppan,euthuppa@purdue.com,Male,,,Medium,
+10/13/2015 14:24:40,Chengrui,Li,li2026@purdue.edu,Male,,,Large,
+10/13/2015 16:36:51,Riley,Barnett,barnetr@purdue.edu,Male,,None.,Small,
+10/13/2015 18:55:38,Brandon,Nice,niceb@purdue.edu,Male,,,Large,
+10/13/2015 20:11:10,Shazib,Elahi,selahi@purdue.edu,Male,,No pork,Medium,
+10/13/2015 20:12:53,Elizabeth,Stallter,estallte@purdue.edu,Female,,,Small,
+10/13/2015 21:08:04,Brooks,Van Buren,woofiewilly@gmail.com,Male,,,Medium,
+10/13/2015 22:12:22,Brooks,Van Buren,wvanbure@purdue.edu,Male,,,Medium,
+10/14/2015 0:17:04,David,Lee,lee2173@purdue.edu,Male,,None,Large,
+10/14/2015 19:55:58,MinYi,Lu,tigerlu330@hotmail.com,Male,,,Medium,

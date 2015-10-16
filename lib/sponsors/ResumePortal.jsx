@@ -60,7 +60,7 @@ module.exports = React.createClass({
         {
           property: 'resume',
           header: 'Resume',
-          cell: value => <a href={ value }>Download</a>
+          cell: value => this.resumeLink(value)
         }
       ],
       pagination: {
@@ -68,6 +68,17 @@ module.exports = React.createClass({
         perPage: 10
       }
     };
+  },
+
+  resumeLink: function(value) {
+    let link;
+
+    if (value.length > 2) {
+      link = <a href={value}>Download</a>;
+    } else {
+      link = <span>N/A</span>;
+    }
+    return { link };
   },
 
   onSearch(search) {
