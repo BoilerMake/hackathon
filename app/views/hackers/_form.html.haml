@@ -6,23 +6,24 @@
   = javascript_include_tag 'https://cdn.rawgit.com/MrRio/jsPDF/master/plugins/addimage.js'
   = javascript_include_tag 'https://cdn.rawgit.com/MrRio/jsPDF/master/plugins/png_support.js'
 =render "shared/flash.html.haml"
-:javascript
-  $(document).ready(function() {
-    $('#print_qr').click(function(e){
-      e.preventDefault();
-      var doc = new jsPDF();
-      // Get QR image
-      var img = $('#qr_img').prop('src');
-      doc.setFontSize(40);
-      doc.text(40, 25, 'BoilerMake 2015');
-      doc.setFontSize(18);
-      doc.text(40, 35, 'Name: #{@hacker.first_name} #{@hacker.last_name}');
-      doc.text(40, 43, 'Email: #{@hacker.email}');
-      doc.text(40, 51, 'School: #{@hacker.school.name}');
-      doc.addImage(img, 'PNG', 55, 60, 100, 100);
-      doc.save('BoilerMake.pdf');
-    });
-  })
+- if @hacker.accepted?
+  :javascript
+    $(document).ready(function() {
+      $('#print_qr').click(function(e){
+        e.preventDefault();
+        var doc = new jsPDF();
+        // Get QR image
+        var img = $('#qr_img').prop('src');
+        doc.setFontSize(40);
+        doc.text(40, 25, 'BoilerMake 2015');
+        doc.setFontSize(18);
+        doc.text(40, 35, 'Name: #{@hacker.first_name} #{@hacker.last_name}');
+        doc.text(40, 43, 'Email: #{@hacker.email}');
+        doc.text(40, 51, 'School: #{@hacker.school.name}');
+        doc.addImage(img, 'PNG', 55, 60, 100, 100);
+        doc.save('BoilerMake.pdf');
+      });
+    })
 
 .container#application-page
   .application-container.text-center

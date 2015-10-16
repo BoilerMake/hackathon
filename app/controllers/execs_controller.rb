@@ -73,7 +73,7 @@ class ExecsController < ApplicationController
   def hacker_checkin_info
     resp = nil
     if params[:checkin_token] == ENV['CHECKIN_TOKEN']
-      hacker = Hacker.find_by email: params[:email]
+      hacker = Hacker.find_by email: params[:email].downcase
 
       if hacker
         if !hacker.accepted? && hacker.school.name = "Purdue University"
