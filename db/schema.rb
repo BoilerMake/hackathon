@@ -38,12 +38,6 @@ ActiveRecord::Schema.define(version: 20151012194209) do
     t.string   "job_date",             limit: 255
   end
 
-  create_table "bus_routes", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",               default: 0, null: false
     t.integer  "attempts",               default: 0, null: false
