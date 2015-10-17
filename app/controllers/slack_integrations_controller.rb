@@ -16,6 +16,8 @@ class SlackIntegrationsController < ApplicationController
       str_rep = Hacker.where(status: "Accepted", declined: true).count.to_s
     elsif split_text.first == 'attending'
       str_rep = Hacker.where(status: "Accepted", confirmed: true).count.to_s
+    elsif split_text.first == 'checked_in'
+      str_rep = Hacker.where.not(checked_in_time: nil).count.to_s
     end
 
     render text: str_rep
