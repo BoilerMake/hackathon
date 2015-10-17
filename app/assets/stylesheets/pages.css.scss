@@ -814,15 +814,14 @@ input:focus {
     li {
       padding: 20px;
       float: left;
-      color: #CCCCCC;
+      color: #525C5B;
       border-left: 1px solid #CCCCCC;
       width: 33%;
       max-width: 33%;
+      opacity: 0.85;
       text-align: center !important;
       &:first-child {
-        color: #525C5B;
         border: 0;
-        opacity: 0.85;
       }
       a {
         font-family: 'Source Code Pro', sans-serif;
