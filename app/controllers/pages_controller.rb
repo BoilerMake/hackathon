@@ -5,7 +5,7 @@ class PagesController < ApplicationController
     @hacker            = Hacker.new
     @should_skip_intro = params[:should_skip_intro]
     @interest_signup   = InterestSignup.new
-    @updates           = Update.all.order('created_at DESC')
+    @updates           = Update.all.limit(3).order('created_at DESC')
   end
 
   def schedule
