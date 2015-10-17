@@ -6,7 +6,7 @@
     .updates
       %ul
         - @updates.each do |update|
-          %li #{update.title} - #{update.body}
+          %li #{link_to update.title, updates_url} <br> #{truncate(update.body, length: 75, omission: '...')}
         .clear
     =render "shared/flash.html.haml"
     .cover.vertical-center
