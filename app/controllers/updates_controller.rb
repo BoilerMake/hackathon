@@ -3,7 +3,7 @@ class UpdatesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @updates = Update.limit.order('created_at DESC')
+    @updates = Update.all.order('created_at DESC')
   end
 
   def new
