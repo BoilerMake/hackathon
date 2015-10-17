@@ -9,9 +9,10 @@ class Hacker < User
   accepts_nested_attributes_for :application
 
   def self.textees
-    Hacker.joins(:application)
-          .where(applications: {can_text: true })
-          .where.not(applications: {cell_phone: nil})
+    Hacker
+      .joins(:application)
+      .where.not(checked_in_time: nil)
+      .where.not(applications: {cell_phone: nil})
   end
 
   def self.started_applicants
