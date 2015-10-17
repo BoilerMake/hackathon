@@ -6,7 +6,7 @@
     .updates
       %ul
         - @updates.each do |update|
-          %li #{update.title} - #{update.body} - #{update.created_at.strftime("%I:%M %p")}
+          %li #{update.title} - #{update.body}
         .clear
     =render "shared/flash.html.haml"
     .cover.vertical-center

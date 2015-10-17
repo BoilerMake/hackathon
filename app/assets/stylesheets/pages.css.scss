@@ -806,13 +806,13 @@ input:focus {
   opacity: .9;
   box-shadow: 0 1px 10px rgba(50, 50, 50, .3);
   ul {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 0.8em;
+    font-size: 0.7em;
     list-style: none;
     li {
-      padding: 20px 0;
+      padding: 20px;
       float: left;
       color: #CCCCCC;
       border-left: 1px solid #CCCCCC;
