@@ -829,6 +829,10 @@ input:focus {
         font-size: 1.1em;
         text-decoration: none;
         color: #6e4841;
+        &:hover {
+          background-color: #6e4841;
+          color: white;
+        }
       }
     }
   }
