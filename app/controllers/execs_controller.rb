@@ -155,8 +155,8 @@ class ExecsController < ApplicationController
     @csv_string = CSV.generate do |csv|
       csv << ['id', 'fname', 'lname', 'email', 'school', 'status',
               'confirmed?', 'declined? (this means they said they cant come)',
-              'bus route', 'created_at', 'updated_at', 'resume_url', 'gender',
-              'tshirt_size', 'dietary_restrictions']
+              'checked_in_time', 'bus route', 'created_at', 'updated_at',
+              'resume_url', 'gender', 'tshirt_size', 'dietary_restrictions']
       Hacker.all.each do |h|
         school_name = ''
         team_id     = 0
@@ -174,6 +174,7 @@ class ExecsController < ApplicationController
                 h.status,
                 h.confirmed,
                 h.declined,
+                h.checked_in_time,
                 h.transportation_method,
                 h.created_at,
                 h.updated_at,

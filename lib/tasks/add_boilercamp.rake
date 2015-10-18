@@ -24,8 +24,8 @@ task :addBoilerCamp => :environment do
       school_id = row['school_id']
     end
 
-    checked_in = nil
-    if row['Checked In'].present?
+    checked_in = hacker.checked_in_time
+    if row['Checked In'].present? && checked_in.nil?
       checked_in = Time.now
     end
 
