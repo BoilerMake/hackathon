@@ -17,13 +17,23 @@ task :addBoilerCamp => :environment do
 
       hacker.build_application
 
-      hacker.send_password_reset
+    end
+
+    school_id = purdue.id
+    if row['school_id'].present?
+      school_id = row['school_id']
+    end
+
+    checked_in = nil
+    if row['Checked In'].present?
+      checked_in = Time.now
     end
 
     hacker.update first_name: row['First Name'],
                   last_name: row['Last Name'],
                   status: 'Accepted',
-                  school_id: purdue.id,
+                  school_id: school_id,
+                  checked_in_time: checked_in,
                   confirmed: true,
                   email: row['Email'],
                   application_attributes: {
